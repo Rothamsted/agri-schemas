@@ -1,0 +1,20 @@
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>
+@prefix agri: <http://agrischemas.org/>
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Just to show that existing terms can be enriched with mappings and 
+# symplifying relations.
+
+obo:GO_0030015  a  schema:DefinedTerm;
+	agri:accession  		"GO:0030015";
+	schema:isPartOf 		obo:GO_0030014;
+	schema:prefName    "CCR4-NOT core complex" 
+.
+
+obo:GO_0030014  a  schema:DefinedTerm ;
+	agri:accession  		"GO:0030014";
+	bk:prefName    "CCR4-NOT complex"
+.

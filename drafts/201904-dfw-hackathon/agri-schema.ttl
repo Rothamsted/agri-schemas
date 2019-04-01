@@ -1,0 +1,96 @@
+@prefix agri: <http://agrischemas.org/>
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix metaSchema: <https://meta.schema.org/>
+@prefix dc: <http://purl.org/dc/elements/1.1/>
+@prefix owl: <https://www.w3.org/2002/07/owl#>
+@prefix sio: <http://semanticscience.org/resource/>
+@prefix oa: <http://www.w3.org/ns/oa#>
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+
+agri:AgriSchemasImportedClass a owl:Class.
+agri:AgriSchemasImportedProperty a rdf:Property.
+agri:BioSchemasNewPropertyProposal a owl:AnnotationProperty.
+agri:BioSchemasNewClassProposal a owl:AnnotationProperty.
+
+
+agri:prefName a owl:AnnotationProperty;
+	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
+.
+
+agri:altName a owl:AnnotationProperty;
+	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
+.
+
+agri:evidence a owl:AnnotationProperty;
+  rdfs:subPropertyOf oa:motivatedBy, agri:SchemaNewPropertyProposal
+.
+
+agri:accession a owl:AnnotationProperty;
+	rdfs:subPropertyOf schema:identifier, agri:BioSchemasNewPropertyProposal;
+	schema:rangeIncludes schema:StructuredValue
+.
+
+agri:BiologicalAssociation a owl:Class;
+  rdfs:subClassOf schema:Intangible, agri:BioSchemasNewClassProposal
+.
+
+agri:BioPathway a owl:Class;
+  rdfs:subClassOf agri:BiologicalAssociation, agri:BioSchemasNewClassProposal
+.
+
+agri:HostPathogenInteraction a owl:Class;
+  rdfs:subClassOf agri:BiologicalAssociation, agri:BioSchemasNewClassProposal
+.
+
+agri:interactionHost a owl:AnnotationProperty;
+  rdfs:subPropertyOf schema:hasPart, agri:BioSchemasNewPropertyProposal;
+	schema:domainIncludes agri:HostPathogenInteraction;
+	schema:rangeIncludes schema:Phenotype
+.
+
+agri:interactionPathogen a owl:AnnotationProperty;
+  rdfs:subPropertyOf schema:hasPart, agri:BioSchemasNewPropertyProposal;
+	schema:domainIncludes agri:HostPathogenInteraction;
+	schema:rangeIncludes schema:Phenotype
+.
+
+agri:ScholarlyPublication a owl:Class;
+  rdfs:subClassOf schema:CreativeWork, agri:BioSchemasNewClassProposal
+.
+
+schema:ScholarlyArticle rdfs:subClassOf agri:ScholarlyPublication.
+
+agri:pmedId a owl:AnnotationProperty;
+	rdfs:subPropertyOf agri:accession, agri:BioSchemasNewPropertyProposal
+.
+
+agri:score a owl:AnnotationProperty;
+	rdfs:subPropertyOf metaSchema:Property, agri:BioSchemasNewPropertyProposal;
+  schema:rangeIncludes schema:Number, schema:Enumeration, schema:Text;
+	schema:additionalType obo:OBI_0000071
+.
+
+agri:pvalue a owl:AnnotationProperty
+	rdfs:subPropertyOf agri:score, agri:BioSchemasNewPropertyProposal;
+  schema:rangeIncludes schema:Number;
+	schema:additionalType obo:OBI_0000175, sio:SIO_000765
+.
+
+agri:isBiologicallyRelatedTo a owl:AnnotationProperty;
+	rdfs:seeAlso sio:SIO_000897;
+	rdfs:subPropertyOf schema:Property, agri:BioSchemasNewPropertyProposal.
+.
+
+agri:hasGeneExpressionIn a owl:AnnotationProperty;
+	rdfs:subPropertyOf agri:isBiologicallyRelatedTo, agri:BioSchemasNewPropertyProposal;
+	rdfs:seeAlso obo:GO_0010467;
+	rdfs:comment "Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter."
+.
+
+agri:StudyFactor a owl:Class
+	rdfs:subClassOf schema:Intangible, agri:BioSchemasNewClassProposal;
+	schema:additionalType 
+		<http://www.ebi.ac.uk/efo/EFO_0000001>, 
+		obo:OBI_0000750
+.

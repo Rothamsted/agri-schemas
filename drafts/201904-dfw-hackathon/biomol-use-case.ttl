@@ -1,0 +1,88 @@
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>
+@prefix agri: <http://agrischemas.org/>
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+res:study1 a bioschema:Study;
+	agri:prefName "Sample Gene Expression Experiment";
+	agri:evidence "manually curated";
+	agri:accession "study:001"
+.
+
+# Original URIs can be reused. The resource will receive additional annotations.
+<http://www.wikipathways.org/id1> a bk:Pathway ; 
+	agri:evidence  "Imported from Database"
+	agri:prefName  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>
+.
+        
+res:tob1  a bioschema:Protein ;
+	agri:accession       res:TOB1_acc ;
+	agri:prefName         "TOB1"^^xsd:string;
+	# A simplified link, hiding BioPax pathwayComponent -> BioChemicalReaction|Complex -> Protein
+	schema:isPartOf 		  <http://www.wikipathways.org/id1>
+.
+
+# Generic mentions by a publication (schema:subjectOf is an alternative)
+res:23236473 schema:mentions res:tob1.
+
+# plain triples might be enriched via reification
+res:cit_tob1_23236473 a rdf:Statement;
+	rdf:subject res:23236473;
+	rdf:object res:tob1;
+	rdf:predicate schema:mentions;
+	agri:score 0.95
+.
+
+# This is a possible alternative, based on a variant of n-ary properties
+res:23236473 schema:mentions res:cit_tob1_23236473.
+res:cit_tob1_23236473 a schema:StructuredValue;
+  rdf:object res:tob1;
+  agri:score 0.95;
+	agri:evidence "Ondex Text Mining"
+.
+
+
+# Structured accession, allow for linking of identifier and context.         
+res:TOB1_acc  				a schema:StructuredValue;
+  agri:accession  		"TOB1"^^<xsd:string> ;
+  dc:source       		<https://www.uniprot.org/>;
+  rdfs:seeAlso 				obo:GO_0030014
+.
+
+res:23236473 a agri:ScholarlyPublication;
+	agri:headline  "The anti-proliferative activity of BTG/TOB proteins is mediated via the Caf1a (CNOT7) and Caf1b (CNOT8) deadenylase subunits of the Ccr4-not complex";
+	# This is the weird term that schema.org uses for summaries (and hence abstracts)
+	schema:backstory "The human BTG/TOB protein family comprises six members (BTG1, BTG2/PC3/Tis21, BTG3/Ana, BTG4/PC3B, TOB1/Tob, and TOB2) that are characterised...";
+	agri:pmedId           "23236473" ;
+	# This should be an ISO 8601 string. This standards accepts dates with year only, however it
+	# isn't clear if they should be interpreted as 'day/month is unknown', or 'the year is referred by generically', or
+	# 'Jan 1st is implicit'
+	schema:datePublished	"2012-12-07"
+.
+
+# Some gene expression statements
+res:tob1  agri:hasGeneExpressionIn "Treated with Pesticide 1".
+
+bkr:degex_tob1_sample1 a rdfs:Statement;
+	agri:pvalue     "0.000000600497806344172"^^xsd:double ;
+	agri:evidence  	res:sample1;
+	rdf:subject    	res:tob1;
+	rdf:predicate		agri:hasGeneExpressionIn;
+	rdf:object     	res:expFact1.
+.
+  
+
+res:expFact1 a agri:StudyFactor;
+	schema:prefName "Glyphosate Treatment";
+	schema:additionalType obo:CHEBI_27744
+.
+
+
+res:sample1 a bioschema:Sample ;
+	schema:prefName			"Land Plot 001";
+	schema:isPartOf			res:study1;
+	agri:hasStudyFactor res:expFact1
+.
