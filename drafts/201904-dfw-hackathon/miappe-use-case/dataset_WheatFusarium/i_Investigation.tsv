@@ -1,0 +1,98 @@
+ONTOLOGY SOURCE REFERENCE							
+Term Source Name	EFO	NCBITAXON	PO	OBI	PECO	UO	EO
+Term Source File	http://data.bioontology.org/ontologies/EFO	http://data.bioontology.org/ontologies/NCBITAXON	http://data.bioontology.org/ontologies/PO	http://data.bioontology.org/ontologies/OBI	http://data.bioontology.org/ontologies/PECO	http://data.bioontology.org/ontologies/UO	
+Term Source Version	119	3	10	23	11	43	
+Term Source Description	Experimental Factor Ontology	National Center for Biotechnology Information (NCBI) Organismal Classification	Plant Ontology	Ontology for Biomedical Investigations	Plant Environmental Conditions	Units of Measurement Ontology	Plant Environment Ontology
+INVESTIGATION							
+Investigation Identifier	inv_IPGPAS_WheatFus_v2						
+Investigation Title	Susceptibility to Fusarium headblight in spring wheat RIL population						
+Investigation Description	Fusarium head blight (FHB), caused by the fungal plant pathogen Fusarium, is a fungal disease that occurs in wheat and can cause significant yield and grain quality losses. The present paper examines variation in the resistance of spring wheat lines derived from a cross between Zebra and Saar cultivars. Experiments covering 198 lines and parental cultivars were conducted in three years, in which inoculation with Fusarium culmorum was applied. Resistance levels were estimated by scoring disease symptoms on kernels. In spite of a similar reaction of parents to F. culmorum infection, significant differentiation between lines was found in all the analyzed traits. Seven molecular markers selected as linked to FHB resistance QTLs gave polymorphic products for Zebra and Saar: Xgwm566, Xgwm46, Xgwm389, Xgwm533, Xgwm156, Xwmc238, and Xgwm341. Markers Xgwm389 and Xgwm533 were associated with the rate of Fusarium-damaged kernels (FDK) as well as with kernel weight per spike and thousand kernel weight in control plants. Zebra allele of marker Xwmc238 increased kernel weight per spike and thousand kernel weight both in control and infected plants, whereas Zebra allele of marker Xgwm566 reduced the percentage of FDK and simultaneously reduced the thousand kernel weight in control and infected plants.						
+Investigation Submission Date							
+Investigation Public Release Date							
+Comment [Created with configuration]							
+Comment [Last Opened With Configuration]							
+Comment[Created With Configuration]							
+Comment[Last Opened With Configuration]							
+INVESTIGATION PUBLICATIONS							
+Investigation PubMed ID	27162499						
+Investigation Publication DOI	doi:10.1270/jsbbs.66.281						
+Investigation Publication Author List	Halina Wiśniewska, Maria Surma, Karolina Krystkowiak, Tadeusz Adamski, Anetta Kuczyńska, Piotr Ogrodowicz, Krzysztof Mikołajczak, Jolanta Belter, Maciej Majka, Zygmunt Kaczmarek, Paweł Krajewski, Aneta Sawikowska, Leszek Lenc, Anna Baturo-Cieśniewska, Aleksander Łukanowski, Tomasz Góral, and Czesław Sadowski						
+Investigation Publication Title	Simultaneous selection for yield-related traits and susceptibility to Fusarium headblight in spring wheat RIL population						
+Investigation Publication Status	published						
+Investigation Publication Status Term Accession Number							
+Investigation Publication Status Term Source REF							
+INVESTIGATION CONTACTS							
+Investigation Person Last Name	Wisniewska						
+Investigation Person First Name	Halina						
+Investigation Person Mid Initials							
+Investigation Person Email	hwis@igr.poznan.pl						
+Investigation Person Phone							
+Investigation Person Fax							
+Investigation Person Address							
+Investigation Person Affiliation	IPG PAS						
+Investigation Person Roles							
+Investigation Person Roles Term Accession Number							
+Investigation Person Roles Term Source REF							
+STUDY							
+Study Identifier	WheatFus						
+Study Title	Fusarium head blight in spring wheat RIL population						
+Study Description	Simultaneous selection for yield-related traits and susceptibility to Fusarium head blight in spring wheat RIL population						
+Study Submission Date							
+Study Public Release Date							
+Study File Name	s_WheatFus.txt						
+STUDY DESIGN DESCRIPTORS							
+Study Design Type							
+Study Design Type Term Accession Number							
+Study Design Type Term Source REF							
+STUDY PUBLICATIONS							
+Study PubMed ID	27162499						
+Study Publication DOI	10.1270%2Fjsbbs.66.281						
+Study Publication Author List	Halina Wiśniewska, Maria Surma, Karolina Krystkowiak, Tadeusz Adamski, Anetta Kuczyńska, Piotr Ogrodowicz, Krzysztof Mikołajczak, Jolanta Belter, Maciej Majka, Zygmunt Kaczmarek, Paweł Krajewski, Aneta Sawikowska, Leszek Lenc, Anna Baturo-Cieśniewska, Aleksander Łukanowski, Tomasz Góral, and Czesław Sadowski						
+Study Publication Title	Simultaneous selection for yield-related traits and susceptibility to Fusarium head blight in spring wheat RIL population						
+Study Publication Status	public						
+Study Publication Status Term Accession Number							
+Study Publication Status Term Source REF							
+STUDY FACTORS							
+Study Factor Name	year	block	Inoculation				
+Study Factor Type	year	block	Fusarium				
+Study Factor Type Term Accession Number	http://purl.obolibrary.org/obo/UO_0000036	http://www.ebi.ac.uk/efo/EFO_0005067	http://purl.obolibrary.org/obo/EO_0007341				
+Study Factor Type Term Source REF	UO	EFO	EO				
+STUDY ASSAYS							
+Study Assay File Name	a_wheatfus_phenotyping.txt						
+Study Assay Measurement Type	phenotyping						
+Study Assay Measurement Type Term Accession Number	http://purl.obolibrary.org/obo/OGMS_0000023						
+Study Assay Measurement Type Term Source REF	OBI						
+Study Assay Technology Type							
+Study Assay Technology Type Term Accession Number							
+Study Assay Technology Type Term Source REF	OBI						
+Study Assay Technology Platform							
+STUDY PROTOCOLS							
+Study Protocol Name	Rooting	Aerial conditions	Nutrition	Watering	Sampling	Data transformation	
+Study Protocol Type	Rooting	Aerial conditions	Nutrition	Watering	Sampling	Data transformation	
+Study Protocol Type Term Accession Number							
+Study Protocol Type Term Source REF							
+Study Protocol Description		"Values of protocol parameters:
+- air humidity not given, precipitation given as environmental variables in data,
+- day and night temperature not given, average values for day and night given as environmental variables in data,
+- Paramater 'daily photon flux' approximated by mean daily sunshine duration during the trial period."					
+Study Protocol URI							
+Study Protocol Version							
+Study Protocol Parameters Name	"Plot size;pH;Rooting medium;Sowing density"	"Length of light period;Day temperature;Night temperature;Daily photon flux;Air humidity"	"Type of fertiliser;N before fertilisation;Amount of fertiliser"	"Volume;Frequency;Irrigation type"	Experimental unit	Trait Definition File	
+Study Protocol Parameters Name Term Accession Number	";;;"	";;;;"	";;"	";;"			
+Study Protocol Parameters Name Term Source REF	";;;"	";;;;"	";;"	";;"			
+Study Protocol Components Name							
+Study Protocol Components Type							
+Study Protocol Components Type Term Accession Number							
+Study Protocol Components Type Term Source REF							
+STUDY CONTACTS							
+Study Person Last Name	Krystkowiak	Paweł					
+Study Person First Name	Karolina	Krajewski					
+Study Person Mid Initials							
+Study Person Email	kkry@igr.poznan.pl	pkra@igr.poznan.pl					
+Study Person Phone							
+Study Person Fax							
+Study Person Address	Strzeszynska 34	Strzeszynska 34					
+Study Person Affiliation	Institute of Plant Genetics, Polish Academy of Sciences	Institute of Plant Genetics, Polish Academy of Sciences					
+Study Person Roles	principal investigator role	reporting party role					
+Study Person Roles Term Accession Number	http://purl.obolibrary.org/obo/OBI_0000103	http://purl.obolibrary.org/obo/OBI_0000068					
+Study Person Roles Term Source REF	OBI	OBI					

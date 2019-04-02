@@ -1,0 +1,11 @@
+Variable ID	Trait	Term Source REF	Term Accession Number	Method	Term Source REF	Term Accession Number	Scale	Term Source REF	Term Accession Number
+FDK1	Fusarium head blight incidence	CO	http://www.cropontology.org/rdf/CO_321:0000927	Weight of of damaged kernels as percent of all kernels			gram	UO	http://purl.obolibrary.org/obo/UO_0000021
+FDK2	Fusarium head blight incidence	CO	http://www.cropontology.org/rdf/CO_321:0000927	Number of of damaged kernels as percent of all kernels			count	UO	http://purl.obolibrary.org/obo/UO_0000189
+KWS	Grain weight	CO	http://www.cropontology.org/rdf/CO_321:0000025	Determination of kernel weight per spike 			gram	UO	http://purl.obolibrary.org/obo/UO_0000021
+TKW	1000-seed weight	TO	http://purl.obolibrary.org/obo/TO_0000382	Standard determination of 1000-kernel weight			gram	UO	http://purl.obolibrary.org/obo/UO_0000021
+PMay	Precipitation	ENVO	http://purl.obolibrary.org/obo/ENVO_01000703	Measurements in May			mm	UO	http://purl.obolibrary.org/obo/UO_0000016
+PJune	Precipitation	ENVO	http://purl.obolibrary.org/obo/ENVO_01000703	Measurements in June			mm	UO	http://purl.obolibrary.org/obo/UO_0000016
+PJuly	Precipitation	ENVO	http://purl.obolibrary.org/obo/ENVO_01000703	Measurements in July			mm	UO	http://purl.obolibrary.org/obo/UO_0000016
+TMay	Air temperature	ENVO	http://purl.obolibrary.org/obo/ENVO_01000753	Measurements in May			C	UO	http://purl.obolibrary.org/obo/UO_0000027
+TJune	Air temperature	ENVO	http://purl.obolibrary.org/obo/ENVO_01000753	Measurements in June			C	UO	http://purl.obolibrary.org/obo/UO_0000027
+TJuly	Air temperature	ENVO	http://purl.obolibrary.org/obo/ENVO_01000753	Measurements in July			C	UO	http://purl.obolibrary.org/obo/UO_0000027
