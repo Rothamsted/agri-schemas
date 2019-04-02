@@ -23,6 +23,8 @@
     * an `agri:ObservedValue` can be `schema:additionalProperty` of Study
     * There isn't much need for assay. Could be an event like data collection from samples
   
-Here it is a diagram:
+
+Here it is a diagram (made with [yED](https://www.yworks.com/products/yed), 
+[original file here](agrischema-miappe-modelling.graphmlz)):
 
 ![MIAPPE modelling](agrischema-miappe-modelling.png)
