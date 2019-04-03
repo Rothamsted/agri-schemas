@@ -6,7 +6,8 @@ The work leverages mainly [schema.org](https://schema.org/) and [bioschemas](htt
 
 The work was born within the [Design Future Wheat](https://designingfuturewheat.org.uk/) project, and for the moment it's focus on the use cases dealt with in it. In fact, so far we have been building our schemas starting from well known use cases within crop improvement research. There have been [two DFW hackathons](201904-dfw-hackathon) where we have done most of the work so far.
 
-## General Modelling Principles
+
+## General Modelling Principles
 
 ### Leverage primarily on schema.org and bioschemas 
 
@@ -61,7 +62,7 @@ TODO, see [agri-schema definitions](drafts/201904-dfw-hackathon/agri-schema.ttl)
   * [Molecular Biology, pathways/genes/proteins](biomol-use-case.ttl) (from Knetminer)
   * [Molecular Biology, ontology terms](ontology-use-case.ttl) (from Knetminer)
   * [Molecular Biology, host-pathogen interactions](phi-base-use-case.ttl) (PHI-Base)
-  * Dataset description, TODO (based on bioschemas Dataset, but CKAN might be need DCAT)
+  * Dataset description, TODO (based on `bioschema:Dataset`, but CKAN might need DCAT)
   * Field trials
     * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case)
     * [AHDB](ahdb-use-cse.md)
