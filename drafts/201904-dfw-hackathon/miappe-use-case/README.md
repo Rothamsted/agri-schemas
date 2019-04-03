@@ -9,7 +9,7 @@
     * [Mappings in ISA-Tab Phenotyping](https://github.com/MIAPPE/ISA-Tab-for-plant-phenotyping/blob/master/MIAPPE-ISATab%20mapping.pdf) 
 
 
-## Modelling with in agrischemas
+## Modelling in agrischemas
   * `bioschema:Study`, as in MIAPPE
     * an Investigation is an `bioschema:Study` with the investiation `schema:additionalType`, which points to other `bioschema:Study`(es), via `schema:hasPart`/`schema:isPartOf`
 	* we need a new `schema:PropertyValue` subclass to track MIAPPE Environment Param (which can be linked to `bioschema:Study` via `schema:additionalProperty`)
@@ -25,6 +25,6 @@
   
 
 Here it is a diagram (made with [yED](https://www.yworks.com/products/yed), 
-[original file here](agrischema-miappe-modelling.graphmlz)):
+original file [here](agrischema-miappe-modelling.graphmlz)):
 
 ![MIAPPE modelling](agrischema-miappe-modelling.png)
