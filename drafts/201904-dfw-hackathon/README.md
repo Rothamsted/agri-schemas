@@ -72,10 +72,10 @@ The best ways to refer an external term are `rdfs:subClassOf`, `rdfs:subProperty
 (beware they require a strong formal commitment),  `schema:additionalType` (when there is a more 
 informal link, eg, between [`bioschema:LabProtocol`](http://bioschemas.org/LabProtocol) and 
 [`obi:protocol`](http://purl.obolibrary.org/obo/OBI_0000272)) or `rdfs:seeAlso` (for cross-type 
-links and similarly informal relations, eg, see `agri:isBiologicallyRelatedTo`] in [agri-schema definitions](drafts/201904-dfw-hackathon/agri-schema.ttl), linked 
+links and similarly informal relations, eg, see `agri:isBiologicallyRelatedTo` in [agri-schema definitions](drafts/201904-dfw-hackathon/agri-schema.ttl), linked 
 to [sio:association](http://semanticscience.org/resource/SIO_000897))
 
-### Markers for proposed new types and MIRO-style importing
+### Markers for proposed new types and [MIREOT](https://content.iospress.com/articles/applied-ontology/ao087)-style importing
 
 TODO, see [agri-schema definitions](drafts/201904-dfw-hackathon/agri-schema.ttl).
 
