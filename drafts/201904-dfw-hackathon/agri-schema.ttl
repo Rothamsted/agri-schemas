@@ -8,6 +8,12 @@
 @prefix oa: <http://www.w3.org/ns/oa#>
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 
+# These are all markers to track actions needed for new terms (eg, propose to schema/bioschemas, manage
+# manual import of the declared external type etc).
+
+# For AgriSchemasImported***, you don't need to extend from these types, we will write a script to do it
+# automatically from your definitions
+
 agri:AgriSchemasImportedClass a owl:Class.
 agri:AgriSchemasImportedProperty a rdf:Property.
 agri:BioSchemasNewPropertyProposal a owl:AnnotationProperty.
