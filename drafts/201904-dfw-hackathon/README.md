@@ -25,7 +25,7 @@ These are the use cases considered:
   * Field trials
     * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case)
     * [AHDB](ahdb-use-case.md)
-    * Links between field trials, cultivars and genes: CerealDB use case (TODO)
+  * Links between [field trials, cultivars and genes](trials-genes.md)
   * [Weather conditions and forecasts](weather-use-case.md)
 
 ## General Modelling Principles
