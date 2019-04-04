@@ -1,0 +1,83 @@
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>
+@prefix agri: <http://agrischemas.org/>
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+res:wheatfus01 a bioschema:Study
+	# TODO: should we introduce a class for this, eg, agri:FieldTrial
+	schema:additionalType 
+		<http://id.agrisemantics.org/gacs/C810>;
+		# <http://id.agrisemantics.org/gacs/C7233>;
+  agri:accession "WheatFus-01";
+	schema:title "Fusarium head blight in spring wheat RIL population";
+	schema:additionalProperty [
+		a schema:PropertyValue;
+		# This is the way to encode the MIAPPE environment section
+		# TODO: do we need an EnvironmentPropVal subclass?
+		schema:propertyID "miappe:environment:Average length of the light period"
+		schema:value 16.2
+	]
+.
+
+res:whatfus01_src01 a bioschema:Sample
+	schema:isPartOf wheatfus01;
+	# additionalProperty accomodate most of the sample properties, since it's hard to have them standardised
+	schema:additionalProperty
+		[	a schema:PropertyValue;
+			schema:propertyID "role";
+			schema:value "source plot"
+		],
+		[	a schema:PropertyValue;
+			schema:propertyID "organism";
+			schema:value "Triticum aestivum";
+			schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/4565>
+		],
+		[ a schema:PropertyValue;
+			schema:propertyID "Infraspecific name";
+			schema:value "SAAR"
+		];
+	# Or, you can use more specific properties (possibly, add them via automatic enrichment)
+	schema:location [
+		a schema:Place;
+		schema:name "Cerekwica, Poland";
+		schema:geo [
+			a schema:GeoCoordinates;
+			schema:latitude 52.521600;
+			schema:longitude 16.659648
+		]
+	]
+
+# A single treatment is reported, which links source plot to sample.
+# More ISA-Tab modelling might be bases on either:
+# - a treatment "super protocol", which is made of steps, every step is rooting, growing, nutrition etc
+# - or rooting, growing, nutrition, etc, each being both a protocol and a list item, so that
+#   every protocol can link each-other via properties like nextItem. In this case, only the first(last)
+#   protocol will have object/result
+# The same apply to more generic events (ie, actions)
+#
+res:whatfus01_treatment01 a bioschema:LabProtocol;
+	# This is not needed (can be computed by in/out materials), but can be practical to have it
+	schema:isPartOf wheatfus01;
+	bioschema:purpose "rooting";
+	schema:object res:whatfus01_src01;
+	schema:result res:whatfus01_smp01;
+	# Same as the sample case
+	schema:additionalProperty
+		[	a schema:PropertyValue;
+			schema:propertyID "Rooting medium";
+			schema:value "luvisol";
+			schema:additionalType <http://purl.obolibrary.org/obo/ENVO_00002248>
+		],
+		[	a schema:PropertyValue;
+			schema:propertyID "Plot Block Number";
+			schema:value 2;
+		]
+.
+
+
+res:whatfus01_smp01 a bioschema:Sample;
+	schema:isPartOf wheatfus01
+  # TODO
+.
