@@ -100,3 +100,4 @@ agri:StudyFactor a owl:Class
 		<http://www.ebi.ac.uk/efo/EFO_0000001>, 
 		obo:OBI_0000750
 .
+
