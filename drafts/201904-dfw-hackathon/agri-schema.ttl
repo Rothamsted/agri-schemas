@@ -77,7 +77,7 @@ agri:score a owl:AnnotationProperty;
 	schema:additionalType obo:OBI_0000071
 .
 
-agri:pvalue a owl:AnnotationProperty
+agri:pvalue a owl:AnnotationProperty;
 	rdfs:subPropertyOf agri:score, agri:BioSchemasNewPropertyProposal;
   schema:rangeIncludes schema:Number;
 	schema:additionalType obo:OBI_0000175, sio:SIO_000765
@@ -94,10 +94,18 @@ agri:hasGeneExpressionIn a owl:AnnotationProperty;
 	rdfs:comment "Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter."
 .
 
-agri:StudyFactor a owl:Class
+agri:StudyFactor a owl:Class;
 	rdfs:subClassOf schema:Intangible, agri:BioSchemasNewClassProposal;
 	schema:additionalType 
 		<http://www.ebi.ac.uk/efo/EFO_0000001>, 
 		obo:OBI_0000750
 .
 
+agri:StudyItemEvent a owl:Class;
+	rdfs:subClassOf schema:Action, agri:BioSchemasNewClassProposal;
+	rdfs:comment "An event that occurs to a sample or a data set/file, which yields another item, knowlingly or potentially affecting the characteristics such new item has. This might be a purpose action (ie, a bioschema:LabProtocol), or a tracked event that might have affected an experiment step (eg, a weather change on a field location). Events can also be used to represent data extraction from samples (what is considered an assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation of differentially expressed genes, gene enrichment).".
+.
+
+bioschema:LabProtocol a owl:Class
+	rdfs:subClassOf agri:StudyItemEvent
+.
