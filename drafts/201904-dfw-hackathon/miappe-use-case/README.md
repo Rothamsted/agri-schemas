@@ -25,3 +25,5 @@ Here it is a diagram (made with [yED](https://www.yworks.com/products/yed),
 original file [here](agrischema-miappe-modelling.graphmlz)):
 
 ![MIAPPE modelling](agrischema-miappe-modelling.png)
+
+** ==> [Use case](../miappe-use-case.ttl)*** from the model outlined above

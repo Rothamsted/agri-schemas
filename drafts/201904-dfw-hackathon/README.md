@@ -23,7 +23,7 @@ These are the use cases considered:
   * [Molecular Biology, host-pathogen interactions](phi-base-use-case.ttl) (PHI-Base)
   * Dataset description, TODO (based on `bioschema:Dataset`, but CKAN might need DCAT)
   * Field trials
-    * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case)
+    * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case), [MIAPPE use case](miappe-use-case.ttl)
     * [AHDB](ahdb-use-case.md)
   * Links between [field trials, cultivars and genes](trials-genes.md)
   * [Weather conditions and forecasts](weather-use-case.md)
