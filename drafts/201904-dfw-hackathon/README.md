@@ -24,7 +24,7 @@ These are the use cases considered:
   * Dataset description, TODO (based on `bioschema:Dataset`, but CKAN might need DCAT)
   * Field trials
     * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case)
-    * [AHDB](ahdb-use-cse.md)
+    * [AHDB](ahdb-use-case.md)
     * Links between field trials, cultivars and genes: CerealDB use case (TODO)
   * [Weather conditions and forecasts](weather-use-case.md)
 
