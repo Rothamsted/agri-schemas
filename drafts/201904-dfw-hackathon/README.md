@@ -13,8 +13,7 @@ types](https://docs.google.com/document/d/15yMoJDvVEE-mDQgIUY-l1foTb35Qp_qsMIgRe
 classes, properties/relations) that we might need in DFW-relevant data.
 
 Leveraging that, we have started considering use cases from real data, and we have started 
-modelling them using existing schemas. At the same time, we have started to [propose new types]
-(agri-schema.ttl) as needed.
+modelling them using existing schemas. At the same time, we have started to [propose new types](agri-schema.ttl) as needed.
 
 These are the use cases considered:
 
