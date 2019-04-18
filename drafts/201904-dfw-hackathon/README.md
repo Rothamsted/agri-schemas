@@ -2,9 +2,9 @@
 
 This is a (for the moment draft) project to model linked data schemas (ie, lightweight ontologies for the fields of agriculture, food, agri-business, plant biology.
 
-The work leverages mainly [schema.org](https://schema.org/) and [bioschemas](https://bioschemas.org/). As in those projects, we aim at very simple and practical modelling, which can be useful to share in an interoperable way, especially by means of APIs and annotated web pages.
+The work leverages mainly [schema.org](https://schema.org/) and [bioschemas](https://bioschemas.org/). As in those projects, we aim at very simple and practical modelling, which can be useful to share data in an interoperable way, especially by means of APIs and annotated web pages.
 
-The work was born within the [Design Future Wheat](https://designingfuturewheat.org.uk/) project, and for the moment it's focus on the use cases dealt with in it. In fact, so far we have been building our schemas starting from well known use cases within crop improvement research. There have been two DFW hackathons where we have done most of the work so far.
+The work was born within the [Design Future Wheat](https://designingfuturewheat.org.uk/) project, and for the moment it's focused on the use cases dealt with in it. In fact, so far we have been building our schemas starting from well known use cases within crop improvement research. There have been two DFW hackathons where we have done most of the work so far.
 
 ## Use cases
 
