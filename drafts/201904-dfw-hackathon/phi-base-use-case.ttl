@@ -1,9 +1,10 @@
-@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>
-@prefix agri: <http://agrischemas.org/>
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/> .
+@prefix agri: <http://agrischemas.org/> .
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 res:phiInt001 a agri:HostPathogenInteraction;
 
@@ -18,14 +19,13 @@ res:phiInt001 a agri:HostPathogenInteraction;
 			schema:propertyID:"phiBase:Phenotype";
 			schema:value: "reduced virulence"
 		]
-
 	];
 
 	agri:interactionPathogen [
 		a bioschema:Phenotype;
 
 		schema:name "Fusarium graminearum";
-		schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/5518>
+		schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
 
 		schema:additionalProperty [
 			a schema:PropertyValue;
@@ -46,8 +46,9 @@ res:phiInt001 a agri:HostPathogenInteraction;
 
 	agri:hasPart [
 		a schema:PropertyValue;
+
 		# We don't introduce a new type when this could be inferred from the additionalType annotation.
-		# We instead use prop-value + ID, in order to ease application consumers.
+		# We instead use prop-value + ID, in order to ease application consumers.
 		schema:propertyID "disease name";
 		schema:value "Fusarium Ear Blight";
 		schema:additionalType obo:TO_0000663
@@ -56,10 +57,9 @@ res:phiInt001 a agri:HostPathogenInteraction;
 
 res:gene_FG00332 a bioschema:Gene;
 	agri:accession "FG00332";
-	schema:name "Transducin beta-subunit":
+	schema:name "Transducin beta-subunit";
 	bioschema:encodes res:protein_I1RA15;
-	schema:additionalType obo:GO_0009405, obo:GO_0044412
-.
+	schema:additionalType obo:GO_0009405, obo:GO_0044412 .
 
 res:protein_I1RA15 a bioschema:Protein;
 	dc:source "UniProt"
@@ -67,9 +67,12 @@ res:protein_I1RA15 a bioschema:Protein;
 
 res:pmed_18943005 a agri:ScholarlyPublication;
 	agri:headline  "Random Insertional Mutagenesis Identifies Genes Associated with Virulence in the Wheat Scab Fungus Fusarium graminearum.";
+
 	# This is the weird term that schema.org uses for summaries (and hence abstracts)
-	schema:backstory Fusarium graminearum is an important pathogen of small grains and maize in many areas of the world. To better understand the molecular mechanisms of...";
-	agri:pmedId           "18943005" ;
+	schema:backstory "Fusarium graminearum is an important pathogen of small grains and maize in many areas of the world. To better understand the molecular mechanisms of...";
+
+	agri:pmedId "18943005" ;
+
 	# This should be an ISO 8601 string. This standards accepts dates with year only, however it
 	# isn't clear if they should be interpreted as 'day/month is unknown', or 'the year is referred by generically', or
 	# 'Jan 1st is implicit'
