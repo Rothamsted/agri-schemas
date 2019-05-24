@@ -16,8 +16,8 @@ res:phiInt001 a agri:HostPathogenInteraction;
 
 		schema:additionalProperty [
 			a schema:PropertyValue;
-			schema:propertyID:"phiBase:Phenotype";
-			schema:value: "reduced virulence"
+			schema:propertyID "phiBase:Phenotype";
+			schema:value "reduced virulence"
 		]
 	];
 
@@ -29,8 +29,8 @@ res:phiInt001 a agri:HostPathogenInteraction;
 
 		schema:additionalProperty [
 			a schema:PropertyValue;
-			schema:propertyID:"phiBase:Postpenetration defect";
-			schema:value: "yes"
+			schema:propertyID "phiBase:Postpenetration defect";
+			schema:value "yes"
 		]
 	];
 
@@ -38,7 +38,7 @@ res:phiInt001 a agri:HostPathogenInteraction;
 
 	agri:evidence [
 		a schema:PropertyValue;
-		schema:propertyID: "phiBase:experimental technique";
+		schema:propertyID "phiBase:experimental technique";
 		schema:value "Gene disruption"
 	];
 
