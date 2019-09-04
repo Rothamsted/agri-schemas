@@ -70,7 +70,7 @@ bkr:degex_tob1_sample1 a rdfs:Statement;
 	agri:pvalue     "0.000000600497806344172"^^xsd:double ;
 	agri:evidence  	res:sample1;
 	rdf:subject    	res:tob1;
-	rdf:predicate		agri:hasGeneExpressionIn;
+	rdf:predicate		bioschema:expressedIn;
 	rdf:object     	res:expFact1.
 .
   
