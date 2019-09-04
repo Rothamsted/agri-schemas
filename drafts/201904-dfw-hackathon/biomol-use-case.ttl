@@ -64,7 +64,7 @@ res:23236473 a agri:ScholarlyPublication;
 .
 
 # Some gene expression statements
-res:tob1  agri:hasGeneExpressionIn "Treated with Pesticide 1".
+res:tob1  bioschema:expressedIn "Treated with Pesticide 1".
 
 bkr:degex_tob1_sample1 a rdfs:Statement;
 	agri:pvalue     "0.000000600497806344172"^^xsd:double ;
