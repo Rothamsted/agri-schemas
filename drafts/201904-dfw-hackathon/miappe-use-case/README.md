@@ -11,7 +11,7 @@
 
 ## Modelling in agrischemas
   * `bioschema:Study`, as in MIAPPE
-    * an Investigation is an `bioschema:Study` with the investiation `schema:additionalType`, which points to other `bioschema:Study`(es), via `schema:hasPart`/`schema:isPartOf`
+    * an Investigation is an `bioschema:Study` with the investigation `schema:additionalType`, which points to other `bioschema:Study`(es), via `schema:hasPart`/`schema:isPartOf`
 	* MIAPPE Environment Params are linked to `bioschema:Study` via `schema:additionalProperty` and they're identified by means of their ID (or `schema:additionalType`).
 	* `agri:StudyFactor`(s) can be linked to each of studies, samples, data file, observed value.
   * `bioschema:Sample`, includes MIAPPE sample, ISA-Tab source. The latter includes MIAPPE biological material, observational unit values
