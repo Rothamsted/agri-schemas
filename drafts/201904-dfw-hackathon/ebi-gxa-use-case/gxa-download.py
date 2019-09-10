@@ -9,7 +9,7 @@ def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 	rdf_tpl = """
 		{gene} a bioschema:Gene.
 
-		{gene} a rdfs:Statement;
+		{gene}_{conditionId} a rdfs:Statement;
 			agri:score "{level}";
 			rdf:subject {gene};
 			rdf:predicate bioschema:expressedIn;
@@ -28,6 +28,7 @@ def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 		"gene": "bkr:gene_" + gene_id,
 		"condition": make_condition_uri ( condition ),
 		"conditionLabel": condition,
+		"conditionId": make_id ( condition ),
 		"experiment": "bkr:exp_" + exp_acc,
 		"level": tpm
 	}
