@@ -4,10 +4,22 @@ from utils import make_id, get_gxa_accessions, print_rdf_namespaces
 from utils import rdf_str, rdf_pval, rdf_stmt
 from textwrap import dedent
 
+import sys
+
+specie = sys.argv[ 1 ] if len ( sys.argv ) > 1 else ""
+specie2terms = { 
+	"arabidopsis": [ "http://purl.bioontology.org/ontology/NCBITAXON/3701" ],
+	"wheat": [ "http://purl.bioontology.org/ontology/NCBITAXON/4565" ]
+}
+print ( "SPECIE:" + specie )
+
 print_rdf_namespaces ()
 
+
+# Process the IDF
 for exp_acc in get_gxa_accessions():
-	idf_url = "https://www.ebi.ac.uk/arrayexpress/files/{0}/{0}.idf.txt".format ( exp_acc )
+	mage_tab_base = "https://www.ebi.ac.uk/arrayexpress/files/{0}/{0}.{1}.txt"
+	idf_url = mage_tab_base.format ( exp_acc, "idf" )
 
 	with urlopen ( idf_url ) as idf_stream:
 		csv_reader = csv.reader ( io.TextIOWrapper ( idf_stream, encoding = 'utf-8' ), delimiter = "\t" )
@@ -35,8 +47,13 @@ for exp_acc in get_gxa_accessions():
 			"Investigation Title": "dc:title",
 			"Experiment Description": "schema:description",
 			"Public Release Date": "schema:datePublished",
-			"Pubmed ID": "agri:pmedId"
+			"Pubmed ID": "agri:pmedId",
 		})
+
+		specie_terms = specie2terms.get ( specie )
+		if specie_terms:
+			specie_literals = "[ " + ", ".join ( [ "<" + s + ">" for s in specie_terms ] ) + " ]"
+			rdf += "\tschema:additionalProperty: " + specie_literals + ";\n"
 
 		rdf += ".\n"
 

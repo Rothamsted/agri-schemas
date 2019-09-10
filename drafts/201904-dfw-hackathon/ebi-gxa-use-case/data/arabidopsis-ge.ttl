@@ -1,0 +1,3969 @@
+
+@prefix bkr: <http://www.ondex.org/bioknet/resources/>
+@prefix agri: <http://agrischemas.org/>
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_wu0 a agri:StudyFactor;
+	schema:prefName "Wu-0"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_wu0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_bur0 a agri:StudyFactor;
+	schema:prefName "Bur-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_bur0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_can0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_can0 a agri:StudyFactor;
+	schema:prefName "Can-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_can0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_ct1 a agri:StudyFactor;
+	schema:prefName "Ct-1"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ct1.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_hi0 a agri:StudyFactor;
+	schema:prefName "Hi-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_hi0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_kn0 a agri:StudyFactor;
+	schema:prefName "Kn-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_kn0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_ler0 a agri:StudyFactor;
+	schema:prefName "Ler-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ler0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_mt0 a agri:StudyFactor;
+	schema:prefName "Mt-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_mt0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_no0 a agri:StudyFactor;
+	schema:prefName "No-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_no0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_oy0 a agri:StudyFactor;
+	schema:prefName "Oy-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_oy0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_po0 a agri:StudyFactor;
+	schema:prefName "Po-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_po0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_sf2 a agri:StudyFactor;
+	schema:prefName "Sf-2"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_sf2.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_tsu0 a agri:StudyFactor;
+	schema:prefName "Tsu-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_tsu0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_wil2 a agri:StudyFactor;
+	schema:prefName "Wil-2"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wil2.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_wu0 a agri:StudyFactor;
+	schema:prefName "Wu-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wu0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_zu0 a agri:StudyFactor;
+	schema:prefName "Zu-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_zu0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_bur0 a agri:StudyFactor;
+	schema:prefName "Bur-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_bur0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_can0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_can0 a agri:StudyFactor;
+	schema:prefName "Can-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_can0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_col0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_col0 a agri:StudyFactor;
+	schema:prefName "Col-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_col0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_ct1 a agri:StudyFactor;
+	schema:prefName "Ct-1"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ct1.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_edi0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_edi0 a agri:StudyFactor;
+	schema:prefName "Edi-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_edi0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_hi0 a agri:StudyFactor;
+	schema:prefName "Hi-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_hi0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_kn0 a agri:StudyFactor;
+	schema:prefName "Kn-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_kn0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_ler0 a agri:StudyFactor;
+	schema:prefName "Ler-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ler0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_mt0 a agri:StudyFactor;
+	schema:prefName "Mt-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_mt0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_no0 a agri:StudyFactor;
+	schema:prefName "No-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_no0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_oy0 a agri:StudyFactor;
+	schema:prefName "Oy-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_oy0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_po0 a agri:StudyFactor;
+	schema:prefName "Po-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_po0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_rsch4;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_rsch4 a agri:StudyFactor;
+	schema:prefName "Rsch-4"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_rsch4.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_sf2 a agri:StudyFactor;
+	schema:prefName "Sf-2"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_sf2.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_tsu0 a agri:StudyFactor;
+	schema:prefName "Tsu-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_tsu0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_wil2 a agri:StudyFactor;
+	schema:prefName "Wil-2"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wil2.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_ws0 a agri:StudyFactor;
+	schema:prefName "Ws-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ws0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_wu0 a agri:StudyFactor;
+	schema:prefName "Wu-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wu0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_zu0 a agri:StudyFactor;
+	schema:prefName "Zu-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_zu0.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_col0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_col0 a agri:StudyFactor;
+	schema:prefName "Col-0"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_col0.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_mt0 a agri:StudyFactor;
+	schema:prefName "Mt-0"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_mt0.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_no0 a agri:StudyFactor;
+	schema:prefName "No-0"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_no0.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_po0 a agri:StudyFactor;
+	schema:prefName "Po-0"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_po0.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_sf2 a agri:StudyFactor;
+	schema:prefName "Sf-2"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_sf2.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_tsu0 a agri:StudyFactor;
+	schema:prefName "Tsu-0"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_tsu0.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0;
+	agri:evidence bkr:exp_E-GEOD-30720
+.
+
+bkr:cond_ws0 a agri:StudyFactor;
+	schema:prefName "Ws-0"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_ws0.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fruit;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_fruit a agri:StudyFactor;
+	schema:prefName "fruit"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_fruit.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_leaf;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_leaf a agri:StudyFactor;
+	schema:prefName "leaf"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_leaf.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_root;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_root a agri:StudyFactor;
+	schema:prefName "root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_leaf;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_leaf a agri:StudyFactor;
+	schema:prefName "leaf"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_leaf.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_flower;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_flower a agri:StudyFactor;
+	schema:prefName "flower"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_flower.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fruit;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_fruit a agri:StudyFactor;
+	schema:prefName "fruit"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_fruit.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_root;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_root a agri:StudyFactor;
+	schema:prefName "root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_leaf;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_leaf a agri:StudyFactor;
+	schema:prefName "leaf"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_leaf.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_flower;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_flower a agri:StudyFactor;
+	schema:prefName "flower"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_flower.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fruit;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_fruit a agri:StudyFactor;
+	schema:prefName "fruit"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_fruit.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_root;
+	agri:evidence bkr:exp_E-GEOD-38612
+.
+
+bkr:cond_root a agri:StudyFactor;
+	schema:prefName "root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_root.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_root a agri:StudyFactor;
+	schema:prefName "Bur-0, root"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_bur0_root.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_edi0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_edi0_root a agri:StudyFactor;
+	schema:prefName "Edi-0, root"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_edi0_root.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_hi0_floral_bud a agri:StudyFactor;
+	schema:prefName "Hi-0, floral bud"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_hi0_floral_bud.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_floral_bud a agri:StudyFactor;
+	schema:prefName "Oy-0, floral bud"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_oy0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_aerial_part a agri:StudyFactor;
+	schema:prefName "Bur-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_bur0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_floral_bud a agri:StudyFactor;
+	schema:prefName "Bur-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_bur0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_root a agri:StudyFactor;
+	schema:prefName "Bur-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_bur0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ct1_aerial_part a agri:StudyFactor;
+	schema:prefName "Ct-1, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ct1_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ct1_floral_bud a agri:StudyFactor;
+	schema:prefName "Ct-1, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ct1_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ct1_root a agri:StudyFactor;
+	schema:prefName "Ct-1, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ct1_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_edi0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_edi0_aerial_part a agri:StudyFactor;
+	schema:prefName "Edi-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_edi0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_edi0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_edi0_root a agri:StudyFactor;
+	schema:prefName "Edi-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_edi0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_hi0_aerial_part a agri:StudyFactor;
+	schema:prefName "Hi-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_hi0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_hi0_root a agri:StudyFactor;
+	schema:prefName "Hi-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_hi0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_kn0_aerial_part a agri:StudyFactor;
+	schema:prefName "Kn-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_kn0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_kn0_floral_bud a agri:StudyFactor;
+	schema:prefName "Kn-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_kn0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_kn0_root a agri:StudyFactor;
+	schema:prefName "Kn-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_kn0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ler0_aerial_part a agri:StudyFactor;
+	schema:prefName "Ler-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ler0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ler0_floral_bud a agri:StudyFactor;
+	schema:prefName "Ler-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ler0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ler0_root a agri:StudyFactor;
+	schema:prefName "Ler-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ler0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_mt0_aerial_part a agri:StudyFactor;
+	schema:prefName "Mt-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_mt0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_mt0_root a agri:StudyFactor;
+	schema:prefName "Mt-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_mt0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_no0_aerial_part a agri:StudyFactor;
+	schema:prefName "No-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_no0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_no0_floral_bud a agri:StudyFactor;
+	schema:prefName "No-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_no0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_no0_root a agri:StudyFactor;
+	schema:prefName "No-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_no0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_aerial_part a agri:StudyFactor;
+	schema:prefName "Oy-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_oy0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_floral_bud a agri:StudyFactor;
+	schema:prefName "Oy-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_oy0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_root a agri:StudyFactor;
+	schema:prefName "Oy-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_oy0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_po0_aerial_part a agri:StudyFactor;
+	schema:prefName "Po-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_po0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_po0_floral_bud a agri:StudyFactor;
+	schema:prefName "Po-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_po0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_po0_root a agri:StudyFactor;
+	schema:prefName "Po-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_po0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_rsch4_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_rsch4_aerial_part a agri:StudyFactor;
+	schema:prefName "Rsch-4, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_rsch4_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_rsch4_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_rsch4_root a agri:StudyFactor;
+	schema:prefName "Rsch-4, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_rsch4_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_sf2_aerial_part a agri:StudyFactor;
+	schema:prefName "Sf-2, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_sf2_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_sf2_floral_bud a agri:StudyFactor;
+	schema:prefName "Sf-2, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_sf2_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_sf2_root a agri:StudyFactor;
+	schema:prefName "Sf-2, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_sf2_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_aerial_part a agri:StudyFactor;
+	schema:prefName "Tsu-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_tsu0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_floral_bud a agri:StudyFactor;
+	schema:prefName "Tsu-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_tsu0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_root a agri:StudyFactor;
+	schema:prefName "Tsu-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_tsu0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wil2_aerial_part a agri:StudyFactor;
+	schema:prefName "Wil-2, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wil2_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wil2_floral_bud a agri:StudyFactor;
+	schema:prefName "Wil-2, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wil2_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wil2_root a agri:StudyFactor;
+	schema:prefName "Wil-2, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wil2_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ws0_root a agri:StudyFactor;
+	schema:prefName "Ws-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ws0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wu0_aerial_part a agri:StudyFactor;
+	schema:prefName "Wu-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wu0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wu0_root a agri:StudyFactor;
+	schema:prefName "Wu-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wu0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_zu0_aerial_part a agri:StudyFactor;
+	schema:prefName "Zu-0, aerial part"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_zu0_aerial_part.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_zu0_floral_bud a agri:StudyFactor;
+	schema:prefName "Zu-0, floral bud"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_zu0_floral_bud.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_zu0_root a agri:StudyFactor;
+	schema:prefName "Zu-0, root"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_zu0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_aerial_part a agri:StudyFactor;
+	schema:prefName "Bur-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_bur0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_floral_bud a agri:StudyFactor;
+	schema:prefName "Bur-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_bur0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_root a agri:StudyFactor;
+	schema:prefName "Bur-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_bur0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ct1_aerial_part a agri:StudyFactor;
+	schema:prefName "Ct-1, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ct1_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ct1_floral_bud a agri:StudyFactor;
+	schema:prefName "Ct-1, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ct1_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ct1_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ct1_root a agri:StudyFactor;
+	schema:prefName "Ct-1, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ct1_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_edi0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_edi0_aerial_part a agri:StudyFactor;
+	schema:prefName "Edi-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_edi0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_edi0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_edi0_floral_bud a agri:StudyFactor;
+	schema:prefName "Edi-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_edi0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_edi0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_edi0_root a agri:StudyFactor;
+	schema:prefName "Edi-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_edi0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_hi0_aerial_part a agri:StudyFactor;
+	schema:prefName "Hi-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_hi0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_hi0_floral_bud a agri:StudyFactor;
+	schema:prefName "Hi-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_hi0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_hi0_root a agri:StudyFactor;
+	schema:prefName "Hi-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_hi0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_kn0_aerial_part a agri:StudyFactor;
+	schema:prefName "Kn-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_kn0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_kn0_floral_bud a agri:StudyFactor;
+	schema:prefName "Kn-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_kn0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_kn0_root a agri:StudyFactor;
+	schema:prefName "Kn-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_kn0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ler0_aerial_part a agri:StudyFactor;
+	schema:prefName "Ler-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ler0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ler0_floral_bud a agri:StudyFactor;
+	schema:prefName "Ler-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ler0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ler0_root a agri:StudyFactor;
+	schema:prefName "Ler-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ler0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_mt0_aerial_part a agri:StudyFactor;
+	schema:prefName "Mt-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_mt0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_mt0_floral_bud a agri:StudyFactor;
+	schema:prefName "Mt-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_mt0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_mt0_root a agri:StudyFactor;
+	schema:prefName "Mt-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_mt0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_no0_aerial_part a agri:StudyFactor;
+	schema:prefName "No-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_no0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_no0_floral_bud a agri:StudyFactor;
+	schema:prefName "No-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_no0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_no0_root a agri:StudyFactor;
+	schema:prefName "No-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_no0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_aerial_part a agri:StudyFactor;
+	schema:prefName "Oy-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_oy0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_floral_bud a agri:StudyFactor;
+	schema:prefName "Oy-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_oy0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_root a agri:StudyFactor;
+	schema:prefName "Oy-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_oy0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_po0_aerial_part a agri:StudyFactor;
+	schema:prefName "Po-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_po0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_po0_floral_bud a agri:StudyFactor;
+	schema:prefName "Po-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_po0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_po0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_po0_root a agri:StudyFactor;
+	schema:prefName "Po-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_po0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_rsch4_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_rsch4_aerial_part a agri:StudyFactor;
+	schema:prefName "Rsch-4, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_rsch4_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_rsch4_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_rsch4_floral_bud a agri:StudyFactor;
+	schema:prefName "Rsch-4, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_rsch4_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_rsch4_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_rsch4_root a agri:StudyFactor;
+	schema:prefName "Rsch-4, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_rsch4_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_sf2_aerial_part a agri:StudyFactor;
+	schema:prefName "Sf-2, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_sf2_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_sf2_floral_bud a agri:StudyFactor;
+	schema:prefName "Sf-2, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_sf2_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_sf2_root a agri:StudyFactor;
+	schema:prefName "Sf-2, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_sf2_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_aerial_part a agri:StudyFactor;
+	schema:prefName "Tsu-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_tsu0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_floral_bud a agri:StudyFactor;
+	schema:prefName "Tsu-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_tsu0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_root a agri:StudyFactor;
+	schema:prefName "Tsu-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_tsu0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wil2_aerial_part a agri:StudyFactor;
+	schema:prefName "Wil-2, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wil2_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wil2_floral_bud a agri:StudyFactor;
+	schema:prefName "Wil-2, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wil2_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wil2_root a agri:StudyFactor;
+	schema:prefName "Wil-2, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wil2_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ws0_aerial_part a agri:StudyFactor;
+	schema:prefName "Ws-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ws0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ws0_floral_bud a agri:StudyFactor;
+	schema:prefName "Ws-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ws0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ws0_root a agri:StudyFactor;
+	schema:prefName "Ws-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ws0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wu0_aerial_part a agri:StudyFactor;
+	schema:prefName "Wu-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wu0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wu0_floral_bud a agri:StudyFactor;
+	schema:prefName "Wu-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wu0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wu0_root a agri:StudyFactor;
+	schema:prefName "Wu-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wu0_root.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_aerial_part;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_zu0_aerial_part a agri:StudyFactor;
+	schema:prefName "Zu-0, aerial part"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_zu0_aerial_part.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_zu0_floral_bud a agri:StudyFactor;
+	schema:prefName "Zu-0, floral bud"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_zu0_floral_bud.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_zu0_root a agri:StudyFactor;
+	schema:prefName "Zu-0, root"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_zu0_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_bur0_root a agri:StudyFactor;
+	schema:prefName "Bur-0, root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_bur0_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_kn0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_kn0_floral_bud a agri:StudyFactor;
+	schema:prefName "Kn-0, floral bud"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_kn0_floral_bud.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ler0_root a agri:StudyFactor;
+	schema:prefName "Ler-0, root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_ler0_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_mt0_root a agri:StudyFactor;
+	schema:prefName "Mt-0, root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_mt0_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_no0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_no0_floral_bud a agri:StudyFactor;
+	schema:prefName "No-0, floral bud"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_no0_floral_bud.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_oy0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_oy0_root a agri:StudyFactor;
+	schema:prefName "Oy-0, root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_oy0_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_floral_bud a agri:StudyFactor;
+	schema:prefName "Tsu-0, floral bud"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_tsu0_floral_bud.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_tsu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_tsu0_root a agri:StudyFactor;
+	schema:prefName "Tsu-0, root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_tsu0_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wil2_root a agri:StudyFactor;
+	schema:prefName "Wil-2, root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_wil2_root.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0_floral_bud;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_ws0_floral_bud a agri:StudyFactor;
+	schema:prefName "Ws-0, floral bud"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_ws0_floral_bud.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_root;
+	agri:evidence bkr:exp_E-GEOD-53197
+.
+
+bkr:cond_wu0_root a agri:StudyFactor;
+	schema:prefName "Wu-0, root"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_wu0_root.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_x_col0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_bur0_x_col0 a agri:StudyFactor;
+	schema:prefName "Bur-0 x Col-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_bur0_x_col0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_x_ct1;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_hi0_x_ct1 a agri:StudyFactor;
+	schema:prefName "Hi-0 x Ct-1"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_hi0_x_ct1.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_x_kn0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_ler0_x_kn0 a agri:StudyFactor;
+	schema:prefName "Ler-0 x Kn-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ler0_x_kn0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_x_tsu0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_mt0_x_tsu0 a agri:StudyFactor;
+	schema:prefName "Mt-0 x Tsu-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_mt0_x_tsu0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_x_can0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_sf2_x_can0 a agri:StudyFactor;
+	schema:prefName "Sf-2 x Can-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_sf2_x_can0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_x_no0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_wil2_x_no0 a agri:StudyFactor;
+	schema:prefName "Wil-2 x No-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wil2_x_no0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0_x_oy0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_ws0_x_oy0 a agri:StudyFactor;
+	schema:prefName "Ws-0 x Oy-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_ws0_x_oy0.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_x_rsch4;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_wu0_x_rsch4 a agri:StudyFactor;
+	schema:prefName "Wu-0 x Rsch-4"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_wu0_x_rsch4.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_x_edi0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_zu0_x_edi0 a agri:StudyFactor;
+	schema:prefName "Zu-0 x Edi-0"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_zu0_x_edi0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_bur0_x_col0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_bur0_x_col0 a agri:StudyFactor;
+	schema:prefName "Bur-0 x Col-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_bur0_x_col0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_hi0_x_ct1;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_hi0_x_ct1 a agri:StudyFactor;
+	schema:prefName "Hi-0 x Ct-1"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_hi0_x_ct1.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ler0_x_kn0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_ler0_x_kn0 a agri:StudyFactor;
+	schema:prefName "Ler-0 x Kn-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ler0_x_kn0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mt0_x_tsu0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_mt0_x_tsu0 a agri:StudyFactor;
+	schema:prefName "Mt-0 x Tsu-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_mt0_x_tsu0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_sf2_x_can0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_sf2_x_can0 a agri:StudyFactor;
+	schema:prefName "Sf-2 x Can-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_sf2_x_can0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wil2_x_no0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_wil2_x_no0 a agri:StudyFactor;
+	schema:prefName "Wil-2 x No-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wil2_x_no0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_ws0_x_oy0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_ws0_x_oy0 a agri:StudyFactor;
+	schema:prefName "Ws-0 x Oy-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_ws0_x_oy0.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_wu0_x_rsch4;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_wu0_x_rsch4 a agri:StudyFactor;
+	schema:prefName "Wu-0 x Rsch-4"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_wu0_x_rsch4.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_zu0_x_edi0;
+	agri:evidence bkr:exp_E-GEOD-55482
+.
+
+bkr:cond_zu0_x_edi0 a agri:StudyFactor;
+	schema:prefName "Zu-0 x Edi-0"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_zu0_x_edi0.
+
+
+bkr:gene_AT2G31018 a bioschema:Gene
+.
+
+bkr:gene_AT2G31018 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT2G31018;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_6_to_10_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_6_to_10_day_postanthesis a agri:StudyFactor;
+	schema:prefName "6 to 10 day post-anthesis"
+.
+
+bkr:gene_AT2G31018 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
+
+
+bkr:gene_AT2G31018 a bioschema:Gene
+.
+
+bkr:gene_AT2G31018 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT2G31018;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_11_to_15_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_11_to_15_day_postanthesis a agri:StudyFactor;
+	schema:prefName "11 to 15 day post-anthesis"
+.
+
+bkr:gene_AT2G31018 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
+
+
+bkr:gene_AT2G31018 a bioschema:Gene
+.
+
+bkr:gene_AT2G31018 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT2G31018;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_16_to_20_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_16_to_20_day_postanthesis a agri:StudyFactor;
+	schema:prefName "16 to 20 day post-anthesis"
+.
+
+bkr:gene_AT2G31018 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_0_to_5_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_0_to_5_day_postanthesis a agri:StudyFactor;
+	schema:prefName "0 to 5 day post-anthesis"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_0_to_5_day_postanthesis.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_6_to_10_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_6_to_10_day_postanthesis a agri:StudyFactor;
+	schema:prefName "6 to 10 day post-anthesis"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_11_to_15_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_11_to_15_day_postanthesis a agri:StudyFactor;
+	schema:prefName "11 to 15 day post-anthesis"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
+
+
+bkr:gene_AT3G62615 a bioschema:Gene
+.
+
+bkr:gene_AT3G62615 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT3G62615;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_16_to_20_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_16_to_20_day_postanthesis a agri:StudyFactor;
+	schema:prefName "16 to 20 day post-anthesis"
+.
+
+bkr:gene_AT3G62615 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_6_to_10_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_6_to_10_day_postanthesis a agri:StudyFactor;
+	schema:prefName "6 to 10 day post-anthesis"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_11_to_15_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_11_to_15_day_postanthesis a agri:StudyFactor;
+	schema:prefName "11 to 15 day post-anthesis"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_16_to_20_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_16_to_20_day_postanthesis a agri:StudyFactor;
+	schema:prefName "16 to 20 day post-anthesis"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_0_to_5_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_0_to_5_day_postanthesis a agri:StudyFactor;
+	schema:prefName "0 to 5 day post-anthesis"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_0_to_5_day_postanthesis.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_6_to_10_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_6_to_10_day_postanthesis a agri:StudyFactor;
+	schema:prefName "6 to 10 day post-anthesis"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_11_to_15_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_11_to_15_day_postanthesis a agri:StudyFactor;
+	schema:prefName "11 to 15 day post-anthesis"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_16_to_20_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_16_to_20_day_postanthesis a agri:StudyFactor;
+	schema:prefName "16 to 20 day post-anthesis"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_0_to_5_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_0_to_5_day_postanthesis a agri:StudyFactor;
+	schema:prefName "0 to 5 day post-anthesis"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_0_to_5_day_postanthesis.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_6_to_10_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_6_to_10_day_postanthesis a agri:StudyFactor;
+	schema:prefName "6 to 10 day post-anthesis"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_11_to_15_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_11_to_15_day_postanthesis a agri:StudyFactor;
+	schema:prefName "11 to 15 day post-anthesis"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_16_to_20_day_postanthesis;
+	agri:evidence bkr:exp_E-GEOD-55866
+.
+
+bkr:cond_16_to_20_day_postanthesis a agri:StudyFactor;
+	schema:prefName "16 to 20 day post-anthesis"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
+
+
+bkr:gene_AT4G06835 a bioschema:Gene
+.
+
+bkr:gene_AT4G06835 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT4G06835;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mixed_guard_mother_cell_and_guard_cell;
+	agri:evidence bkr:exp_E-GEOD-58856
+.
+
+bkr:cond_mixed_guard_mother_cell_and_guard_cell a agri:StudyFactor;
+	schema:prefName "mixed guard mother cell and guard cell"
+.
+
+bkr:gene_AT4G06835 bioschema:expressedIn bkr:cond_mixed_guard_mother_cell_and_guard_cell.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_guard_cell;
+	agri:evidence bkr:exp_E-GEOD-58856
+.
+
+bkr:cond_guard_cell a agri:StudyFactor;
+	schema:prefName "guard cell"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_guard_cell.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_shoot_epidermal_cell;
+	agri:evidence bkr:exp_E-GEOD-58856
+.
+
+bkr:cond_shoot_epidermal_cell a agri:StudyFactor;
+	schema:prefName "shoot epidermal cell"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_shoot_epidermal_cell.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell;
+	agri:evidence bkr:exp_E-GEOD-58856
+.
+
+bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell a agri:StudyFactor;
+	schema:prefName "mixed stomatal initial cell and guard mother cell"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell.
+
+
+bkr:gene_AT2G09245 a bioschema:Gene
+.
+
+bkr:gene_AT2G09245 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT2G09245;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_8_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_8_day a agri:StudyFactor;
+	schema:prefName "8 day"
+.
+
+bkr:gene_AT2G09245 bioschema:expressedIn bkr:cond_8_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_7_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_7_day a agri:StudyFactor;
+	schema:prefName "7 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_7_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_8_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_8_day a agri:StudyFactor;
+	schema:prefName "8 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_8_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_9_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_9_day a agri:StudyFactor;
+	schema:prefName "9 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_9_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_10_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_10_day a agri:StudyFactor;
+	schema:prefName "10 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_10_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_11_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_11_day a agri:StudyFactor;
+	schema:prefName "11 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_11_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_12_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_12_day a agri:StudyFactor;
+	schema:prefName "12 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_12_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_13_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_13_day a agri:StudyFactor;
+	schema:prefName "13 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_13_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_14_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_14_day a agri:StudyFactor;
+	schema:prefName "14 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_14_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_15_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_15_day a agri:StudyFactor;
+	schema:prefName "15 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_15_day.
+
+
+bkr:gene_AT5G02710 a bioschema:Gene
+.
+
+bkr:gene_AT5G02710 a rdfs:Statement;
+	agri:score "medium";
+	rdf:subject bkr:gene_AT5G02710;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_16_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_16_day a agri:StudyFactor;
+	schema:prefName "16 day"
+.
+
+bkr:gene_AT5G02710 bioschema:expressedIn bkr:cond_16_day.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_8_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_8_day a agri:StudyFactor;
+	schema:prefName "8 day"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_8_day.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_10_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_10_day a agri:StudyFactor;
+	schema:prefName "10 day"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_10_day.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_12_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_12_day a agri:StudyFactor;
+	schema:prefName "12 day"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_12_day.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_13_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_13_day a agri:StudyFactor;
+	schema:prefName "13 day"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_13_day.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_15_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_15_day a agri:StudyFactor;
+	schema:prefName "15 day"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_15_day.
+
+
+bkr:gene_AT5G03175 a bioschema:Gene
+.
+
+bkr:gene_AT5G03175 a rdfs:Statement;
+	agri:score "low";
+	rdf:subject bkr:gene_AT5G03175;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_16_day;
+	agri:evidence bkr:exp_E-MTAB-4202
+.
+
+bkr:cond_16_day a agri:StudyFactor;
+	schema:prefName "16 day"
+.
+
+bkr:gene_AT5G03175 bioschema:expressedIn bkr:cond_16_day.
+

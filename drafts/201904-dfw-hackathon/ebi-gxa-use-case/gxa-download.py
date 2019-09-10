@@ -22,6 +22,8 @@ def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 		{condition} a agri:StudyFactor;
 			schema:prefName "{conditionLabel}"
 		.
+
+		{gene} bioschema:expressedIn {condition}.
 	"""
 
 	tpl_data = {
