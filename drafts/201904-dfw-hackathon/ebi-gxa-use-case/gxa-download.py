@@ -7,11 +7,11 @@ print_rdf_namespaces ()
 
 def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 	rdf_tpl = """
-		{gene} a bioschema:Gene
+		{gene} a bioschema:Gene;
 			agri:accession "{geneAcc}";
 		.
 
-		{gene}_{conditionId} a rdfs:Statement;
+		bkr:gxaexp_{experimentId}_{geneId}_{conditionId} a rdfs:Statement;
 			agri:score "{level}";
 			rdf:subject {gene};
 			rdf:predicate bioschema:expressedIn;
@@ -26,14 +26,18 @@ def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 		{gene} bioschema:expressedIn {condition}.
 	"""
 
+	# TODO: it would be more correct to not change the case, but we want Knet compatibility in this draft
+	gene_id_nrm = gene_id.lower()
+
 	tpl_data = {
-		# TODO: it would be more correct to not change the case, but we want Knet compatibility in this draft
-		"gene": "bkr:gene_" + gene_id.lower(),
+		"gene": "bkr:gene_" + gene_id_nrm,
+		"geneId": gene_id_nrm,
 		"geneAcc": gene_id,
 		"condition": make_condition_uri ( condition ),
 		"conditionLabel": condition,
 		"conditionId": make_id ( condition ),
 		"experiment": "bkr:exp_" + exp_acc,
+		"experimentId": exp_acc,
 		"level": tpm
 	}
 
