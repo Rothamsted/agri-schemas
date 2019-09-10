@@ -49,6 +49,6 @@ for cond_label in conditions:
 		onto_id = acc [ 0: 2 ]
 		if not onto_id in knet_prefixes: continue
 		knet_uri = knet_prefixes [ onto_id ] + acc.lower()
-		print ( "%s schema:additionalType <%s>;" % ( cond_uri, knet_uri ) )
-		print ( "<%s> schema:sameAs <%s>" % ( knet_uri, term_uri ) )
+		print ( "%s schema:additionalType <%s>." % ( cond_uri, knet_uri ) )
+		print ( "<%s> schema:sameAs <%s>." % ( knet_uri, term_uri ) )
 	print ()

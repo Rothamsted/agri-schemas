@@ -11,7 +11,6 @@ specie2terms = {
 	"arabidopsis": [ "http://purl.bioontology.org/ontology/NCBITAXON/3701" ],
 	"wheat": [ "http://purl.bioontology.org/ontology/NCBITAXON/4565" ]
 }
-print ( "SPECIE:" + specie )
 
 print_rdf_namespaces ()
 
@@ -33,7 +32,7 @@ for exp_acc in get_gxa_accessions():
 
 		rdf_tpl = """
 		{experiment} a bioschema:Study;
-			agri:accession: "{accession}";
+			agri:accession "{accession}";
 		"""
 		rdf = dedent ( rdf_tpl.format (**idf) )
 
@@ -52,14 +51,14 @@ for exp_acc in get_gxa_accessions():
 
 		specie_terms = specie2terms.get ( specie )
 		if specie_terms:
-			specie_literals = "[ " + ", ".join ( [ "<" + s + ">" for s in specie_terms ] ) + " ]"
-			rdf += "\tschema:additionalProperty: " + specie_literals + ";\n"
+			specie_literals = ", ".join ( [ "<" + s + ">" for s in specie_terms ] )
+			rdf += "\tschema:additionalProperty " + specie_literals + ";\n"
 
 		rdf += ".\n"
 
 		if exp_pmid:
 			rdf += "\n"
-			rdf += "{publication} a agri:ScholarlyPublication\n".format ( **idf )
+			rdf += "{publication} a agri:ScholarlyPublication;\n".format ( **idf )
 			rdf += rdf_adder ({
 				"Publication Title": "dc:title",
 				"Pubmed ID": "agri:pmedId"

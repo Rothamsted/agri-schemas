@@ -1,82 +1,82 @@
-SPECIE:wheat
 
-@prefix bkr: <http://www.ondex.org/bioknet/resources/>
-@prefix agri: <http://agrischemas.org/>
+@prefix bkr: <http://www.ondex.org/bioknet/resources/> .
+@prefix agri: <http://agrischemas.org/> .
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 
 bkr:exp_E-GEOD-38344 a bioschema:Study;
-	agri:accession: "E-GEOD-38344";
-	dc:title: "RNA-seq of wheat aleurone and starchy layers at 6, 9 and 14 days post anthesis";
-	schema:description: "This reports the transcript profiling of the aleurone and starchy endosperm layers of wheat seed over 3 time points critical in the development of the aleurone layer. Wheat is a critical food source globally. The aleurone layer develops from the starchy endosperm and is a concentrated source of vitamins and minerals, essential for the germination of the plant embryo. However the molecular mechanisms behind the development of this layer remain poorly understood. Here we present the first direct systematic comparison of the transcriptomes of the aleurone and starchy endosperm tissues of the wheat seed (Triticum aestivum) at time points critical to the development of the aleurone layer of 6, 9 and 14 days post anthesis. Gene expression patterns reflect the changing role of these tissues in seed development. Illumina sequencing gave 25 to 55 million sequence reads per tissue, of the trimmed reads, 70 – 81% mapped to reference expressed sequence transcripts. To quantify transcript abundance, RNA-Seq normalisation was performed to generate RPKM values, these were used in comparative analyses between the tissues at each time point using Kals Z-test. Sequences with significantly different RPKM values were categorised on the basis of tissue and time point expression and functionally annotated using standardised gene ontology vocabularies, revealing two very distinct tissues. In conclusion we show the relationships between and the fundamental biological reprogramming of the two major biologically and economically significant tissues of the wheat seed over time. Understanding these changes in gene expression profiles is essential to mining the potential these tissues hold for human nutrition and contributing to foundational and systems biology of this important crop. Examines the transcript profile of aleurone and starchy endoperm tissues at 6,9 and 14DPA. A minimum of 5 individual seeds from 3 separate spikes from three individual plants were pooled for each tissue preparation.";
-	schema:datePublished: "2012-08-15";
-	schema:additionalProperty: [ <http://purl.bioontology.org/ontology/NCBITAXON/4565> ];
+	agri:accession "E-GEOD-38344";
+	dc:title "RNA-seq of wheat aleurone and starchy layers at 6, 9 and 14 days post anthesis";
+	schema:description "This reports the transcript profiling of the aleurone and starchy endosperm layers of wheat seed over 3 time points critical in the development of the aleurone layer. Wheat is a critical food source globally. The aleurone layer develops from the starchy endosperm and is a concentrated source of vitamins and minerals, essential for the germination of the plant embryo. However the molecular mechanisms behind the development of this layer remain poorly understood. Here we present the first direct systematic comparison of the transcriptomes of the aleurone and starchy endosperm tissues of the wheat seed (Triticum aestivum) at time points critical to the development of the aleurone layer of 6, 9 and 14 days post anthesis. Gene expression patterns reflect the changing role of these tissues in seed development. Illumina sequencing gave 25 to 55 million sequence reads per tissue, of the trimmed reads, 70 – 81% mapped to reference expressed sequence transcripts. To quantify transcript abundance, RNA-Seq normalisation was performed to generate RPKM values, these were used in comparative analyses between the tissues at each time point using Kals Z-test. Sequences with significantly different RPKM values were categorised on the basis of tissue and time point expression and functionally annotated using standardised gene ontology vocabularies, revealing two very distinct tissues. In conclusion we show the relationships between and the fundamental biological reprogramming of the two major biologically and economically significant tissues of the wheat seed over time. Understanding these changes in gene expression profiles is essential to mining the potential these tissues hold for human nutrition and contributing to foundational and systems biology of this important crop. Examines the transcript profile of aleurone and starchy endoperm tissues at 6,9 and 14DPA. A minimum of 5 individual seeds from 3 separate spikes from three individual plants were pooled for each tissue preparation.";
+	schema:datePublished "2012-08-15";
+	schema:additionalProperty <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 .
 
 
 bkr:exp_E-MTAB-2137 a bioschema:Study;
-	agri:accession: "E-MTAB-2137";
-	dc:title: "Genome interplay in the grain transcriptome of hexaploid bread wheat";
-	schema:description: "Allohexaploid bread wheat (Triticum aestivum, L.) provides ~ 20% of calories consumed by humans. Hitherto lack of genome sequence for the three homoelogous and highly similar bread wheat genomes (A, B and, D) impeded expression analysis of the grain transcriptome. We used novel genome information to analyze the cell type specific expression of homeologous genes in the developing wheat grain.";
-	schema:datePublished: "2014-07-18";
-	schema:additionalProperty: [ <http://purl.bioontology.org/ontology/NCBITAXON/4565> ];
+	agri:accession "E-MTAB-2137";
+	dc:title "Genome interplay in the grain transcriptome of hexaploid bread wheat";
+	schema:description "Allohexaploid bread wheat (Triticum aestivum, L.) provides ~ 20% of calories consumed by humans. Hitherto lack of genome sequence for the three homoelogous and highly similar bread wheat genomes (A, B and, D) impeded expression analysis of the grain transcriptome. We used novel genome information to analyze the cell type specific expression of homeologous genes in the developing wheat grain.";
+	schema:datePublished "2014-07-18";
+	schema:additionalProperty <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 .
 
 
 bkr:exp_E-MTAB-3103 a bioschema:Study;
-	agri:accession: "E-MTAB-3103";
-	dc:title: "Tissue layers from developing wheat grain at 12 days post-anthesis";
-	schema:description: "Inner pericarp, outer pericarp and endosperm layers from developing grain of bread wheat cv. Holdfast at 12 days post-anthesis.";
-	schema:datePublished: "2015-04-24";
-	agri:pmedId: "26044828";
-	schema:additionalProperty: [ <http://purl.bioontology.org/ontology/NCBITAXON/4565> ];
+	agri:accession "E-MTAB-3103";
+	dc:title "Tissue layers from developing wheat grain at 12 days post-anthesis";
+	schema:description "Inner pericarp, outer pericarp and endosperm layers from developing grain of bread wheat cv. Holdfast at 12 days post-anthesis.";
+	schema:datePublished "2015-04-24";
+	agri:pmedId "26044828";
+	schema:additionalProperty <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 .
 
-bkr:pmid_26044828 a agri:ScholarlyPublication
-	dc:title: "Heterologous expression and transcript analysis of gibberellin biosynthetic genes of grasses reveals novel functionality in the GA3ox family.";
-	agri:pmedId: "26044828";
+bkr:pmid_26044828 a agri:ScholarlyPublication;
+	dc:title "Heterologous expression and transcript analysis of gibberellin biosynthetic genes of grasses reveals novel functionality in the GA3ox family.";
+	agri:pmedId "26044828";
 .
 
 
 bkr:exp_E-MTAB-4260 a bioschema:Study;
-	agri:accession: "E-MTAB-4260";
-	dc:title: "Characterization of development wheat grain in morphological stage by RNA-seq";
-	schema:description: "Wheat yield is correlated significantly with grain size which is established during morphological stage. In present study, morphological stage of developing wheat grain were analyzed by RNA-seq.This research will help us to understand the mechnism underlying of grain development. This is the first study on gene expression profiling of morphological stage of developing wheat grain and the results may aid the identification of pathways and genes associated with seed development in wheat.";
-	schema:datePublished: "2014-01-15";
-	agri:pmedId: "24349528";
-	schema:additionalProperty: [ <http://purl.bioontology.org/ontology/NCBITAXON/4565> ];
+	agri:accession "E-MTAB-4260";
+	dc:title "Characterization of development wheat grain in morphological stage by RNA-seq";
+	schema:description "Wheat yield is correlated significantly with grain size which is established during morphological stage. In present study, morphological stage of developing wheat grain were analyzed by RNA-seq.This research will help us to understand the mechnism underlying of grain development. This is the first study on gene expression profiling of morphological stage of developing wheat grain and the results may aid the identification of pathways and genes associated with seed development in wheat.";
+	schema:datePublished "2014-01-15";
+	agri:pmedId "24349528";
+	schema:additionalProperty <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 .
 
-bkr:pmid_24349528 a agri:ScholarlyPublication
-	dc:title: "Evaluation of assembly strategies using RNA-seq data associated with grain development of wheat (Triticum aestivum L.)";
-	agri:pmedId: "24349528";
+bkr:pmid_24349528 a agri:ScholarlyPublication;
+	dc:title "Evaluation of assembly strategies using RNA-seq data associated with grain development of wheat (Triticum aestivum L.)";
+	agri:pmedId "24349528";
 .
 
 
 bkr:exp_E-MTAB-4484 a bioschema:Study;
-	agri:accession: "E-MTAB-4484";
-	dc:title: "Whole transcriptome sequencing of wheat 3B chromosome";
-	schema:description: "To study the expression profiles of hexaploid wheat chromosome 3B genes during the life cycle of a wheat plant and establish a transcriptome atlas for this chromosome, deep transcriptome sequencing was conducted in duplicates in 15 wheat samples corresponding to five different organs (leaf, shoot, root, spike, and grain) at three developmental stages each. Strand-non-specific and strand-specific libraries were used to produce 2.52 billion paired-end reads (232 Gb) and 615.3 single-end reads (62 Gb), respectively. ";
-	schema:datePublished: "2014-09-08";
-	agri:pmedId: "25853487";
-	schema:additionalProperty: [ <http://purl.bioontology.org/ontology/NCBITAXON/4565> ];
+	agri:accession "E-MTAB-4484";
+	dc:title "Whole transcriptome sequencing of wheat 3B chromosome";
+	schema:description "To study the expression profiles of hexaploid wheat chromosome 3B genes during the life cycle of a wheat plant and establish a transcriptome atlas for this chromosome, deep transcriptome sequencing was conducted in duplicates in 15 wheat samples corresponding to five different organs (leaf, shoot, root, spike, and grain) at three developmental stages each. Strand-non-specific and strand-specific libraries were used to produce 2.52 billion paired-end reads (232 Gb) and 615.3 single-end reads (62 Gb), respectively. ";
+	schema:datePublished "2014-09-08";
+	agri:pmedId "25853487";
+	schema:additionalProperty <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 .
 
-bkr:pmid_25853487 a agri:ScholarlyPublication
-	dc:title: "Deep transcriptome sequencing provides new insights into the structural and functional organization of the wheat genome";
-	agri:pmedId: "25853487";
+bkr:pmid_25853487 a agri:ScholarlyPublication;
+	dc:title "Deep transcriptome sequencing provides new insights into the structural and functional organization of the wheat genome";
+	agri:pmedId "25853487";
 .
 
 
 bkr:exp_E-MTAB-861 a bioschema:Study;
-	agri:accession: "E-MTAB-861";
-	dc:title: "RNA-seq of developing starchy endosperm of Triticum aestivum at five stages during grain fill";
-	schema:description: "Transcriptome of starchy endosperm of hexaploid wheat var. Cadenza at 5 stages during grain-fill. This provides a reference set of all genes which are expressed in this single cell type during development which is of huge importance for human nutrition and for industrial uses of wheat grain. Here we focus on genes in glycosyl transferase and glycosyl hydrolase families which are responsible for the non-starch polysaccharide composition of wheat flour.";
-	schema:datePublished: "2011-11-08";
-	schema:additionalProperty: [ <http://purl.bioontology.org/ontology/NCBITAXON/4565> ];
+	agri:accession "E-MTAB-861";
+	dc:title "RNA-seq of developing starchy endosperm of Triticum aestivum at five stages during grain fill";
+	schema:description "Transcriptome of starchy endosperm of hexaploid wheat var. Cadenza at 5 stages during grain-fill. This provides a reference set of all genes which are expressed in this single cell type during development which is of huge importance for human nutrition and for industrial uses of wheat grain. Here we focus on genes in glycosyl transferase and glycosyl hydrolase families which are responsible for the non-starch polysaccharide composition of wheat flour.";
+	schema:datePublished "2011-11-08";
+	schema:additionalProperty <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 .
 

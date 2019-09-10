@@ -5,11 +5,9 @@ from gxa_common import process_gxa_experiments, make_condition_uri
 
 print_rdf_namespaces ()
 
-
 def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 	rdf_tpl = """
-		{gene} a bioschema:Gene
-		.
+		{gene} a bioschema:Gene.
 
 		{gene} a rdfs:Statement;
 			agri:score "{level}";

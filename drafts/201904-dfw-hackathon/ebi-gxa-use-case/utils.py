@@ -26,12 +26,13 @@ def get_gxa_accessions ():
 
 def print_rdf_namespaces ():
 	rdf = """
-		@prefix bkr: <http://www.ondex.org/bioknet/resources/>
-		@prefix agri: <http://agrischemas.org/>
+		@prefix bkr: <http://www.ondex.org/bioknet/resources/> .
+		@prefix agri: <http://agrischemas.org/> .
 		@prefix bioschema: <http://bioschemas.org/> .
 		@prefix schema: <http://schema.org/> .
 		@prefix obo: <http://purl.obolibrary.org/obo/> .
 		@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+		@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 		@prefix dc: <http://purl.org/dc/elements/1.1/> .
 	"""
 	print ( dedent ( rdf ) )
@@ -53,7 +54,7 @@ def rdf_stmt ( data, key, rdf_tpl, rdf_val_provider = lambda v: v ):
 	The same, but builds the RDF from an RDF property and a converter
 """
 def rdf_pval ( data, key, rdf_prop, rdf_val_provider ):
-	return rdf_stmt ( data, key, rdf_prop + ": {" + key + "};\n", rdf_val_provider )
+	return rdf_stmt ( data, key, rdf_prop + " {" + key + "};\n", rdf_val_provider )
 
 """
 	The same, but builds the RDF from an RDF property and a converter
