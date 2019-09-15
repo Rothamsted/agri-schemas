@@ -61,3 +61,167 @@ DESCRIBE ?uri
   }
 }
 ```
+
+# AgriSchema queries
+
+## Select genes
+
+```sql
+PREFIX bk: <http://www.ondex.org/bioknet/terms/>
+PREFIX bkr: <http://www.ondex.org/bioknet/resources/>
+PREFIX bka: <http://www.ondex.org/bioknet/terms/attributes/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX agri: <http://agrischemas.org/>
+PREFIX bioschema: <http://bioschemas.org/>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?gene ?geneAcc ?condLabel ?studyTitle ?study ?condTerm 
+{
+?gene a bk:Gene;
+  dcterms:identifier ?geneAcc.
+
+FILTER ( UCASE (?geneAcc) IN ( 
+  "TRAESCS2D02G242700","TRAESCSU02G073600","TRAESCS7D02G050400",
+  "TRAESCS6D02G393900","TRAESCS7D02G503700","TRAESCS7D02G431500",
+  "TRAESCS1D02G090100","TRAESCS1D02G156000","TRAESCS2B02G046700",
+  "TRAESCS4A02G318000","TRAESCS1A02G443400","TRAESCS7D02G241300",
+  "TRAESCS6D02G107700","TRAESCS5D02G247200"
+))  
+
+?gene bioschema:expressedIn ?condition.
+  
+?expStatement a rdfs:Statement;
+  rdf:subject ?gene;
+  rdf:predicate bioschema:expressedIn;
+  rdf:object ?condition;
+  agri:score ?score;
+  agri:evidence ?study.
+                
+?condition schema:prefName ?condLabel.
+OPTIONAL { ?condition schema:additionalType ?condTerm. }
+  
+?study 
+  dc:title ?studyTitle;
+}
+ORDER BY ?study ?gene
+```
+
+
+## Combining genes, GXA experiments and Knet pubs
+
+```sql
+PREFIX bk: <http://www.ondex.org/bioknet/terms/>
+PREFIX bkr: <http://www.ondex.org/bioknet/resources/>
+PREFIX bka: <http://www.ondex.org/bioknet/terms/attributes/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX agri: <http://agrischemas.org/>
+PREFIX bioschema: <http://bioschemas.org/>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?gene ?geneAcc ?condLabel ?studyTitle ?study ?pub ?pubTitle ?pubYear ?condTerm 
+{
+	?gene a bk:Gene;
+		dcterms:identifier ?geneAcc.
+		
+	?gene bioschema:expressedIn ?condition.
+		
+	?expStatement a rdfs:Statement;
+		rdf:subject ?gene;
+		rdf:predicate bioschema:expressedIn;
+		rdf:object ?condition;
+		agri:score ?score;
+		agri:evidence ?study.
+									
+	?gene bk:occ_in ?pub.
+		
+	?pub a bk:Publication;
+		bka:AbstractHeader ?pubTitle.
+	OPTIONAL { ?pub bka:YEAR ?pubYear }
+			
+	?condition schema:prefName ?condLabel.
+	OPTIONAL { ?condition schema:additionalType ?condTerm. }
+		
+	?study 
+		dc:title ?studyTitle;
+}
+ORDER BY ?study ?gene
+```
+
+### Returning a graph
+
+```sql
+PREFIX bk: <http://www.ondex.org/bioknet/terms/>
+PREFIX bkr: <http://www.ondex.org/bioknet/resources/>
+PREFIX bka: <http://www.ondex.org/bioknet/terms/attributes/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX agri: <http://agrischemas.org/>
+PREFIX bioschema: <http://bioschemas.org/>
+PREFIX schema: <http://schema.org/>
+
+CONSTRUCT 
+{
+  ?gene a bk:Gene;
+		dcterms:identifier ?geneAcc.
+
+	?expStatement a rdfs:Statement;
+		rdf:subject ?gene;
+		rdf:predicate bioschema:expressedIn;
+		rdf:object ?condition;
+		agri:score ?score;
+		agri:evidence ?study.
+
+	?gene bk:occ_in ?pub.
+
+	?pub a bk:Publication;
+		bka:AbstractHeader ?pubTitle;
+		bka:YEAR ?pubYear.
+
+	?condition a agri:StudyFactor;
+		schema:prefName ?condLabel;
+		schema:additionalType ?condTerm.
+  
+	?study a bioschema:Study; 
+  	dc:title ?studyTitle.
+}
+WHERE 
+{
+	?gene a bk:Gene;
+		dcterms:identifier ?geneAcc.
+		
+	?gene bioschema:expressedIn ?condition.
+		
+	?expStatement a rdfs:Statement;
+		rdf:subject ?gene;
+		rdf:predicate bioschema:expressedIn;
+		rdf:object ?condition;
+		agri:score ?score;
+		agri:evidence ?study.
+									
+	?gene bk:occ_in ?pub.
+		
+	?pub a bk:Publication;
+		bka:AbstractHeader ?pubTitle;
+	OPTIONAL { ?pub bka:YEAR ?pubYear }
+			
+	?condition schema:prefName ?condLabel.
+	OPTIONAL { ?condition schema:additionalType ?condTerm. }
+		
+	?study 
+		dc:title ?studyTitle;
+}
+```
