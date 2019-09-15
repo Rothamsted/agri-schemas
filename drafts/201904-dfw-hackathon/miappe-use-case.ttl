@@ -50,7 +50,7 @@ res:whatfus01_src01 a bioschema:Sample
 	]
 
 # A single treatment is reported, which links source plot to sample.
-# More ISA-Tab modelling might be bases on either:
+# More ISA-Tab modelling might be based on either:
 # - a treatment "super protocol", which is made of steps, every step is rooting, growing, nutrition etc
 # - or rooting, growing, nutrition, etc, each being both a protocol and a list item, so that
 #   every protocol can link each-other via properties like nextItem. In this case, only the first(last)
