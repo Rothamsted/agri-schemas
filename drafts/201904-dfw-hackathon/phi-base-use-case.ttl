@@ -66,7 +66,7 @@ res:protein_I1RA15 a bioschema:Protein;
 .
 
 res:pmed_18943005 a agri:ScholarlyPublication;
-	agri:headline  "Random Insertional Mutagenesis Identifies Genes Associated with Virulence in the Wheat Scab Fungus Fusarium graminearum.";
+	dc:title  "Random Insertional Mutagenesis Identifies Genes Associated with Virulence in the Wheat Scab Fungus Fusarium graminearum.";
 
 	# This is the weird term that schema.org uses for summaries (and hence abstracts)
 	schema:backstory "Fusarium graminearum is an important pathogen of small grains and maize in many areas of the world. To better understand the molecular mechanisms of...";

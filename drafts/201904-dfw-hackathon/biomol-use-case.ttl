@@ -53,7 +53,7 @@ res:TOB1_acc  				a schema:StructuredValue;
 .
 
 res:23236473 a agri:ScholarlyPublication;
-	agri:headline  "The anti-proliferative activity of BTG/TOB proteins is mediated via the Caf1a (CNOT7) and Caf1b (CNOT8) deadenylase subunits of the Ccr4-not complex";
+	dc:title  "The anti-proliferative activity of BTG/TOB proteins is mediated via the Caf1a (CNOT7) and Caf1b (CNOT8) deadenylase subunits of the Ccr4-not complex";
 	# This is the weird term that schema.org uses for summaries (and hence abstracts)
 	schema:backstory "The human BTG/TOB protein family comprises six members (BTG1, BTG2/PC3/Tis21, BTG3/Ana, BTG4/PC3B, TOB1/Tob, and TOB2) that are characterised...";
 	agri:pmedId           "23236473" ;

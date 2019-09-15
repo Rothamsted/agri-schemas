@@ -7,6 +7,7 @@ from textwrap import dedent
 import sys
 
 specie = sys.argv[ 1 ] if len ( sys.argv ) > 1 else ""
+
 specie2terms = { 
 	"arabidopsis": [ "http://purl.bioontology.org/ontology/NCBITAXON/3701" ],
 	"wheat": [ "http://purl.bioontology.org/ontology/NCBITAXON/4565" ]
@@ -22,13 +23,14 @@ for exp_acc in get_gxa_accessions():
 
 	with urlopen ( idf_url ) as idf_stream:
 		csv_reader = csv.reader ( io.TextIOWrapper ( idf_stream, encoding = 'utf-8' ), delimiter = "\t" )
-		idf = { row [ 0 ]: row [ 1 ] for row in csv_reader }
-	
-		exp_acc = idf [ "Comment[ArrayExpressAccession]" ]
+		# we need to normalise keys to lower case, cause they're used inconsinstently sometimes
+		idf = { row [ 0 ].lower (): row [ 1 ] for row in csv_reader }
+
+		exp_acc = idf [ "comment[arrayexpressaccession]" ]
 		idf [ "accession" ] = exp_acc # .format() has problems with the original key
-		exp_pmid = idf.get ( "Pubmed ID" )
 		idf [ "experiment" ] = "bkr:exp_" + exp_acc
-		idf [ "publication" ] = "bkr:pmid_" + str ( exp_pmid )
+		exp_pmid = idf.get ( "pubmed id" ) 
+		if exp_pmid: idf [ "publication" ] = "bkr:pmid_" + str ( exp_pmid )
 
 		rdf_tpl = """
 		{experiment} a bioschema:Study;
@@ -43,11 +45,11 @@ for exp_acc in get_gxa_accessions():
 			return rdf
 
 		rdf += rdf_adder ( { 
-			"Investigation Title": "dc:title",
-			"Experiment Description": "schema:description",
-			"Public Release Date": "schema:datePublished",
-			"Pubmed ID": "agri:pmedId",
+			"investigation title": "dc:title",
+			"experiment description": "schema:description",
+			"public release date": "schema:datePublished"
 		})
+		if exp_pmid: rdf += "\tschema:about {publication};\n".format ( **idf )
 
 		specie_terms = specie2terms.get ( specie )
 		if specie_terms:
@@ -60,8 +62,9 @@ for exp_acc in get_gxa_accessions():
 			rdf += "\n"
 			rdf += "{publication} a agri:ScholarlyPublication;\n".format ( **idf )
 			rdf += rdf_adder ({
-				"Publication Title": "dc:title",
-				"Pubmed ID": "agri:pmedId"
+				"publication title": "dc:title",
+				"pubmed id": "agri:pmedId",
+				"publication author list": "agri:authorList"
 			})
 			rdf += ".\n"
 		
