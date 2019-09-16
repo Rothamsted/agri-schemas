@@ -95,74 +95,7 @@ SELECT ?gene ?geneAcc ?condLabel ?studyTitle ?study ?pub ?pubTitle ?pubYear ?con
 ORDER BY ?study ?gene
 ```
 
-### Returning a graph
 
-```sql
-PREFIX bk: <http://www.ondex.org/bioknet/terms/>
-PREFIX bkr: <http://www.ondex.org/bioknet/resources/>
-PREFIX bka: <http://www.ondex.org/bioknet/terms/attributes/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX agri: <http://agrischemas.org/>
-PREFIX bioschema: <http://bioschemas.org/>
-PREFIX schema: <http://schema.org/>
-
-CONSTRUCT 
-{
-  ?gene a bk:Gene;
-		dcterms:identifier ?geneAcc.
-
-	?expStatement a rdfs:Statement;
-		rdf:subject ?gene;
-		rdf:predicate bioschema:expressedIn;
-		rdf:object ?condition;
-		agri:score ?score;
-		agri:evidence ?study.
-
-	?gene bk:occ_in ?pub.
-
-	?pub a bk:Publication;
-		bka:AbstractHeader ?pubTitle;
-		bka:YEAR ?pubYear.
-
-	?condition a agri:StudyFactor;
-		schema:prefName ?condLabel;
-		schema:additionalType ?condTerm.
-  
-	?study a bioschema:Study; 
-  	dc:title ?studyTitle.
-}
-WHERE 
-{
-	?gene a bk:Gene;
-		dcterms:identifier ?geneAcc.
-		
-	?gene bioschema:expressedIn ?condition.
-		
-	?expStatement a rdfs:Statement;
-		rdf:subject ?gene;
-		rdf:predicate bioschema:expressedIn;
-		rdf:object ?condition;
-		agri:score ?score;
-		agri:evidence ?study.
-									
-	?gene bk:occ_in ?pub.
-		
-	?pub a bk:Publication;
-		bka:AbstractHeader ?pubTitle;
-	OPTIONAL { ?pub bka:YEAR ?pubYear }
-			
-	?condition schema:prefName ?condLabel.
-	OPTIONAL { ?condition schema:additionalType ?condTerm. }
-		
-	?study 
-		dc:title ?studyTitle;
-}
-```
 
 # Some tests with the GXA SPARQL endopoint
 
