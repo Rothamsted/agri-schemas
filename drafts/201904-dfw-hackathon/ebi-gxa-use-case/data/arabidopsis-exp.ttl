@@ -21,7 +21,7 @@ bkr:exp_E-GEOD-30720 a bioschema:Study;
 bkr:pmid_21874022 a agri:ScholarlyPublication;
 	dc:title "Multiple reference genomes and transcriptomes for Arabidopsis thaliana.";
 	agri:pmedId "21874022";
-	agri:authorList "Gan X, Stegle O, Behr J, Steffen JG, Drewe P, Hildebrand KL, Lyngsoe R, Schultheiss SJ, Osborne EJ, Sreedharan VT, Kahles A, Bohnert R, Jean G, Derwent P, Kersey P, Belfield EJ, Harberd NP, Kemen E, Toomajian C, Kover PX, Clark RM, Ratsch G, Mott R";
+	agri:authorsList "Gan X, Stegle O, Behr J, Steffen JG, Drewe P, Hildebrand KL, Lyngsoe R, Schultheiss SJ, Osborne EJ, Sreedharan VT, Kahles A, Bohnert R, Jean G, Derwent P, Kersey P, Belfield EJ, Harberd NP, Kemen E, Toomajian C, Kover PX, Clark RM, Ratsch G, Mott R";
 .
 
 
@@ -37,7 +37,7 @@ bkr:exp_E-GEOD-38612 a bioschema:Study;
 bkr:pmid_23136377 a agri:ScholarlyPublication;
 	dc:title "Genome-wide analysis uncovers regulation of long intergenic noncoding RNAs in Arabidopsis.";
 	agri:pmedId "23136377";
-	agri:authorList "Liu J, Jung C, Xu J, Wang H, Deng S, Bernad L, Arenas-Huertero C, Chua NH";
+	agri:authorsList "Liu J, Jung C, Xu J, Wang H, Deng S, Bernad L, Arenas-Huertero C, Chua NH";
 .
 
 
@@ -71,7 +71,7 @@ bkr:exp_E-GEOD-55866 a bioschema:Study;
 bkr:pmid_26945048 a agri:ScholarlyPublication;
 	dc:title "CURLY LEAF Regulates Gene Sets Coordinating Seed Size and Lipid Biosynthesis in Arabidopsis.";
 	agri:pmedId "26945048";
-	agri:authorList "Liu J, Deng S, Wang H, Ye J, Wu HW, Sun HX, Chua NH";
+	agri:authorsList "Liu J, Deng S, Wang H, Ye J, Wu HW, Sun HX, Chua NH";
 .
 
 
@@ -87,7 +87,7 @@ bkr:exp_E-GEOD-58856 a bioschema:Study;
 bkr:pmid_25850675 a agri:ScholarlyPublication;
 	dc:title "Transcriptome dynamics of the stomatal lineage: birth, amplification, and termination of a self-renewing population.";
 	agri:pmedId "25850675";
-	agri:authorList "Adrian J, Chang J, Ballenger CE, Bargmann BO, Alassimone J, Davies KA, Lau OS, Matos JL, Hachez C, Lanctot A, Vatén A, Birnbaum KD, Bergmann DC";
+	agri:authorsList "Adrian J, Chang J, Ballenger CE, Bargmann BO, Alassimone J, Davies KA, Lau OS, Matos JL, Hachez C, Lanctot A, Vatén A, Birnbaum KD, Bergmann DC";
 .
 
 
@@ -103,6 +103,6 @@ bkr:exp_E-MTAB-4202 a bioschema:Study;
 bkr:pmid_26084880 a agri:ScholarlyPublication;
 	dc:title "RNA-seq analysis of an apical meristem time series reveals a critical point in Arabidopsis thaliana flower initiation";
 	agri:pmedId "26084880";
-	agri:authorList "Klepikova AV, Logacheva MD, Dmitriev SE, Penin AA";
+	agri:authorsList "Klepikova AV, Logacheva MD, Dmitriev SE, Penin AA";
 .
 

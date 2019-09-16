@@ -64,7 +64,7 @@ for exp_acc in get_gxa_accessions():
 			rdf += rdf_adder ({
 				"publication title": "dc:title",
 				"pubmed id": "agri:pmedId",
-				"publication author list": "agri:authorList"
+				"publication author list": "agri:authorsList"
 			})
 			rdf += ".\n"
 		

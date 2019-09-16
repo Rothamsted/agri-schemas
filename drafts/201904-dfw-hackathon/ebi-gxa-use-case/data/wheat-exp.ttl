@@ -21,7 +21,7 @@ bkr:exp_E-GEOD-38344 a bioschema:Study;
 bkr:pmid_22672716 a agri:ScholarlyPublication;
 	dc:title "Gene expression in the developing aleurone and starchy endosperm of wheat";
 	agri:pmedId "22672716";
-	agri:authorList "Gillies SA, Futardo A, Henry RJ";
+	agri:authorsList "Gillies SA, Futardo A, Henry RJ";
 .
 
 
@@ -37,7 +37,7 @@ bkr:exp_E-MTAB-2137 a bioschema:Study;
 bkr:pmid_25035498 a agri:ScholarlyPublication;
 	dc:title "Analysis of the bread wheat grain transcriptome reveals complex genome interplay in a hexaploid cereal.";
 	agri:pmedId "25035498";
-	agri:authorList "Pfeifer M, Kugler KG, Sandve SR, Zhan B, Rudi H, Hvidsten TR; International Wheat Genome Sequencing Consortium, Mayer KF, Olsen OA";
+	agri:authorsList "Pfeifer M, Kugler KG, Sandve SR, Zhan B, Rudi H, Hvidsten TR; International Wheat Genome Sequencing Consortium, Mayer KF, Olsen OA";
 .
 
 
@@ -53,7 +53,7 @@ bkr:exp_E-MTAB-3103 a bioschema:Study;
 bkr:pmid_26044828 a agri:ScholarlyPublication;
 	dc:title "Heterologous expression and transcript analysis of gibberellin biosynthetic genes of grasses reveals novel functionality in the GA3ox family.";
 	agri:pmedId "26044828";
-	agri:authorList "Pearce S, Huttly AK, Prosser IM, Li YD, Vaughan SP, Gallova B, Patil A, Coghill JA, Dubcovsky J, Hedden P, Phillips AL";
+	agri:authorsList "Pearce S, Huttly AK, Prosser IM, Li YD, Vaughan SP, Gallova B, Patil A, Coghill JA, Dubcovsky J, Hedden P, Phillips AL";
 .
 
 
@@ -69,7 +69,7 @@ bkr:exp_E-MTAB-4260 a bioschema:Study;
 bkr:pmid_24349528 a agri:ScholarlyPublication;
 	dc:title "Evaluation of assembly strategies using RNA-seq data associated with grain development of wheat (Triticum aestivum L.)";
 	agri:pmedId "24349528";
-	agri:authorList "Li HZ, Gao X, Li XY, Chen QJ, Dong J, Zhao WC";
+	agri:authorsList "Li HZ, Gao X, Li XY, Chen QJ, Dong J, Zhao WC";
 .
 
 
@@ -85,7 +85,7 @@ bkr:exp_E-MTAB-4484 a bioschema:Study;
 bkr:pmid_25853487 a agri:ScholarlyPublication;
 	dc:title "Deep transcriptome sequencing provides new insights into the structural and functional organization of the wheat genome";
 	agri:pmedId "25853487";
-	agri:authorList "Pingault L, Choulet F, Alberti A, Glover N, Wincker P, Feuillet C, Paux E";
+	agri:authorsList "Pingault L, Choulet F, Alberti A, Glover N, Wincker P, Feuillet C, Paux E";
 .
 
 
@@ -101,6 +101,6 @@ bkr:exp_E-MTAB-861 a bioschema:Study;
 bkr:pmid_22123899 a agri:ScholarlyPublication;
 	dc:title "Cell Walls of Developing Wheat Starchy Endosperm: Comparison of Composition and RNA-Seq Transcriptome";
 	agri:pmedId "22123899";
-	agri:authorList "Pellny TK, Lovegrove A, Freeman J, Tosi P, Love CG, Knox JP, Shewry PR, Mitchell RA";
+	agri:authorsList "Pellny TK, Lovegrove A, Freeman J, Tosi P, Love CG, Knox JP, Shewry PR, Mitchell RA";
 .
 

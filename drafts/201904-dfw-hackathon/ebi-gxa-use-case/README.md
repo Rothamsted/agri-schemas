@@ -19,7 +19,7 @@ bkr:exp_E-MTAB-3103 a bioschema:Study;
 bkr:pmid_26044828 a agri:ScholarlyPublication;
 	dc:title "Heterologous expression and transcript analysis of gibberellin biosynthetic genes..."
 	agri:pmedId "26044828";
-	agri:authorList "Pearce S, Huttly AK, Prosser IM, Li YD, Vaughan SP, ...";
+	agri:authorsList "Pearce S, Huttly AK, Prosser IM, Li YD, Vaughan SP, ...";
 .
 ```
 
@@ -57,6 +57,9 @@ bkr:gxaexp_E-MTAB-3103_traescs1a02g030900_outer_pericarp a rdfs:Statement;
 	agri:evidence bkr:exp_E-MTAB-3103 # experiment is linked as the entity that provides evidence for it
 .
 ```
+
+## Queries
+a few sample queries, about original GXA and the AgriSchemas-based modelling shown above, are [here](SPARQL-Queries.md).
 
 ## Conversion realisation and workflow
 
