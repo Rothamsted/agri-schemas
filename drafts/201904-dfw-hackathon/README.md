@@ -25,6 +25,7 @@ These are the use cases considered:
     * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case), [MIAPPE use case](miappe-use-case.ttl)
     * [AHDB](ahdb-use-case.md)
   * Links between [field trials, cultivars and genes](trials-genes.md)
+    * Includes the [EBI Gene Expression Atlas use case](ebi-gxa-use-case/README.md)
   * [Weather conditions and forecasts](weather-use-case.md)
 
 ## General Modelling Principles
