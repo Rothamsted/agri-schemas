@@ -13,7 +13,7 @@ res:study1 a bioschema:Study;
 .
 
 # Original URIs can be reused. The resource will receive additional annotations.
-<http://www.wikipathways.org/id1> a bk:Pathway ; 
+<http://www.wikipathways.org/id1> a agri:Pathway ; 
 	agri:evidence  "Imported from Database"
 	agri:prefName  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>
 .
