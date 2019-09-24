@@ -61,7 +61,7 @@ bkr:gxaexp_E-MTAB-3103_traescs1a02g030900_outer_pericarp a rdfs:Statement;
 ## Queries
 a few sample queries, about original GXA and the AgriSchemas-based modelling shown above, are [here](SPARQL-Queries.md).
 
-## Conversion realisation and workflow
+## Conversion implementation and workflow
 
 GXA doesn't seem to have a complete API to get all the information we wanted for the modelling reported below. So we had to mix manual operations, script-automated steps and API/download services.  
 
