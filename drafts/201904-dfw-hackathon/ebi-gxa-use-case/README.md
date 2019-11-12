@@ -6,7 +6,7 @@ For the moment, we give a simple, proof-of-concept model about GXA data.
 
 ### Experiment, general description
 
-```java
+```javascript
 bkr:exp_E-MTAB-3103 a bioschema:Study;
 	agri:accession "E-MTAB-3103";
 	dc:title "Tissue layers from developing wheat grain at 12 days post-anthesis";
@@ -27,7 +27,7 @@ This is similar to the [MIAPPE use case](../miappe-use-case/README.md).
 
 ### Gene expression levels
 
-```json
+```javascript
 # Description of gene and condition in which it is expressed
 #
 bkr:gene_traescs1a02g030900 a bioschema:Gene;

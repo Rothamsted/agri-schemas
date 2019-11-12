@@ -21,6 +21,7 @@ res:wheatfus01 a bioschema:Study
 	]
 .
 
+
 res:whatfus01_src01 a bioschema:Sample
 	schema:isPartOf wheatfus01;
 	# additionalProperty accomodate most of the sample properties, since it's hard to have them standardised
@@ -37,8 +38,15 @@ res:whatfus01_src01 a bioschema:Sample
 		[ a schema:PropertyValue;
 			schema:propertyID "Infraspecific name";
 			schema:value "SAAR"
-		];
-	# Or, you can use more specific properties (possibly, add them via automatic enrichment)
+		],
+		[ a schema:PropertyValue;
+				schema:propertyID "location";
+				schema:value "Cerekwica, Poland";
+				# An enrichment procedure might get a more specific property like the schema:location below
+				# rdfs:seeAlso or something like "enrichedBy" could be used to link the two.
+		]		
+	
+	# More specific properties can be added too (possibly, add them via automatic enrichment)
 	schema:location [
 		a schema:Place;
 		schema:name "Cerekwica, Poland";
@@ -48,14 +56,25 @@ res:whatfus01_src01 a bioschema:Sample
 			schema:longitude 16.659648
 		]
 	]
+.
+
+
+res:whatfus01_smp01 a bioschema:Sample;
+	schema:isPartOf wheatfus01
+  # TODO: complete this too
+.
+
 
 # A single treatment is reported, which links source plot to sample.
+#
 # More ISA-Tab modelling might be based on either:
 # - a treatment "super protocol", which is made of steps, every step is rooting, growing, nutrition etc
 # - or rooting, growing, nutrition, etc, each being both a protocol and a list item, so that
 #   every protocol can link each-other via properties like nextItem. In this case, only the first(last)
 #   protocol will have object/result
-# The same apply to more generic events (ie, actions)
+# The same apply to more generic events (ie, actions).
+# 
+# This is also linked to actions, events, or alike, see notes on PHI-Base use case.
 #
 res:whatfus01_treatment01 a bioschema:LabProtocol;
 	# This is not needed (can be computed by in/out materials), but can be practical to have it
@@ -74,10 +93,4 @@ res:whatfus01_treatment01 a bioschema:LabProtocol;
 			schema:propertyID "Plot Block Number";
 			schema:value 2;
 		]
-.
-
-
-res:whatfus01_smp01 a bioschema:Sample;
-	schema:isPartOf wheatfus01
-  # TODO
 .

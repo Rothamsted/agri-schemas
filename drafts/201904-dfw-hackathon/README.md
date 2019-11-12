@@ -20,7 +20,7 @@ These are the use cases considered:
   * [Molecular Biology, pathways/genes/proteins](biomol-use-case.ttl) (from Knetminer)
   * [Molecular Biology, ontology terms](ontology-use-case.ttl) (from Knetminer)
   * [Molecular Biology, host-pathogen interactions](phi-base-use-case.ttl) (PHI-Base)
-  * Dataset description, TODO (based on `bioschema:Dataset`, but CKAN might need DCAT)
+  * Dataset description, TODO (based on `bioschema:Dataset`, but CKAN might need DCAT, VoID is also worth to consider)
   * Field trials
     * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case), [MIAPPE use case](miappe-use-case.ttl)
     * [AHDB](ahdb-use-case.md)
@@ -75,9 +75,11 @@ informal link, eg, between [`bioschema:LabProtocol`](http://bioschemas.org/LabPr
 links and similarly informal relations, eg, see `agri:isBiologicallyRelatedTo` in [agri-schema definitions](drafts/201904-dfw-hackathon/agri-schema.ttl), linked 
 to [sio:association](http://semanticscience.org/resource/SIO_000897))
 
-### Markers for proposed new types and [MIREOT](https://content.iospress.com/articles/applied-ontology/ao087)-style importing
+### Markers for proposed new types and MIREOT-style importing
 
-TODO, see [agri-schema definitions](drafts/201904-dfw-hackathon/agri-schema.ttl).
+Types marked as `agri:AgriSchemasImported***` will automatically imported following the [MIREOT methodology][10]. See [agri-schema definitions](agri-schema.ttl).
+
+[10]: https://content.iospress.com/articles/applied-ontology/ao087
 
 
 ## Relevant links

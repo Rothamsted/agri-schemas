@@ -6,6 +6,17 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
+
+# Host-pathogen interactions are a specific case of process, action, or alike
+# schema.org has Action, which is something a schema:agent does upon a schema:target. But 
+# it seems specific to human actions (agent is restricted to Organization or Person).
+# 
+# Probably it requires some other kind of process/action, or a better definition of the existing Action.
+# Bioschemas doesn't seem to have any mention of these concepts
+#
+# Clearly, this is relevant in the defition of pathways too (see biomolecular use case).
+#
+
 res:phiInt001 a agri:HostPathogenInteraction;
 
 	agri:interactionHost [
@@ -42,9 +53,11 @@ res:phiInt001 a agri:HostPathogenInteraction;
 		schema:value "Gene disruption"
 	];
 
+  # TODO: this or additionalProperty?
 	schema:hasPart res:gene_FG00332;
 
-	agri:hasPart [
+  # TODO: this or additionalProperty?
+	schema:hasPart [
 		a schema:PropertyValue;
 
 		# We don't introduce a new type when this could be inferred from the additionalType annotation.
