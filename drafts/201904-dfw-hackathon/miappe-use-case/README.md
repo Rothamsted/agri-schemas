@@ -30,4 +30,5 @@ original file [here](agrischema-miappe-modelling.graphmlz)):
 
 ## Further material
 
-During the DFW 11/2019 hackathon, we compared 
+* During the DFW 11/2019 hackathon, we compared AgriSchemas to [GLTen](https://www.glten.org), 
+  [here](../201911-dfw-hackathon/agrischemas-vs-glten.md). See also [Minimum Info for Long Term Experiments (MILAX)](https://github.com/GLTEN/MILAX/blob/master/Factor%20details.xlsx).
