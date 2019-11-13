@@ -27,3 +27,7 @@ original file [here](agrischema-miappe-modelling.graphmlz)):
 ![MIAPPE modelling](agrischema-miappe-modelling.png)
 
 **==> [Use case](../miappe-use-case.ttl)** from the model outlined above
+
+## Further material
+
+During the DFW 11/2019 hackathon, we compared 
