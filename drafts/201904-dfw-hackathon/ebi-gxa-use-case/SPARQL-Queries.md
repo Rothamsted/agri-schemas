@@ -5,9 +5,9 @@
 ## Select genes
 
 ```sql
-PREFIX bk: <http://www.ondex.org/bioknet/terms/>
-PREFIX bkr: <http://www.ondex.org/bioknet/resources/>
-PREFIX bka: <http://www.ondex.org/bioknet/terms/attributes/>
+PREFIX bk: <http://knetminer.org/data/rdf/terms/biokno/>
+PREFIX bkr: <http://knetminer.org/data/rdf/resources/>
+PREFIX bka: <http://knetminer.org/data/rdf/terms/biokno/attributes/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -53,9 +53,9 @@ ORDER BY ?study ?gene
 ## Combining genes, GXA experiments and Knet pubs
 
 ```sql
-PREFIX bk: <http://www.ondex.org/bioknet/terms/>
-PREFIX bkr: <http://www.ondex.org/bioknet/resources/>
-PREFIX bka: <http://www.ondex.org/bioknet/terms/attributes/>
+PREFIX bk: <http://knetminer.org/data/rdf/terms/biokno/>
+PREFIX bkr: <http://knetminer.org/data/rdf/resources/>
+PREFIX bka: <http://knetminer.org/data/rdf/terms/biokno/attributes/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
