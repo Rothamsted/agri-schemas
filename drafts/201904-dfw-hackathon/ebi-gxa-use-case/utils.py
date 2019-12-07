@@ -26,7 +26,7 @@ def get_gxa_accessions ():
 
 def print_rdf_namespaces ():
 	rdf = """
-		@prefix bkr: <http://www.ondex.org/bioknet/resources/> .
+		@prefix bkr: <http://knetminer.org/data/rdf/resources/> .
 		@prefix agri: <http://agrischemas.org/> .
 		@prefix bioschema: <http://bioschemas.org/> .
 		@prefix schema: <http://schema.org/> .

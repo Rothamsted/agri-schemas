@@ -1,5 +1,5 @@
 
-@prefix bkr: <http://www.ondex.org/bioknet/resources/> .
+@prefix bkr: <http://knetminer.org/data/rdf/resources/> .
 @prefix agri: <http://agrischemas.org/> .
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
@@ -12,13 +12,13 @@ bkr:cond_wu0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_wu0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_wu0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_wu0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_20_days_post_anthesis_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_20_days_post_anthesis_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_20_days_post_anthesis_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 
 
 bkr:cond_pericarp_12_days_after_pollination schema:additionalType <http://www.yso.fi/onto/yso/p14273>.
@@ -27,8 +27,8 @@ bkr:cond_pericarp_12_days_after_pollination schema:additionalType <http://www.ys
 <http://www.yso.fi/onto/afo/p763> agri:accession "p763".
 bkr:cond_pericarp_12_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009084>.
 <http://purl.obolibrary.org/obo/PO_0009084> agri:accession "PO_0009084".
-bkr:cond_pericarp_12_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
+bkr:cond_pericarp_12_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
 
 
 
@@ -37,20 +37,20 @@ bkr:cond_hi0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_hi0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_hi0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_hi0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_ler0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_ler0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_ler0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_ler0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0025034>.
 <http://purl.obolibrary.org/obo/PO_0025034> agri:accession "PO_0025034".
-bkr:cond_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
+bkr:cond_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
 bkr:cond_leaf schema:additionalType <http://www.yso.fi/onto/afo/p5516>.
 <http://www.yso.fi/onto/afo/p5516> agri:accession "p5516".
 bkr:cond_leaf schema:additionalType <http://www.yso.fi/onto/yso/p20503>.
@@ -60,8 +60,8 @@ bkr:cond_edi0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_edi0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_edi0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_edi0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_edi0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_edi0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -75,36 +75,36 @@ bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http
 <http://www.yso.fi/onto/yso/p488> agri:accession "p488".
 bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PO_0007053>.
 <http://purl.obolibrary.org/obo/PO_0007053> agri:accession "PO_0007053".
-bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007053>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007053> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007053>.
+bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007053>.
 bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http://www.yso.fi/onto/afo/p1135>.
 <http://www.yso.fi/onto/afo/p1135> agri:accession "p1135".
 bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PO_0009049>.
 <http://purl.obolibrary.org/obo/PO_0009049> agri:accession "PO_0009049".
-bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009049>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
+bkr:cond_fl02_12_of_flowers_open_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
 
 bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/ENVO_01000281>.
 <http://purl.obolibrary.org/obo/ENVO_01000281> agri:accession "ENVO_01000281".
 bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0005360>.
 <http://purl.obolibrary.org/obo/PO_0005360> agri:accession "PO_0005360".
-bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
+bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
 bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0006220>.
 <http://purl.obolibrary.org/obo/PO_0006220> agri:accession "PO_0006220".
-bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
+bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
 bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_30_days_post_anthesis_aleurone_layer_and_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 
 bkr:cond_po0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_po0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_po0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_po0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_7_day schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
@@ -114,34 +114,34 @@ bkr:cond_7_day schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
 
 bkr:cond_outer_pericarp schema:additionalType <http://purl.obolibrary.org/obo/PO_0009084>.
 <http://purl.obolibrary.org/obo/PO_0009084> agri:accession "PO_0009084".
-bkr:cond_outer_pericarp schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
+bkr:cond_outer_pericarp schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
 
 bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://www.yso.fi/onto/afo/p1128>.
 <http://www.yso.fi/onto/afo/p1128> agri:accession "p1128".
 bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0025034>.
 <http://purl.obolibrary.org/obo/PO_0025034> agri:accession "PO_0025034".
-bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
+bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
 bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://www.yso.fi/onto/yso/p20503>.
 <http://www.yso.fi/onto/yso/p20503> agri:accession "p20503".
 bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0020030>.
 <http://purl.obolibrary.org/obo/PO_0020030> agri:accession "PO_0020030".
-bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0020030>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0020030> schema:sameAs <http://purl.obolibrary.org/obo/PO_0020030>.
+bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0020030>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0020030> schema:sameAs <http://purl.obolibrary.org/obo/PO_0020030>.
 bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://www.yso.fi/onto/afo/p5516>.
 <http://www.yso.fi/onto/afo/p5516> agri:accession "p5516".
 bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0007049>.
 <http://purl.obolibrary.org/obo/PO_0007049> agri:accession "PO_0007049".
-bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007049>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007049>.
+bkr:cond_cotyledon_emergence_stage_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007049>.
 
 bkr:cond_mt0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_mt0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_mt0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_mt0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_mt0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_mt0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -152,15 +152,15 @@ bkr:cond_kn0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_kn0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_kn0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_kn0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_rsch4_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_rsch4_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_rsch4_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_rsch4_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 
 
@@ -175,8 +175,8 @@ bkr:cond_sf2_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_sf2_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_sf2_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_sf2_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_sf2_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_sf2_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -186,8 +186,8 @@ bkr:cond_no0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_no0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_no0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_no0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_no0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_no0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -215,42 +215,42 @@ bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalT
 <http://www.yso.fi/onto/afo/p1080> agri:accession "p1080".
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PO_0007109>.
 <http://purl.obolibrary.org/obo/PO_0007109> agri:accession "PO_0007109".
-bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007109>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007109> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007109>.
+bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007109>.
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.yso.fi/onto/yso/p21487>.
 <http://www.yso.fi/onto/yso/p21487> agri:accession "p21487".
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/TO_0000576>.
 <http://purl.obolibrary.org/obo/TO_0000576> agri:accession "TO_0000576".
-bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/trait_to_0000576>.
-<http://www.ondex.org/bioknet/resources/trait_to_0000576> schema:sameAs <http://purl.obolibrary.org/obo/TO_0000576>.
+bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/trait_to_0000576>.
+<http://knetminer.org/data/rdf/resources/trait_to_0000576> schema:sameAs <http://purl.obolibrary.org/obo/TO_0000576>.
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000060>.
 <http://www.cropontology.org/rdf/CO_321:0000060> agri:accession "CO_321:0000060".
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> agri:accession "Stem".
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PO_0009047>.
 <http://purl.obolibrary.org/obo/PO_0009047> agri:accession "PO_0009047".
-bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PATO_0000122>.
 <http://purl.obolibrary.org/obo/PATO_0000122> agri:accession "PATO_0000122".
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.yso.fi/onto/afo/p1135>.
 <http://www.yso.fi/onto/afo/p1135> agri:accession "p1135".
 bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PO_0009049>.
 <http://purl.obolibrary.org/obo/PO_0009049> agri:accession "PO_0009049".
-bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009049>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
+bkr:cond_se99_maximum_stem_length_reached_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
 
 
 bkr:cond_shoot_epidermal_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0025165>.
 <http://purl.obolibrary.org/obo/PO_0025165> agri:accession "PO_0025165".
-bkr:cond_shoot_epidermal_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025165>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025165> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025165>.
+bkr:cond_shoot_epidermal_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025165>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025165> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025165>.
 bkr:cond_shoot_epidermal_cell schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Shoot>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Shoot> agri:accession "Shoot".
 bkr:cond_shoot_epidermal_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0004013>.
 <http://purl.obolibrary.org/obo/PO_0004013> agri:accession "PO_0004013".
-bkr:cond_shoot_epidermal_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0004013>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0004013> schema:sameAs <http://purl.obolibrary.org/obo/PO_0004013>.
+bkr:cond_shoot_epidermal_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0004013>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0004013> schema:sameAs <http://purl.obolibrary.org/obo/PO_0004013>.
 bkr:cond_shoot_epidermal_cell schema:additionalType <http://purl.obolibrary.org/obo/GO_0005623>.
 <http://purl.obolibrary.org/obo/GO_0005623> agri:accession "GO_0005623".
 
@@ -258,8 +258,8 @@ bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType
 <http://www.yso.fi/onto/afo/p184> agri:accession "p184".
 bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://www.yso.fi/onto/yso/p11309>.
 <http://www.yso.fi/onto/yso/p11309> agri:accession "p11309".
 bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://www.yso.fi/onto/yso/p14273>.
@@ -268,14 +268,14 @@ bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType
 <http://www.yso.fi/onto/afo/p355> agri:accession "p355".
 bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009010>.
 <http://purl.obolibrary.org/obo/PO_0009010> agri:accession "PO_0009010".
-bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009010>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009010>.
+bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009010>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009010>.
 bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://www.yso.fi/onto/afo/p2190>.
 <http://www.yso.fi/onto/afo/p2190> agri:accession "p2190".
 bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009088>.
 <http://purl.obolibrary.org/obo/PO_0009088> agri:accession "PO_0009088".
-bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009088>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009088> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009088>.
+bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009088>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009088> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009088>.
 bkr:cond_endosperm_and_seed_coat_12_days_after_pollination schema:additionalType <http://www.yso.fi/onto/afo/p763>.
 <http://www.yso.fi/onto/afo/p763> agri:accession "p763".
 
@@ -285,39 +285,39 @@ bkr:cond_ct1_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_ct1_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_ct1_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_ct1_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://purl.obolibrary.org/obo/GO_0009835>.
 <http://purl.obolibrary.org/obo/GO_0009835> agri:accession "GO_0009835".
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0007010>.
 <http://purl.obolibrary.org/obo/PO_0007010> agri:accession "PO_0007010".
-bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007010>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007010>.
+bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007010>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007010>.
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://purl.obolibrary.org/obo/TO_0002633>.
 <http://purl.obolibrary.org/obo/TO_0002633> agri:accession "TO_0002633".
-bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/trait_to_0002633>.
-<http://www.ondex.org/bioknet/resources/trait_to_0002633> schema:sameAs <http://purl.obolibrary.org/obo/TO_0002633>.
+bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/trait_to_0002633>.
+<http://knetminer.org/data/rdf/resources/trait_to_0002633> schema:sameAs <http://purl.obolibrary.org/obo/TO_0002633>.
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant> agri:accession "Plant".
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.yso.fi/onto/afo/p4047>.
 <http://www.yso.fi/onto/afo/p4047> agri:accession "p4047".
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0009001>.
 <http://purl.obolibrary.org/obo/PO_0009001> agri:accession "PO_0009001".
-bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
+bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.yso.fi/onto/yso/p4647>.
 <http://www.yso.fi/onto/yso/p4647> agri:accession "p4647".
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0000003>.
 <http://purl.obolibrary.org/obo/PO_0000003> agri:accession "PO_0000003".
-bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
+bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.yso.fi/onto/afo/p1134>.
 <http://www.yso.fi/onto/afo/p1134> agri:accession "p1134".
 bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0025502>.
 <http://purl.obolibrary.org/obo/PO_0025502> agri:accession "PO_0025502".
-bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025502>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025502> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025502>.
+bkr:cond_whole_plant_fruit_ripening_stage_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025502>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025502> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025502>.
 
 
 
@@ -334,19 +334,19 @@ bkr:cond_fl02_12_of_flowers_open_stage_stem schema:additionalType <http://www.ys
 <http://www.yso.fi/onto/yso/p488> agri:accession "p488".
 bkr:cond_fl02_12_of_flowers_open_stage_stem schema:additionalType <http://purl.obolibrary.org/obo/PO_0007053>.
 <http://purl.obolibrary.org/obo/PO_0007053> agri:accession "PO_0007053".
-bkr:cond_fl02_12_of_flowers_open_stage_stem schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007053>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007053> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007053>.
+bkr:cond_fl02_12_of_flowers_open_stage_stem schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007053>.
 bkr:cond_fl02_12_of_flowers_open_stage_stem schema:additionalType <http://purl.obolibrary.org/obo/PO_0009047>.
 <http://purl.obolibrary.org/obo/PO_0009047> agri:accession "PO_0009047".
-bkr:cond_fl02_12_of_flowers_open_stage_stem schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+bkr:cond_fl02_12_of_flowers_open_stage_stem schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
 
 bkr:cond_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -357,8 +357,8 @@ bkr:cond_no0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_no0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_no0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_no0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 
 bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://www.yso.fi/onto/afo/p1128>.
@@ -367,28 +367,28 @@ bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://www.yso.fi
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0020030>.
 <http://purl.obolibrary.org/obo/PO_0020030> agri:accession "PO_0020030".
-bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0020030>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0020030> schema:sameAs <http://purl.obolibrary.org/obo/PO_0020030>.
+bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0020030>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0020030> schema:sameAs <http://purl.obolibrary.org/obo/PO_0020030>.
 bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
 <http://purl.obolibrary.org/obo/NCBITaxon_1> agri:accession "NCBITaxon_1".
 bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0007049>.
 <http://purl.obolibrary.org/obo/PO_0007049> agri:accession "PO_0007049".
-bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007049>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007049>.
+bkr:cond_cotyledon_emergence_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007049>.
 
 
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.yso.fi/onto/afo/p184>.
 <http://www.yso.fi/onto/afo/p184> agri:accession "p184".
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.yso.fi/onto/yso/p11309>.
 <http://www.yso.fi/onto/yso/p11309> agri:accession "p11309".
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.yso.fi/onto/yso/p14273>.
@@ -397,14 +397,14 @@ bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType 
 <http://www.yso.fi/onto/afo/p355> agri:accession "p355".
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009010>.
 <http://purl.obolibrary.org/obo/PO_0009010> agri:accession "PO_0009010".
-bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009010>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009010>.
+bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009010>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009010>.
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.yso.fi/onto/afo/p2190>.
 <http://www.yso.fi/onto/afo/p2190> agri:accession "p2190".
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009088>.
 <http://purl.obolibrary.org/obo/PO_0009088> agri:accession "PO_0009088".
-bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009088>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009088> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009088>.
+bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009088>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009088> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009088>.
 bkr:cond_endosperm_and_seed_coat_4_days_after_pollination schema:additionalType <http://www.yso.fi/onto/afo/p763>.
 <http://www.yso.fi/onto/afo/p763> agri:accession "p763".
 
@@ -415,22 +415,22 @@ bkr:cond_20_days_post_anthesis_transfer_cell schema:additionalType <http://purl.
 <http://purl.obolibrary.org/obo/GO_0005623> agri:accession "GO_0005623".
 bkr:cond_20_days_post_anthesis_transfer_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0000078>.
 <http://purl.obolibrary.org/obo/PO_0000078> agri:accession "PO_0000078".
-bkr:cond_20_days_post_anthesis_transfer_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000078>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000078> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000078>.
+bkr:cond_20_days_post_anthesis_transfer_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000078>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000078> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000078>.
 
 bkr:cond_ws0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_ws0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_ws0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_ws0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_zu0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_zu0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_zu0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_zu0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_zu0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_zu0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -459,8 +459,8 @@ bkr:cond_oy0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_oy0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_oy0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_oy0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_oy0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_oy0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -470,8 +470,8 @@ bkr:cond_14_day_post_anthesis_aleurone_layer schema:additionalType <http://purl.
 <http://purl.obolibrary.org/obo/ENVO_01000281> agri:accession "ENVO_01000281".
 bkr:cond_14_day_post_anthesis_aleurone_layer schema:additionalType <http://purl.obolibrary.org/obo/PO_0005360>.
 <http://purl.obolibrary.org/obo/PO_0005360> agri:accession "PO_0005360".
-bkr:cond_14_day_post_anthesis_aleurone_layer schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
+bkr:cond_14_day_post_anthesis_aleurone_layer schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
 bkr:cond_14_day_post_anthesis_aleurone_layer schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
 bkr:cond_14_day_post_anthesis_aleurone_layer schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
@@ -479,12 +479,12 @@ bkr:cond_14_day_post_anthesis_aleurone_layer schema:additionalType <http://www.y
 
 bkr:cond_30_days_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_30_days_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_30_days_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_30_days_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0006220>.
 <http://purl.obolibrary.org/obo/PO_0006220> agri:accession "PO_0006220".
-bkr:cond_30_days_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
+bkr:cond_30_days_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
 
 
 
@@ -492,15 +492,15 @@ bkr:cond_wil2_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p2185
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_wil2_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_wil2_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_wil2_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_bur0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_bur0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_bur0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_bur0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 
 
@@ -511,14 +511,14 @@ bkr:cond_11_day schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
 
 bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0025034>.
 <http://purl.obolibrary.org/obo/PO_0025034> agri:accession "PO_0025034".
-bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
+bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
 bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://www.yso.fi/onto/yso/p20503>.
 <http://www.yso.fi/onto/yso/p20503> agri:accession "p20503".
 bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0007080>.
 <http://purl.obolibrary.org/obo/PO_0007080> agri:accession "PO_0007080".
-bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007080>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007080> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007080>.
+bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007080>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007080> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007080>.
 bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://www.yso.fi/onto/afo/p5516>.
 <http://www.yso.fi/onto/afo/p5516> agri:accession "p5516".
 bkr:cond_203_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_leaf schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Shoot>.
@@ -528,8 +528,8 @@ bkr:cond_po0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_po0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_po0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_po0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_po0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_po0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -539,8 +539,8 @@ bkr:cond_sf2_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_sf2_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_sf2_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_sf2_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_11_to_15_day_postanthesis schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
@@ -552,15 +552,15 @@ bkr:cond_mt0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_mt0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_mt0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_mt0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_wu0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_wu0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_wu0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_wu0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_wu0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_wu0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -568,47 +568,47 @@ bkr:cond_wu0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxo
 
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0007042>.
 <http://purl.obolibrary.org/obo/PO_0007042> agri:accession "PO_0007042".
-bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007042>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007042> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007042>.
+bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007042>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007042> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007042>.
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://purl.obolibrary.org/obo/PATO_0000117>.
 <http://purl.obolibrary.org/obo/PATO_0000117> agri:accession "PATO_0000117".
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0007027>.
 <http://purl.obolibrary.org/obo/PO_0007027> agri:accession "PO_0007027".
-bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007027>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007027> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007027>.
+bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007027>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007027> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007027>.
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.yso.fi/onto/afo/p2846>.
 <http://www.yso.fi/onto/afo/p2846> agri:accession "p2846".
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.yso.fi/onto/yso/p4902>.
 <http://www.yso.fi/onto/yso/p4902> agri:accession "p4902".
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0025501>.
 <http://purl.obolibrary.org/obo/PO_0025501> agri:accession "PO_0025501".
-bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025501>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025501> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025501>.
+bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025501>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025501> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025501>.
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant> agri:accession "Plant".
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0009001>.
 <http://purl.obolibrary.org/obo/PO_0009001> agri:accession "PO_0009001".
-bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
+bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.yso.fi/onto/yso/p4647>.
 <http://www.yso.fi/onto/yso/p4647> agri:accession "p4647".
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0000003>.
 <http://purl.obolibrary.org/obo/PO_0000003> agri:accession "PO_0000003".
-bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
+bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
 bkr:cond_whole_plant_fruit_formation_stage_70_to_final_size_fruit schema:additionalType <http://purl.obolibrary.org/obo/GO_0009058>.
 <http://purl.obolibrary.org/obo/GO_0009058> agri:accession "GO_0009058".
 
 bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
 bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0006220>.
 <http://purl.obolibrary.org/obo/PO_0006220> agri:accession "PO_0006220".
-bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
+bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
 bkr:cond_6_day_post_anthesis_central_endosperm schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
 <http://www.yso.fi/onto/yso/p19450> agri:accession "p19450".
 
@@ -619,35 +619,35 @@ bkr:cond_pericarp_8_days_after_pollination schema:additionalType <http://www.yso
 <http://www.yso.fi/onto/afo/p763> agri:accession "p763".
 bkr:cond_pericarp_8_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009084>.
 <http://purl.obolibrary.org/obo/PO_0009084> agri:accession "PO_0009084".
-bkr:cond_pericarp_8_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
+bkr:cond_pericarp_8_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
 
 bkr:cond_zu0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_zu0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_zu0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_zu0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://www.yso.fi/onto/yso/p21487>.
 <http://www.yso.fi/onto/yso/p21487> agri:accession "p21487".
 bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PO_0007117>.
 <http://purl.obolibrary.org/obo/PO_0007117> agri:accession "PO_0007117".
-bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007117>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007117> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007117>.
+bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007117>.
 bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://www.yso.fi/onto/afo/p1135>.
 <http://www.yso.fi/onto/afo/p1135> agri:accession "p1135".
 bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://purl.obolibrary.org/obo/PO_0009049>.
 <http://purl.obolibrary.org/obo/PO_0009049> agri:accession "PO_0009049".
-bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009049>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
+bkr:cond_se02_two_nodes_or_internodes_visible_stage_inflorescence schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
 
 bkr:cond_kn0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_kn0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_kn0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_kn0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_kn0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_kn0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -657,8 +657,8 @@ bkr:cond_ler0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_ler0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_ler0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_ler0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_ler0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_ler0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -670,20 +670,20 @@ bkr:cond_pericarp_4_days_after_pollination schema:additionalType <http://www.yso
 <http://www.yso.fi/onto/afo/p763> agri:accession "p763".
 bkr:cond_pericarp_4_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009084>.
 <http://purl.obolibrary.org/obo/PO_0009084> agri:accession "PO_0009084".
-bkr:cond_pericarp_4_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
+bkr:cond_pericarp_4_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
 
 
 bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
 bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0006220>.
 <http://purl.obolibrary.org/obo/PO_0006220> agri:accession "PO_0006220".
-bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
+bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
 bkr:cond_9_day_post_anthesis_central_endosperm schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
 <http://www.yso.fi/onto/yso/p19450> agri:accession "p19450".
 
@@ -691,8 +691,8 @@ bkr:cond_bur0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_bur0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_bur0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_bur0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_bur0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_bur0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -703,8 +703,8 @@ bkr:cond_6_day_post_anthesis_aleurone_layer schema:additionalType <http://purl.o
 <http://purl.obolibrary.org/obo/ENVO_01000281> agri:accession "ENVO_01000281".
 bkr:cond_6_day_post_anthesis_aleurone_layer schema:additionalType <http://purl.obolibrary.org/obo/PO_0005360>.
 <http://purl.obolibrary.org/obo/PO_0005360> agri:accession "PO_0005360".
-bkr:cond_6_day_post_anthesis_aleurone_layer schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
+bkr:cond_6_day_post_anthesis_aleurone_layer schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
 bkr:cond_6_day_post_anthesis_aleurone_layer schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
 bkr:cond_6_day_post_anthesis_aleurone_layer schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
@@ -714,8 +714,8 @@ bkr:cond_flower schema:additionalType <http://www.yso.fi/onto/afo/p1045>.
 <http://www.yso.fi/onto/afo/p1045> agri:accession "p1045".
 bkr:cond_flower schema:additionalType <http://purl.obolibrary.org/obo/PO_0009046>.
 <http://purl.obolibrary.org/obo/PO_0009046> agri:accession "PO_0009046".
-bkr:cond_flower schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009046>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009046> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009046>.
+bkr:cond_flower schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009046>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009046> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009046>.
 bkr:cond_flower schema:additionalType <http://www.yso.fi/onto/yso/p7310>.
 <http://www.yso.fi/onto/yso/p7310> agri:accession "p7310".
 
@@ -723,8 +723,8 @@ bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType 
 <http://www.yso.fi/onto/afo/p184> agri:accession "p184".
 bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://www.yso.fi/onto/yso/p11309>.
 <http://www.yso.fi/onto/yso/p11309> agri:accession "p11309".
 bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://www.yso.fi/onto/yso/p14273>.
@@ -733,33 +733,33 @@ bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType 
 <http://www.yso.fi/onto/afo/p355> agri:accession "p355".
 bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009010>.
 <http://purl.obolibrary.org/obo/PO_0009010> agri:accession "PO_0009010".
-bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009010>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009010>.
+bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009010>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009010>.
 bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://www.yso.fi/onto/afo/p2190>.
 <http://www.yso.fi/onto/afo/p2190> agri:accession "p2190".
 bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://purl.obolibrary.org/obo/PO_0009088>.
 <http://purl.obolibrary.org/obo/PO_0009088> agri:accession "PO_0009088".
-bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009088>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009088> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009088>.
+bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009088>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009088> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009088>.
 bkr:cond_endosperm_and_seed_coat_8_days_after_pollination schema:additionalType <http://www.yso.fi/onto/afo/p763>.
 <http://www.yso.fi/onto/afo/p763> agri:accession "p763".
 
 bkr:cond_20_days_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_20_days_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_20_days_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_20_days_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0006220>.
 <http://purl.obolibrary.org/obo/PO_0006220> agri:accession "PO_0006220".
-bkr:cond_20_days_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
+bkr:cond_20_days_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
 
 
 bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://www.yso.fi/onto/afo/p5516>.
 <http://www.yso.fi/onto/afo/p5516> agri:accession "p5516".
 bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -768,25 +768,25 @@ bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://www.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0007106>.
 <http://purl.obolibrary.org/obo/PO_0007106> agri:accession "PO_0007106".
-bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007106>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007106> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007106>.
+bkr:cond_lp03_three_leaves_visible_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007106>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007106> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007106>.
 
 bkr:cond_mixed_guard_mother_cell_and_guard_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0000293>.
 <http://purl.obolibrary.org/obo/PO_0000293> agri:accession "PO_0000293".
-bkr:cond_mixed_guard_mother_cell_and_guard_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000293>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000293> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000293>.
+bkr:cond_mixed_guard_mother_cell_and_guard_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000293>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000293> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000293>.
 bkr:cond_mixed_guard_mother_cell_and_guard_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0000351>.
 <http://purl.obolibrary.org/obo/PO_0000351> agri:accession "PO_0000351".
-bkr:cond_mixed_guard_mother_cell_and_guard_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000351>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000351> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000351>.
+bkr:cond_mixed_guard_mother_cell_and_guard_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000351>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000351> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000351>.
 bkr:cond_mixed_guard_mother_cell_and_guard_cell schema:additionalType <http://purl.obolibrary.org/obo/GO_0005623>.
 <http://purl.obolibrary.org/obo/GO_0005623> agri:accession "GO_0005623".
 
 
 bkr:cond_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0009001>.
 <http://purl.obolibrary.org/obo/PO_0009001> agri:accession "PO_0009001".
-bkr:cond_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
+bkr:cond_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
 bkr:cond_fruit schema:additionalType <http://www.yso.fi/onto/yso/p4647>.
 <http://www.yso.fi/onto/yso/p4647> agri:accession "p4647".
 
@@ -795,8 +795,8 @@ bkr:cond_tsu0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_tsu0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_tsu0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_tsu0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_tsu0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_tsu0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -805,36 +805,36 @@ bkr:cond_tsu0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITax
 
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0007042>.
 <http://purl.obolibrary.org/obo/PO_0007042> agri:accession "PO_0007042".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007042>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007042> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007042>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007042>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007042> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007042>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0025034>.
 <http://purl.obolibrary.org/obo/PO_0025034> agri:accession "PO_0025034".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.yso.fi/onto/yso/p20503>.
 <http://www.yso.fi/onto/yso/p20503> agri:accession "p20503".
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.yso.fi/onto/afo/p5516>.
 <http://www.yso.fi/onto/afo/p5516> agri:accession "p5516".
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0025501>.
 <http://purl.obolibrary.org/obo/PO_0025501> agri:accession "PO_0025501".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025501>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025501> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025501>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025501>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025501> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025501>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant> agri:accession "Plant".
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0009001>.
 <http://purl.obolibrary.org/obo/PO_0009001> agri:accession "PO_0009001".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.yso.fi/onto/yso/p4647>.
 <http://www.yso.fi/onto/yso/p4647> agri:accession "p4647".
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0000003>.
 <http://purl.obolibrary.org/obo/PO_0000003> agri:accession "PO_0000003".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://purl.obolibrary.org/obo/PO_0007029>.
 <http://purl.obolibrary.org/obo/PO_0007029> agri:accession "PO_0007029".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007029>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007029> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007029>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007029>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007029> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007029>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_leaf schema:additionalType <http://purl.obolibrary.org/obo/GO_0009058>.
 <http://purl.obolibrary.org/obo/GO_0009058> agri:accession "GO_0009058".
 
@@ -842,23 +842,23 @@ bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://ww
 <http://www.yso.fi/onto/afo/p1080> agri:accession "p1080".
 bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://purl.obolibrary.org/obo/TO_0006036>.
 <http://purl.obolibrary.org/obo/TO_0006036> agri:accession "TO_0006036".
-bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://www.ondex.org/bioknet/resources/trait_to_0006036>.
-<http://www.ondex.org/bioknet/resources/trait_to_0006036> schema:sameAs <http://purl.obolibrary.org/obo/TO_0006036>.
+bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://knetminer.org/data/rdf/resources/trait_to_0006036>.
+<http://knetminer.org/data/rdf/resources/trait_to_0006036> schema:sameAs <http://purl.obolibrary.org/obo/TO_0006036>.
 bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> agri:accession "Stem".
 bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://purl.obolibrary.org/obo/PO_0007079>.
 <http://purl.obolibrary.org/obo/PO_0007079> agri:accession "PO_0007079".
-bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007079>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007079> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007079>.
+bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007079>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007079> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007079>.
 bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://purl.obolibrary.org/obo/PO_0009047>.
 <http://purl.obolibrary.org/obo/PO_0009047> agri:accession "PO_0009047".
-bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+bkr:cond_se00_stem_elongation_begins_stage_stem schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
 
 bkr:cond_guard_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0000293>.
 <http://purl.obolibrary.org/obo/PO_0000293> agri:accession "PO_0000293".
-bkr:cond_guard_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000293>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000293> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000293>.
+bkr:cond_guard_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000293>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000293> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000293>.
 bkr:cond_guard_cell schema:additionalType <http://purl.obolibrary.org/obo/GO_0005623>.
 <http://purl.obolibrary.org/obo/GO_0005623> agri:accession "GO_0005623".
 
@@ -867,8 +867,8 @@ bkr:cond_rsch4_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_rsch4_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_rsch4_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_rsch4_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_rsch4_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_rsch4_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -877,33 +877,33 @@ bkr:cond_rsch4_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITa
 
 bkr:cond_10_days_post_anthesis_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_10_days_post_anthesis_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_10_days_post_anthesis_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0007042>.
 <http://purl.obolibrary.org/obo/PO_0007042> agri:accession "PO_0007042".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007042>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007042> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007042>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007042>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007042> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007042>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0025501>.
 <http://purl.obolibrary.org/obo/PO_0025501> agri:accession "PO_0025501".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025501>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0025501> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025501>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025501>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025501> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025501>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Plant> agri:accession "Plant".
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0009001>.
 <http://purl.obolibrary.org/obo/PO_0009001> agri:accession "PO_0009001".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://www.yso.fi/onto/yso/p4647>.
 <http://www.yso.fi/onto/yso/p4647> agri:accession "p4647".
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0000003>.
 <http://purl.obolibrary.org/obo/PO_0000003> agri:accession "PO_0000003".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000003> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000003>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://purl.obolibrary.org/obo/PO_0007029>.
 <http://purl.obolibrary.org/obo/PO_0007029> agri:accession "PO_0007029".
-bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007029>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007029> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007029>.
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007029>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007029> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007029>.
 bkr:cond_whole_plant_fruit_formation_stage_30_to_50_fruit schema:additionalType <http://purl.obolibrary.org/obo/GO_0009058>.
 <http://purl.obolibrary.org/obo/GO_0009058> agri:accession "GO_0009058".
 
@@ -912,8 +912,8 @@ bkr:cond_wil2_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_wil2_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_wil2_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_wil2_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_wil2_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_wil2_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -923,12 +923,12 @@ bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> agri:accession "Stem".
 bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <http://purl.obolibrary.org/obo/PO_0009047>.
 <http://purl.obolibrary.org/obo/PO_0009047> agri:accession "PO_0009047".
-bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
 bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <http://purl.obolibrary.org/obo/PO_0007117>.
 <http://purl.obolibrary.org/obo/PO_0007117> agri:accession "PO_0007117".
-bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007117>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007117> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007117>.
+bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007117>.
 bkr:cond_se02_two_nodes_or_internodes_visible_stage_stem schema:additionalType <http://www.yso.fi/onto/afo/p1080>.
 <http://www.yso.fi/onto/afo/p1080> agri:accession "p1080".
 
@@ -936,8 +936,8 @@ bkr:cond_ct1_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_ct1_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_ct1_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_ct1_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_ct1_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_ct1_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -947,15 +947,15 @@ bkr:cond_ct1_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxo
 
 bkr:cond_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 
 bkr:cond_20_days_post_anthesis_aleurone_layer schema:additionalType <http://purl.obolibrary.org/obo/ENVO_01000281>.
 <http://purl.obolibrary.org/obo/ENVO_01000281> agri:accession "ENVO_01000281".
 bkr:cond_20_days_post_anthesis_aleurone_layer schema:additionalType <http://purl.obolibrary.org/obo/PO_0005360>.
 <http://purl.obolibrary.org/obo/PO_0005360> agri:accession "PO_0005360".
-bkr:cond_20_days_post_anthesis_aleurone_layer schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
+bkr:cond_20_days_post_anthesis_aleurone_layer schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
 
 
 bkr:cond_0_to_5_day_postanthesis schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
@@ -965,14 +965,14 @@ bkr:cond_0_to_5_day_postanthesis schema:additionalType <http://www.yso.fi/onto/y
 
 bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0009089>.
 <http://purl.obolibrary.org/obo/PO_0009089> agri:accession "PO_0009089".
-bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
+bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009089> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009089>.
 bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
 bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://purl.obolibrary.org/obo/PO_0006220>.
 <http://purl.obolibrary.org/obo/PO_0006220> agri:accession "PO_0006220".
-bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
+bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0006220> schema:sameAs <http://purl.obolibrary.org/obo/PO_0006220>.
 bkr:cond_14_day_post_anthesis_central_endosperm schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
 <http://www.yso.fi/onto/yso/p19450> agri:accession "p19450".
 
@@ -980,8 +980,8 @@ bkr:cond_9_day_post_anthesis_aleurone_layer schema:additionalType <http://purl.o
 <http://purl.obolibrary.org/obo/ENVO_01000281> agri:accession "ENVO_01000281".
 bkr:cond_9_day_post_anthesis_aleurone_layer schema:additionalType <http://purl.obolibrary.org/obo/PO_0005360>.
 <http://purl.obolibrary.org/obo/PO_0005360> agri:accession "PO_0005360".
-bkr:cond_9_day_post_anthesis_aleurone_layer schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
+bkr:cond_9_day_post_anthesis_aleurone_layer schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0005360> schema:sameAs <http://purl.obolibrary.org/obo/PO_0005360>.
 bkr:cond_9_day_post_anthesis_aleurone_layer schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000434>.
 <http://www.cropontology.org/rdf/CO_321:0000434> agri:accession "CO_321:0000434".
 bkr:cond_9_day_post_anthesis_aleurone_layer schema:additionalType <http://www.yso.fi/onto/yso/p19450>.
@@ -989,16 +989,16 @@ bkr:cond_9_day_post_anthesis_aleurone_layer schema:additionalType <http://www.ys
 
 bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0000062>.
 <http://purl.obolibrary.org/obo/PO_0000062> agri:accession "PO_0000062".
-bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000062>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000062> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000062>.
+bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000062>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000062> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000062>.
 bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0004011>.
 <http://purl.obolibrary.org/obo/PO_0004011> agri:accession "PO_0004011".
-bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0004011>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0004011> schema:sameAs <http://purl.obolibrary.org/obo/PO_0004011>.
+bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0004011>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0004011> schema:sameAs <http://purl.obolibrary.org/obo/PO_0004011>.
 bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://purl.obolibrary.org/obo/PO_0000351>.
 <http://purl.obolibrary.org/obo/PO_0000351> agri:accession "PO_0000351".
-bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000351>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000351> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000351>.
+bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000351>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000351> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000351>.
 bkr:cond_mixed_stomatal_initial_cell_and_guard_mother_cell schema:additionalType <http://purl.obolibrary.org/obo/GO_0005623>.
 <http://purl.obolibrary.org/obo/GO_0005623> agri:accession "GO_0005623".
 
@@ -1006,8 +1006,8 @@ bkr:cond_ws0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_ws0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_ws0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_ws0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_ws0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_ws0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -1015,49 +1015,49 @@ bkr:cond_ws0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxo
 
 bkr:cond_inner_pericarp schema:additionalType <http://purl.obolibrary.org/obo/PO_0009084>.
 <http://purl.obolibrary.org/obo/PO_0009084> agri:accession "PO_0009084".
-bkr:cond_inner_pericarp schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
+bkr:cond_inner_pericarp schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>.
 
 bkr:cond_oy0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_oy0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_oy0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_oy0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_edi0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_edi0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_edi0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_edi0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 bkr:cond_tsu0_floral_bud schema:additionalType <http://www.yso.fi/onto/yso/p21857>.
 <http://www.yso.fi/onto/yso/p21857> agri:accession "p21857".
 bkr:cond_tsu0_floral_bud schema:additionalType <http://purl.obolibrary.org/obo/PO_0000055>.
 <http://purl.obolibrary.org/obo/PO_0000055> agri:accession "PO_0000055".
-bkr:cond_tsu0_floral_bud schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
+bkr:cond_tsu0_floral_bud schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0000055> schema:sameAs <http://purl.obolibrary.org/obo/PO_0000055>.
 
 
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.yso.fi/onto/afo/p1080>.
 <http://www.yso.fi/onto/afo/p1080> agri:accession "p1080".
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0007109>.
 <http://purl.obolibrary.org/obo/PO_0007109> agri:accession "PO_0007109".
-bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007109>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0007109> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007109>.
+bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007109>.
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://purl.obolibrary.org/obo/TO_0000576>.
 <http://purl.obolibrary.org/obo/TO_0000576> agri:accession "TO_0000576".
-bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/trait_to_0000576>.
-<http://www.ondex.org/bioknet/resources/trait_to_0000576> schema:sameAs <http://purl.obolibrary.org/obo/TO_0000576>.
+bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/trait_to_0000576>.
+<http://knetminer.org/data/rdf/resources/trait_to_0000576> schema:sameAs <http://purl.obolibrary.org/obo/TO_0000576>.
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.cropontology.org/rdf/CO_321:0000060>.
 <http://www.cropontology.org/rdf/CO_321:0000060> agri:accession "CO_321:0000060".
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem>.
 <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> agri:accession "Stem".
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.
@@ -1066,8 +1066,8 @@ bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009047>.
 <http://purl.obolibrary.org/obo/PO_0009047> agri:accession "PO_0009047".
-bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
 bkr:cond_se99_maximum_stem_length_reached_stage_root schema:additionalType <http://purl.obolibrary.org/obo/PATO_0000122>.
 <http://purl.obolibrary.org/obo/PATO_0000122> agri:accession "PATO_0000122".
 
@@ -1092,8 +1092,8 @@ bkr:cond_hi0_root schema:additionalType <http://www.yso.fi/onto/afo/p5715>.
 <http://www.yso.fi/onto/afo/p5715> agri:accession "p5715".
 bkr:cond_hi0_root schema:additionalType <http://purl.obolibrary.org/obo/PO_0009005>.
 <http://purl.obolibrary.org/obo/PO_0009005> agri:accession "PO_0009005".
-bkr:cond_hi0_root schema:additionalType <http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005>.
-<http://www.ondex.org/bioknet/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+bkr:cond_hi0_root schema:additionalType <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
 bkr:cond_hi0_root schema:additionalType <http://www.yso.fi/onto/yso/p17184>.
 <http://www.yso.fi/onto/yso/p17184> agri:accession "p17184".
 bkr:cond_hi0_root schema:additionalType <http://purl.obolibrary.org/obo/NCBITaxon_1>.

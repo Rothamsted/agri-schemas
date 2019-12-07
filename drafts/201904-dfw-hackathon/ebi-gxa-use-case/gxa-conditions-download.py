@@ -26,8 +26,8 @@ process_gxa_experiments ( lambda exp_acc, gene_id, condition, tpm: conditions.ad
 print_rdf_namespaces ()
 
 knet_prefixes = {
-  "TO": "http://www.ondex.org/bioknet/resources/trait_",
-  "PO": "http://www.ondex.org/bioknet/resources/plantontologyterm_"	
+  "TO": "http://knetminer.org/data/rdf/resources/trait_",
+  "PO": "http://knetminer.org/data/rdf/resources/plantontologyterm_"	
 }
 
 for cond_label in conditions:
