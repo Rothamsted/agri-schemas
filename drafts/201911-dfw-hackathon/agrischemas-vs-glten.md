@@ -17,7 +17,9 @@
     </tr>
     <tr>
         <td>Design Period (No of plots/blocks/replicates/etc)</td>
-        <td>Go to some protocol, either treatment or a specific protocol type = StudyDesign</td>
+        <td>According to MIAPPE, it's the "Observation unit level hierarchy" field, associated to Study. 
+        But probably requires further Study qualifiers. Or, some protocol qualifier (ISA-Tab put these 
+        into Sampling Protocol, maybe something like "Design Protocol" would be more appropriate)</td>
     </tr>
     <tr>
         <td>Publications</td>
