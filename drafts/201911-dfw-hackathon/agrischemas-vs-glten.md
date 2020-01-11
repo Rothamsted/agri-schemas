@@ -47,6 +47,10 @@
         values, factor combinations are composite (partOf) factors. Application is a factor property 
         (which should match a possible link with field/plots)</td>
     </tr>
+    <tr>
+        <td>Funding Grants</td>
+        <td>TODO, probably something similar to iao:information content entity</td>
+    </tr>
 </table>
 
 ## Notes (about field trials in general, to be moved upwards)
@@ -62,4 +66,4 @@ The most general model between this and MIAPPE could be:
 
 ## Links
   * [GLTen Metadata Portal](https://www.glten.org/)
-  * [GitHub](https://github.com/GLTEN)
+  * [GLTen GitHub](https://github.com/GLTEN)

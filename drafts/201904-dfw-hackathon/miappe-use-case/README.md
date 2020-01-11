@@ -2,7 +2,7 @@
 
 ## General Notes
   * MIAPPE was mapped to ISA, and this is used in eg, http://cropnet.pl/plantphenodb/
-    * We took *Wisniewska et al, 2017* from there as an example.
+    * We took *Wisniewska et al, 2017* from there as an example. A copy is [here](dataset_WheatFusarium).
   * MIAPPE docs:
     * [MIAPPE Diagram](https://github.com/MIAPPE/MIAPPE/tree/master/MIAPPE_Checklist-Data-Model-v1.1)
     * [MIAPPE checklist](https://github.com/MIAPPE/MIAPPE/blob/master/MIAPPE_Checklist-Data-Model-v1.1/MIAPPE_Checklist-Data-Model-v1.1.pdf)
