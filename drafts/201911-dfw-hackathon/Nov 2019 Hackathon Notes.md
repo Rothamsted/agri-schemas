@@ -1,6 +1,9 @@
 # Nov 2019 Hackathon Notes
 
-## Field Trials Links
+## Field Trials Links
+  * [GLTen Metadata Portal](https://www.glten.org/)
+	  * See also [mapping notes](agrischemas-vs-glten.md)
+		* and some of [their stuff on GH](https://github.com/GLTEN)
   * [Plant Phenotype Experiment Ontology](http://agroportal.lirmm.fr/ontologies/PPEO)
 
 ## GrassRoots SeedStore
