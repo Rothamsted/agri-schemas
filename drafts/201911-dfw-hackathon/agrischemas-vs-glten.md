@@ -53,6 +53,9 @@
     </tr>
 </table>
 
+A [draft](glten-miappe-mappings.pdf) is available regarding more details and aligment between GLTen, MIAPPE, bioschemas/schema
+
+
 ## Notes (about field trials in general, to be moved upwards)
 
 The most general model between this and MIAPPE could be:  
