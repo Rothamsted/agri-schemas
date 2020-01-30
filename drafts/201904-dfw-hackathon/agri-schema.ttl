@@ -17,16 +17,19 @@
 agri:AgriSchemasImportedClass a owl:Class.
 agri:AgriSchemasImportedProperty a rdf:Property.
 agri:BioSchemasNewPropertyProposal a owl:AnnotationProperty.
+agri:SchemaNewPropertyProposal a owl:AnnotationProperty.
 agri:BioSchemasNewClassProposal a owl:AnnotationProperty.
 
 
+# TODO: or use schema:name, with prefName meaning, no super-property
 agri:prefName a owl:AnnotationProperty;
 	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
 .
 
-agri:altName a owl:AnnotationProperty;
-	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
-.
+# NO: use agri:alternateName
+#agri:altName a owl:AnnotationProperty;
+#	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
+#.
 
 agri:evidence a owl:AnnotationProperty;
   rdfs:subPropertyOf oa:motivatedBy, agri:SchemaNewPropertyProposal
@@ -103,9 +106,21 @@ agri:StudyFactor a owl:Class;
 
 agri:StudyItemEvent a owl:Class;
 	rdfs:subClassOf schema:Action, agri:BioSchemasNewClassProposal;
-	rdfs:comment "An event that occurs to a sample or a data set/file, which yields another item, knowlingly or potentially affecting the characteristics such new item has. This might be a purpose action (ie, a bioschema:LabProtocol), or a tracked event that might have affected an experiment step (eg, a weather change on a field location). Events can also be used to represent data extraction from samples (what is considered an assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation of differentially expressed genes, gene enrichment).".
 .
+	rdfs:comment "An event that occurs to a sample or a data set/file, which yields another item, 
+		knowlingly or potentially affecting the characteristics such new item has. 
+		This might be an on-purpose action (ie, a bioschema:LabProtocol), or a tracked event that 
+		might have affected an experiment step (eg, a weather change on a field location). 
+		Events can also be used to represent data extraction from samples (what is considered an 
+		assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation 
+		of differentially expressed genes, gene enrichment). This might also represent a plan or potential
+		event".
 
-bioschema:LabProtocol a owl:Class
+bioschema:LabProtocol a owl:Class;
 	rdfs:subClassOf agri:StudyItemEvent
 .
+
+agri:StudyDesign a owl:Class;
+	rdfs:subClassOf agri:StudyItemEvent, agri:BioSchemasNewClassProposal
+.
+

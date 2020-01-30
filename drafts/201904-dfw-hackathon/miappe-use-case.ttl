@@ -10,6 +10,7 @@ res:wheatfus01 a bioschema:Study
 	schema:additionalType 
 		<http://id.agrisemantics.org/gacs/C810>;
 		# <http://id.agrisemantics.org/gacs/C7233>;
+	# TODO bioschema:studyDomain
   agri:accession "WheatFus-01";
 	schema:title "Fusarium head blight in spring wheat RIL population";
 	schema:additionalProperty [
@@ -18,7 +19,8 @@ res:wheatfus01 a bioschema:Study
 		# TODO: do we need an EnvironmentPropVal subclass?
 		schema:propertyID "miappe:environment:Average length of the light period"
 		schema:value 16.2
-	]
+	];
+	bioschema:studyProcess res:whatfus01_treatment01;
 .
 
 
@@ -30,7 +32,10 @@ res:whatfus01_src01 a bioschema:Sample
 			schema:propertyID "role";
 			schema:value "source plot"
 		],
-		[	a schema:PropertyValue;
+		[	# TODO: this might require sourcePlot -> organism(Sample) -> downstream samples
+		  # because a plot might have different crops in different times
+			# 
+			a schema:PropertyValue;
 			schema:propertyID "organism";
 			schema:value "Triticum aestivum";
 			schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/4565>
@@ -47,7 +52,10 @@ res:whatfus01_src01 a bioschema:Sample
 		]		
 	
 	# More specific properties can be added too (possibly, add them via automatic enrichment)
-	schema:location [
+	# An alternative is to make the Sample a Place too, allows for direct attachment of address.
+	# In such a case, you might want to add contentLocation or spatial to study (in addition to ^isPartOf)
+	#
+	schema:contentLocation [
 		a schema:Place;
 		schema:name "Cerekwica, Poland";
 		schema:geo [
@@ -78,6 +86,8 @@ res:whatfus01_smp01 a bioschema:Sample;
 #
 res:whatfus01_treatment01 a bioschema:LabProtocol;
 	# This is not needed (can be computed by in/out materials), but can be practical to have it
+	# Moreover, it's redundant wrt studyProcess, but again, it might be useful to have this among the
+	# study components.
 	schema:isPartOf wheatfus01;
 	bioschema:purpose "rooting";
 	schema:object res:whatfus01_src01;
