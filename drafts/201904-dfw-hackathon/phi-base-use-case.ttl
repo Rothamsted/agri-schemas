@@ -22,7 +22,7 @@ res:phiInt001 a agri:HostPathogenInteraction;
 	agri:interactionHost [
 		a bioschema:Phenotype;
 
-		schema:prefName "Triticum aestivum";
+		schema:name "Triticum aestivum";
 		schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 
 		schema:additionalProperty [

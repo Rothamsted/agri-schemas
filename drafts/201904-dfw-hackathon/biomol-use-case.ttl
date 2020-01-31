@@ -7,7 +7,7 @@
 
 
 res:study1 a bioschema:Study;
-	agri:prefName "Sample Gene Expression Experiment";
+	schema:name "Sample Gene Expression Experiment";
 	agri:evidence "manually curated";
 	agri:accession "study:001"
 .
@@ -18,14 +18,14 @@ res:study1 a bioschema:Study;
 #
 <http://www.wikipathways.org/id1> a agri:Pathway ; 
 	agri:evidence  "Imported from Database"
-	agri:prefName  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>
+	schema:name  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>
 .
         
 res:tob1  a bioschema:Protein ;
   # TODO: possibly we could use schema:identifier (which applies to schema:Thing), without
 	# having to introduce a specific ID like this.
 	agri:accession       res:TOB1_acc ;
-	agri:prefName         "TOB1"^^xsd:string;
+	schema:name         "TOB1"^^xsd:string;
 	# A simplified link, hiding BioPax pathwayComponent -> BioChemicalReaction|Complex -> Protein
 	schema:isPartOf 		  <http://www.wikipathways.org/id1>
 .
@@ -92,13 +92,13 @@ bkr:degex_tob1_sample1 a rdfs:Statement;
   
 
 res:expFact1 a agri:StudyFactor;
-	schema:prefName "Glyphosate Treatment";
+	schema:name "Glyphosate Treatment";
 	schema:additionalType obo:CHEBI_27744
 .
 
 
 res:sample1 a bioschema:Sample ;
-	schema:prefName			"Land Plot 001";
+	schema:name			"Land Plot 001";
 	schema:isPartOf			res:study1;
 	agri:hasStudyFactor res:expFact1
 .

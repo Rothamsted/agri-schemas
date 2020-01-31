@@ -35,7 +35,7 @@ bkr:gene_traescs1a02g030900 a bioschema:Gene;
 .
 
 bkr:cond_outer_pericarp a agri:StudyFactor; 
-  schema:prefName "outer pericarp";
+  schema:name "outer pericarp";
   # These can come from eg, manual curation or auto-annotation
   # (of course multiple terms are possible)
   schema:additionalType

@@ -40,7 +40,7 @@ FILTER ( UCASE (?geneAcc) IN (
   agri:score ?score;
   agri:evidence ?study.
                 
-?condition schema:prefName ?condLabel.
+?condition schema:name ?condLabel.
 OPTIONAL { ?condition schema:additionalType ?condTerm. }
   
 ?study 
@@ -86,7 +86,7 @@ SELECT ?gene ?geneAcc ?condLabel ?studyTitle ?study ?pub ?pubTitle ?pubYear ?con
 		bka:AbstractHeader ?pubTitle.
 	OPTIONAL { ?pub bka:YEAR ?pubYear }
 			
-	?condition schema:prefName ?condLabel.
+	?condition schema:name ?condLabel.
 	OPTIONAL { ?condition schema:additionalType ?condTerm. }
 		
 	?study 

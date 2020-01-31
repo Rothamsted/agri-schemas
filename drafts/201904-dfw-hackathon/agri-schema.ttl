@@ -21,10 +21,11 @@ agri:SchemaNewPropertyProposal a owl:AnnotationProperty.
 agri:BioSchemasNewClassProposal a owl:AnnotationProperty.
 
 
-# TODO: or use schema:name, with prefName meaning, no super-property
-agri:prefName a owl:AnnotationProperty;
-	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
-.
+# schema:name is often used with the meaning of single primary name, despite its documentation declares
+# it equivalent to dc:title. We prefer to adopt such a convention for sake of simplicity.
+#schema:name a owl:AnnotationProperty;
+#	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
+#.
 
 # NO: use agri:alternateName
 #agri:altName a owl:AnnotationProperty;
