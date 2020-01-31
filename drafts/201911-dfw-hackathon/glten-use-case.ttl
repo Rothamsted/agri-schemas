@@ -1,0 +1,273 @@
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>
+@prefix agri: <http://agrischemas.org/>
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix glten: <http://agrischemas.org/glten/>
+
+
+res:glten_r_bk a bioschema:Study;
+  
+	# TODO: possibly embed these types into a specific class
+	schema:additionalType 
+		<http://id.agrisemantics.org/gacs/C810>;
+		# <http://id.agrisemantics.org/gacs/C7233>;
+	
+	bioschema:studyDomain
+		<http://dbpedia.org/resource/Agronomy>,
+		<http://dbpedia.org/resource/Agriculture>;
+
+  agri:accession "R/BK";
+	schema:name "Broadbalk winter wheat long-term experiment";
+	schema:description "The Broadbalk experiment is one of the oldest continuous agronomic experiments in the world. Started by Lawes and Gilbert in the autumn of 1843, winter wheat has been sown and harvested on all or part of the field every year since then.";
+	
+	# TODO: This is "objectives" in GL/TEN spec. The specific example uses purpose instead?!
+	# TODO: schema.org has a problem with this having bad domain/range, but there's an issue about it
+	# (https://github.com/schemaorg/schemaorg/issues/2435)
+	schema:purpose "To test effects of organic and inorganic fertilizer inputs on wheat yields";
+	
+	# This maps "Data Access"
+	schema:conditionsOfAccess "Data access is on request";
+	schema:license [
+		# TODO: This is to map "Data Access Policy" = yes, "Data Access Policy URL" = "Not online"
+		schema:name "Data Access Policy is available off line"
+	];
+
+	schema:startDate 1843^^xsd:gYear # or xsd:date;
+  schema:additionalProperty [
+		a schema:PropertyValue;
+		# This is the way to encode particular uncommon properties that are not explicitly defined
+		# in existing schemas.
+		schema:propertyID "milax:Establishement period end";
+		schema:value "1851"^^xsd:gYear # or xsd:date
+	];
+
+  # TODO: modelling orgs/people with schema:Ogranization is pretty straightforward, omitted for now.
+	schema:author res:org_RothamstedResearch;
+  
+	# We use the (weird) approach:
+	# schema:contributor -> Role -> Person, as per http://blog.schema.org/2014/06/introducing-role.html
+	schema:contributor [
+		a schema:Role;
+		# Experiment Manager
+		schema:roleName <http://purl.obolibrary.org/obo/AGRO_00000381>;
+		schema:startDate "2015-01-01"^^xsd:date;
+		schema:contributor [
+			a schema:Person;
+			schema:givenName "Andy";
+			schema:familyName "Macdonald";
+			schema:affiliation res:org_RothamstedResearch
+		]
+	],
+	[
+		a schema:Role;
+		schema:roleName "Researcher";
+		schema:startDate "2003-01-03"^^xsd:date;
+		schema:contributor [
+			a schema:Person;
+			schema:givenName "Paul";
+			schema:familyName "Poulton";
+			schema:affiliation res:org_RothamstedResearch
+		]
+	];	
+
+	bioschema:relatedStudy [
+		# Because the relatedStudy property clearly requires a resource in its range, this modelling approach seems
+		# the best option for the case where only the related experiment title is available.
+		schema:name "Alternate Wheat and Fallow"
+	]
+.
+
+
+res:glten_r_bk_grant a schema:Grant;
+  schema:fundedItem res:glten_r_bk;
+	schema:funder res:org_BBSRC;
+	schema:identifier "BBS/E/C/00005189";
+	schema:name "The Rothamsted Long-Term Experiments including Sample Archive and e-RA database";
+	schema:startDate "2012-01-04"^^xsd:date;
+	schema:endDate "31/03/2017"^^xsd:date
+.
+
+
+res:glten_r_bk_1843_1925 a schema:Study;
+  
+	schema:name "Broadbalk long-term experiment 1843-1925";
+	schema:description "The first experimental crop of wheat was harvested in 1844 after a rotation of turnips (with FYM, 1839), barley (1840), peas (1841), wheat (1842) and oats (1843). The last four crops did not receive any fertilizer or manure. Winter wheat was grown continuously, apart from occasional fallowing to control weeds. The experiment was divided into different Strips or 'Plots' (0 - 20) receiving the different fertilizer and manure treatments each year. Most treatment strips were established by 1852, except for strip 2A, which began in 1885, and strip 20, which began in 1906. Between 1894 and 1925 many plots were harvested in two halves, Top (T) and Bottom (B), equivalent to the Western and Eastern parts of the experiment.";
+
+	# TODO: you might want to link these with relatedStudy too.
+	schema:isPartOf res:glten_r_bk;
+
+  schema:additionalType
+		glten:DesignPeriod,
+		<http://www.cropontology.org/terms/CO_715:0000250>; # Fertilizer trial
+
+	schema:startDate 1843^^xsd:gYear; # or xsd:date;
+	schema:endDate 1925^^xsd:gYear;
+
+	# TODO: You might want to add hasPart or isPartOf, as in MIAPPE use case.
+  bioschema:studyProcess [
+		a agri:StudyDesign;
+		schema:additionalType "http://purl.obolibrary.org/obo/AGRO_00000335","demonstration strip design";
+	];
+
+	schema:additionalProperty [
+	  a agri:StudyFactor;
+		schema:propertyID "P";
+		schema:name "Phosphorous";
+		schema:value 35;
+		schema:unitCode "kg/ha";
+		schema:additionalType [
+			schema:propertyID "milax:Nutrient form";
+			schema:value "Superphosphate";
+		],
+		[ schema:propertyID "milax:Inorganic fertilizer factors" ]
+	],
+	[
+	  a agri:StudyFactor;
+		schema:propertyID "P";
+		schema:name "Phosphorous";
+		schema:value 0;
+		schema:unitCode "kg/ha";
+		schema:additionalType [
+			schema:propertyID "milax:Nutrient form";
+			schema:value "Superphosphate";
+		],
+		[ schema:propertyID "milax:Inorganic fertilizer factors" ],
+		<http://www.ebi.ac.uk/efo/EFO_0001461> # Control Role, this is to mark the factor as the base level,
+	];
+	# Other factors ...
+
+
+	schema:additionalProperty [
+		a schema:PropertyValue;
+		schema:propertyID "milax:Number of factor level combinations";
+		schema:value 16
+	],
+	[		
+		a schema:PropertyValue;
+		schema:propertyID "milax:Number of blocks";
+		schema:value 0;
+	]; 
+	# And so on, for all non-common properties. We attach them to the study, despite they are 
+	# more about design. That's because our approach is more common.
+
+	schema:additionalProperty [
+		# Again, this doesn't seem common or critical, so it can be represented in this loose way
+		# Same for horizontal FV combinations
+		a schema:PropertyValue;
+		schema:propertyID "milax:Factor Value Combinations";
+		schema:value "Nil;FYM;FYM+N2..."
+	]
+
+	rdfs:seeAlso [
+		# This structure allows us to do two things
+		a schema:DigitalDocument; # 1) mark that we are x-referencing a document
+		# distinguish the doc URL (which doesn't contain data) from the identifying URI 
+		schema:url <http://www.era.rothamsted.ac.uk/metadata/broad/Broadbalkplan1852-1925.pdf>
+	],
+	[
+		a schema:DigitalDocument;
+		schema:url <http://www.era.rothamsted.ac.uk/metadata/broad/Broadbalkcropping1844-1925.pdf>
+	];
+
+	rdfs:comment 
+	  # This is how we model those structured comments quickly, we don't see it worth to reproduce that detailed
+		# structure.
+	  "Note 1, Harvesting\nFrom 1844 to 1901 the wheat crop was cut by hand by scythes, from 1902 to 1956 a self-binder was used, originally horse drawn, and then powered by a tractor. Hand cutting with scythes was often necessary if the ground was very wet or the crop was badly lodged (flattened). After cutting the crop was bound into sheaves which were ‘stooked’ and left on the plot for about two weeks then ‘carted’ into barns where they were threshed over the winter. Cutting and carting may have been spread over several days. Thus the earlier datasets BBKYIELD and BBKYIELD_F include the dates of both cutting and carting the crop. From 1957 the plots have been harvested by a small plot combine harvester; only the central strip of each plot is taken for yield and samples. Before 1957 the plots were usually cut in early August, since 1957 combining has been in August or early September. Sowing and harvest dates are available from the e-RA Curators.",
+		"Note 2, Plot areas\nWhen the experiment was established in 1843 most of the plots were very large. Most comprised an ‘a’ and ‘b’ half (each 3.77m wide) and were 320m long (the length of the field). Plots 21 and 22 are a little narrower. In 1894 the two halves were combined, giving a total plot area of 0.24ha. As the experiment progressed these large plots have been subdivided into different Sections (see ‘Background’ for more details), with corresponding changes in the area harvested. The current plot lengths vary depending on the Section and are between 15.24m (Section 0) and 28.04m (Section 1). The plots are now 6m wide (except plots 21 and 22 which are 4m wide) with 48 rows at 12.5 cm spacing. The harvested area is 2.1m wide. The harvested area is shown in most of the datasets."
+
+	# redundantly marks the fact there's a sample with location. isPartOf should be used anyway.
+	schema:contentLocation glten_r_bk_site; 
+.
+
+res:glten_r_bk_site a bioschema:Sample, schema:Place;
+	
+	schema:isPartOf glten_r_bk_1843_1925;
+
+	schema:additionalProperty [	
+		a schema:PropertyValue;
+		schema:propertyID "role";
+		schema:value "source field"
+	];
+	schema:name "Broadbalk field";
+
+	schema:identifier <http://www.geonames.org/11821094/>;
+	schema:additionalProperty
+		[ a schema:PropertyValue;
+			schema:propertyID "geoname URL";
+			schema:url <http://www.geonames.org/11821094/>
+		],
+		[	# TODO: this is very simple, we might want to add GeoSPARQL or INSPIRE annotations
+			# Same goes for other properties (eg, elevation, slope)
+			a schema:PropertyValue;
+			schema:propertyID "Site Area";
+			schema:value 80600^xsd:double;
+			schema:unitCode "m^2", "MTK" # this is UN/CEFAT
+		];
+	
+	
+	schema:geo [
+		a schema:GeoCoordinates, schema:GeoShape; # we don't need to separate them
+		schema:latitude 51.80946;
+		schema:longitude -0.37301;
+		# TODO: this is very simple, we might want to add GeoSPARQL or INSPIRE annotations
+		schema:polygon "POLYGON ((-0.374888910702653 51.8104844475642,-0.372679951388724 51.8102045570974,-0.370348821475626 51.8095475237691,-0.370968420874727 51.8082615111994,-0.373024938111275 51.8088099092504,-0.37549595953073 51.8091501530058,-0.374888910702653 51.8104844475642))"
+	];
+
+  # We might want to simplify the address with something like:
+	schema:address "Harpenden, Hertfordshire, UK";
+	# And then additional properties with geoname District/Region/Country URL
+
+	schema:address [
+		a schema:PostalAddress;
+		schema:addressCountry "UK",
+			[ a schema:Country, 
+				schema:additionalProperty [
+					schema:propertyID "geoname Country URL";
+					schema:url <http://www.geonames.org/2635167>
+			]
+	]
+
+	#TODO schema:contributor ... AS ABOVE 
+	# TODO: is weather station important?! We already have generic climate descriptors
+.
+
+res:glten_r_bk_soil a bioschema:Sample
+	schema:additionalProperty [	
+		a schema:PropertyValue;
+		schema:propertyID "role";
+		schema:value "Soil"
+	];
+	# This is a simple way to link soil to field. A more detailed approach could be to use a 
+	# "derivation" process or a derivedFrom property.
+	schema:isPartOf glten_r_bk_site;
+	schema:isPartOf glten_r_bk_1843_1925; # This is for practical reasons
+  
+	schema:additionalProperty [
+		a schema:PropertyValue;
+		schema:propertyID "Soil weight";
+		schema:minValue 2.52;
+		schema:maxValue 2.88;
+		schema:unitText "10^2 kg/ha"; # Don't use unitCode when it's not standardised enough
+		schema:additionalProperty [
+			a schema:PropertyValue;
+			schema:propertyID "Depth";
+			schema:minValue 0;
+			schema:maxValue 23;
+			schema:unitCode "cm"
+			# Same for the other qualifiers
+		]
+	];
+	# and then the other props...
+
+  schema:additionalProperty [
+		a schema:PropertyValue;
+		schema:propertyID "Classification";
+		dc:source "FAO"; # an alternative would be propertyID: "Classification:FAO"
+		schema:value "Chromic Luvisol";
+		schema:additionalType <http://purl.obolibrary.org/obo/ENVO_00002248>
+	]
+	# and then the other classifications...
+.
