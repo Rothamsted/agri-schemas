@@ -19,6 +19,7 @@ agri:AgriSchemasImportedProperty a rdf:Property.
 agri:BioSchemasNewPropertyProposal a owl:AnnotationProperty.
 agri:SchemaNewPropertyProposal a owl:AnnotationProperty.
 agri:BioSchemasNewClassProposal a owl:AnnotationProperty.
+agri:SchemaNewClassProposal a owl:AnnotationProperty.
 
 
 # schema:name is often used with the meaning of single primary name, despite its documentation declares
@@ -36,10 +37,12 @@ agri:evidence a owl:AnnotationProperty;
   rdfs:subPropertyOf oa:motivatedBy, agri:SchemaNewPropertyProposal
 .
 
-agri:accession a owl:AnnotationProperty;
-	rdfs:subPropertyOf schema:identifier, agri:BioSchemasNewPropertyProposal;
-	schema:rangeIncludes schema:StructuredValue
-.
+# The documentation of schema:identifier says that this is good for accessions and PropertyValue can
+# be used for structured accessions. So, we prefer to not introduce this
+#schema:accession a owl:AnnotationProperty;
+#	rdfs:subPropertyOf schema:identifier, agri:BioSchemasNewPropertyProposal;
+#	schema:rangeIncludes schema:StructuredValue
+#.
 
 agri:BiologicalAssociation a owl:Class;
   rdfs:subClassOf schema:Intangible, agri:BioSchemasNewClassProposal
@@ -65,14 +68,19 @@ agri:interactionPathogen a owl:AnnotationProperty;
 	schema:rangeIncludes schema:Phenotype
 .
 
+# This is to describe a publication that can somehow be called scholarly (eg, it's peer-reviewed or is an 
+# academic report), but it's not necessarily an article (eg, proceeding volume, book chapter).
+#
 agri:ScholarlyPublication a owl:Class;
   rdfs:subClassOf schema:CreativeWork, agri:BioSchemasNewClassProposal
 .
 
 schema:ScholarlyArticle rdfs:subClassOf agri:ScholarlyPublication.
 
+# This a practicality, it could be represented via identifier+PropertyValue+propertyID=PMID, but this shorthand
+# is very often useful in biology.
 agri:pmedId a owl:AnnotationProperty;
-	rdfs:subPropertyOf agri:accession, agri:BioSchemasNewPropertyProposal
+	rdfs:subPropertyOf schema:identifier, agri:SchemaNewClassProposal
 .
 
 agri:score a owl:AnnotationProperty;
@@ -100,9 +108,7 @@ agri:hasGeneExpressionIn a owl:AnnotationProperty;
 
 agri:StudyFactor a owl:Class;
 	rdfs:subClassOf schema:Intangible, agri:BioSchemasNewClassProposal;
-	schema:additionalType 
-		<http://www.ebi.ac.uk/efo/EFO_0000001>, 
-		obo:OBI_0000750
+	owl:equivalentClass <http://www.ebi.ac.uk/efo/EFO_0000001>, obo:OBI_0000750
 .
 
 agri:StudyItemEvent a owl:Class;
@@ -124,4 +130,3 @@ bioschema:LabProtocol a owl:Class;
 agri:StudyDesign a owl:Class;
 	rdfs:subClassOf agri:StudyItemEvent, agri:BioSchemasNewClassProposal
 .
-

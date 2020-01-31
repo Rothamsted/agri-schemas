@@ -8,7 +8,7 @@ For the moment, we give a simple, proof-of-concept model about GXA data.
 
 ```javascript
 bkr:exp_E-MTAB-3103 a bioschema:Study;
-	agri:accession "E-MTAB-3103";
+	schema:identifier "E-MTAB-3103";
 	dc:title "Tissue layers from developing wheat grain at 12 days post-anthesis";
 	schema:description "Inner pericarp, outer pericarp and endosperm layers from...";
 	schema:datePublished "2015-04-24";
@@ -31,7 +31,7 @@ This is similar to the [MIAPPE use case](../miappe-use-case/README.md).
 # Description of gene and condition in which it is expressed
 #
 bkr:gene_traescs1a02g030900 a bioschema:Gene;
-	agri:accession "TRAESCS1A02G030900";
+	schema:identifier "TRAESCS1A02G030900";
 .
 
 bkr:cond_outer_pericarp a agri:StudyFactor; 

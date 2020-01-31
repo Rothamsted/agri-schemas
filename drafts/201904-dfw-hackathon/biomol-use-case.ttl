@@ -9,7 +9,7 @@
 res:study1 a bioschema:Study;
 	schema:name "Sample Gene Expression Experiment";
 	agri:evidence "manually curated";
-	agri:accession "study:001"
+	schema:identifier "study:001"
 .
 
 # Original URIs can be reused. The resource will receive additional annotations.
@@ -24,7 +24,7 @@ res:study1 a bioschema:Study;
 res:tob1  a bioschema:Protein ;
   # TODO: possibly we could use schema:identifier (which applies to schema:Thing), without
 	# having to introduce a specific ID like this.
-	agri:accession       res:TOB1_acc ;
+	schema:identifier      res:TOB1_acc ;
 	schema:name         "TOB1"^^xsd:string;
 	# A simplified link, hiding BioPax pathwayComponent -> BioChemicalReaction|Complex -> Protein
 	schema:isPartOf 		  <http://www.wikipathways.org/id1>
@@ -44,8 +44,8 @@ res:cit_tob1_23236473 a rdf:Statement;
 # This is a possible alternative, based on a variant of n-ary properties. This might be more practical
 # (you don't need to specify 3-triple statements). However, it's not very standard.
 # 
-# Moreover, when searching for schema:mentions ?target, the two cases can be distinguished by means of:
-# ?target a bioschema:Protein, or: `MINUS { ?target a schema:StructuredValue }`
+# When searching for schema:mentions ?target, the two cases can be distinguished by means of:
+# ?target a bioschema:Protein, or: MINUS { ?target a schema:StructuredValue }
 # 
 res:23236473 schema:mentions res:cit_tob1_23236473.
 res:cit_tob1_23236473 a schema:StructuredValue;
@@ -56,19 +56,27 @@ res:cit_tob1_23236473 a schema:StructuredValue;
 
 
 # Structured accession, allow for linking of identifier and context.
-# TODO: if we're going to use schema:identifier in place of agri:accession, it might be useful to change
-# this into PropertyValue and assign something like "agri:accession" as schema:propertyID
+# We don't feel the need to introduce a new accession property, schema has already this mechanism for it, 
+# as described in the documentation of schema:identifier.
 #
-res:TOB1_acc  				a schema:StructuredValue;
-  agri:accession  		"TOB1"^^<xsd:string> ;
-  dc:source       		<https://www.uniprot.org/>;
+res:TOB1_acc  				a schema:PropertyValue;
+	# This might be redundant when you assume that any value of schema:identifier is like an accession.
+	# You might want this further qualifier for sake of precision or for practical purposes (eg, an app
+	# might have both a generic ID and accessions extracted from public DBs).
+	schema:propertyID "agri:Accession";
+	
+	# schema:value is normally used for PropertyValue, but you might want identifier too for accessions.
+  schema:value 		"TOB1"^^<xsd:string> ;
+  schema:identifier 		"TOB1"^^<xsd:string> ;
+  
+	dc:source       		<https://www.uniprot.org/>;
 	# Could be part-of, but keep annotations simple enough and without too much variation
   rdfs:seeAlso 				obo:GO_0030014
 .
 
 res:23236473 a agri:ScholarlyPublication;
 	dc:title  "The anti-proliferative activity of BTG/TOB proteins is mediated via the Caf1a (CNOT7) and Caf1b (CNOT8) deadenylase subunits of the Ccr4-not complex";
-	# This is the weird term that schema.org uses for summaries (and hence abstracts)
+	# This is the weird term that schema.org uses for summaries (and hence, abstracts)
 	schema:backstory "The human BTG/TOB protein family comprises six members (BTG1, BTG2/PC3/Tis21, BTG3/Ana, BTG4/PC3B, TOB1/Tob, and TOB2) that are characterised...";
 	agri:pmedId           "23236473" ;
 	# This should be an ISO 8601 string. This standards accepts dates with year only, however it
@@ -78,6 +86,8 @@ res:23236473 a agri:ScholarlyPublication;
 .
 
 # Some gene expression statements
+# We're deviating from the range expected for this bioschema property.
+#
 res:tob1  bioschema:expressedIn "Treated with Pesticide 1".
 
 bkr:degex_tob1_sample1 a rdfs:Statement;

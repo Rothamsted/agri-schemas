@@ -8,7 +8,7 @@ print_rdf_namespaces ()
 def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 	rdf_tpl = """
 		{gene} a bioschema:Gene;
-			agri:accession "{geneAcc}";
+			schema:identifier "{geneAcc}";
 		.
 
 		bkr:gxaexp_{experimentId}_{geneId}_{conditionId} a rdfs:Statement;

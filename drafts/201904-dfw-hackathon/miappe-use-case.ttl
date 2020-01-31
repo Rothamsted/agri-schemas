@@ -11,7 +11,7 @@ res:wheatfus01 a bioschema:Study
 		<http://id.agrisemantics.org/gacs/C810>;
 		# <http://id.agrisemantics.org/gacs/C7233>;
 	# TODO bioschema:studyDomain
-  agri:accession "WheatFus-01";
+  schema:identifier "WheatFus-01";
 	schema:title "Fusarium head blight in spring wheat RIL population";
 	schema:additionalProperty [
 		a schema:PropertyValue;

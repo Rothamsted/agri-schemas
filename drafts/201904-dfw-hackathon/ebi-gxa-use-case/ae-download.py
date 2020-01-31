@@ -34,7 +34,7 @@ for exp_acc in get_gxa_accessions():
 
 		rdf_tpl = """
 		{experiment} a bioschema:Study;
-			agri:accession "{accession}";
+			schema:identifier "{accession}";
 		"""
 		rdf = dedent ( rdf_tpl.format (**idf) )
 

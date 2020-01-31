@@ -52,6 +52,9 @@ New classes and properties should be based on these lightweight ontologies. When
   * Before considering using more comples types, use the simplest/more general. For instance, an 
   [`additionalType`](https://schema.org/additionalType) attached to a [biological sample](https://bioschemas.org/types/Sample/) resource is usually enough to say which organisms the sample is instance of. Similarly, a [`PropertyValue`](https://schema.org/PropertyValue) instance might be good to track very dataset-specific properties (eg, see the [PHI-base use case](drafts/201904-dfw-hackathon/phi-base-use-case.ttl)).
 
+  * Use `schema:additionalType` when you don't want a stronger commitment (eg, `rdf:type`, `owl:equivalentProperty`). In particular, when a property (eg score) is related to something that is defined as an OWL class, and has a similar or same meaning (`obo:OBI_0000071`), link the two with this less formal schema property.
+
+
 
 ### List of additional preferred schemas/ontologies
 

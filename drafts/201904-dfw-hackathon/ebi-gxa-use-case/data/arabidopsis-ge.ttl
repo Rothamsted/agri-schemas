@@ -10,7 +10,7 @@
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-30720_at3g62615_wu0 a rdfs:Statement;
@@ -29,7 +29,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_wu0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_bur0 a rdfs:Statement;
@@ -48,7 +48,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_bur0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_can0 a rdfs:Statement;
@@ -67,7 +67,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_can0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_ct1 a rdfs:Statement;
@@ -86,7 +86,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ct1.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_hi0 a rdfs:Statement;
@@ -105,7 +105,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_hi0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_kn0 a rdfs:Statement;
@@ -124,7 +124,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_kn0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_ler0 a rdfs:Statement;
@@ -143,7 +143,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ler0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_mt0 a rdfs:Statement;
@@ -162,7 +162,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_mt0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_no0 a rdfs:Statement;
@@ -181,7 +181,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_no0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_oy0 a rdfs:Statement;
@@ -200,7 +200,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_oy0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_po0 a rdfs:Statement;
@@ -219,7 +219,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_po0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_sf2 a rdfs:Statement;
@@ -238,7 +238,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_sf2.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_tsu0 a rdfs:Statement;
@@ -257,7 +257,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_tsu0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_wil2 a rdfs:Statement;
@@ -276,7 +276,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wil2.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_wu0 a rdfs:Statement;
@@ -295,7 +295,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wu0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-30720_at4g06835_zu0 a rdfs:Statement;
@@ -314,7 +314,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_zu0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_bur0 a rdfs:Statement;
@@ -333,7 +333,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_bur0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_can0 a rdfs:Statement;
@@ -352,7 +352,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_can0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_col0 a rdfs:Statement;
@@ -371,7 +371,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_col0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_ct1 a rdfs:Statement;
@@ -390,7 +390,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ct1.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_edi0 a rdfs:Statement;
@@ -409,7 +409,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_edi0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_hi0 a rdfs:Statement;
@@ -428,7 +428,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_hi0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_kn0 a rdfs:Statement;
@@ -447,7 +447,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_kn0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_ler0 a rdfs:Statement;
@@ -466,7 +466,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ler0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_mt0 a rdfs:Statement;
@@ -485,7 +485,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_mt0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_no0 a rdfs:Statement;
@@ -504,7 +504,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_no0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_oy0 a rdfs:Statement;
@@ -523,7 +523,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_oy0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_po0 a rdfs:Statement;
@@ -542,7 +542,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_po0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_rsch4 a rdfs:Statement;
@@ -561,7 +561,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_rsch4.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_sf2 a rdfs:Statement;
@@ -580,7 +580,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_sf2.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_tsu0 a rdfs:Statement;
@@ -599,7 +599,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_tsu0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_wil2 a rdfs:Statement;
@@ -618,7 +618,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wil2.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_ws0 a rdfs:Statement;
@@ -637,7 +637,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ws0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_wu0 a rdfs:Statement;
@@ -656,7 +656,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wu0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g02710_zu0 a rdfs:Statement;
@@ -675,7 +675,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_zu0.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g03175_col0 a rdfs:Statement;
@@ -694,7 +694,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_col0.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g03175_mt0 a rdfs:Statement;
@@ -713,7 +713,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_mt0.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g03175_no0 a rdfs:Statement;
@@ -732,7 +732,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_no0.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g03175_po0 a rdfs:Statement;
@@ -751,7 +751,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_po0.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g03175_sf2 a rdfs:Statement;
@@ -770,7 +770,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_sf2.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g03175_tsu0 a rdfs:Statement;
@@ -789,7 +789,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_tsu0.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-30720_at5g03175_ws0 a rdfs:Statement;
@@ -808,7 +808,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_ws0.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-38612_at3g62615_fruit a rdfs:Statement;
@@ -827,7 +827,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_fruit.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-38612_at4g06835_leaf a rdfs:Statement;
@@ -846,7 +846,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_leaf.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-38612_at4g06835_root a rdfs:Statement;
@@ -865,7 +865,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g02710_leaf a rdfs:Statement;
@@ -884,7 +884,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_leaf.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g02710_flower a rdfs:Statement;
@@ -903,7 +903,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_flower.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g02710_fruit a rdfs:Statement;
@@ -922,7 +922,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_fruit.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g02710_root a rdfs:Statement;
@@ -941,7 +941,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g03175_leaf a rdfs:Statement;
@@ -960,7 +960,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_leaf.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g03175_flower a rdfs:Statement;
@@ -979,7 +979,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_flower.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g03175_fruit a rdfs:Statement;
@@ -998,7 +998,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_fruit.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-38612_at5g03175_root a rdfs:Statement;
@@ -1017,7 +1017,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_root.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-53197_at3g62615_bur0_root a rdfs:Statement;
@@ -1036,7 +1036,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_bur0_root.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-53197_at3g62615_edi0_root a rdfs:Statement;
@@ -1055,7 +1055,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_edi0_root.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-53197_at3g62615_hi0_floral_bud a rdfs:Statement;
@@ -1074,7 +1074,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_hi0_floral_bud.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-53197_at3g62615_oy0_floral_bud a rdfs:Statement;
@@ -1093,7 +1093,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_oy0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_bur0_aerial_part a rdfs:Statement;
@@ -1112,7 +1112,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_bur0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_bur0_floral_bud a rdfs:Statement;
@@ -1131,7 +1131,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_bur0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_bur0_root a rdfs:Statement;
@@ -1150,7 +1150,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_bur0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_ct1_aerial_part a rdfs:Statement;
@@ -1169,7 +1169,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ct1_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_ct1_floral_bud a rdfs:Statement;
@@ -1188,7 +1188,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ct1_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_ct1_root a rdfs:Statement;
@@ -1207,7 +1207,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ct1_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_edi0_aerial_part a rdfs:Statement;
@@ -1226,7 +1226,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_edi0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_edi0_root a rdfs:Statement;
@@ -1245,7 +1245,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_edi0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_hi0_aerial_part a rdfs:Statement;
@@ -1264,7 +1264,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_hi0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_hi0_root a rdfs:Statement;
@@ -1283,7 +1283,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_hi0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_kn0_aerial_part a rdfs:Statement;
@@ -1302,7 +1302,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_kn0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_kn0_floral_bud a rdfs:Statement;
@@ -1321,7 +1321,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_kn0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_kn0_root a rdfs:Statement;
@@ -1340,7 +1340,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_kn0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_ler0_aerial_part a rdfs:Statement;
@@ -1359,7 +1359,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ler0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_ler0_floral_bud a rdfs:Statement;
@@ -1378,7 +1378,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ler0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_ler0_root a rdfs:Statement;
@@ -1397,7 +1397,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ler0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_mt0_aerial_part a rdfs:Statement;
@@ -1416,7 +1416,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_mt0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_mt0_root a rdfs:Statement;
@@ -1435,7 +1435,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_mt0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_no0_aerial_part a rdfs:Statement;
@@ -1454,7 +1454,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_no0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_no0_floral_bud a rdfs:Statement;
@@ -1473,7 +1473,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_no0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_no0_root a rdfs:Statement;
@@ -1492,7 +1492,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_no0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_oy0_aerial_part a rdfs:Statement;
@@ -1511,7 +1511,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_oy0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_oy0_floral_bud a rdfs:Statement;
@@ -1530,7 +1530,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_oy0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_oy0_root a rdfs:Statement;
@@ -1549,7 +1549,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_oy0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_po0_aerial_part a rdfs:Statement;
@@ -1568,7 +1568,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_po0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_po0_floral_bud a rdfs:Statement;
@@ -1587,7 +1587,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_po0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_po0_root a rdfs:Statement;
@@ -1606,7 +1606,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_po0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_rsch4_aerial_part a rdfs:Statement;
@@ -1625,7 +1625,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_rsch4_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_rsch4_root a rdfs:Statement;
@@ -1644,7 +1644,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_rsch4_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_sf2_aerial_part a rdfs:Statement;
@@ -1663,7 +1663,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_sf2_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_sf2_floral_bud a rdfs:Statement;
@@ -1682,7 +1682,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_sf2_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_sf2_root a rdfs:Statement;
@@ -1701,7 +1701,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_sf2_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_tsu0_aerial_part a rdfs:Statement;
@@ -1720,7 +1720,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_tsu0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_tsu0_floral_bud a rdfs:Statement;
@@ -1739,7 +1739,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_tsu0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_tsu0_root a rdfs:Statement;
@@ -1758,7 +1758,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_tsu0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_wil2_aerial_part a rdfs:Statement;
@@ -1777,7 +1777,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wil2_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_wil2_floral_bud a rdfs:Statement;
@@ -1796,7 +1796,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wil2_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_wil2_root a rdfs:Statement;
@@ -1815,7 +1815,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wil2_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_ws0_root a rdfs:Statement;
@@ -1834,7 +1834,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ws0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_wu0_aerial_part a rdfs:Statement;
@@ -1853,7 +1853,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wu0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_wu0_root a rdfs:Statement;
@@ -1872,7 +1872,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wu0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_zu0_aerial_part a rdfs:Statement;
@@ -1891,7 +1891,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_zu0_aerial_part.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_zu0_floral_bud a rdfs:Statement;
@@ -1910,7 +1910,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_zu0_floral_bud.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-53197_at4g06835_zu0_root a rdfs:Statement;
@@ -1929,7 +1929,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_zu0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_bur0_aerial_part a rdfs:Statement;
@@ -1948,7 +1948,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_bur0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_bur0_floral_bud a rdfs:Statement;
@@ -1967,7 +1967,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_bur0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_bur0_root a rdfs:Statement;
@@ -1986,7 +1986,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_bur0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ct1_aerial_part a rdfs:Statement;
@@ -2005,7 +2005,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ct1_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ct1_floral_bud a rdfs:Statement;
@@ -2024,7 +2024,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ct1_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ct1_root a rdfs:Statement;
@@ -2043,7 +2043,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ct1_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_edi0_aerial_part a rdfs:Statement;
@@ -2062,7 +2062,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_edi0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_edi0_floral_bud a rdfs:Statement;
@@ -2081,7 +2081,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_edi0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_edi0_root a rdfs:Statement;
@@ -2100,7 +2100,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_edi0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_hi0_aerial_part a rdfs:Statement;
@@ -2119,7 +2119,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_hi0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_hi0_floral_bud a rdfs:Statement;
@@ -2138,7 +2138,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_hi0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_hi0_root a rdfs:Statement;
@@ -2157,7 +2157,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_hi0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_kn0_aerial_part a rdfs:Statement;
@@ -2176,7 +2176,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_kn0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_kn0_floral_bud a rdfs:Statement;
@@ -2195,7 +2195,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_kn0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_kn0_root a rdfs:Statement;
@@ -2214,7 +2214,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_kn0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ler0_aerial_part a rdfs:Statement;
@@ -2233,7 +2233,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ler0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ler0_floral_bud a rdfs:Statement;
@@ -2252,7 +2252,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ler0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ler0_root a rdfs:Statement;
@@ -2271,7 +2271,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ler0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_mt0_aerial_part a rdfs:Statement;
@@ -2290,7 +2290,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_mt0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_mt0_floral_bud a rdfs:Statement;
@@ -2309,7 +2309,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_mt0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_mt0_root a rdfs:Statement;
@@ -2328,7 +2328,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_mt0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_no0_aerial_part a rdfs:Statement;
@@ -2347,7 +2347,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_no0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_no0_floral_bud a rdfs:Statement;
@@ -2366,7 +2366,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_no0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_no0_root a rdfs:Statement;
@@ -2385,7 +2385,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_no0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_oy0_aerial_part a rdfs:Statement;
@@ -2404,7 +2404,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_oy0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_oy0_floral_bud a rdfs:Statement;
@@ -2423,7 +2423,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_oy0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_oy0_root a rdfs:Statement;
@@ -2442,7 +2442,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_oy0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_po0_aerial_part a rdfs:Statement;
@@ -2461,7 +2461,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_po0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_po0_floral_bud a rdfs:Statement;
@@ -2480,7 +2480,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_po0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_po0_root a rdfs:Statement;
@@ -2499,7 +2499,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_po0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_rsch4_aerial_part a rdfs:Statement;
@@ -2518,7 +2518,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_rsch4_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_rsch4_floral_bud a rdfs:Statement;
@@ -2537,7 +2537,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_rsch4_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_rsch4_root a rdfs:Statement;
@@ -2556,7 +2556,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_rsch4_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_sf2_aerial_part a rdfs:Statement;
@@ -2575,7 +2575,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_sf2_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_sf2_floral_bud a rdfs:Statement;
@@ -2594,7 +2594,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_sf2_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_sf2_root a rdfs:Statement;
@@ -2613,7 +2613,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_sf2_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_tsu0_aerial_part a rdfs:Statement;
@@ -2632,7 +2632,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_tsu0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_tsu0_floral_bud a rdfs:Statement;
@@ -2651,7 +2651,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_tsu0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_tsu0_root a rdfs:Statement;
@@ -2670,7 +2670,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_tsu0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_wil2_aerial_part a rdfs:Statement;
@@ -2689,7 +2689,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wil2_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_wil2_floral_bud a rdfs:Statement;
@@ -2708,7 +2708,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wil2_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_wil2_root a rdfs:Statement;
@@ -2727,7 +2727,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wil2_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ws0_aerial_part a rdfs:Statement;
@@ -2746,7 +2746,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ws0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ws0_floral_bud a rdfs:Statement;
@@ -2765,7 +2765,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ws0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_ws0_root a rdfs:Statement;
@@ -2784,7 +2784,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ws0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_wu0_aerial_part a rdfs:Statement;
@@ -2803,7 +2803,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wu0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_wu0_floral_bud a rdfs:Statement;
@@ -2822,7 +2822,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wu0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_wu0_root a rdfs:Statement;
@@ -2841,7 +2841,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wu0_root.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_zu0_aerial_part a rdfs:Statement;
@@ -2860,7 +2860,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_zu0_aerial_part.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_zu0_floral_bud a rdfs:Statement;
@@ -2879,7 +2879,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_zu0_floral_bud.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g02710_zu0_root a rdfs:Statement;
@@ -2898,7 +2898,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_zu0_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_bur0_root a rdfs:Statement;
@@ -2917,7 +2917,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_bur0_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_kn0_floral_bud a rdfs:Statement;
@@ -2936,7 +2936,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_kn0_floral_bud.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_ler0_root a rdfs:Statement;
@@ -2955,7 +2955,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_ler0_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_mt0_root a rdfs:Statement;
@@ -2974,7 +2974,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_mt0_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_no0_floral_bud a rdfs:Statement;
@@ -2993,7 +2993,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_no0_floral_bud.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_oy0_root a rdfs:Statement;
@@ -3012,7 +3012,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_oy0_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_tsu0_floral_bud a rdfs:Statement;
@@ -3031,7 +3031,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_tsu0_floral_bud.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_tsu0_root a rdfs:Statement;
@@ -3050,7 +3050,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_tsu0_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_wil2_root a rdfs:Statement;
@@ -3069,7 +3069,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_wil2_root.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_ws0_floral_bud a rdfs:Statement;
@@ -3088,7 +3088,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_ws0_floral_bud.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-53197_at5g03175_wu0_root a rdfs:Statement;
@@ -3107,7 +3107,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_wu0_root.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_bur0_x_col0 a rdfs:Statement;
@@ -3126,7 +3126,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_bur0_x_col0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_hi0_x_ct1 a rdfs:Statement;
@@ -3145,7 +3145,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_hi0_x_ct1.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_ler0_x_kn0 a rdfs:Statement;
@@ -3164,7 +3164,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ler0_x_kn0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_mt0_x_tsu0 a rdfs:Statement;
@@ -3183,7 +3183,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_mt0_x_tsu0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_sf2_x_can0 a rdfs:Statement;
@@ -3202,7 +3202,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_sf2_x_can0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_wil2_x_no0 a rdfs:Statement;
@@ -3221,7 +3221,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wil2_x_no0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_ws0_x_oy0 a rdfs:Statement;
@@ -3240,7 +3240,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_ws0_x_oy0.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_wu0_x_rsch4 a rdfs:Statement;
@@ -3259,7 +3259,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_wu0_x_rsch4.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55482_at4g06835_zu0_x_edi0 a rdfs:Statement;
@@ -3278,7 +3278,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_zu0_x_edi0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_bur0_x_col0 a rdfs:Statement;
@@ -3297,7 +3297,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_bur0_x_col0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_hi0_x_ct1 a rdfs:Statement;
@@ -3316,7 +3316,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_hi0_x_ct1.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_ler0_x_kn0 a rdfs:Statement;
@@ -3335,7 +3335,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ler0_x_kn0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_mt0_x_tsu0 a rdfs:Statement;
@@ -3354,7 +3354,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_mt0_x_tsu0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_sf2_x_can0 a rdfs:Statement;
@@ -3373,7 +3373,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_sf2_x_can0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_wil2_x_no0 a rdfs:Statement;
@@ -3392,7 +3392,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wil2_x_no0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_ws0_x_oy0 a rdfs:Statement;
@@ -3411,7 +3411,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_ws0_x_oy0.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_wu0_x_rsch4 a rdfs:Statement;
@@ -3430,7 +3430,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_wu0_x_rsch4.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55482_at5g02710_zu0_x_edi0 a rdfs:Statement;
@@ -3449,7 +3449,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_zu0_x_edi0.
 
 
 bkr:gene_at2g31018 a bioschema:Gene;
-	agri:accession "AT2G31018";
+	schema:identifier "AT2G31018";
 .
 
 bkr:gxaexp_E-GEOD-55866_at2g31018_6_to_10_day_postanthesis a rdfs:Statement;
@@ -3468,7 +3468,7 @@ bkr:gene_at2g31018 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
 
 
 bkr:gene_at2g31018 a bioschema:Gene;
-	agri:accession "AT2G31018";
+	schema:identifier "AT2G31018";
 .
 
 bkr:gxaexp_E-GEOD-55866_at2g31018_11_to_15_day_postanthesis a rdfs:Statement;
@@ -3487,7 +3487,7 @@ bkr:gene_at2g31018 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
 
 
 bkr:gene_at2g31018 a bioschema:Gene;
-	agri:accession "AT2G31018";
+	schema:identifier "AT2G31018";
 .
 
 bkr:gxaexp_E-GEOD-55866_at2g31018_16_to_20_day_postanthesis a rdfs:Statement;
@@ -3506,7 +3506,7 @@ bkr:gene_at2g31018 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-55866_at3g62615_0_to_5_day_postanthesis a rdfs:Statement;
@@ -3525,7 +3525,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_0_to_5_day_postanthesis.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-55866_at3g62615_6_to_10_day_postanthesis a rdfs:Statement;
@@ -3544,7 +3544,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-55866_at3g62615_11_to_15_day_postanthesis a rdfs:Statement;
@@ -3563,7 +3563,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
 
 
 bkr:gene_at3g62615 a bioschema:Gene;
-	agri:accession "AT3G62615";
+	schema:identifier "AT3G62615";
 .
 
 bkr:gxaexp_E-GEOD-55866_at3g62615_16_to_20_day_postanthesis a rdfs:Statement;
@@ -3582,7 +3582,7 @@ bkr:gene_at3g62615 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55866_at4g06835_6_to_10_day_postanthesis a rdfs:Statement;
@@ -3601,7 +3601,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55866_at4g06835_11_to_15_day_postanthesis a rdfs:Statement;
@@ -3620,7 +3620,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-55866_at4g06835_16_to_20_day_postanthesis a rdfs:Statement;
@@ -3639,7 +3639,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g02710_0_to_5_day_postanthesis a rdfs:Statement;
@@ -3658,7 +3658,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_0_to_5_day_postanthesis.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g02710_6_to_10_day_postanthesis a rdfs:Statement;
@@ -3677,7 +3677,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g02710_11_to_15_day_postanthesis a rdfs:Statement;
@@ -3696,7 +3696,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g02710_16_to_20_day_postanthesis a rdfs:Statement;
@@ -3715,7 +3715,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g03175_0_to_5_day_postanthesis a rdfs:Statement;
@@ -3734,7 +3734,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_0_to_5_day_postanthesis.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g03175_6_to_10_day_postanthesis a rdfs:Statement;
@@ -3753,7 +3753,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_6_to_10_day_postanthesis.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g03175_11_to_15_day_postanthesis a rdfs:Statement;
@@ -3772,7 +3772,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_11_to_15_day_postanthesis.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-55866_at5g03175_16_to_20_day_postanthesis a rdfs:Statement;
@@ -3791,7 +3791,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_16_to_20_day_postanthesis.
 
 
 bkr:gene_at4g06835 a bioschema:Gene;
-	agri:accession "AT4G06835";
+	schema:identifier "AT4G06835";
 .
 
 bkr:gxaexp_E-GEOD-58856_at4g06835_mixed_guard_mother_cell_and_guard_cell a rdfs:Statement;
@@ -3810,7 +3810,7 @@ bkr:gene_at4g06835 bioschema:expressedIn bkr:cond_mixed_guard_mother_cell_and_gu
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-58856_at5g02710_guard_cell a rdfs:Statement;
@@ -3829,7 +3829,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_guard_cell.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-GEOD-58856_at5g02710_shoot_epidermal_cell a rdfs:Statement;
@@ -3848,7 +3848,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_shoot_epidermal_cell.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-GEOD-58856_at5g03175_mixed_stomatal_initial_cell_and_guard_mother_cell a rdfs:Statement;
@@ -3867,7 +3867,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_mixed_stomatal_initial_cell_an
 
 
 bkr:gene_at2g09245 a bioschema:Gene;
-	agri:accession "AT2G09245";
+	schema:identifier "AT2G09245";
 .
 
 bkr:gxaexp_E-MTAB-4202_at2g09245_8_day a rdfs:Statement;
@@ -3886,7 +3886,7 @@ bkr:gene_at2g09245 bioschema:expressedIn bkr:cond_8_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_7_day a rdfs:Statement;
@@ -3905,7 +3905,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_7_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_8_day a rdfs:Statement;
@@ -3924,7 +3924,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_8_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_9_day a rdfs:Statement;
@@ -3943,7 +3943,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_9_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_10_day a rdfs:Statement;
@@ -3962,7 +3962,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_10_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_11_day a rdfs:Statement;
@@ -3981,7 +3981,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_11_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_12_day a rdfs:Statement;
@@ -4000,7 +4000,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_12_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_13_day a rdfs:Statement;
@@ -4019,7 +4019,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_13_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_14_day a rdfs:Statement;
@@ -4038,7 +4038,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_14_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_15_day a rdfs:Statement;
@@ -4057,7 +4057,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_15_day.
 
 
 bkr:gene_at5g02710 a bioschema:Gene;
-	agri:accession "AT5G02710";
+	schema:identifier "AT5G02710";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g02710_16_day a rdfs:Statement;
@@ -4076,7 +4076,7 @@ bkr:gene_at5g02710 bioschema:expressedIn bkr:cond_16_day.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g03175_8_day a rdfs:Statement;
@@ -4095,7 +4095,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_8_day.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g03175_10_day a rdfs:Statement;
@@ -4114,7 +4114,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_10_day.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g03175_12_day a rdfs:Statement;
@@ -4133,7 +4133,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_12_day.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g03175_13_day a rdfs:Statement;
@@ -4152,7 +4152,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_13_day.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g03175_15_day a rdfs:Statement;
@@ -4171,7 +4171,7 @@ bkr:gene_at5g03175 bioschema:expressedIn bkr:cond_15_day.
 
 
 bkr:gene_at5g03175 a bioschema:Gene;
-	agri:accession "AT5G03175";
+	schema:identifier "AT5G03175";
 .
 
 bkr:gxaexp_E-MTAB-4202_at5g03175_16_day a rdfs:Statement;

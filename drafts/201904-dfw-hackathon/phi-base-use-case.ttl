@@ -69,7 +69,7 @@ res:phiInt001 a agri:HostPathogenInteraction;
 .
 
 res:gene_FG00332 a bioschema:Gene;
-	agri:accession "FG00332";
+	schema:identifier "FG00332";
 	schema:name "Transducin beta-subunit";
 	bioschema:encodes res:protein_I1RA15;
 	schema:additionalType obo:GO_0009405, obo:GO_0044412 .

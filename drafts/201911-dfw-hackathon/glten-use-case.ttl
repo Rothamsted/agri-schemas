@@ -19,7 +19,7 @@ res:glten_r_bk a bioschema:Study;
 		<http://dbpedia.org/resource/Agronomy>,
 		<http://dbpedia.org/resource/Agriculture>;
 
-  agri:accession "R/BK";
+  schema:identifier "R/BK";
 	schema:name "Broadbalk winter wheat long-term experiment";
 	schema:description "The Broadbalk experiment is one of the oldest continuous agronomic experiments in the world. Started by Lawes and Gilbert in the autumn of 1843, winter wheat has been sown and harvested on all or part of the field every year since then.";
 	

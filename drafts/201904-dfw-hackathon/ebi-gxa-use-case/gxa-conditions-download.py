@@ -40,7 +40,7 @@ for cond_label in conditions:
 		acc = get_term_accession ( term_uri )
 		if not acc: continue
 
-		print ( "<%s> agri:accession \"%s\"." % ( term_uri, acc ) )
+		print ( "<%s> schema:identifier \"%s\"." % ( term_uri, acc ) )
 
 		# Add links to Knetminer
 		if not acc [ 2 ] == '_': continue

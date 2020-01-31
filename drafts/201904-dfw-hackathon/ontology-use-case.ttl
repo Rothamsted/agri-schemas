@@ -9,12 +9,12 @@
 # symplifying relations.
 
 obo:GO_0030015  a  schema:DefinedTerm;
-	agri:accession  		"GO:0030015";
+	schema:identifier 		"GO:0030015";
 	schema:isPartOf 		obo:GO_0030014;
 	schema:name    "CCR4-NOT core complex" 
 .
 
 obo:GO_0030014  a  schema:DefinedTerm ;
-	agri:accession  		"GO:0030014";
+	schema:identifier 		"GO:0030014";
 	bk:prefName    "CCR4-NOT complex"
 .
