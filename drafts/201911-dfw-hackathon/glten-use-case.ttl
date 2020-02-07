@@ -5,7 +5,7 @@
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-@prefix glten: <http://agrischemas.org/glten/>
+@prefix milax: <http://agrischemas.org/milax/>
 
 
 res:glten_r_bk a bioschema:Study;
@@ -40,6 +40,7 @@ res:glten_r_bk a bioschema:Study;
 		a schema:PropertyValue;
 		# This is the way to encode particular uncommon properties that are not explicitly defined
 		# in existing schemas.
+		# TODO: do we need "Establishement period end"? What is it, exactly?
 		schema:propertyID "milax:Establishement period end";
 		schema:value "1851"^^xsd:gYear # or xsd:date
 	];
@@ -47,12 +48,12 @@ res:glten_r_bk a bioschema:Study;
   # TODO: modelling orgs/people with schema:Ogranization is pretty straightforward, omitted for now.
 	schema:author res:org_RothamstedResearch;
   
-	# We use the (weird) approach:
+	# We use the (weird) approach described here for roles:
 	# schema:contributor -> Role -> Person, as per http://blog.schema.org/2014/06/introducing-role.html
 	schema:contributor [
 		a schema:Role;
 		# Experiment Manager
-		schema:roleName <http://purl.obolibrary.org/obo/AGRO_00000381>;
+		schema:roleName <http://purl.obolibrary.org/obo/AGRO_00000381>, "Experiment Manager";
 		schema:startDate "2015-01-01"^^xsd:date;
 		schema:contributor [
 			a schema:Person;
@@ -76,6 +77,10 @@ res:glten_r_bk a bioschema:Study;
 	bioschema:relatedStudy [
 		# Because the relatedStudy property clearly requires a resource in its range, this modelling approach seems
 		# the best option for the case where only the related experiment title is available.
+		#
+		# We might decide to ignore rdfs:rangeIncludes, as in other cases, however in this particular case, it's
+		# more reasonable to expect a full resource in the range.
+		# 
 		schema:name "Alternate Wheat and Fallow"
 	]
 .
@@ -100,7 +105,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 	schema:isPartOf res:glten_r_bk;
 
   schema:additionalType
-		glten:DesignPeriod,
+		milax:DesignPeriod,
 		<http://www.cropontology.org/terms/CO_715:0000250>; # Fertilizer trial
 
 	schema:startDate 1843^^xsd:gYear; # or xsd:date;
@@ -109,7 +114,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 	# TODO: You might want to add hasPart or isPartOf, as in MIAPPE use case.
   bioschema:studyProcess [
 		a agri:StudyDesign;
-		schema:additionalType "http://purl.obolibrary.org/obo/AGRO_00000335","demonstration strip design";
+		schema:additionalType <http://purl.obolibrary.org/obo/AGRO_00000335>,"demonstration strip design";
 	];
 
 	schema:additionalProperty [
@@ -138,6 +143,18 @@ res:glten_r_bk_1843_1925 a schema:Study;
 		<http://www.ebi.ac.uk/efo/EFO_0001461> # Control Role, this is to mark the factor as the base level,
 	];
 	# Other factors ...
+
+	schema:additionalProperty [
+		a agri:StudyObservedValue;
+		schema:name "Total grain";
+		schema:description "Total yield of grain at field moisture content"
+	],
+	[
+		a agri:StudyObservedValue;
+		schema:name "Total straw";
+		schema:description "Total yield of straw at field moisture content"
+	];
+	# Other observed value	
 
 
 	schema:additionalProperty [
@@ -179,8 +196,38 @@ res:glten_r_bk_1843_1925 a schema:Study;
 		"Note 2, Plot areas\nWhen the experiment was established in 1843 most of the plots were very large. Most comprised an ‘a’ and ‘b’ half (each 3.77m wide) and were 320m long (the length of the field). Plots 21 and 22 are a little narrower. In 1894 the two halves were combined, giving a total plot area of 0.24ha. As the experiment progressed these large plots have been subdivided into different Sections (see ‘Background’ for more details), with corresponding changes in the area harvested. The current plot lengths vary depending on the Section and are between 15.24m (Section 0) and 28.04m (Section 1). The plots are now 6m wide (except plots 21 and 22 which are 4m wide) with 48 rows at 12.5 cm spacing. The harvested area is 2.1m wide. The harvested area is shown in most of the datasets."
 
 	# redundantly marks the fact there's a sample with location. isPartOf should be used anyway.
-	schema:contentLocation glten_r_bk_site; 
+	schema:contentLocation glten_r_bk_site 
 .
+
+
+res:glten_r_bk_crop a bioschema:Sample;
+
+	schema:isPartOf glten_r_bk_1843_1925;
+	schema:additionalType <http://aims.fao.org/aos/agrovoc/c_8412>;
+
+	schema:additionalProperty [	
+		a schema:PropertyValue;
+		schema:propertyID "role";
+		schema:value "source organism"
+	];
+
+	schema:value "Winter wheat"
+.
+
+
+# This is an option to make it explicit that the crop was grown in a given site and from a given soil
+# Using dc:source is a quicker way to do it.
+#
+res:whatfus01_treatment01 a bioschema:LabProtocol;
+	schema:isPartOf glten_r_bk_1843_1925;
+	
+	# Or use ontology term URIs
+	bioschema:purpose "growing";
+	
+	schema:object res:glten_r_bk_site, res:glten_r_bk_soil;
+	schema:result res:glten_r_bk_crop;
+.
+
 
 res:glten_r_bk_site a bioschema:Sample, schema:Place;
 	
@@ -234,7 +281,9 @@ res:glten_r_bk_site a bioschema:Sample, schema:Place;
 	# TODO: is weather station important?! We already have generic climate descriptors
 .
 
-res:glten_r_bk_soil a bioschema:Sample
+# It's worth to model it as both Soil and a sample with the Soil role, since the latter 
+# is more standard.
+res:glten_r_bk_soil a bioschema:Sample, agri:Soil
 	schema:additionalProperty [	
 		a schema:PropertyValue;
 		schema:propertyID "role";

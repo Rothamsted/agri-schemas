@@ -107,14 +107,19 @@ agri:hasGeneExpressionIn a owl:AnnotationProperty;
 .
 
 agri:StudyFactor a owl:Class;
-	rdfs:subClassOf schema:Intangible, agri:BioSchemasNewClassProposal;
+	rdfs:subClassOf schema:PropertyValue, agri:BioSchemasNewClassProposal;
 	owl:equivalentClass <http://www.ebi.ac.uk/efo/EFO_0000001>, obo:OBI_0000750
+.
+
+agri:StudyObservedValue
+	rdfs:subClassOf schema:PropertyValue, agri:BioSchemasNewClassProposal;
+	owl:equivalentClass <http://purl.org/ppeo/PPEO.owl#observed_variable>
 .
 
 agri:StudyItemEvent a owl:Class;
 	rdfs:subClassOf schema:Action, agri:BioSchemasNewClassProposal;
 .
-	rdfs:comment "An event that occurs to a sample or a data set/file, which yields another item, 
+	schema:description "An event that occurs to a sample or a data set/file, which yields another item, 
 		knowlingly or potentially affecting the characteristics such new item has. 
 		This might be an on-purpose action (ie, a bioschema:LabProtocol), or a tracked event that 
 		might have affected an experiment step (eg, a weather change on a field location). 
@@ -129,4 +134,8 @@ bioschema:LabProtocol a owl:Class;
 
 agri:StudyDesign a owl:Class;
 	rdfs:subClassOf agri:StudyItemEvent, agri:BioSchemasNewClassProposal
+.
+
+agri:Soil
+	rdfs:subClassOf bioschema:BioChemEntity
 .

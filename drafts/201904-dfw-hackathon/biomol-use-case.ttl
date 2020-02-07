@@ -31,11 +31,11 @@ res:tob1  a bioschema:Protein ;
 .
 
 # Generic mentions by a publication (schema:subjectOf is an alternative)
-res:23236473 schema:mentions res:tob1.
+res:pub_23236473 schema:mentions res:tob1.
 
 # plain triples might be enriched via reification
 res:cit_tob1_23236473 a rdf:Statement;
-	rdf:subject res:23236473;
+	rdf:subject res:pub_23236473;
 	rdf:object res:tob1;
 	rdf:predicate schema:mentions;
 	agri:score 0.95
@@ -47,7 +47,7 @@ res:cit_tob1_23236473 a rdf:Statement;
 # When searching for schema:mentions ?target, the two cases can be distinguished by means of:
 # ?target a bioschema:Protein, or: MINUS { ?target a schema:StructuredValue }
 # 
-res:23236473 schema:mentions res:cit_tob1_23236473.
+res:pub_23236473 schema:mentions res:cit_tob1_23236473.
 res:cit_tob1_23236473 a schema:StructuredValue;
   rdf:object res:tob1;
   agri:score 0.95;
@@ -74,7 +74,7 @@ res:TOB1_acc  				a schema:PropertyValue;
   rdfs:seeAlso 				obo:GO_0030014
 .
 
-res:23236473 a agri:ScholarlyPublication;
+res:pub_23236473 a agri:ScholarlyPublication;
 	dc:title  "The anti-proliferative activity of BTG/TOB proteins is mediated via the Caf1a (CNOT7) and Caf1b (CNOT8) deadenylase subunits of the Ccr4-not complex";
 	# This is the weird term that schema.org uses for summaries (and hence, abstracts)
 	schema:backstory "The human BTG/TOB protein family comprises six members (BTG1, BTG2/PC3/Tis21, BTG3/Ana, BTG4/PC3B, TOB1/Tob, and TOB2) that are characterised...";

@@ -47,16 +47,19 @@ res:whatfus01_src01 a bioschema:Sample
 		[ a schema:PropertyValue;
 				schema:propertyID "location";
 				schema:value "Cerekwica, Poland";
-				# An enrichment procedure might get a more specific property like the schema:location below
-				# rdfs:seeAlso or something like "enrichedBy" could be used to link the two.
 		]		
 	
-	# More specific properties can be added too (possibly, add them via automatic enrichment)
-	# An alternative is to make the Sample a Place too, allows for direct attachment of address.
-	# In such a case, you might want to add contentLocation or spatial to study (in addition to ^isPartOf)
+	# More specific properties can be added too (possibly, add them via automatic enrichment).
+	# This is an example regarding the previous location generic property.
+	# 
+	# rdfs:seeAlso or something more specific like "enrichedBy", "annotation" could be used to link the two, 
+	# possibly with provenance information attached via mechanisms like reified statements.
+	#
 	#
 	schema:contentLocation [
 		a schema:Place;
+		# An alternative to this model is to make the Sample a Place too, which would allow for direct attachment of address.
+		# In such a case, you might want to add contentLocation or spatial to study (in addition to ^isPartOf)
 		schema:name "Cerekwica, Poland";
 		schema:geo [
 			a schema:GeoCoordinates;
@@ -89,7 +92,10 @@ res:whatfus01_treatment01 a bioschema:LabProtocol;
 	# Moreover, it's redundant wrt studyProcess, but again, it might be useful to have this among the
 	# study components.
 	schema:isPartOf wheatfus01;
+	
+	# Or use ontology term URIs
 	bioschema:purpose "rooting";
+	
 	schema:object res:whatfus01_src01;
 	schema:result res:whatfus01_smp01;
 	# Same as the sample case
