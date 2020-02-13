@@ -16,7 +16,7 @@ res:study1 a bioschema:Study;
 # 
 # Pathways are a specific case of process, action, or alike. See the notes in the PHI-Base use case.
 #
-<http://www.wikipathways.org/id1> a agri:Pathway ; 
+<http://www.wikipathways.org/id1> a agri:BioPathway ; 
 	agri:evidence  "Imported from Database"
 	schema:name  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>
 .
