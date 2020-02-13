@@ -1,0 +1,141 @@
+@prefix agri: <http://agrischemas.org/>
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix metaSchema: <https://meta.schema.org/>
+@prefix dc: <http://purl.org/dc/elements/1.1/>
+@prefix owl: <https://www.w3.org/2002/07/owl#>
+@prefix sio: <http://semanticscience.org/resource/>
+@prefix oa: <http://www.w3.org/ns/oa#>
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+
+# These are all markers to track actions needed for new terms (eg, propose to schema/bioschemas, manage
+# manual import of the declared external type etc).
+
+# For AgriSchemasImported***, you don't need to extend from these types, we will write a script to do it
+# automatically from your definitions
+
+agri:AgriSchemasImportedClass a owl:Class.
+agri:AgriSchemasImportedProperty a rdf:Property.
+agri:BioSchemasNewPropertyProposal a owl:AnnotationProperty.
+agri:SchemaNewPropertyProposal a owl:AnnotationProperty.
+agri:BioSchemasNewClassProposal a owl:AnnotationProperty.
+agri:SchemaNewClassProposal a owl:AnnotationProperty.
+
+
+# schema:name is often used with the meaning of single primary name, despite its documentation declares
+# it equivalent to dc:title. We prefer to adopt such a convention for sake of simplicity.
+#schema:name a owl:AnnotationProperty;
+#	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
+#.
+
+# NO: use agri:alternateName
+#agri:altName a owl:AnnotationProperty;
+#	rdfs:subPropertyOf schema:name, agri:SchemaNewPropertyProposal
+#.
+
+agri:evidence a owl:AnnotationProperty;
+  rdfs:subPropertyOf oa:motivatedBy, agri:SchemaNewPropertyProposal
+.
+
+# The documentation of schema:identifier says that this is good for accessions and PropertyValue can
+# be used for structured accessions. So, we prefer to not introduce this
+#schema:accession a owl:AnnotationProperty;
+#	rdfs:subPropertyOf schema:identifier, agri:BioSchemasNewPropertyProposal;
+#	schema:rangeIncludes schema:StructuredValue
+#.
+
+agri:BiologicalAssociation a owl:Class;
+  rdfs:subClassOf schema:Intangible, agri:BioSchemasNewClassProposal
+.
+
+agri:BioPathway a owl:Class;
+  rdfs:subClassOf agri:BiologicalAssociation, agri:BioSchemasNewClassProposal
+.
+
+agri:HostPathogenInteraction a owl:Class;
+  rdfs:subClassOf agri:BiologicalAssociation, agri:BioSchemasNewClassProposal
+.
+
+agri:interactionHost a owl:AnnotationProperty;
+  rdfs:subPropertyOf schema:hasPart, agri:BioSchemasNewPropertyProposal;
+	schema:domainIncludes agri:HostPathogenInteraction;
+	schema:rangeIncludes schema:Phenotype
+.
+
+agri:interactionPathogen a owl:AnnotationProperty;
+  rdfs:subPropertyOf schema:hasPart, agri:BioSchemasNewPropertyProposal;
+	schema:domainIncludes agri:HostPathogenInteraction;
+	schema:rangeIncludes schema:Phenotype
+.
+
+# This is to describe a publication that can somehow be called scholarly (eg, it's peer-reviewed or is an 
+# academic report), but it's not necessarily an article (eg, proceeding volume, book chapter).
+#
+agri:ScholarlyPublication a owl:Class;
+  rdfs:subClassOf schema:CreativeWork, agri:BioSchemasNewClassProposal
+.
+
+schema:ScholarlyArticle rdfs:subClassOf agri:ScholarlyPublication.
+
+# This a practicality, it could be represented via identifier+PropertyValue+propertyID=PMID, but this shorthand
+# is very often useful in biology.
+agri:pmedId a owl:AnnotationProperty;
+	rdfs:subPropertyOf schema:identifier, agri:SchemaNewClassProposal
+.
+
+agri:score a owl:AnnotationProperty;
+	rdfs:subPropertyOf metaSchema:Property, agri:BioSchemasNewPropertyProposal;
+  schema:rangeIncludes schema:Number, schema:Enumeration, schema:Text;
+	schema:additionalType obo:OBI_0000071
+.
+
+agri:pvalue a owl:AnnotationProperty;
+	rdfs:subPropertyOf agri:score, agri:BioSchemasNewPropertyProposal;
+  schema:rangeIncludes schema:Number;
+	schema:additionalType obo:OBI_0000175, sio:SIO_000765
+.
+
+agri:isBiologicallyRelatedTo a owl:AnnotationProperty;
+	rdfs:seeAlso sio:SIO_000897;
+	rdfs:subPropertyOf schema:Property, agri:BioSchemasNewPropertyProposal.
+.
+
+agri:hasGeneExpressionIn a owl:AnnotationProperty;
+	rdfs:subPropertyOf agri:isBiologicallyRelatedTo, agri:BioSchemasNewPropertyProposal;
+	rdfs:seeAlso obo:GO_0010467;
+	rdfs:comment "Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter."
+.
+
+agri:StudyFactor a owl:Class;
+	rdfs:subClassOf schema:PropertyValue, agri:BioSchemasNewClassProposal;
+	owl:equivalentClass <http://www.ebi.ac.uk/efo/EFO_0000001>, obo:OBI_0000750
+.
+
+agri:StudyObservedValue
+	rdfs:subClassOf schema:PropertyValue, agri:BioSchemasNewClassProposal;
+	owl:equivalentClass <http://purl.org/ppeo/PPEO.owl#observed_variable>
+.
+
+agri:StudyItemEvent a owl:Class;
+	rdfs:subClassOf schema:Action, agri:BioSchemasNewClassProposal;
+.
+	schema:description "An event that occurs to a sample or a data set/file, which yields another item, 
+		knowlingly or potentially affecting the characteristics such new item has. 
+		This might be an on-purpose action (ie, a bioschema:LabProtocol), or a tracked event that 
+		might have affected an experiment step (eg, a weather change on a field location). 
+		Events can also be used to represent data extraction from samples (what is considered an 
+		assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation 
+		of differentially expressed genes, gene enrichment). This might also represent a plan or potential
+		event".
+
+bioschema:LabProtocol a owl:Class;
+	rdfs:subClassOf agri:StudyItemEvent
+.
+
+agri:StudyDesign a owl:Class;
+	rdfs:subClassOf agri:StudyItemEvent, agri:BioSchemasNewClassProposal
+.
+
+agri:Soil
+	rdfs:subClassOf bioschema:BioChemEntity
+.
