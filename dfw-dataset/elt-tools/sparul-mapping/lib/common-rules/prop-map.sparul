@@ -1,0 +1,19 @@
+INSERT
+{
+  GRAPH ${TARGET_GRAPH} {
+    ?x ?targetProp ?y
+  }
+}
+WHERE {
+  { ?srcProp (owl:equivalentProperty|rdfs:subPropertyOf|^owl:equivalentProperty|^rdfs:subPropertyOf)+ ?targetProp }
+  FILTER ( STRSTARTS ( STR(?targetProp), STR (${TARGET_NS}) ) )
+
+  { ?x ?srcProp ?y }
+  UNION {
+    ?y ?invProp ?x.
+    FILTER EXISTS {
+      { ?srcProp rdfs:subPropertyOf*/owl:inverseOf ?invProp }
+      UNION { ?invProp rdfs:subPropertyOf*/owl:inverseOf ?srcProp }
+    }
+  }
+}

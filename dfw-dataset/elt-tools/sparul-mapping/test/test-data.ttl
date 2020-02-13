@@ -1,0 +1,30 @@
+@prefix ex: <http://www.example.com/ns/>.
+@prefix schema: <http://schema.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>
+
+# Mapping of equivalent classes
+ex:A owl:equivalentClass schema:Thing.
+# Equivalent by transitive closure
+ex:B rdfs:subClassOf ex:A.
+
+ex:a a ex:A.
+ex:b a ex:B.
+
+# Equivalent properties
+ex:same owl:equivalentProperty schema:sameAs.
+ex:a ex:same ex:b.
+
+# Equivalence + transitive closure
+ex:identical rdfs:subPropertyOf schema:sameAs.
+ex:c ex:identical ex:b.
+
+# Equivalence via inverse property
+ex:partOf owl:equivalentProperty schema:partOf.
+ex:hasPart owl:inverseOf ex:partOf.
+ex:container ex:hasPart ex:component.
+
+# Equivalence via subclass and inverse
+ex:hasSpecialPart rdfs:subPropertyOf ex:hasPart.
+# Should yield ex:specialComponent schema:partof ex:container
+ex:container ex:hasSpecialPart ex:specialComponent.

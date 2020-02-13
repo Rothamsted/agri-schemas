@@ -1,0 +1,50 @@
+cd "$(dirname $0)"
+my_dir="$(pwd)"
+
+cd ../..
+. ./namespaces.sh
+. ./test/test-utils.sh
+
+test_tdb=/tmp/sparul-mapping-test-tdb
+rm -Rf "$test_tdb"
+"$JENA_HOME/bin/tdbloader" --loc="$test_tdb" "$my_dir/test-data.ttl" 
+
+./sparul-mapping/sparul-mapping.sh "$test_tdb" 'schema:' "<$(ns ex)mappedGraph>" /tmp/sparul-mapping-test.ttl
+
+testMappedClass ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:a a schema:Thing } }" \
+	  | assert_sparql "ex:a direct owl:equivalentClass not mapped!"
+}
+
+testMappedClassViaChain ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:b a schema:Thing } }" \
+	  | assert_sparql "ex:b owl:equivalentClass/rdfs:subClassOf not mapped!"
+}
+
+testMappedProperty ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:a schema:sameAs ex:b } }" \
+	  | assert_sparql "ex:a direct owl:equivalentProperty not mapped!"
+}
+
+testMappedPropertyViaChain ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:c schema:sameAs ex:b } }" \
+	  | assert_sparql "ex:c direct owl:equivalentClass/rdfs:subClassOf not mapped!"
+}
+
+testMappedPropertyViaInverse ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:component schema:partOf ex:container } }" \
+	  | assert_sparql "inverseOf-based mapping not working!"
+}
+
+testMappedPropertyViaInverseAndChain ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:specialComponent schema:partOf ex:container } }" \
+	  | assert_sparql "mapping based on subproperty+inverse not working!"
+}
+
+. "$(which shunit2)"
