@@ -1,12 +1,16 @@
-@prefix agri: <http://agrischemas.org/>
+@prefix agri: <http://agrischemas.org/>.
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
-@prefix metaSchema: <https://meta.schema.org/>
-@prefix dc: <http://purl.org/dc/elements/1.1/>
-@prefix owl: <https://www.w3.org/2002/07/owl#>
-@prefix sio: <http://semanticscience.org/resource/>
-@prefix oa: <http://www.w3.org/ns/oa#>
+@prefix metaSchema: <http://meta.schema.org/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix sio: <http://semanticscience.org/resource/>.
+@prefix oa: <http://www.w3.org/ns/oa#>.
 @prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
 
 # These are all markers to track actions needed for new terms (eg, propose to schema/bioschemas, manage
 # manual import of the declared external type etc).
@@ -75,12 +79,18 @@ agri:ScholarlyPublication a owl:Class;
   rdfs:subClassOf schema:CreativeWork, agri:BioSchemasNewClassProposal
 .
 
+agri:authorsList a owl:AnnotationProperty;
+	rdfs:subClassOf dc:creator;
+	schema:additionalType schema:creator	
+.
+
+
 schema:ScholarlyArticle rdfs:subClassOf agri:ScholarlyPublication.
 
 # This a practicality, it could be represented via identifier+PropertyValue+propertyID=PMID, but this shorthand
 # is very often useful in biology.
 agri:pmedId a owl:AnnotationProperty;
-	rdfs:subPropertyOf schema:identifier, agri:SchemaNewClassProposal
+	rdfs:subPropertyOf schema:identifier, agri:SchemasNewPropertyProposal
 .
 
 agri:score a owl:AnnotationProperty;
@@ -97,7 +107,7 @@ agri:pvalue a owl:AnnotationProperty;
 
 agri:isBiologicallyRelatedTo a owl:AnnotationProperty;
 	rdfs:seeAlso sio:SIO_000897;
-	rdfs:subPropertyOf schema:Property, agri:BioSchemasNewPropertyProposal.
+	rdfs:subPropertyOf schema:Property, agri:BioSchemasNewPropertyProposal
 .
 
 agri:hasGeneExpressionIn a owl:AnnotationProperty;
@@ -111,22 +121,23 @@ agri:StudyFactor a owl:Class;
 	owl:equivalentClass <http://www.ebi.ac.uk/efo/EFO_0000001>, obo:OBI_0000750
 .
 
-agri:StudyObservedValue
+agri:StudyObservedValue a owl:AnnotationProperty;
 	rdfs:subClassOf schema:PropertyValue, agri:BioSchemasNewClassProposal;
 	owl:equivalentClass <http://purl.org/ppeo/PPEO.owl#observed_variable>
 .
 
 agri:StudyItemEvent a owl:Class;
 	rdfs:subClassOf schema:Action, agri:BioSchemasNewClassProposal;
-.
-	schema:description "An event that occurs to a sample or a data set/file, which yields another item, 
+
+	schema:description """An event that occurs to a sample or a data set/file, which yields another item, 
 		knowlingly or potentially affecting the characteristics such new item has. 
 		This might be an on-purpose action (ie, a bioschema:LabProtocol), or a tracked event that 
 		might have affected an experiment step (eg, a weather change on a field location). 
 		Events can also be used to represent data extraction from samples (what is considered an 
 		assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation 
 		of differentially expressed genes, gene enrichment). This might also represent a plan or potential
-		event".
+		event"""
+.
 
 bioschema:LabProtocol a owl:Class;
 	rdfs:subClassOf agri:StudyItemEvent
@@ -136,6 +147,12 @@ agri:StudyDesign a owl:Class;
 	rdfs:subClassOf agri:StudyItemEvent, agri:BioSchemasNewClassProposal
 .
 
-agri:Soil
+agri:Soil a owl:AnnotationProperty;
 	rdfs:subClassOf bioschema:BioChemEntity
+.
+
+# We define common mappings too.
+# 
+schema:abstract a owl:AnnotationProperty;
+	owl:equivalentProperty dcterms:abstract
 .

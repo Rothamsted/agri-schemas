@@ -1,9 +1,12 @@
-@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>
-@prefix agri: <http://agrischemas.org/>
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>.
+@prefix agri: <http://agrischemas.org/>.
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
 
 
 res:study1 a bioschema:Study;
@@ -76,8 +79,7 @@ res:TOB1_acc  				a schema:PropertyValue;
 
 res:pub_23236473 a agri:ScholarlyPublication;
 	dc:title  "The anti-proliferative activity of BTG/TOB proteins is mediated via the Caf1a (CNOT7) and Caf1b (CNOT8) deadenylase subunits of the Ccr4-not complex";
-	# This is the weird term that schema.org uses for summaries (and hence, abstracts)
-	schema:backstory "The human BTG/TOB protein family comprises six members (BTG1, BTG2/PC3/Tis21, BTG3/Ana, BTG4/PC3B, TOB1/Tob, and TOB2) that are characterised...";
+	schema:abstract "The human BTG/TOB protein family comprises six members (BTG1, BTG2/PC3/Tis21, BTG3/Ana, BTG4/PC3B, TOB1/Tob, and TOB2) that are characterised...";
 	agri:pmedId           "23236473" ;
 	# This should be an ISO 8601 string. This standards accepts dates with year only, however it
 	# isn't clear if they should be interpreted as 'day/month is unknown', or 'the year is referred by generically', or

@@ -5,7 +5,7 @@ INSERT
 	}
 }
 WHERE {
-	{ ?srcClass (owl:equivalentClass|rdfs:subClassOf|^owl:equivalentClass|^rdfs:subClassOf)+ ?targetClass }
+	{ ?srcClass (owl:equivalentClass|^owl:equivalentClass|rdfs:subClassOf)+ ?targetClass }
 	FILTER ( STRSTARTS ( STR(?targetClass), STR (${TARGET_NS}) ) )
 
 	{ ?i a ?srcClass }

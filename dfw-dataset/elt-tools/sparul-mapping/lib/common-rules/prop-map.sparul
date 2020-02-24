@@ -5,10 +5,11 @@ INSERT
   }
 }
 WHERE {
-  { ?srcProp (owl:equivalentProperty|rdfs:subPropertyOf|^owl:equivalentProperty|^rdfs:subPropertyOf)+ ?targetProp }
+  { ?srcProp (owl:equivalentProperty|^owl:equivalentProperty|rdfs:subPropertyOf)+ ?targetProp }
   FILTER ( STRSTARTS ( STR(?targetProp), STR (${TARGET_NS}) ) )
 
   { ?x ?srcProp ?y }
+  
   UNION {
     ?y ?invProp ?x.
     FILTER EXISTS {
