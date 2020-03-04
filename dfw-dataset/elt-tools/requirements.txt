@@ -1,3 +1,5 @@
 TODO: Docker
 - JENA
+
+## For testing:
 - https://github.com/kward/shunit2
