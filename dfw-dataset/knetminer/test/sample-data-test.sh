@@ -12,6 +12,8 @@ EOT
 	exit 1
 fi
 
+. "$DFW_ELT/namespaces.sh"
+
 echo -e "--- Generating test RDF"
 sample_rdf=/tmp/knetminer-sample.ttl
 "$ODX2RDF"/odx2rdf.sh $ODX2RDF/examples/text_mining.oxl "$sample_rdf"
@@ -25,4 +27,4 @@ rm -Rf "$test_tdb"
 
 echo -e "--- Running Agrischemas mappings"
 mapping_out="/tmp/knetminer-mapping-test-out.ttl"
-./sparul-mapping/sparul-mapping.sh "$test_tdb" 'schema:' "<$(ns graphs)knetminer-sample>" "$mapping_out"
+"$ELT_TOOLS/sparul-mapping/sparul-mapping.sh" "$test_tdb" 'schema:' "<$(ns aggraphs)knetminer-sample>" "$mapping_out"
