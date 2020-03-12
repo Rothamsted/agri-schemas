@@ -1,0 +1,18 @@
+INSERT
+{
+	GRAPH ${TARGET_GRAPH} {
+  	?i a ?targetClass
+	}
+}
+WHERE
+{
+	GRAPH ?g 
+	{
+		{ ?srcClass (owl:equivalentClass|^owl:equivalentClass) ?targetClass }
+		FILTER ( ?srcClass != ?targetClass )
+		FILTER ( TRUE || STRSTARTS ( STR(?targetClass), STR (${TARGET_NS}) ) )
+
+		{ ?i a ?srcClass }
+	}
+	FILTER ( ?g IN ( xarq:DefaultGraph, xarq:UnionGraph ) )
+}

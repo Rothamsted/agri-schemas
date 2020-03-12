@@ -8,7 +8,7 @@ cd "$(dirname $0)"
 [[ -z '$NAMESPACES' ]] || sparql_ns=$(sparql_ns "$NAMESPACES")
 
 query=$(eval "echo \"$sparql_ns\n$(cat "$sparul_file")\"")
-echo $query
+# DEBUG echo $query
 echo $query | "$JENA_HOME/bin/tdbupdate" --loc="$tdb_file" --update=-
 
 err=$?

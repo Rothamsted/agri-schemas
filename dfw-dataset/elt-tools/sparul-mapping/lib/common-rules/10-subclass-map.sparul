@@ -1,0 +1,16 @@
+INSERT
+{
+	?i a ?targetClass.
+
+	GRAPH ${TARGET_GRAPH} {
+  	?i a ?targetClass
+	}
+}
+WHERE
+{
+	{ ?srcClass rdfs:subClassOf+ ?targetClass }
+	FILTER ( ?srcClass != ?targetClass )
+	FILTER ( TRUE || STRSTARTS ( STR(?targetClass), STR (${TARGET_NS}) ) )
+
+	{ ?i a ?srcClass }
+}

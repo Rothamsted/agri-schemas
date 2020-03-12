@@ -3,6 +3,7 @@ if [[ -z ${NAMESPACES+x} ]]; then
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix schema: <http://schema.org/>.
+@prefix xarq: <urn:x-arq:>.
 "
 	export NAMESPACES
 fi

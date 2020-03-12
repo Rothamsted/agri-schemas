@@ -1,0 +1,18 @@
+INSERT
+{
+  GRAPH ${TARGET_GRAPH} {
+    ?y ?targetProp ?x
+  }
+}
+WHERE
+{
+	GRAPH ?g 
+	{
+    { ?srcProp owl:inverseOf ?targetProp }
+    FILTER ( ?srcProp != ?targetProp )
+    FILTER ( TRUE || STRSTARTS ( STR(?targetProp), STR (${TARGET_NS}) ) )
+
+    { ?x ?srcProp ?y }
+  }
+	FILTER ( ?g IN ( xarq:DefaultGraph, xarq:UnionGraph ) )
+}
