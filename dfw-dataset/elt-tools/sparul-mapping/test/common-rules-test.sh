@@ -11,6 +11,12 @@ rm -Rf "$test_tdb"
 
 ./sparul-mapping/sparul-mapping.sh "$test_tdb" 'schema:' "<$(ns ex)mappedGraph>" /tmp/sparul-mapping-test.ttl
 
+testTransitiveClass ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:b a ex:A } }" \
+	  | assert_sparql "ex:b a ex:A not inferred!"
+}
+
 testMappedClass ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:a a schema:Thing } }" \
@@ -22,6 +28,13 @@ testMappedClassViaChain ()
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:b a schema:Thing } }" \
 	  | assert_sparql "ex:b owl:equivalentClass/rdfs:subClassOf not mapped!"
 }
+
+testTransitiveProp ()
+{
+	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:container ex:hasPart ex:specialComponent } }" \
+	  | assert_sparql "ex:container ex:hasPart ex:specialComponent not inferred!"
+}
+
 
 testMappedProperty ()
 {

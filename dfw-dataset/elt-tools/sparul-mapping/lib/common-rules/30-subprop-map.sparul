@@ -1,18 +1,15 @@
 INSERT
 {
+  ?x ?targetProp ?y.
+
   GRAPH ${TARGET_GRAPH} {
     ?x ?targetProp ?y
   }
 }
 WHERE
 {
-	GRAPH ?g 
-	{
-    { ?srcProp rdfs:subPropertyOf+ ?targetProp }
-    FILTER ( ?srcProp != ?targetProp )
-    FILTER ( TRUE || STRSTARTS ( STR(?targetProp), STR (${TARGET_NS}) ) )
+  { ?srcProp rdfs:subPropertyOf+ ?targetProp }
+  FILTER ( ?srcProp != ?targetProp )
 
-    { ?x ?srcProp ?y }
-  }
-	FILTER ( ?g IN ( xarq:DefaultGraph, xarq:UnionGraph ) )
+  { ?x ?srcProp ?y }
 }

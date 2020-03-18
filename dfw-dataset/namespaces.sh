@@ -14,6 +14,6 @@ fi
 
 export NAMESPACES="$NAMESPACES
 @prefix agres: <http://agrischemas.org/resources/> .
-@prefix aggraphs: <http://agrischemas.org/graphs/> .
+@prefix agGraph: <http://agrischemas.org/graphs/> .
 "
 

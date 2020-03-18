@@ -1,7 +1,8 @@
 tdb_file="$1"
 sparul_file="$2"
 
-echo "Applying '$sparul_file'"
+rule_name=$(basename "$sparul_file")
+echo "Applying '$rule_name'"
 
 cd "$(dirname $0)"
 

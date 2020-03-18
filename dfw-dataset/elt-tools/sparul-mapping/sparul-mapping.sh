@@ -11,21 +11,18 @@ dump_file="$4"
 
 count=-2
 old_count=-1
+iteration=1
 while [[ $count != $old_count ]]
 do
+  echo -e "\n\t Iteration $iteration\n"
 	[[ "$SPARUL_FILES" == '' ]] && SPARUL_FILES=$(ls "$my_lib/common-rules/"*.sparul)
 	echo "$SPARUL_FILES" | xargs -n 1 "$my_lib/map-single-rule.sh" "$tdb_file"
 	
 	old_count=$count
-	echo "SELECT (COUNT(*) AS ?ct) { GRAPH ${TARGET_GRAPH} { ?s ?p ?o} }" \
-	  | "$JENA_HOME/bin/tdbquery" --loc="$tdb_file" --query=- --results=tsv \
-		| tail -n 2
-
-	set -x
 	count=$(echo "SELECT (COUNT(*) AS ?ct) { GRAPH ${TARGET_GRAPH} { ?s ?p ?o} }" \
 	  | "$JENA_HOME/bin/tdbquery" --loc="$tdb_file" --query=- --results=tsv \
 		| tail -n 2)
-	set +x
+	((iteration++))
 done
 
 [[ -z "$dump_file" ]] && exit

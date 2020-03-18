@@ -1,5 +1,3 @@
-set -e # stop upon error
-
 if [[ "$DFW_ELT" == "" ]]; then
   cat <<EOT
 
@@ -27,4 +25,22 @@ rm -Rf "$test_tdb"
 
 echo -e "--- Running Agrischemas mappings"
 mapping_out="/tmp/knetminer-mapping-test-out.ttl"
-"$ELT_TOOLS/sparul-mapping/sparul-mapping.sh" "$test_tdb" 'schema:' "<$(ns aggraphs)knetminer-sample>" "$mapping_out"
+"$ELT_TOOLS/sparul-mapping/sparul-mapping.sh" "$test_tdb" 'schema:' "<$(ns agGraph)knetminer-sample>" "$mapping_out"
+
+testSchemaName ()
+{
+  { 
+		cat <<EOT 
+			$(sparql_ns)
+
+			PREFIX bk:  <http://knetminer.org/data/rdf/terms/biokno/>
+
+			ASK {
+				BIND ( "Probable trehalose-phosphate phosphatase 1" AS ?testName )
+				?protein bk:prefName ?testName; schema:name ?testName.
+			}
+EOT
+	} | assert_sparql "schema:name not inferred from bk:prefName!"
+}
+
+. "$(which shunit2)"
