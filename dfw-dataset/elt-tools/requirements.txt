@@ -1,5 +1,6 @@
 TODO: Docker
 - JENA
+- SnakeMake
 
 ## For testing:
 - https://github.com/kward/shunit2
