@@ -1,37 +1,30 @@
+target_dir: 
+  knetminer/ontologies
 files:
-
   bioknet.owl:
     label: "BioKNO main file"
     url: https://raw.githubusercontent.com/Rothamsted/bioknet-onto/master/bioknet.owl
-
   bk_ondex.owl:
     label: "BioKNO Ondex mappings"
     url: https://raw.githubusercontent.com/Rothamsted/bioknet-onto/master/bk_ondex.owl
-
   bk_mappings.ttl:
     label: "Mappings to external ontologies"
     url: https://raw.githubusercontent.com/Rothamsted/bioknet-onto/master/bk_mappings.ttl
-
   schema.ttl:
     label: "schema.org"
     url: http://schema.org/version/latest/schema.ttl
-
   biopax-level3.owl:
     label: "BioPAX"
     url: http://www.biopax.org/release/biopax-level3.owl
-
   sio.owl:
     label: "SIO"
     url: http://semanticscience.org/ontology/sio.owl
-
   dcterms.ttl:
     label: "dcterms:"
     url: http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl
-
   dcelements.ttl:
     label: "dc:"
     url: http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_elements.ttl
-
   skos.rdf:
     label: "SKOS"
     url: http://www.w3.org/TR/skos-reference/skos.rdf

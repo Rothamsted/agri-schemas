@@ -1,14 +1,18 @@
 import os, sys
 
+"""
+  This typically requires the --configfile parameter, else the get-files.yaml is used
+"""
+
 ELT_OUT = os.getenv ( "ELT_OUT" )
 if not ELT_OUT:
 	print ( "\n\tERROR: ELT_OUT undefined, Initialise the environment with some ***-env.sh\n" )
 	sys.exit ( 1 )
 
-configfile: "get-ontologies-cfg.yaml"
+configfile: "get-files.yaml"
 
 INPUTS = config [ "files" ]
-TARGET_DIR = f"{ELT_OUT}/knetminer/ontologies"
+TARGET_DIR = ELT_OUT + config [ "target_dir" ]
 OUT_FILES = INPUTS.keys ()
 
 rule all:

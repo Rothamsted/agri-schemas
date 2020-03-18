@@ -1,0 +1,13 @@
+# This is relative to ELT_OUT, defined in the environment
+target_dir: ontologies
+
+files:
+  schema.ttl:
+    label: "schema.org"
+    url: http://schema.org/version/latest/schema.ttl
+  dcterms.ttl:
+    label: "dcterms:"
+    url: http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl
+  dcelements.ttl:
+    label: "dc:"
+    url: http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_elements.ttl
