@@ -1,7 +1,7 @@
 # This is relative to ELT_OUT, defined in the environment
 target_dir: ontologies
 
-files:
+static_files:
   schema.ttl:
     label: "schema.org"
     url: http://schema.org/version/latest/schema.ttl

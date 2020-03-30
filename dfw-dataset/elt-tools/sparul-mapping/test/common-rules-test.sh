@@ -14,50 +14,50 @@ rm -Rf "$test_tdb"
 testTransitiveClass ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:b a ex:A } }" \
-	  | assert_sparql "ex:b a ex:A not inferred!"
+	  | assert_sparql "$test_tdb" "ex:b a ex:A not inferred!"
 }
 
 testMappedClass ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:a a schema:Thing } }" \
-	  | assert_sparql "ex:a direct owl:equivalentClass not mapped!"
+	  | assert_sparql "$test_tdb" "ex:a direct owl:equivalentClass not mapped!"
 }
 
 testMappedClassViaChain ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:b a schema:Thing } }" \
-	  | assert_sparql "ex:b owl:equivalentClass/rdfs:subClassOf not mapped!"
+	  | assert_sparql "$test_tdb" "ex:b owl:equivalentClass/rdfs:subClassOf not mapped!"
 }
 
 testTransitiveProp ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:container ex:hasPart ex:specialComponent } }" \
-	  | assert_sparql "ex:container ex:hasPart ex:specialComponent not inferred!"
+	  | assert_sparql "$test_tdb" "ex:container ex:hasPart ex:specialComponent not inferred!"
 }
 
 
 testMappedProperty ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:a schema:sameAs ex:b } }" \
-	  | assert_sparql "ex:a direct owl:equivalentProperty not mapped!"
+	  | assert_sparql "$test_tdb" "ex:a direct owl:equivalentProperty not mapped!"
 }
 
 testMappedPropertyViaChain ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:c schema:sameAs ex:b } }" \
-	  | assert_sparql "ex:c direct owl:equivalentClass/rdfs:subClassOf not mapped!"
+	  | assert_sparql "$test_tdb" "ex:c direct owl:equivalentClass/rdfs:subClassOf not mapped!"
 }
 
 testMappedPropertyViaInverse ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:component schema:partOf ex:container } }" \
-	  | assert_sparql "inverseOf-based mapping not working!"
+	  | assert_sparql "$test_tdb" "inverseOf-based mapping not working!"
 }
 
 testMappedPropertyViaInverseAndChain ()
 {
 	echo "$(sparql_ns) ASK { GRAPH ex:mappedGraph { ex:specialComponent schema:partOf ex:container } }" \
-	  | assert_sparql "mapping based on subproperty+inverse not working!"
+	  | assert_sparql "$test_tdb" "mapping based on subproperty+inverse not working!"
 }
 
 . "$(which shunit2)"

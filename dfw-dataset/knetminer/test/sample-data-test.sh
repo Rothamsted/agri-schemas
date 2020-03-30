@@ -1,31 +1,18 @@
-if [[ "$DFW_ELT" == "" ]]; then
-  cat <<EOT
-
-
-	DFW_ELT isn't defined! You need to instantiate an environment, with something like:
-		
-		. <some-file>-env.sh
-
-EOT
+[[ -z "$DFW_ELT" ]] && {
+	echo -e "\n\n\tDFW_ELT isn't defined! Source some ***-env.sh file before me!\n"
 	exit 1
-fi
+}
+
+cd "$(dirname $0)"
 
 . "$DFW_ELT/namespaces.sh"
+. "$ELT_TOOLS/test/test-utils.sh"
+export TEST_TDB="$ELT_OUT/test/knetminer-test-tdb"
 
-echo -e "--- Generating test RDF"
-sample_rdf=/tmp/knetminer-sample.ttl
-"$ODX2RDF"/odx2rdf.sh $ODX2RDF/examples/text_mining.oxl "$sample_rdf"
+snakemake --snakefile sample-data-build.snakefile
 
-
-echo -e "--- Loading test RDF into TDB"
-test_tdb=/tmp/knetminer-mapping-test-tdb
-rm -Rf "$test_tdb"
-"$JENA_HOME/bin/tdbloader" --loc="$test_tdb" "$ELT_OUT/knetminer/ontologies/"* "$sample_rdf"
-
-
-echo -e "--- Running Agrischemas mappings"
-mapping_out="/tmp/knetminer-mapping-test-out.ttl"
-"$ELT_TOOLS/sparul-mapping/sparul-mapping.sh" "$test_tdb" 'schema:' "<$(ns agGraph)knetminer-sample>" "$mapping_out"
+# TODO: Rule about accession
+# TODO: More tests
 
 testSchemaName ()
 {
@@ -40,7 +27,8 @@ testSchemaName ()
 				?protein bk:prefName ?testName; schema:name ?testName.
 			}
 EOT
-	} | assert_sparql "schema:name not inferred from bk:prefName!"
+	} | assert_sparql "$TEST_TDB" "schema:name not inferred from bk:prefName!"
 }
+
 
 . "$(which shunit2)"
