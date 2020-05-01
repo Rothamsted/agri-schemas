@@ -2,5 +2,7 @@ TODO: Docker
 - JENA
 - SnakeMake
 
+- rdflib
+
 ## For testing:
 - https://github.com/kward/shunit2
