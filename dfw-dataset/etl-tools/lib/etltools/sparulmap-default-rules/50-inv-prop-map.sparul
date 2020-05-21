@@ -1,3 +1,5 @@
+# Rule Name: owl:inverseOf
+#
 INSERT
 {
   ?y ?targetProp ?x.
@@ -10,7 +12,7 @@ WHERE
 {
   { ?srcProp owl:inverseOf ?targetProp }
   FILTER ( ?srcProp != ?targetProp )
-  FILTER ( TRUE || STRSTARTS ( STR(?targetProp), STR (${TARGET_NS}) ) )
+  # FILTER ( STRSTARTS ( STR(?targetProp), STR (${TARGET_NAMESPACE}) ) )
 
   { ?x ?srcProp ?y }
 }

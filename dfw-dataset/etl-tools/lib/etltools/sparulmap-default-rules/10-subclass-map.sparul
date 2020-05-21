@@ -1,14 +1,16 @@
+# Rule Name: rdfs:subClassOf+ transitive closure
+#
 INSERT
 {
-  ?i a ?targetClass.
-	
+	?i a ?targetClass.
+
 	GRAPH ${TARGET_GRAPH} {
   	?i a ?targetClass
 	}
 }
 WHERE
 {
-	{ ?srcClass (owl:equivalentClass|^owl:equivalentClass) ?targetClass }
+	{ ?srcClass rdfs:subClassOf+ ?targetClass }
 	FILTER ( ?srcClass != ?targetClass )
 
 	{ ?i a ?srcClass }

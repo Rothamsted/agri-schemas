@@ -1,3 +1,5 @@
+# Rule Name: rdfs:subPropertyOf transitive closure
+#
 INSERT
 {
   ?x ?targetProp ?y.
@@ -8,9 +10,8 @@ INSERT
 }
 WHERE
 {
-  { ?srcProp (owl:equivalentProperty|^owl:equivalentProperty) ?targetProp }
+  { ?srcProp rdfs:subPropertyOf+ ?targetProp }
   FILTER ( ?srcProp != ?targetProp )
-  FILTER ( TRUE || STRSTARTS ( STR(?targetProp), STR (${TARGET_NS}) ) )
 
   { ?x ?srcProp ?y }
 }

@@ -1,6 +1,5 @@
 import os, sys
 
-
 if not os.getenv ( "DFW_ELT" ):
 	print ( "\n\tERROR: DFW_ELT undefined, this script should be run by sample-data-test.sh\n" )
 	sys.exit ( 1 )

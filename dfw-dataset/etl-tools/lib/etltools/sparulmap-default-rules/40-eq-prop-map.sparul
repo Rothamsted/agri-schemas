@@ -1,0 +1,18 @@
+# Rule Name: owl:equivalentProperty
+#
+INSERT
+{
+  ?x ?targetProp ?y.
+
+  GRAPH ${TARGET_GRAPH} {
+    ?x ?targetProp ?y
+  }
+}
+WHERE
+{
+  { ?srcProp (owl:equivalentProperty|^owl:equivalentProperty) ?targetProp }
+  FILTER ( ?srcProp != ?targetProp )
+  # FILTER ( STRSTARTS ( STR(?targetProp), STR (${TARGET_NAMESPACE}) ) )
+
+  { ?x ?srcProp ?y }
+}
