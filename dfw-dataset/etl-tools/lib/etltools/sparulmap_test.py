@@ -1,7 +1,7 @@
 import unittest
 from etltools import sparulmap
 from etltools.utils import get_jena_home, sparql_ask
-from subprocess import run, PIPE
+from subprocess import run
 import os, shutil
 from os.path import dirname, abspath
 
@@ -12,6 +12,7 @@ graph = None
 def run_mappings ():
 	global graph
 	if graph: return
+	
 	graph = rdflib.Graph()
 
 	mydir = dirname ( abspath ( __file__ ) )

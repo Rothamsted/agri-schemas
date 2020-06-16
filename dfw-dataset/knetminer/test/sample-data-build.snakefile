@@ -1,27 +1,24 @@
 import os, sys
+from etltools import sparulmap
+import etltools.getfilescfg as onto_cfg
 
-if not os.getenv ( "DFW_ELT" ):
-	print ( "\n\tERROR: DFW_ELT undefined, this script should be run by sample-data-test.sh\n" )
-	sys.exit ( 1 )
+ETL_OUT = os.getenv ( "ETL_OUT" )
+ETL_TOOLS = os.getenv ( "ETL_TOOLS" )
 
-ELT_OUT = os.getenv ( "ELT_OUT" )
-ELT_TOOLS = os.getenv ( "ELT_TOOLS" )
-
-sys.path.append ( ELT_TOOLS + "/lib" )
-import get_files_utils as mycfg
+etl_lib_path = ETL_TOOLS + "/lib/etltools/"
 
 configfile: "../../snake-config.yaml"
-include: ELT_TOOLS + "/lib/get-files.snakefile"
+include: etl_lib_path + "/getfiles.snakefile"
 
 ODX2RDF = os.getenv ( "ODX2RDF" )
 JENA_HOME = os.getenv ( "JENA_HOME" )
 
-mycfg.init_config ( config )
+onto_cfg.init_config ( config )
 
 TEST_OXL = ODX2RDF + "/examples/text_mining.oxl"
-TEST_RDF = ELT_OUT + "/test/knetminer-sample.ttl"
-TEST_TDB = os.getenv ( "TEST_TDB" )
-MAPPING_OUT = ELT_OUT + "/test/knetminer-mapping-test-out.ttl"
+TEST_RDF = ETL_OUT + "/test/knetminer-sample.ttl"
+TEST_TDB = ETL_OUT + "/test/test-tdb"
+MAPPING_OUT = ETL_OUT + "/test/knetminer-mapping-test-out.ttl"
 
 rule all:
 	input:
@@ -30,13 +27,14 @@ rule all:
 		MAPPING_OUT
 	message:
 		"Generating the mappings"
-	shell:
-		f"'{ELT_TOOLS}/sparul-mapping/sparul-mapping.sh'" 
-		 + " {input} 'schema:' \"<$(ns agGraph)knetminer-sample>\" '{output}'"
-
-
+	run:
+		sparql_vars = { 'TARGET_NAMESPACE': 'schema:' }
+		sparulmap.map_from_files ( 
+			etl_lib_path + "/sparulmap-default-rules", input[0], "ex:mappedGraph", output[0], sparql_vars
+		)
+	
 rule generate_tdb:
-  input: mycfg.OUT_FILES + [ TEST_RDF ]
+  input: onto_cfg.OUT_FILES + [ TEST_RDF ]
 	output: directory ( TEST_TDB )
 	message:
 		"Generating Test TDB"
@@ -53,4 +51,3 @@ rule generate_rdf:
 		"Generating RDF from the test OXL"
 	shell:
 		f"'{ODX2RDF}/odx2rdf.sh'" + " {input} {output}"
-

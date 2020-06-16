@@ -1,4 +1,3 @@
-import utils
 import os
 from snakemake.io import expand
 from etltools.utils import check_env

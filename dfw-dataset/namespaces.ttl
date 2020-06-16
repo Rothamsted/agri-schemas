@@ -1,0 +1,3 @@
+prefix bk:  <http://knetminer.org/data/rdf/terms/biokno/>
+prefix agres: <http://agrischemas.org/resources/>
+prefix agGraph: <http://agrischemas.org/graphs/>

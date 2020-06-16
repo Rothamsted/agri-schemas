@@ -1,12 +1,10 @@
-[[ -z "$DFW_ELT" ]] && {
+[[ -z "$DFW_ETL" ]] && {
 	echo -e "\n\n\tDFW_ELT isn't defined! Source some ***-env.sh file before me!\n"
 	exit 1
 }
 
 cd "$(dirname $0)"
 
-. "$DFW_ELT/namespaces.sh"
-. "$ELT_TOOLS/test/test-utils.sh"
 export TEST_TDB="$ELT_OUT/test/knetminer-test-tdb"
 
 snakemake --snakefile sample-data-build.snakefile

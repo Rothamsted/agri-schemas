@@ -41,7 +41,8 @@ agri:StudyObservedValue rdf:type owl:AnnotationProperty .
 
 
 ###  http://agrischemas.org/authorsList
-agri:authorsList rdf:type owl:AnnotationProperty .
+agri:authorsList rdf:type owl:AnnotationProperty;
+	rdfs:subPropertyOf dc:creator .
 
 
 ###  http://agrischemas.org/evidence
@@ -146,7 +147,7 @@ schema:identifier rdf:type owl:AnnotationProperty .
 
 ###  http://schema.org/name
 schema:name rdf:type owl:AnnotationProperty ;
-            rdfs:comment "schema:name is described and used as preferred name, despite being defined as equivalent to dc:title. Here, we prefer to stick to the de-facto meaning, which should ease interoperability." ;
+            rdfs:comment "schema:name is described and used as preferred name, so here we map to skos:prefLabel.";
             rdfs:subPropertyOf skos:prefLabel .
 
 
@@ -244,10 +245,6 @@ agri:StudyObservedValue rdf:type owl:Class ;
                                         schema:PropertyValue .
 
 
-###  http://agrischemas.org/authorsList
-agri:authorsList rdf:type owl:Class ;
-                 rdfs:subClassOf dc:creator .
-
 
 ###  http://bioschemas.org/BioChemEntity
 bioschema:BioChemEntity rdf:type owl:Class .
@@ -260,10 +257,6 @@ bioschema:LabProtocol rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/OBI_0000750
 obo:OBI_0000750 rdf:type owl:Class .
-
-
-###  http://purl.org/dc/elements/1.1/creator
-dc:creator rdf:type owl:Class .
 
 
 ###  http://purl.org/ppeo/PPEO.owl#observed_variable
