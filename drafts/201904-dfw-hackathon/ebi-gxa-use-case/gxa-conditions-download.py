@@ -34,7 +34,7 @@ for cond_label in conditions:
 	cond_uri = make_condition_uri ( cond_label )
 	for term_uri in annotate_condition ( cond_label ):
 		
-		print ( "%s schema:additionalType <%s>." % ( cond_uri, term_uri ) )
+		print ( "%s dc:type <%s>." % ( cond_uri, term_uri ) )
 		
 		# Add the accession
 		acc = get_term_accession ( term_uri )
@@ -49,6 +49,6 @@ for cond_label in conditions:
 		onto_id = acc [ 0: 2 ]
 		if not onto_id in knet_prefixes: continue
 		knet_uri = knet_prefixes [ onto_id ] + acc.lower()
-		print ( "%s schema:additionalType <%s>." % ( cond_uri, knet_uri ) )
+		print ( "%s dc:type <%s>." % ( cond_uri, knet_uri ) )
 		print ( "<%s> schema:sameAs <%s>." % ( knet_uri, term_uri ) )
 	print ()

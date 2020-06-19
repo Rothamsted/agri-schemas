@@ -11,8 +11,8 @@
 
 ## Modelling in agrischemas
   * `bioschema:Study`, as in MIAPPE
-    * an Investigation is an `bioschema:Study` with the investigation `schema:additionalType`, which points to other `bioschema:Study`(es), via `schema:hasPart`/`schema:isPartOf`
-	* MIAPPE Environment Params are linked to `bioschema:Study` via `schema:additionalProperty` and they're identified by means of their ID (or `schema:additionalType`).
+    * an Investigation is an `bioschema:Study` with the Investigation `dc:type`, which points to other `bioschema:Study`(es), via `schema:hasPart`/`schema:isPartOf`
+	* MIAPPE Environment Params are linked to `bioschema:Study` via `schema:additionalProperty` and they're identified by means of their ID (or `dc:type`).
 	* `agri:StudyFactor`(s) can be linked to each of study, samples, data file, observed value.
   * `bioschema:Sample`, includes MIAPPE sample, ISA-Tab source. The latter includes MIAPPE biological material, observational unit values
   * Samples can be linked one each-other by a new class: `agri:StudyItemEvent`. This is a subclass of `schema:Action` and has `bioschema:LabProtocol` as subclass (which, might include MIAPPE subtypes like rooting, growth, treatement, etc.). Protocols have variables like watering, pesticide, etc. `StudyItemEvent` includes what MIAPPE calls 'event' (ie, non-planned events such as weather phenomena).

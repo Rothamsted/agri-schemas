@@ -7,7 +7,7 @@
 
 res:wheatfus01 a bioschema:Study
 	# TODO: should we introduce a class for this, eg, agri:FieldTrial
-	schema:additionalType 
+	dc:type 
 		<http://id.agrisemantics.org/gacs/C810>;
 		# <http://id.agrisemantics.org/gacs/C7233>;
 	# TODO bioschema:studyDomain
@@ -38,7 +38,7 @@ res:whatfus01_src01 a bioschema:Sample
 			a schema:PropertyValue;
 			schema:propertyID "organism";
 			schema:value "Triticum aestivum";
-			schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/4565>
+			dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>
 		],
 		[ a schema:PropertyValue;
 			schema:propertyID "Infraspecific name";
@@ -103,7 +103,7 @@ res:whatfus01_treatment01 a bioschema:LabProtocol;
 		[	a schema:PropertyValue;
 			schema:propertyID "Rooting medium";
 			schema:value "luvisol";
-			schema:additionalType <http://purl.obolibrary.org/obo/ENVO_00002248>
+			dc:type <http://purl.obolibrary.org/obo/ENVO_00002248>
 		],
 		[	a schema:PropertyValue;
 			schema:propertyID "Plot Block Number";

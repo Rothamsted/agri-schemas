@@ -1,5 +1,5 @@
 target_dir: 
-  knetminer/ontologies
+  ontologies
 static_files:
   bioknet.owl:
     label: "BioKNO main file"

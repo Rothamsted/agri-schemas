@@ -11,7 +11,7 @@
 res:glten_r_bk a bioschema:Study;
   
 	# TODO: possibly embed these types into a specific class
-	schema:additionalType 
+	dc:type 
 		<http://id.agrisemantics.org/gacs/C810>;
 		# <http://id.agrisemantics.org/gacs/C7233>;
 	
@@ -104,7 +104,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 	# TODO: you might want to link these with relatedStudy too.
 	schema:isPartOf res:glten_r_bk;
 
-  schema:additionalType
+  dc:type
 		milax:DesignPeriod,
 		<http://www.cropontology.org/terms/CO_715:0000250>; # Fertilizer trial
 
@@ -114,7 +114,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 	# TODO: You might want to add hasPart or isPartOf, as in MIAPPE use case.
   bioschema:studyProcess [
 		a agri:StudyDesign;
-		schema:additionalType <http://purl.obolibrary.org/obo/AGRO_00000335>,"demonstration strip design";
+		dc:type <http://purl.obolibrary.org/obo/AGRO_00000335>,"demonstration strip design";
 	];
 
 	schema:additionalProperty [
@@ -123,7 +123,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 		schema:name "Phosphorous";
 		schema:value 35;
 		schema:unitCode "kg/ha";
-		schema:additionalType [
+		dc:type [
 			schema:propertyID "milax:Nutrient form";
 			schema:value "Superphosphate";
 		],
@@ -135,7 +135,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 		schema:name "Phosphorous";
 		schema:value 0;
 		schema:unitCode "kg/ha";
-		schema:additionalType [
+		dc:type [
 			schema:propertyID "milax:Nutrient form";
 			schema:value "Superphosphate";
 		],
@@ -203,7 +203,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 res:glten_r_bk_crop a bioschema:Sample;
 
 	schema:isPartOf glten_r_bk_1843_1925;
-	schema:additionalType <http://aims.fao.org/aos/agrovoc/c_8412>;
+	dc:type <http://aims.fao.org/aos/agrovoc/c_8412>;
 
 	schema:additionalProperty [	
 		a schema:PropertyValue;
@@ -316,7 +316,7 @@ res:glten_r_bk_soil a bioschema:Sample, agri:Soil
 		schema:propertyID "Classification";
 		dc:source "FAO"; # an alternative would be propertyID: "Classification:FAO"
 		schema:value "Chromic Luvisol";
-		schema:additionalType <http://purl.obolibrary.org/obo/ENVO_00002248>
+		dc:type <http://purl.obolibrary.org/obo/ENVO_00002248>
 	]
 	# and then the other classifications...
 .

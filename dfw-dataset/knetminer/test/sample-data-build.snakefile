@@ -7,7 +7,7 @@ ETL_TOOLS = os.getenv ( "ETL_TOOLS" )
 
 etl_lib_path = ETL_TOOLS + "/lib/etltools/"
 
-configfile: "../../snake-config.yaml"
+#configfile: "../../snake-config.yaml"
 include: etl_lib_path + "/getfiles.snakefile"
 
 ODX2RDF = os.getenv ( "ODX2RDF" )
@@ -29,12 +29,14 @@ rule all:
 		"Generating the mappings"
 	run:
 		sparql_vars = { 'TARGET_NAMESPACE': 'schema:' }
-		sparulmap.map_from_files ( 
-			etl_lib_path + "/sparulmap-default-rules", input[0], "ex:mappedGraph", output[0], sparql_vars
+		sparulmap.map_from_files (
+			[ etl_lib_path + "/sparulmap-default-rules", 
+			  etl_lib_path + "/sparulmap-ext-rules/schema-org" ],
+			input[0], "ex:mappedGraph", output[0], sparql_vars
 		)
 	
 rule generate_tdb:
-  input: onto_cfg.OUT_FILES + [ TEST_RDF ]
+  input: onto_cfg.OUT_FILES + [ TEST_RDF, "../../../agri-schema.ttl" ]
 	output: directory ( TEST_TDB )
 	message:
 		"Generating Test TDB"
@@ -51,3 +53,9 @@ rule generate_rdf:
 		"Generating RDF from the test OXL"
 	shell:
 		f"'{ODX2RDF}/odx2rdf.sh'" + " {input} {output}"
+
+
+rule clean:
+	run:
+		print ( "\n\tCleaning \"%s\"" % ETL_OUT )
+		shell ( "rm -Rf \"%s\"" % ETL_OUT )

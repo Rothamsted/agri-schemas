@@ -23,7 +23,7 @@ res:phiInt001 a agri:HostPathogenInteraction;
 		a bioschema:Phenotype;
 
 		schema:name "Triticum aestivum";
-		schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
+		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 
 		schema:additionalProperty [
 			a schema:PropertyValue;
@@ -36,7 +36,7 @@ res:phiInt001 a agri:HostPathogenInteraction;
 		a bioschema:Phenotype;
 
 		schema:name "Fusarium graminearum";
-		schema:additionalType <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
+		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
 
 		schema:additionalProperty [
 			a schema:PropertyValue;
@@ -64,7 +64,7 @@ res:phiInt001 a agri:HostPathogenInteraction;
 		# We instead use prop-value + ID, in order to ease application consumers.
 		schema:propertyID "disease name";
 		schema:value "Fusarium Ear Blight";
-		schema:additionalType obo:TO_0000663
+		dc:type obo:TO_0000663
 	]
 .
 
@@ -72,7 +72,7 @@ res:gene_FG00332 a bioschema:Gene;
 	schema:identifier "FG00332";
 	schema:name "Transducin beta-subunit";
 	bioschema:encodes res:protein_I1RA15;
-	schema:additionalType obo:GO_0009405, obo:GO_0044412 .
+	dc:type obo:GO_0009405, obo:GO_0044412 .
 
 res:protein_I1RA15 a bioschema:Protein;
 	dc:source "UniProt"

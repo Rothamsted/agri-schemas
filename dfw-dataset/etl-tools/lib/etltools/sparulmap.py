@@ -1,4 +1,4 @@
-import os
+from os import path
 from etltools.utils import DEFAULT_NAMESPACES, get_jena_home
 from subprocess import run, PIPE
 import glob
@@ -11,8 +11,7 @@ def map_rule (
 ):
 	jena_home = get_jena_home ()
 
-	nmatch = re.search ( "# Rule Name: (.+)$", sparul_rule, re.MULTILINE )
-	if nmatch: rule_name = nmatch.group ( 1 )
+	rule_name = extract_rule_name ( sparul_rule, rule_name )
 	if not rule_name: rule_name = '<Unknown>'
 
 	# resolve placeholders
@@ -33,7 +32,7 @@ def map_rule (
 		raise ChildProcessError ( "Error #%d while running the query:\n%s " % ( proc.returncode, sparul_rule ) )
 
 
-def map ( 
+def map_from_rules ( 
 	sparul_rules, tdb_path, target_graph_spec, dump_file_path = None,
 	sparql_vars = {}, namespaces = DEFAULT_NAMESPACES
 ):
@@ -47,7 +46,7 @@ def map (
 		old_count = count
 		for rule in sparul_rules:
 			rule_name = "?"
-			if type (rule) is tuple: ( rule, rule_name ) = rule
+			if type ( rule ) is tuple: ( rule, rule_name ) = rule
 			map_rule ( tdb_path, rule, target_graph_spec, rule_name, sparql_vars, namespaces )
 
 		# See the triples count
@@ -85,13 +84,40 @@ def map (
 
 
 def map_from_files ( 
-	rule_files_or_dir, tdb_path, target_graph_spec, dump_file_path,
+	rule_paths, tdb_path, target_graph_spec, dump_file_path,
 	sparql_vars = {}, namespaces = DEFAULT_NAMESPACES
 ):
-	rules = []
-	if type ( rule_files_or_dir ) is not list:
-		rule_files_or_dir = glob.glob ( rule_files_or_dir + "/*.sparul" )
-	for frule in rule_files_or_dir:
-		with open ( frule, 'r' ) as hrule:
-			rules.append ( ( hrule.read (), frule ) )
-	map ( rules, tdb_path, target_graph_spec, dump_file_path, sparql_vars, namespaces )
+	rules = read_rules_from_files ( rule_paths )
+	map_from_rules ( rules, tdb_path, target_graph_spec, dump_file_path, sparql_vars, namespaces )
+
+
+def extract_rule_name ( sparul_rule, default = None ):
+	nmatch = re.search ( "# Rule Name: (.+)$", sparul_rule, re.MULTILINE )
+	if nmatch: return nmatch.group ( 1 )
+	return default
+	
+"""
+  If a rule has the same 'Rule Name' annotation of another met earlier, this is overridden
+  by the new rule.
+  
+  TODO: overriding needs specific testing, for the moment it's used and tested in 
+  knetminer tests. 
+"""
+def read_rules_from_files ( rule_paths ):
+	named_rules = {}
+	
+	if type ( rule_paths ) is not list:
+		rule_paths = [ rule_paths ]
+	
+	for rpath in rule_paths:
+		rfiles = [ rpath ] if not path.isdir ( rpath ) \
+		        else glob.glob ( rpath + "/*.sparul" ) 
+		for rfile in rfiles:
+			with open ( rfile, 'r' ) as hrule:
+				rule_sparul = hrule.read ()
+				rule_name = extract_rule_name ( rule_sparul, path.abspath ( rfile ) )
+				if rule_name in named_rules:
+					print ( "Overriding \"%s\"" % rule_name )
+				named_rules [ rule_name ] = rule_sparul
+
+	return [ (sparul, name) for (name, sparul) in named_rules.items() ]		

@@ -38,7 +38,7 @@ bkr:cond_outer_pericarp a agri:StudyFactor;
   schema:name "outer pericarp";
   # These can come from eg, manual curation or auto-annotation
   # (of course multiple terms are possible)
-  schema:additionalType
+  dc:type
     <http://purl.obolibrary.org/obo/PO_0009084>
 .
 

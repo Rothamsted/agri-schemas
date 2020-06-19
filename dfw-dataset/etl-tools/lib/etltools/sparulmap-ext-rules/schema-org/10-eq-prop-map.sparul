@@ -1,0 +1,28 @@
+# Rule Name: owl:equivalentProperty
+#
+INSERT
+{
+  ?x ?targetProp ?y.
+
+  GRAPH ${TARGET_GRAPH} {
+    ?x ?targetProp ?y
+  }
+}
+WHERE
+{
+  { ?srcProp (owl:equivalentProperty|^owl:equivalentProperty) ?targetProp }
+  
+  FILTER ( ?srcProp != ?targetProp )
+
+  # This is essentially a bug in the RDF encoding of schema, their web site already fixed it
+  # We want to eliminate this bug in order to avoid cases where an item has two titles, one
+  # which is the explicitly assigned title, the other being inferred from this wrong equivalence,
+  # eg, pub0 dcterms:title "ISBN 123", "The Book Title"
+  # 
+  FILTER ( ! ( ?srcProp = schema:name && ?targetProp = dcterms:title ) ) 
+  FILTER ( ! ( ?targetProp = schema:name && ?srcProp = dcterms:title ) ) 
+  
+  # FILTER ( STRSTARTS ( STR(?targetProp), STR (${TARGET_NAMESPACE}) ) )
+
+  { ?x ?srcProp ?y }
+}

@@ -22,7 +22,7 @@ rule get_file:
 		print ( "--- GETTING '%s'" % params [ "label" ] )
 		shell ( "wget \"{params.url}\" -O \"{output}\"" )
 
-rule clean:
+rule clean_files:
 	run:
 		print ( "\n\tCleaning \"%s\"" % cfg.TARGET_DIR )
 		shell ( "rm -Rf \"%s\"" % cfg.TARGET_DIR )

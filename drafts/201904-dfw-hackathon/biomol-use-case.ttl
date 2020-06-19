@@ -105,7 +105,7 @@ bkr:degex_tob1_sample1 a rdfs:Statement;
 
 res:expFact1 a agri:StudyFactor;
 	schema:name "Glyphosate Treatment";
-	schema:additionalType obo:CHEBI_27744
+	dc:type obo:CHEBI_27744
 .
 
 
