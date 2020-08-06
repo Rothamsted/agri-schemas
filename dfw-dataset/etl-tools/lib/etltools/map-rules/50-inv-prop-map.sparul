@@ -2,8 +2,6 @@
 #
 INSERT
 {
-  ?y ?targetProp ?x.
-
   GRAPH ${TARGET_GRAPH} {
     ?y ?targetProp ?x
   }

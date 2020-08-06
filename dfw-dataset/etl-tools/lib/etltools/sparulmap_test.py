@@ -36,7 +36,7 @@ def run_mappings ():
 
 	print ( "--- Running the mapper " )
 	sparulmap.map_from_files ( 
-		mydir + "/sparulmap-default-rules", test_tdb_path, "ex:mappedGraph", out_path, sparql_vars
+		mydir + "/map-rules", test_tdb_path, "ex:mappedGraph", out_path, sparql_vars
 	)
 
 	print ( "--- Loading result from '%s'" % out_path )
@@ -60,8 +60,14 @@ class SparulMapTest ( unittest.TestCase ):
 	def test_mapped_class ( self ):
 		self.assert_sparql ( "ASK { ex:a a schema:Thing }", "ex:a direct owl:equivalentClass not mapped!" )
 	
+	""" 
+		Default rules only deals with explict mapping, we don't do advances inference like transitive closure.
+	""" 
 	def test_mapped_class_via_chain ( self ):
-		self.assert_sparql ( "ASK { ex:b a schema:Thing }", "ex:b owl:equivalentClass/rdfs:subClassOf not mapped!"	)
+		self.assert_sparql ( 
+			"ASK { FILTER NOT EXISTS { ex:b a schema:Thing } }", 
+			"ex:b owl:equivalentClass/rdfs:subClassOf mapped?!"
+		)
 
 	def test_transitive_prop ( self ):
 		self.assert_sparql (
@@ -78,14 +84,16 @@ class SparulMapTest ( unittest.TestCase ):
 			"ex:c direct owl:equivalentClass/rdfs:subClassOf not mapped!"
 		)
 
+	"""See test_mapped_class_via_chain, we don't do advanced inference."""
 	def test_mapped_prop_via_inverse ( self ):
 		self.assert_sparql ( 
-			"ASK { ex:component schema:partOf ex:container }", "inverseOf-based mapping not working!"
+			"ASK { FILTER NOT EXISTS { ex:component schema:partOf ex:container } }", 
+			"inverseOf-based mapping working?!"
 		)
 
-	def test_mapped_prop_via_inverse_and_chain ( self ):
+	def test_mapped_prop_via_explicit_chain ( self ):
 		self.assert_sparql ( 
-			"ASK { ex:specialComponent schema:partOf ex:container  }", "mapping based on subproperty+inverse not working!"
+			"ASK { ex:container schema:hasPart ex:specialComponent }", "mapping based on subproperty+inverse not working!"
 		)
 
 

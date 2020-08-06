@@ -5,7 +5,7 @@
 
 # Mapping of equivalent classes
 ex:A owl:equivalentClass schema:Thing.
-# Equivalent by transitive closure
+# Equivalent by transitive closure, but we deal only with explicit mappings, not inference.
 ex:B rdfs:subClassOf ex:A.
 
 ex:a a ex:A.
@@ -19,12 +19,12 @@ ex:a ex:same ex:b.
 ex:identical rdfs:subPropertyOf schema:sameAs.
 ex:c ex:identical ex:b.
 
-# Equivalence via inverse property
+# Equivalence via inverse property, but we don't do advanced inference
 ex:partOf owl:equivalentProperty schema:partOf.
 ex:hasPart owl:inverseOf ex:partOf.
 ex:container ex:hasPart ex:component.
 
-# Equivalence via subclass and inverse
-ex:hasSpecialPart rdfs:subPropertyOf ex:hasPart.
+# Equivalence via subclass and inverse, now with explicit statements
+ex:hasSpecialPart rdfs:subPropertyOf ex:hasPart, schema:hasPart.
 # Should yield ex:specialComponent schema:partof ex:container
 ex:container ex:hasSpecialPart ex:specialComponent.

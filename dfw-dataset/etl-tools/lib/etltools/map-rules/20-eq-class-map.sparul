@@ -2,8 +2,6 @@
 #
 INSERT
 {
-  ?i a ?targetClass.
-	
 	GRAPH ${TARGET_GRAPH} {
   	?i a ?targetClass
 	}

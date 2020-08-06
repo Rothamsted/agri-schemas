@@ -2,15 +2,13 @@
 #
 INSERT
 {
-  ?x ?targetProp ?y.
-
   GRAPH ${TARGET_GRAPH} {
     ?x ?targetProp ?y
   }
 }
 WHERE
 {
-  { ?srcProp rdfs:subPropertyOf+ ?targetProp }
+  { ?srcProp rdfs:subPropertyOf ?targetProp }
   FILTER ( ?srcProp != ?targetProp )
 
   { ?x ?srcProp ?y }

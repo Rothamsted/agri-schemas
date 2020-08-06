@@ -30,8 +30,8 @@ rule all:
 	run:
 		sparql_vars = { 'TARGET_NAMESPACE': 'schema:' }
 		sparulmap.map_from_files (
-			[ etl_lib_path + "/sparulmap-default-rules", 
-			  etl_lib_path + "/sparulmap-ext-rules/schema-org" ],
+			[ etl_lib_path + "/map-rules", 
+			  etl_lib_path + "/map-rules/schema-org" ],
 			input[0], "ex:mappedGraph", output[0], sparql_vars
 		)
 	

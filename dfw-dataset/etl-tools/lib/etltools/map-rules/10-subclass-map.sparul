@@ -2,15 +2,13 @@
 #
 INSERT
 {
-	?i a ?targetClass.
-
 	GRAPH ${TARGET_GRAPH} {
   	?i a ?targetClass
 	}
 }
 WHERE
 {
-	{ ?srcClass rdfs:subClassOf+ ?targetClass }
+	{ ?srcClass rdfs:subClassOf ?targetClass }
 	FILTER ( ?srcClass != ?targetClass )
 
 	{ ?i a ?srcClass }
