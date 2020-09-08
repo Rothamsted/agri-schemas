@@ -4,6 +4,7 @@ from rdflib.namespace import NamespaceManager
 from rdflib.util import from_n3
 from os.path import dirname, abspath
 from subprocess import run, PIPE
+import string
 
 def check_env ():
 	if not os.getenv ( "ETL_OUT" ):
@@ -81,7 +82,7 @@ def sparql_ask ( graph: Graph, ask_query, namespaces = DEFAULT_NAMESPACES ):
 """
 	WARNING! Never tested!
 """
-def sparql_ask_tdb ( tdb_path, ask_query, namespaces = DEFAULT_NAMESPACES ):
+def sparql_ask_tdb ( tdb_path: string, ask_query, namespaces = DEFAULT_NAMESPACES ):
 	if namespaces: ask_query = namespaces.to_sparql () + "\n" + ask_query
 	jena_home = get_jena_home ()
 	proc = run ( 

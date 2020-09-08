@@ -14,5 +14,8 @@ export NAMESPACES_PATH="$mydir/namespaces.ttl"
 # These are needed for tests
 export ODX2RDF="$HOME/Documents/Work/RRes/ondex_git/ondex-full/ondex-knet-builder/modules/rdf-export-2-cli/target/rdf-export-2-cli_3.0.1-SNAPSHOT"
 
+export KNET_RDF_DIR="/tmp/knet-wheat-rdf"
+export JAVA_TOOL_OPTIONS="-Xmx8G"
+
 # Since you're sourcing me (". $0"), you typically want to go back to the initial workdir
 cd "$mydir"
