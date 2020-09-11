@@ -1,0 +1,21 @@
+# Rule Name: schema:inverseOf
+#
+SELECT ?y ?targetProp ?x
+WHERE
+{
+	{
+		SELECT DISTINCT ?srcProp ?targetProp 
+		{ 
+			{ 
+				?srcProp schema:inverseOf ?targetProp
+			}
+			UNION { 
+				?targetProp schema:inverseOf ?srcProp
+			}		
+			FILTER ( STRSTARTS ( STR ( ?srcProp ), STR ( ${SRC_NAMESPACE} ) ) )
+			FILTER ( !STRSTARTS ( STR ( ?targetProp ), STR ( ${SRC_NAMESPACE} ) ) )
+		}
+	}
+	
+	?x ?srcProp ?y
+}

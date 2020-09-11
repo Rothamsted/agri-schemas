@@ -1,0 +1,16 @@
+# Rule Name: rdfs:subClassOf
+#
+SELECT ?i (rdf:type AS ?prop) ?targetClass
+WHERE
+{
+	{
+		SELECT DISTINCT ?srcClass ?targetClass 
+		{ 
+			?srcClass rdfs:subClassOf ?targetClass.
+			FILTER ( STRSTARTS ( STR ( ?srcClass ), STR ( ${SRC_NAMESPACE} ) ) )
+			FILTER ( !STRSTARTS ( STR ( ?targetClass ), STR ( ${SRC_NAMESPACE} ) ) )
+		}
+	}
+	
+	?i a ?srcClass
+}

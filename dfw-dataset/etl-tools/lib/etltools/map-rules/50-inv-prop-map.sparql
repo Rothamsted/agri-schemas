@@ -1,0 +1,22 @@
+# Rule Name: owl:inverseOf
+#
+SELECT ?y ?targetProp ?x
+WHERE
+{
+	{
+		SELECT DISTINCT ?srcProp ?targetProp 
+		{ 
+			{ 
+				?srcProp owl:inverseOf ?targetProp
+			}
+			UNION { 
+				?targetProp owl:inverseOf ?srcProp
+			}		
+			FILTER ( STRSTARTS ( STR ( ?srcProp ), STR ( ${SRC_NAMESPACE} ) ) )
+			FILTER ( !STRSTARTS ( STR ( ?targetProp ), STR ( ${SRC_NAMESPACE} ) ) )
+		}
+	}
+	
+	?x ?srcProp ?y
+}
+

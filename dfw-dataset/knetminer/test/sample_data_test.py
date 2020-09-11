@@ -1,6 +1,6 @@
 import os, sys
 from os.path import dirname, abspath
-from etltools import sparulmap
+from etltools import sparqlmap
 from etltools.utils import get_jena_home, sparql_ask
 import rdflib
 import unittest
@@ -16,18 +16,22 @@ def run_mappings ():
 	os.chdir ( mydir )
 		
 	print ( "Running mapping workflow" )
-	if os.system ( "snakemake --snakefile sample-data-build.snakefile --configfile ../../snake-config.yaml" ) != 0:
+	if os.system ( "snakemake --snakefile sample-data-build.snakefile --configfile ../../snake-config.yaml  --cores all" ) != 0:
 		raise ChildProcessError ( "Mapping workflow execution failed" )
 	
 	ETL_OUT = os.getenv ( "ETL_OUT" )
+	DFW_ETL = os.getenv ( "DFW_ETL" )
+
 	out_names = [
-		"knetminer-mapping-test-out.ttl",
+		"knetminer-mapping-test-out.nt",
 		"knetminer-sample.ttl"
 	]
 	for oname in out_names:
 		out_path = ETL_OUT + "/test/" + oname
 		print ( "--- Loading result from '%s'" % out_path )
 		graph.parse ( out_path, format = "turtle" )	
+	
+	graph.parse ( DFW_ETL + "/../agri-schema.ttl", format = "turtle" )
 
 	print ( "----- Test Initialised -----\n\n" )
 	
@@ -42,7 +46,7 @@ class KnetSampleDataTest ( unittest.TestCase ):
 		self.assertTrue ( sparql_ask ( graph, ask_query ), msg )
 
 	def test_pref_name ( self ):
-		for p in [ "rdfs:label", "bk:name", "schema:name", "skos:prefLabel" ]:
+		for p in [ "rdfs:label", "schema:name", "skos:prefLabel" ]:
 			self.assert_sparql (
 				"ASK { bkr:to_0002682 %s 'plant cell shape'}" % p,
 				"%s not inferred!" % p
@@ -51,7 +55,7 @@ class KnetSampleDataTest ( unittest.TestCase ):
 	def test_name ( self ):
 		s = "bkr:to_0000387"
 		l = "plant phenotype"
-		for p in [ "rdfs:label", "bk:name", "skos:altLabel" ]:
+		for p in [ "rdfs:label", "skos:altLabel" ]:
 			self.assert_sparql (
 				"ASK { %s %s '%s'}" % (s, p, l),
 				"%s not inferred!" % p
@@ -94,7 +98,7 @@ class KnetSampleDataTest ( unittest.TestCase ):
 		self.assert_sparql ( 
 			"""ASK { bkr:publication_%s 
 			     bka:AUTHORS ?authors;
-			     dc:creator ?authors;
+			     dcterms:creator ?authors;
 			     agri:authorsList ?authors 
 			}""" % pmid,
 			"author properties not inferred!" 
@@ -115,10 +119,6 @@ class KnetSampleDataTest ( unittest.TestCase ):
 			"ASK { bkr:to_0000804 schema:isPartOf bkr:to_0006031 }",
 			"schema:isPartOf not inferred!"
 		)
-		self.assert_sparql ( 
-			"ASK { bkr:to_0006031 schema:hasPart bkr:to_0000804 }",
-			"schema:hasPart not inferred!"
-		)
 		
 	def test_agri_evidence ( self ):
 		self.assert_sparql ( 
@@ -134,10 +134,10 @@ class KnetSampleDataTest ( unittest.TestCase ):
 	
 	def test_mentions ( self ):
 		self.assert_sparql ( 
-			"""ASK { bkr:publication_16240171 
-			     schema:mentions bkr:protein_q6zgp8, bkr:protein_q75wv3
+			"""ASK { bkr:publication_26473199 
+			     schema:mentions bkr:protein_q6h5l4, bkr:protein_q0ddi1
 			}""",
-			"dc:source not inferred!"
+			"schema:mentions not inferred!"
 		)
 
 """

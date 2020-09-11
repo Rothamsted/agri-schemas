@@ -1,0 +1,21 @@
+# Rule Name: owl:equivalentProperty
+#
+SELECT ?x ?targetProp ?y
+WHERE
+{
+	{
+		SELECT DISTINCT ?srcProp ?targetProp 
+		{ 
+			{ 
+				?srcProp owl:equivalentProperty ?targetProp
+			}
+			UNION { 
+				?targetProp owl:equivalentProperty ?srcProp
+			}		
+			FILTER ( STRSTARTS ( STR ( ?srcProp ), STR ( ${SRC_NAMESPACE} ) ) )
+			FILTER ( !STRSTARTS ( STR ( ?targetProp ), STR ( ${SRC_NAMESPACE} ) ) )
+		}
+	}
+	
+	?x ?srcProp ?y
+}

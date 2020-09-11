@@ -1,5 +1,5 @@
 import os, sys
-from etltools import sparulmap
+from etltools import sparqlmap
 import etltools.getfilescfg as onto_cfg
 
 ETL_OUT = os.getenv ( "ETL_OUT" )
@@ -18,7 +18,7 @@ onto_cfg.init_config ( config )
 TEST_OXL = ODX2RDF + "/examples/text_mining.oxl"
 TEST_RDF = ETL_OUT + "/test/knetminer-sample.ttl"
 TEST_TDB = ETL_OUT + "/test/test-tdb"
-MAPPING_OUT = ETL_OUT + "/test/knetminer-mapping-test-out.ttl"
+MAPPING_OUT = ETL_OUT + "/test/knetminer-mapping-test-out.nt"
 
 rule all:
 	input:
@@ -28,11 +28,11 @@ rule all:
 	message:
 		"Generating the mappings"
 	run:
-		sparql_vars = { 'TARGET_NAMESPACE': 'schema:' }
-		sparulmap.map_from_files (
+		sparql_vars = { 'SRC_NAMESPACE': 'bk:' }
+		sparqlmap.map_from_files (
 			[ etl_lib_path + "/map-rules", 
 			  etl_lib_path + "/map-rules/schema-org" ],
-			input[0], "ex:mappedGraph", output[0], sparql_vars
+			input[0], output[0], sparql_vars
 		)
 	
 rule generate_tdb:

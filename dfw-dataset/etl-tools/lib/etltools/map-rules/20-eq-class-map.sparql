@@ -1,0 +1,21 @@
+# Rule Name: owl:equivalentClass
+#
+SELECT ?i (rdf:type AS ?prop) ?targetClass
+WHERE
+{
+	{
+		SELECT DISTINCT ?srcClass ?targetClass 
+		{ 
+			{ 
+				?srcClass owl:equivalentClass ?targetClass
+			}
+			UNION { 
+				?targetClass owl:equivalentClass ?srcClass
+			}
+			FILTER ( STRSTARTS ( STR ( ?srcClass ), STR ( ${SRC_NAMESPACE} ) ) ) 
+			FILTER ( !STRSTARTS ( STR ( ?targetClass ), STR ( ${SRC_NAMESPACE} ) ) )
+		}
+	}
+	
+	?i a ?srcClass
+}
