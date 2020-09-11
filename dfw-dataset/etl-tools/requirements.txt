@@ -3,6 +3,7 @@ TODO: Docker
 - SnakeMake
 
 - rdflib
+- sh
 
 ## For testing:
 # - https://github.com/kward/shunit2
