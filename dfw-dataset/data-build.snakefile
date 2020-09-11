@@ -1,5 +1,5 @@
 import os, sys, glob
-from etltools import sparulmap
+from etltools import sparqlmap
 
 KNET_RDF_DIR = os.getenv ( "KNET_RDF_DIR" )
 ETL_OUT = os.getenv ( "ETL_OUT" )
@@ -10,7 +10,7 @@ etl_lib_path = ETL_TOOLS + "/lib/etltools/"
 JENA_HOME = os.getenv ( "JENA_HOME" )
 
 TDB_DIR = ETL_OUT + "/tdb"
-MAPPING_OUT = ETL_OUT + "/knetminer-mapping.ttl"
+MAPPING_OUT = ETL_OUT + "/knetminer-mapping.nt"
 
 rule all:
 	input:
@@ -20,11 +20,11 @@ rule all:
 	message:
 		"Generating the mappings"
 	run:
-		sparql_vars = { 'TARGET_NAMESPACE': 'schema:' }
-		sparulmap.map_from_files (
+		sparql_vars = { 'SRC_NAMESPACE': 'bk:' }
+		sparqlmap.map_from_files (
 			[ etl_lib_path + "/map-rules", 
 			  etl_lib_path + "/map-rules/schema-org" ],
-			input[0], "ex:mappedGraph", output[0], sparql_vars
+			input[0], output[0], sparql_vars
 		)
 	
 
@@ -39,9 +39,11 @@ rule generate_tdb:
   output:
     directory ( TDB_DIR )
 	message:
-		"Generating Test TDB"
-	shell:
-		f"'{JENA_HOME}/bin/tdbloader'" + " --loc={output} {input}"
+		"Generating Test TDB '%s'" %  TDB_DIR
+	run:
+		print ( "Re-downloading BioKNO mappings" )
+		shell ( "wget 'https://raw.githubusercontent.com/Rothamsted/bioknet-onto/master/bk_mappings.ttl' -O '" + KNET_RDF_DIR + "/ontologies/bk_mappings.ttl'" )
+		shell ( "'" + JENA_HOME + "/bin/tdbloader' --loc={output} {input}" )
 
 
 rule clean:

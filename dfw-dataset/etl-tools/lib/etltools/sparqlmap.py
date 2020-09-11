@@ -4,10 +4,9 @@ from etltools.utils import DEFAULT_NAMESPACES, get_jena_home
 import glob
 import re
 import sh
-from distutils.command.config import dump_file
 
 def map_rule ( 
-	tdb_path, sparql_rule, rule_name = None, dump_file_path = None,
+	tdb_path, sparql_rule, rule_name = None, dump_file = None,
 	sparql_vars = {}, namespaces = DEFAULT_NAMESPACES
 ):
 	jena_home = get_jena_home ()
@@ -28,19 +27,33 @@ def map_rule (
 	try:
 		sh.awk (
 			tdb_sh ( "--loc=%s" % tdb_path, "--results=tsv", "--query=-", _piped = True, _in = sparql_rule ),
-			'NR > 1 { print $0 "." }', _out = dump_file_path
+			'NR > 1 { print $0 "." }', _out = dump_file
 		);
 	except Exception as ex:
 		raise ChildProcessError ( "Error: while running the query:\n%s " % sparql_rule ) from ex
 
+
 def map_from_rules ( 
 	sparql_rules, tdb_path, dump_file_path = None, sparql_vars = {},
 	namespaces = DEFAULT_NAMESPACES
-):	
+):
+	# Need to join partial results on a new file
+	if ( dump_file_path ):
+		if path.exists( dump_file_path ): remove ( dump_file_path )
+	
+	# TODO: if it's a dictionary, reorder based on keys	
 	for rule in sparql_rules:
 		rule_name = "?"
 		if type ( rule ) is tuple: ( rule, rule_name ) = rule
-		map_rule ( tdb_path, rule, rule_name, dump_file_path, sparql_vars, namespaces )
+
+		# Need to join partial results on a new file
+		if ( dump_file_path ):
+			with open ( dump_file_path, "a" ) as dump_file:
+				map_rule ( tdb_path, rule, rule_name, dump_file, sparql_vars, namespaces )				
+			continue
+		
+		# Else, we're dumping on stdout
+		map_rule ( tdb_path, rule, rule_name, dump_file_path, sparql_vars, namespaces )				
 
 
 def map_from_files ( 
@@ -48,16 +61,9 @@ def map_from_files (
 	sparql_vars = {}, namespaces = DEFAULT_NAMESPACES
 ):
 	rules = read_rules_from_files ( rule_paths )
-	
-	# Need to join partial results on a new file
-	if ( dump_file_path ):
-		if path.exists( dump_file_path ): remove ( dump_file_path )
-		with open ( dump_file_path, "a" ) as dump_file:
-			map_from_rules ( rules, tdb_path, dump_file, sparql_vars, namespaces )
-		return
-	
+		
 	# Else, it's empty
-	map_from_rules ( rules, dump_file_path, dump_file, sparql_vars, namespaces )
+	map_from_rules ( rules, tdb_path, dump_file_path, sparql_vars, namespaces )
 
 
 def extract_rule_name ( sparql_rule, default = None ):
