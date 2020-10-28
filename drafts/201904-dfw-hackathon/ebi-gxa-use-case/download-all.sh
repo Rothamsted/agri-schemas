@@ -1,3 +1,5 @@
+# Entry point: manages the download of everything about GXA data.
+# 
 while [[ $# -gt 0 ]]
 do
 	opt_name="$1"

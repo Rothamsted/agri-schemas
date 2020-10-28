@@ -3,6 +3,9 @@ from textwrap import dedent
 from utils import make_id, print_rdf_namespaces
 from gxa_common import process_gxa_experiments, make_condition_uri
 
+# Gets GXA expression data and render them as RDF
+#
+
 print_rdf_namespaces ()
 
 def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):

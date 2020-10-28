@@ -16,8 +16,10 @@ def make_id ( s ):
 	return s
 
 """
-	The organism-related GXA experiments fetched and re-processed manually from 
+	The organism-related GXA experiments fetched and re-processed manually from URLs like:
 	https://www.ebi.ac.uk/gxa/experiments?species=arabidopsis%20thaliana&experimentType=baseline
+	
+	Input to this comes from stdin
 """
 def get_gxa_accessions ():
 	exp_accs = [ row [ 0 ] for row in csv.reader ( stdin, delimiter = "\t" ) ]
@@ -57,7 +59,7 @@ def rdf_pval ( data, key, rdf_prop, rdf_val_provider ):
 	return rdf_stmt ( data, key, rdf_prop + " {" + key + "};\n", rdf_val_provider )
 
 """
-	The same, but builds the RDF from an RDF property and a converter
+	The same, for string values to be translated as literals.
 """
 def rdf_str ( data, key, rdf_prop ):
 	def lbuilder ( s ): return '"' + str ( Literal ( s ) ) + '"'

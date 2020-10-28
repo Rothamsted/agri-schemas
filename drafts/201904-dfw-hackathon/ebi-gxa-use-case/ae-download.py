@@ -16,7 +16,7 @@ specie2terms = {
 print_rdf_namespaces ()
 
 
-# Process the IDF
+# Process the IDF, the MAGETAB file that describes the experiment
 for exp_acc in get_gxa_accessions():
 	mage_tab_base = "https://www.ebi.ac.uk/arrayexpress/files/{0}/{0}.{1}.txt"
 	idf_url = mage_tab_base.format ( exp_acc, "idf" )
@@ -38,6 +38,8 @@ for exp_acc in get_gxa_accessions():
 		"""
 		rdf = dedent ( rdf_tpl.format (**idf) )
 
+		# Facility to add IDF fields to the RDF
+		# fields is a map of original field -> RDF property
 		def rdf_adder ( fields ):
 			rdf = ""
 			for (key, rdf_prop) in fields.items ():
