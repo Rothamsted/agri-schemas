@@ -1,32 +1,14 @@
-import re, csv 
-from sys import stdin
+import types
+from sys import stdin, stdout
+import io
 import urllib.parse
 from textwrap import dedent
 from rdflib.term import Literal
 
 
-""" 
-	Gets an ID out of a string, by doing some normalisation
-"""
-def make_id ( s ):
-	s = s.lower ()
-	s = re.sub ( "\\s", "_", s )
-	s = re.sub ( "\\W", "", s, re.ASCII )
-	s = urllib.parse.quote ( s )
-	return s
-
-"""
-	The organism-related GXA experiments fetched and re-processed manually from URLs like:
-	https://www.ebi.ac.uk/gxa/experiments?species=arabidopsis%20thaliana&experimentType=baseline
-	
-	Input to this comes from stdin
-"""
-def get_gxa_accessions ():
-	exp_accs = [ row [ 0 ] for row in csv.reader ( stdin, delimiter = "\t" ) ]
-	exp_accs = [ re.sub ( "^https://www.ebi.ac.uk/gxa/experiments/", "", url ) for url in exp_accs ]
-	return exp_accs
-
-def print_rdf_namespaces ():
+# The GXA-relevant namespaces
+#
+def rdf_gxa_namespaces ():
 	rdf = """
 		@prefix bkr: <http://knetminer.org/data/rdf/resources/> .
 		@prefix agri: <http://agrischemas.org/> .
@@ -37,7 +19,7 @@ def print_rdf_namespaces ():
 		@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 		@prefix dc: <http://purl.org/dc/elements/1.1/> .
 	"""
-	print ( dedent ( rdf ) )
+	return dedent ( rdf )
 
 """
 	Returns an RDF/Turtle string, if the key exists in the data dictionary.
@@ -64,3 +46,5 @@ def rdf_pval ( data, key, rdf_prop, rdf_val_provider ):
 def rdf_str ( data, key, rdf_prop ):
 	def lbuilder ( s ): return '"' + str ( Literal ( s ) ) + '"'
 	return rdf_pval ( data, key, rdf_prop, lbuilder )
+
+

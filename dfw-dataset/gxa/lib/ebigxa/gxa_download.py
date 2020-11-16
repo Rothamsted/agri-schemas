@@ -38,7 +38,7 @@ def print_exp_rdf ( exp_acc, gene_id, condition, tpm  ):
 		"geneAcc": gene_id,
 		"condition": make_condition_uri ( condition ),
 		"conditionLabel": condition,
-		"conditionId": make_id ( condition ),
+		"conditionId": make_id ( condition, skip_non_word_chars = True ),
 		"experiment": "bkr:exp_" + exp_acc,
 		"experimentId": exp_acc,
 		"level": tpm

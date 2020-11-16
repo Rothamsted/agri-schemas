@@ -1,10 +1,14 @@
-import os, sys
+import os, io, csv
+import types
+from collections.abc import Iterable, Iterator   
+from os.path import dirname, abspath
+import string, re
+import urllib
 from rdflib import Graph
 from rdflib.namespace import NamespaceManager
 from rdflib.util import from_n3
-from os.path import dirname, abspath
-from subprocess import run, PIPE
-import string
+from subprocess import run
+from builtins import isinstance
 
 def check_env ():
 	if not os.getenv ( "ETL_OUT" ):
@@ -96,6 +100,45 @@ def sparql_ask_tdb ( tdb_path: string, ask_query, namespaces = DEFAULT_NAMESPACE
 
 	return "Yes" in proc.stdout
 
+""" 
+	Gets an ID out of a string, by doing some normalisation.
+	
+	If skip_non_word_chars is set, non-words characters (\W) are replaced with empty strings. This means
+	that, for instance "aren't" and "arent" become the same ID. This might be useful when you build IDs
+	out of free text, it's certainly isn't when you deal with stuff like accessions or preferred names. 
+"""
+def make_id ( s, skip_non_word_chars = False ):
+	s = s.lower ()
+	s = re.sub ( "\\s", "_", s )
+	if skip_non_word_chars: s = re.sub ( "\\W", "", s, re.ASCII )
+	s = urllib.parse.quote ( s )
+	return s
+
+	
+"""
+	Allows for some flexibility with CSV document reading.
+	The rows_generator parameter can be either of:
+	
+	- an io.TextIOBase: passes it to csv.reader() and returns the resulting generator
+	- a string: opens it as a file, calls itself recursively (to get a csv.reader()) and returns a generator
+	  that iterates over the csv rows like the previous case (done via yield, so the file is auto-closed)
+	- anything else that supports 'yield': returns the corresponding generator
+	- none of the above: raise an error
+	
+	As you see, it always returns a generator over which you can iterate independently on the initial source.	 
+"""	
+def normalize_rows_source ( rows_source ):
+	if isinstance ( rows_source, str ):
+		# Open the file with the csv reader
+		with open ( rows_source ) as csvf:
+			yield from normalize_rows_source ( csvf )
+		return
+	
+	elif isinstance ( rows_source, io.TextIOBase ):
+		# This includes stdin
+		rows_source = csv.reader ( rows_source, delimiter = "\t" )
+
+	yield from rows_source	
 
 if __name__ == '__main__':
 	check_env ()
