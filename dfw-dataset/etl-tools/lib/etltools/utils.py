@@ -119,7 +119,7 @@ def make_id ( s, skip_non_word_chars = False ):
 	return s
 
 """
-  Extract the last part of a URI, relyin on characters like '#' or '/'.
+  Extract the last part of a URI, relying on characters like '#' or '/'.
 """
 def uri2accession ( uri ):
 	bits = re.split ( "[\\/,\#,\?]", uri )

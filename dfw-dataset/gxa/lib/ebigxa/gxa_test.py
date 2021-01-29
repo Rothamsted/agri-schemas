@@ -6,7 +6,6 @@ import rdflib
 
 log = logger_config ( __name__ )
 
-
 class GxaTest ( unittest.TestCase ):
 
 	def test_gxa_conditions ( self ):
