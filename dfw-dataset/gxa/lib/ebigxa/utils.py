@@ -1,10 +1,5 @@
-import types
-from sys import stdin, stdout
-import io
-import urllib.parse
 from textwrap import dedent
 from rdflib.term import Literal
-
 
 # The GXA-relevant namespaces
 #

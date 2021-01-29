@@ -90,9 +90,24 @@ agri:pmedId rdf:type owl:AnnotationProperty ;
 
 ###  http://agrischemas.org/pvalue
 agri:pvalue rdf:type owl:AnnotationProperty ;
-            dc:type obo:OBI_0000175 ,
-                                  sio:SIO_000765 ;
+            dc:type obo:OBI_0000175, sio:SIO_000765;
             schema:rangeIncludes schema:Number ;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:score .
+
+agri:tpmCount rdf:type owl:AnnotationProperty ;
+						schema:alternateName "Transcripts Per Million";
+						rdfs:comment "The transcripts per million count, as measured in RNA-Seq data. See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
+            dc:type  obo:STATO_0000047, sio:SIO_000794;
+            schema:rangeIncludes schema:Number ;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:score .
+
+agri:ordinalTpm rdf:type owl:AnnotationProperty ;
+						rdfs:label "TPM level";
+						rdfs:comment "The ordinal ('low', 'medium', 'high') level of TPM. This is established from the TPM count, using the EBI thresholds: [0.5-10]/low, [11-1000] med, >1000. See: See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
+            schema:rangeIncludes schema:Text ;
+						rdfs:seeAlso agri:tpmCount;
             rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
                                agri:score .
 
@@ -105,7 +120,7 @@ agri:score rdf:type owl:AnnotationProperty ;
                                 schema:Text ;
            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
                               <http://meta.schema.org/Property> .
-
+ 
 
 ###  http://meta.schema.org/Property
 <http://meta.schema.org/Property> rdf:type owl:AnnotationProperty .

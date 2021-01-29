@@ -1,6 +1,5 @@
 import os, io, csv
-import types
-from collections.abc import Iterable, Iterator   
+from sys import stdout, stderr
 from os.path import dirname, abspath
 import string, re
 import urllib
@@ -9,6 +8,9 @@ from rdflib.namespace import NamespaceManager
 from rdflib.util import from_n3
 from subprocess import run
 from builtins import isinstance
+import logging.config
+import yaml
+
 
 def check_env ():
 	if not os.getenv ( "ETL_OUT" ):
@@ -110,9 +112,21 @@ def sparql_ask_tdb ( tdb_path: string, ask_query, namespaces = DEFAULT_NAMESPACE
 def make_id ( s, skip_non_word_chars = False ):
 	s = s.lower ()
 	s = re.sub ( "\\s", "_", s )
+	s = re.sub ( "/", "%2F", s )
 	if skip_non_word_chars: s = re.sub ( "\\W", "", s, re.ASCII )
 	s = urllib.parse.quote ( s )
+	s = re.sub ( "%", "_0x", s, re.ASCII ) # parsers don't like '%20'
 	return s
+
+"""
+  Extract the last part of a URI, relyin on characters like '#' or '/'.
+"""
+def uri2accession ( uri ):
+	bits = re.split ( "[\\/,\#,\?]", uri )
+	if not bits: return ""
+	return bits [ -1 ]
+
+
 
 	
 """
@@ -140,5 +154,72 @@ def normalize_rows_source ( rows_source ):
 
 	yield from rows_source	
 
+"""
+  Utility to quickly deal with a writer that writes on a file handle.
+  
+  The function checks if out is an handle or a string, in case of string, interprets it as
+  a file path, opens it and invokes writer() with the corresponding handle.
+   
+  If out is not a string, just invokes writer( out ), which, therefore, must get a file handle
+  as parameter.
+  
+  mode and open_opts are parameters for the open() function. If out isn't a string, they're 
+  ignored.  
+"""
+def dump_output ( out, writer, mode = "w", **open_opts):
+	if isinstance ( out, str ):
+		with open ( out, mode = mode, **open_opts ) as fout:
+			return writer ( fout )
+	return writer ( out )
+
+"""
+  Utility to quickly send a row generator to an output of type string or file handle, as per
+  dump_output()
+"""
+def dump_rows ( rows, out = stdout, mode = "w", **open_opts ):
+	def writer ( out ):
+		for row in rows:
+			print ( row, file = out )
+	dump_output ( out, writer, mode = mode, **open_opts )
+		
+
+"""
+  Configures the Python logging module with a YAML configuration file.
+  
+  The file name is picked from ETL_LOG_CONF, or from <current directory>/logging.yaml
+  This should be called at the begin of a main program and BEFORE any use of the logging module.
+  Multiple calls of this method are idempotent, ie, the Python logging module configures itself
+  once only (and only before sending in logging messages).
+  
+  An example of logging config file is included in ETL tools.
+  
+  If logger_name is provided, the function returns logging.getLogger ( logger_name ) as a facility
+  to avoid the need to import logging too, when you already import this. Beware that you load a configuration
+  one only in your application (so, don't use this method in modules just to get a logger). 
+  
+  disable_existing_loggers is false by default, this is the best way to not interfere with modules instantiating
+  their own module logger, usually before you call this function on top of your application (but usually after 
+  all the imports). By default, the Python logging library has this otpion set to true and that typically causes
+  all the module loggers to be disabled after the configuration loading. See https://docs.python.org/3/library/logging.config.html
+"""
+def logger_config ( logger_name = None, disable_existing_loggers = False ):
+	cfg_path = os.getenv ( "ETL_LOG_CONF", "logging.yaml" )
+	if not os.path.isfile ( cfg_path ):
+		print ( "*** Logger config file '%s' not found, use the OS variable ETL_LOG_CONF to point to a logging configuration." % cfg_path, file = stderr )
+		print ( "The logger will use the default configuration ", file = stderr )
+		return
+	with open ( cfg_path ) as flog:		
+		cfg = yaml.load ( flog, Loader = yaml.FullLoader )
+		# As per documentation, if not reset, this disables loggers in the modules, which usually are 
+		# loaded during 'import', before calling this function
+		cfg [ "disable_existing_loggers" ] = disable_existing_loggers
+		logging.config.dictConfig ( cfg )
+	log = logging.getLogger ( __name__ )
+	log.info ( "Logger configuration loaded from '%s'" % cfg_path )
+
+	if logger_name: return logging.getLogger ( logger_name )
+
 if __name__ == '__main__':
+	logger_config ()
 	check_env ()
+

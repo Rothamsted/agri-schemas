@@ -8,6 +8,9 @@ from ebigxa.utils import rdf_str, rdf_gxa_namespaces
 from etltools.utils import normalize_rows_source
 
 from ebigxa.gxa import gxa_tpm_url
+import logging
+
+log = logging.getLogger ( __name__ )
 
 
 """
@@ -23,25 +26,28 @@ def rnaseqer_experiments_download ( organism_id, out = stdout ):
 	rnaseqer_base_url = "https://www.ebi.ac.uk/fg/rnaseq/api/tsv/getStudiesByOrganism/"
 	url = rnaseqer_base_url + organism_id
 	with urlopen( url ) as handler:
-		print ( handler.read (), file = out )
+		print ( handler.read ().decode (), file = out )
 
 
 """
   Gets a list of GXA, accessions, taking input from the output coming from rnaseqer_experiments_download().
   
   Such input is filtered by removing accessions not being in AE, or in GXA (for each accession, it's checked
-  that at least TPM or differential expression values ara available).
+  that at least TPM or differential expression values are available).
 """
 def ae_accessions_filter ( rows_source ):
 	def is_valid_for_us ( exp_acc ):
-		probes = ( ( "AE/IDF", ae_magetab_url ( exp_acc, "idf" ) ) )
-		probes.append ( "GXA/TPM", gxa_tpm_url ( exp_acc ) )
+		probes = [ ( "AE/IDF", ae_magetab_url ( exp_acc, "idf" ) ) ]
+		probes.append ( ( "GXA/TPM", gxa_tpm_url ( exp_acc ) ) )
 		for (utype, url) in probes:
 			hreq = requests.get ( url )
 			if not hreq:
-				print ( "Can't download " + utype + " file for " + exp_acc + ", skipping", file = stderr )
-				return False
-		return True
+				if "IDF" in utype:
+					log.debug ( "Can't download IDF file for %s, skipping", exp_acc )
+			else:
+				return True
+		log.debug ( "%s hasn't downloadable expression data, skipping", exp_acc )
+		return False
 		
 	rows_source = normalize_rows_source ( rows_source )
 	next ( rows_source ) # Skip the header

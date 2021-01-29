@@ -1,5 +1,6 @@
 cd "$(dirname ${BASH_SOURCE[0]})"
 export ETL_TOOLS="`pwd`"
+export ETL_LOG_CONF="$ETL_TOOLS/lib/etltools/logging-test.yaml"
 
 export JENA_HOME=/Applications/local/dev/semantic_web/jena
 export ETL_OUT=/tmp/etl-tools

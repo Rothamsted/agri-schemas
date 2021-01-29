@@ -1,7 +1,6 @@
 import unittest
 from etltools import sparqlmap
 from etltools.utils import get_jena_home, sparql_ask, DEFAULT_NAMESPACES
-from subprocess import run
 import os, shutil
 from os.path import dirname, abspath
 

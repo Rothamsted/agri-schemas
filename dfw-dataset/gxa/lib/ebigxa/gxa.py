@@ -1,21 +1,32 @@
 import csv, io
-import os.path
+import logging
 from urllib.request import urlopen
-from sys import stderr, stdout
+from sys import stdout
 from textwrap import dedent
 
 from ebigxa.utils import rdf_gxa_namespaces
-from etltools.utils import make_id, normalize_rows_source
+from etltools.utils import make_id, uri2accession, normalize_rows_source
+from biotools.bioportal import AgroPortalClient
 
+log = logging.getLogger ( __name__ )
+
+"""
+  Converts the TPM levels for GXA accessions into RDF/agrischemas. 
+  
+  It also returns a set of condition labels, which can be used with rdf_gxa_conditions(), or
+  etl.utils.dump_rows().
+"""
 def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, filtered_genes_path = None ):
-	def rdf_gxa_tpm_level_processor ( exp_acc, gene_id, condition, tpm ):
+	condition_labels = set ()
+	def rdf_gxa_tpm_level_processor ( exp_acc, gene_id, condition, tpm, ordinal_tpm ):
 		rdf_tpl = """
 			{gene} a bioschema:Gene;
 				schema:identifier "{geneAcc}";
 			.
 	
 			bkr:gxaexp_{experimentId}_{geneId}_{conditionId} a rdfs:Statement;
-				agri:score "{level}";
+				agri:tpmCount {tpm};
+				agri:ordinalTpm "{ordinalTpm}";
 				rdf:subject {gene};
 				rdf:predicate bioschema:expressedIn;
 				rdf:object {condition};
@@ -38,17 +49,79 @@ def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, filtered_genes_path = 
 			"geneAcc": gene_id,
 			"condition": make_condition_uri ( condition ),
 			"conditionLabel": condition,
-			"conditionId": make_id ( condition, skip_non_word_chars = True ),
+			"conditionId": make_id ( condition, skip_non_word_chars = False ),
 			"experiment": "bkr:exp_" + exp_acc,
 			"experimentId": exp_acc,
-			"level": tpm
+			"tpm": tpm,
+			"ordinalTpm": ordinal_tpm
 		}
 	
 		print ( dedent ( rdf_tpl.format ( **tpl_data ) ), file = out )
+		condition_labels.add ( condition )
 			
 	print ( rdf_gxa_namespaces (), file = out )			
 	_process_gxa_tpm_levels ( gxa_accs_rows_src, rdf_gxa_tpm_level_processor, filtered_genes_path )
+	return condition_labels
 
+
+"""
+	Converts condition labels coming from GXA into RDF/agrischemas, using the agroportal text annotator to 
+	map labels to common ontologies.
+"""
+def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
+	
+	print ( rdf_gxa_namespaces (), file = out )			
+	
+	# TODO: complete!
+	knet_prefixes = {
+	  "TO": "http://knetminer.org/data/rdf/resources/trait_",
+	  "PO": "http://knetminer.org/data/rdf/resources/plantontologyterm_"	
+	}
+	
+	# Now, take the collected conditions and build onto-term annotations
+	#
+	has_errors = False
+	for cond_label in normalize_rows_source ( condition_labels_rows_src ):
+		cond_uri = make_condition_uri ( cond_label )
+		
+		onto_terms = []
+		try:
+			onto_terms = annotate_condition ( cond_label )
+		except Exception as ex:
+			log.debug ( "Error while fetching ontology annotations for '%s': %s", cond_label, str (ex) )
+			has_errors = True
+				
+		for term in onto_terms:
+			
+			term_uri = term [ "uri" ]
+			print ( "%s dc:type <%s>." % ( cond_uri, term_uri ), file = out )
+			
+			# Add the label, if any
+			label = term [ "label" ]
+			if label:
+				print ( "<%s> schema:name \"%s\"." % ( term_uri, label ), file = out )
+				
+			
+			# Add the accession
+			acc = uri2accession ( term_uri )
+			if not acc: continue
+	
+			print ( "<%s> schema:identifier \"%s\"." % ( term_uri, acc ), file = out )
+	
+			# Add links to Knetminer
+			if not acc [ 2 ] == '_': continue
+			acc_id = acc [ 3: ]
+			if not ( acc_id and acc_id.isdigit() ): continue
+			onto_id = acc [ 0: 2 ]
+			if not onto_id in knet_prefixes: continue
+			knet_uri = knet_prefixes [ onto_id ] + acc.lower()
+			print ( "%s dc:type <%s>." % ( cond_uri, knet_uri ), file = out )
+			print ( "<%s> schema:sameAs <%s>." % ( knet_uri, term_uri ), file = out )
+		print ( file = out )
+	#/end: for cond_label
+	if not has_errors: return
+	log.error ( "The gene expresion conditions annotation has had some errors, probably some terms weren't annotated" )
+#/end: rdf_gxa_conditions
 
 
 # ----------------------- ----------------------- ----------------------- ----------------------- 
@@ -60,81 +133,92 @@ def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, filtered_genes_path = 
 	The processor has the parameters: exp_acc, gene_id, condition, tpm
 	we use this for several tasks, like printing RDF, extracting the conditions
 """
-def _process_gxa_tpm_levels ( gxa_rows_src, exp_processor, filtered_genes_path ):
-
-	target_gene_ids = load_filtered_genes ( filtered_genes_path )
+def _process_gxa_tpm_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
+	target_gene_ids = load_filtered_genes ( gene_filter_row_src )
+	
+	if target_gene_ids: log.debug ( "target_gene_ids has %d IDs", len ( target_gene_ids ) )
 
 	for exp_acc in normalize_rows_source ( gxa_rows_src ):
 		
 		tpm_url = gxa_tpm_url ( exp_acc )
-		print ( ">>> '%s', '%s'" % (exp_acc, tpm_url), file = stderr )
-	
+		log.info ( "Downloading GXA TPM levels from '%s'", exp_acc )
+		log.debug ( "Downloading URL: '%s'", tpm_url )
+		
+		# Process the expression data row-by-row
 		conditions = []
 		exp_levels = []
-	
-		# Process the expression data row-by-row
+		is_on_headers = True
 		try:
 			with urlopen ( tpm_url ) as gxa_stream:
 				for row in csv.reader ( io.TextIOWrapper ( gxa_stream, encoding = 'utf-8' ), delimiter = "\t" ):
-					if not conditions:
-						# Conditions are in the headers
-						conditions = row [ 2: ]
-						print ( "conditions: %s" % conditions, file = stderr )
-						print ( "target_gene_ids has %d IDs" % len ( target_gene_ids ), file = stderr )
-						continue
+					# First rows are headers, up to the table's headers, which start with "Gene ID"
+					if is_on_headers:
+						if len( row ) > 0 and row [ 0 ] == "Gene ID":
+							# Condition labels are in the headers
+							conditions = row [ 2: ]
+							log.debug ( "Conditions: %s", conditions )
+							is_on_headers = False # since now on
+						continue # start reading data after the last header
 	
 					gene_id = row [ 0 ].upper()
-					if not ( gene_id in target_gene_ids ):
-						print ( "Skipping non-target gene: '%s'" % gene_id, file = stderr )
+					if target_gene_ids and gene_id not in target_gene_ids:
+						# log.debug ( "Skipping non-target gene: '%s'", gene_id )
 						continue
 	
 					exp_levels = row[ 2: ]
 					for j in range ( len ( exp_levels ) ):
 						tpm = exp_levels [ j ]
-						if not tpm:
-							print ( "Skipping empty-count gene: %s" % gene_id, file = stderr )
-							continue
-						tpm = float ( tpm )
-						# Convert to null/low/medium/high
-						if tpm <= 0.5:
-							print ( "Skipping low-count (%d) gene: %s" % ( tpm, gene_id ), file = stderr )
-							continue
-						if tpm <= 10: 
-							tpm = 'low'
-						elif tpm <= 1000:
-							tpm = 'medium'
-						else:
-							# > 1000
-							tpm = 'high'
-	
-						exp_processor ( exp_acc, gene_id, conditions [ j ], tpm )
+						ordinal_tpm = get_ordinal_tpm ( tpm, gene_id )
+						if not ordinal_tpm: continue
+							
+						exp_processor ( exp_acc, gene_id, conditions [ j ], tpm, ordinal_tpm )
 
 					# /end: column loop
 				# /end: experiment results loop
 			# /end: experiment results stream
 		except FileNotFoundError as ex:
-			print ( "Error: %s" % str (ex), file = stderr )
+			log.exception ( "Error: while processing experiment '%s': %s, skipping the experiment", str (ex) )
 			continue
+		if is_on_headers:
+			log.warning ( "Didn't see any data in the experiment " + exp_acc )
 	# /end: experiment loop
 # /end:process_gxa_experiments
 
 
+def get_ordinal_tpm ( tpm, gene_id = None ):
+	if not tpm:
+		# if gene_id: log.debug ( "Skipping empty TPM count for gene: %s", gene_id )
+		return None
+	tpm = float ( tpm )
+
+	# These are all based on https://www.ebi.ac.uk/gxa/FAQ.html
+
+	if tpm <= 0.5:
+		# if gene_id: log.debug ( "Skipping low TPM count (%d) for gene: %s", tpm, gene_id )
+		return None
+
+	if tpm <= 10: return 'low'
+	if tpm <= 1000: return 'medium'
+	return 'high'	# > 1000
+	
+
+
+
 # Gets genes to be filtered from a file.
-# If the param is null, returns an empty set
+# If the param is null, returns an empty set.
+# All are converted to upper case, to make a case-insensitive match.
 #
-def load_filtered_genes ( file_path = None ):
-	if not file_path: return set ()
-	if not os.path.isfile ( file_path ):
-		print ( "Filter genes file '%s' not found, skipping", file = stderr )
-		return set ()
-	with open ( file_path ) as target_f:
-		target_gene_ids = ( row [ 0 ] for row in csv.reader ( target_f, delimiter = "\t", quotechar = '"' ) )
-		# We sometimes have this in Knetminer
-		target_gene_ids = filter ( lambda gid: "locus:" not in gid, target_gene_ids )
-		
-		result = set ()
-		for gid in target_gene_ids: result.add ( gid )
-		return result
+def load_filtered_genes ( gene_filter_row_src = None ):
+	if not gene_filter_row_src: return set ()
+	result = set ()
+	for gene_id in normalize_rows_source ( gene_filter_row_src ):
+		if not gene_id: continue
+		if gene_id [ 0 ] == '#': continue
+		# We sometimes have this in Knetminer and they don't work with GXA
+		if "locus:" in gene_id: continue
+		result.add ( gene_id.upper () )
+	
+	return result
 
 # The URL of the TPM gene expression levels
 def gxa_tpm_url ( exp_acc ):
@@ -143,4 +227,27 @@ def gxa_tpm_url ( exp_acc ):
 		+ "/resources/ExperimentDownloadSupplier.RnaSeqBaseline/tpms.tsv"
 
 def make_condition_uri ( condition_label ):
-	return "bkr:cond_" + make_id ( condition_label, skip_non_word_chars = True )
+	return "bkr:cond_" + make_id ( condition_label, skip_non_word_chars = False )
+
+"""
+  Annotates a condition string with ontology terms from AgroLD, using their Annotator service.
+"""
+def annotate_condition ( cond_label ):
+	ap = AgroPortalClient ()
+	opts = {
+		"ontologies": "CO_330,CO_321,TO,CO_121,AFO,EO,AEO,NCBITAXON,AGROVOC,FOODON", 
+		"longest_only": "true",
+		"exclude_numbers": "false",
+		"whole_word_only": "true",
+		"exclude_synonyms": "false",
+	  "expand_mappings": "false",
+	  "fast_context": "false",
+	  "certainty": "false",
+	  "temporality": "false",
+	  "experiencer": "false",
+	  "negation": "false",
+	  "score": "cvalue"			
+	}
+	terms = ap.annotator_terms ( cond_label, cutoff = 5, **opts )
+	return terms
+	
