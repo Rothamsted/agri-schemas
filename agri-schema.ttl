@@ -112,6 +112,18 @@ agri:ordinalTpm rdf:type owl:AnnotationProperty ;
                                agri:score .
 
 
+agri:foldChange rdf:type owl:AnnotationProperty ;
+            dc:type obo:STATO_0000169, sio:SIO_001078;
+            schema:rangeIncludes schema:Number ;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:score .
+
+agri:log2FoldChange rdf:type owl:AnnotationProperty ;
+            dc:type obo:STATO_0000169, sio:SIO_001078;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:foldChange .
+
+
 ###  http://agrischemas.org/score
 agri:score rdf:type owl:AnnotationProperty ;
            dc:type obo:OBI_0000071 ;
@@ -121,6 +133,13 @@ agri:score rdf:type owl:AnnotationProperty ;
            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
                               <http://meta.schema.org/Property> .
  
+agri:baseCondition rdf:type owl:AnnotationProperty ;
+	schema:rangeIncludes agri:StudyFactor;
+                             rdfs:seeAlso sio:OBI_0000143 ;
+                             rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                                schema:Property .
+
+
 
 ###  http://meta.schema.org/Property
 <http://meta.schema.org/Property> rdf:type owl:AnnotationProperty .

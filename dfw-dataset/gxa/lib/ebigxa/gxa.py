@@ -19,7 +19,7 @@ log = logging.getLogger ( __name__ )
   It also returns a set of condition labels, which can be used with rdf_gxa_conditions(), or
   etl.utils.dump_rows().
 """
-def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, filtered_genes_path = None ):
+def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = None ):
 	condition_labels = set ()
 	def rdf_gxa_tpm_level_processor ( exp_acc, gene_id, condition, tpm, ordinal_tpm ):
 		rdf_tpl = """
@@ -43,7 +43,7 @@ def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, filtered_genes_path = 
 			{gene} bioschema:expressedIn {condition}.
 		"""
 	
-		# TODO: it would be more correct to not change the case, but we want Knet compatibility in this draft
+		# TODO: it would be more correct to not change the case, but we want Knet compatibility
 		gene_id_nrm = gene_id.lower()
 	
 		tpl_data = {
@@ -63,7 +63,7 @@ def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, filtered_genes_path = 
 		condition_labels.add ( condition )
 			
 	print ( rdf_gxa_namespaces (), file = out )			
-	process_gxa_tpm_levels ( gxa_accs_rows_src, rdf_gxa_tpm_level_processor, filtered_genes_path )
+	process_gxa_tpm_levels ( gxa_accs_rows_src, rdf_gxa_tpm_level_processor, gene_filter_row_src )
 	return condition_labels
 
 
@@ -257,6 +257,67 @@ def annotate_condition ( cond_label ):
 """
 	TODO: comment me!
 """
+def rdf_gxa_dex_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = None ):
+	condition_labels = set ()
+	def rdf_gxa_dex_level_processor ( exp_acc, gene_id, condition, base_condition, fold_change, pvalue ): 
+		rdf_tpl = """
+			{gene} a bioschema:Gene;
+				schema:identifier "{geneAcc}";
+			.
+	
+			bkr:gxaexp_{experimentId}_{geneId}_{conditionId}_{baseConditionId} a rdfs:Statement;
+				rdf:subject {gene};
+				rdf:predicate bioschema:expressedIn;
+				rdf:object {condition};
+				agri:baseCondition {baseCondition};
+				agri:log2FoldChange {foldChange};
+				agri:pvalue "{pvalue}";
+				agri:evidence {experiment}
+			.
+			
+			{condition} a agri:StudyFactor;
+				schema:name "{conditionLabel}"
+			.
+
+			{baseCondition} a agri:StudyFactor;
+				schema:name "{baseConditionLabel}"
+			.
+	
+			{gene} bioschema:expressedIn {condition}.
+		"""
+	
+		# TODO: it would be more correct to not change the case, but we want Knet compatibility
+		gene_id_nrm = gene_id.lower()
+	
+		tpl_data = {
+			"gene": "bkr:gene_" + gene_id_nrm,
+			"geneId": gene_id_nrm,
+			"geneAcc": gene_id,
+			"condition": make_condition_uri ( condition ),
+			"conditionLabel": condition,
+			"conditionId": make_id ( base_condition, skip_non_word_chars = False ),
+			"baseCondition": make_condition_uri ( base_condition ),
+			"baseConditionLabel": base_condition,
+			"conditionId": make_id ( base_condition, skip_non_word_chars = False ),
+			"experiment": "bkr:exp_" + exp_acc,
+			"experimentId": exp_acc,
+			"foldChange": fold_change,
+			"pvalue": pvalue
+		}
+	
+		print ( dedent ( rdf_tpl.format ( **tpl_data ) ), file = out )
+		condition_labels.add ( condition )
+		condition_labels.add ( base_condition )
+			
+	print ( rdf_gxa_namespaces (), file = out )			
+	process_gxa_dex_levels ( gxa_accs_rows_src, rdf_gxa_dex_level_processor, gene_filter_row_src )
+	return condition_labels
+
+
+
+"""
+	TODO: comment me!
+"""
 _condre = "'([^']+)'"
 DEX_COND_PATTERN = re.compile ( f"{_condre} vs {_condre}\s*\.(foldChange|pValue)" )
 def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
@@ -280,7 +341,7 @@ def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 		log.debug ( "Downloading URL: '%s'", dex_url )
 		
 		# Process the expression data row-by-row
-		conditions = set()
+		conditions_header = []
 		is_on_headers = True
 		try:
 			with urlopen ( dex_url ) as gxa_stream:
@@ -289,14 +350,11 @@ def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 					if is_on_headers:
 						if len( row ) > 0 and row [ 0 ] == "Gene ID":
 							# Condition labels are in the headers
-							conds_row = row [ 2: ]
-							for conds_header in conds_row:
+							conditions_header = row [ 2: ]
+							for conds_header in conditions_header:
 								conds = get_conditions ( conds_header )
 								if not conds:
 									raise ValueError ( "Bad condition headers for the DXA levels file %s, ignoring this" % exp_acc )
-								conditions.add ( conds [ 0 ] )
-								conditions.add ( conds [ 1 ] )
-							log.debug ( "Conditions: %s", conditions )
 							is_on_headers = False # since now on
 						continue # start reading data after the last header
 	
@@ -308,13 +366,33 @@ def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 					exp_levels = row[ 2: ]
 					j = 0
 					while j < len ( exp_levels ):
-						# TODO: 
-						# FC = value in j, if not good, skip
-						# pval = value in ++j, if not good, skip
-						# extract fact/base/type conditions from the header
-						# call exp_processor ( fact_cond, base_cond, FC, pval )
-						pass
-
+						fold_change = exp_levels [ j ]
+						if not fold_change:
+							log.debug ( "No fold change for gene %s, skipping", gene_id )
+							continue
+						fold_change = float ( fold_change )
+						if abs ( fold_change ) < 1: 
+							log.debug ( "Skipping low fold change for gene %s", gene_id )
+							continue
+						
+						j += 1
+						pvalue = exp_levels [ j ]
+						if not pvalue:  
+							log.debug ( "No p-value for gene %s, skipping", gene_id )
+							continue
+						pvalue = float ( pvalue )
+						if pvalue > 0.05:
+							log.debug ( "Skipping low p-value for gene %s", gene_id )
+							continue
+							
+						# Now we can get the conditions
+						cond, base_cond = get_conditions ( conditions_header [ j ] )
+						
+						# Now, we have everything the processor needs
+						exp_processor ( exp_acc, gene_id, cond, base_cond, fold_change, pvalue )
+						
+						j += 1
+						
 					# /end: column loop
 				# /end: experiment results loop
 			# /end: experiment results stream
