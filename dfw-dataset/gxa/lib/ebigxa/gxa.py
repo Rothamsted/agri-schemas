@@ -8,6 +8,9 @@ from ebigxa.utils import rdf_gxa_namespaces
 from etltools.utils import make_id, uri2accession, normalize_rows_source
 from biotools.bioportal import AgroPortalClient
 
+import re
+
+
 log = logging.getLogger ( __name__ )
 
 """
@@ -60,8 +63,86 @@ def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, filtered_genes_path = 
 		condition_labels.add ( condition )
 			
 	print ( rdf_gxa_namespaces (), file = out )			
-	_process_gxa_tpm_levels ( gxa_accs_rows_src, rdf_gxa_tpm_level_processor, filtered_genes_path )
+	process_gxa_tpm_levels ( gxa_accs_rows_src, rdf_gxa_tpm_level_processor, filtered_genes_path )
 	return condition_labels
+
+
+
+"""
+  Executes the processor for every GXA gene/condition found on the server.
+	
+	The processor has the parameters: exp_acc, gene_id, condition, tpm
+	we use this for several tasks, like printing RDF, extracting the conditions
+"""
+def process_gxa_tpm_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
+	target_gene_ids = load_filtered_genes ( gene_filter_row_src )
+	
+	if target_gene_ids: log.debug ( "target_gene_ids has %d IDs", len ( target_gene_ids ) )
+
+	for exp_acc in normalize_rows_source ( gxa_rows_src ):
+		
+		tpm_url = gxa_tpm_url ( exp_acc )
+		log.info ( "Downloading GXA TPM levels from '%s'", exp_acc )
+		log.debug ( "Downloading URL: '%s'", tpm_url )
+		
+		# Process the expression data row-by-row
+		conditions = []
+		is_on_headers = True
+		try:
+			with urlopen ( tpm_url ) as gxa_stream:
+				for row in csv.reader ( io.TextIOWrapper ( gxa_stream, encoding = 'utf-8' ), delimiter = "\t" ):
+					# First rows are headers, up to the table's headers, which start with "Gene ID"
+					if is_on_headers:
+						if len( row ) > 0 and row [ 0 ] == "Gene ID":
+							# Condition labels are in the headers
+							conditions = row [ 2: ]
+							log.debug ( "Conditions: %s", conditions )
+							is_on_headers = False # since now on
+						continue # start reading data after the last header
+	
+					gene_id = row [ 0 ].upper()
+					if target_gene_ids and gene_id not in target_gene_ids:
+						# log.debug ( "Skipping non-target gene: '%s'", gene_id )
+						continue
+	
+					exp_levels = row[ 2: ]
+					for j in range ( len ( exp_levels ) ):
+						tpm = exp_levels [ j ]
+						ordinal_tpm = get_ordinal_tpm ( tpm, gene_id )
+						if not ordinal_tpm: continue
+						exp_processor ( exp_acc, gene_id, conditions [ j ], tpm, ordinal_tpm )
+					# /end: column loop
+				# /end: experiment results loop
+			# /end: experiment results stream
+		except FileNotFoundError as ex:
+			log.exception ( "Error: while processing experiment '%s': %s, skipping the experiment", str (ex) )
+			continue
+		if is_on_headers:
+			log.warning ( "Didn't see any data in the experiment " + exp_acc )
+	# /end: experiment loop
+# /end:process_gxa_tpm_levels
+
+
+"""
+  Turns a TPM count into ordinal values 'low'/'medium'/'high'. This is based on the thresholds used by
+  the GXA (https://www.ebi.ac.uk/gxa/FAQ.html).
+  
+  The gene_id is used for logging invalid or too low TPMs. 
+"""
+def get_ordinal_tpm ( tpm, gene_id = None ):
+	if not tpm:
+		# if gene_id: log.debug ( "Skipping empty TPM count for gene: %s", gene_id )
+		return None
+	tpm = float ( tpm )
+
+	if tpm <= 0.5:
+		# if gene_id: log.debug ( "Skipping low TPM count (%d) for gene: %s", tpm, gene_id )
+		return None
+
+	if tpm <= 10: return 'low'
+	if tpm <= 1000: return 'medium'
+	return 'high'	# > 1000
+
 
 
 """
@@ -121,86 +202,7 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 	#/end: for cond_label
 	if not has_errors: return
 	log.error ( "The gene expresion conditions annotation has had some errors, probably some terms weren't annotated" )
-#/end: rdf_gxa_conditions
-
-
-# ----------------------- ----------------------- ----------------------- ----------------------- 
-
-
-"""
-  Executes the processor for every GXA gene/condition found on the server.
-	
-	The processor has the parameters: exp_acc, gene_id, condition, tpm
-	we use this for several tasks, like printing RDF, extracting the conditions
-"""
-def _process_gxa_tpm_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
-	target_gene_ids = load_filtered_genes ( gene_filter_row_src )
-	
-	if target_gene_ids: log.debug ( "target_gene_ids has %d IDs", len ( target_gene_ids ) )
-
-	for exp_acc in normalize_rows_source ( gxa_rows_src ):
-		
-		tpm_url = gxa_tpm_url ( exp_acc )
-		log.info ( "Downloading GXA TPM levels from '%s'", exp_acc )
-		log.debug ( "Downloading URL: '%s'", tpm_url )
-		
-		# Process the expression data row-by-row
-		conditions = []
-		exp_levels = []
-		is_on_headers = True
-		try:
-			with urlopen ( tpm_url ) as gxa_stream:
-				for row in csv.reader ( io.TextIOWrapper ( gxa_stream, encoding = 'utf-8' ), delimiter = "\t" ):
-					# First rows are headers, up to the table's headers, which start with "Gene ID"
-					if is_on_headers:
-						if len( row ) > 0 and row [ 0 ] == "Gene ID":
-							# Condition labels are in the headers
-							conditions = row [ 2: ]
-							log.debug ( "Conditions: %s", conditions )
-							is_on_headers = False # since now on
-						continue # start reading data after the last header
-	
-					gene_id = row [ 0 ].upper()
-					if target_gene_ids and gene_id not in target_gene_ids:
-						# log.debug ( "Skipping non-target gene: '%s'", gene_id )
-						continue
-	
-					exp_levels = row[ 2: ]
-					for j in range ( len ( exp_levels ) ):
-						tpm = exp_levels [ j ]
-						ordinal_tpm = get_ordinal_tpm ( tpm, gene_id )
-						if not ordinal_tpm: continue
-							
-						exp_processor ( exp_acc, gene_id, conditions [ j ], tpm, ordinal_tpm )
-
-					# /end: column loop
-				# /end: experiment results loop
-			# /end: experiment results stream
-		except FileNotFoundError as ex:
-			log.exception ( "Error: while processing experiment '%s': %s, skipping the experiment", str (ex) )
-			continue
-		if is_on_headers:
-			log.warning ( "Didn't see any data in the experiment " + exp_acc )
-	# /end: experiment loop
-# /end:process_gxa_experiments
-
-
-def get_ordinal_tpm ( tpm, gene_id = None ):
-	if not tpm:
-		# if gene_id: log.debug ( "Skipping empty TPM count for gene: %s", gene_id )
-		return None
-	tpm = float ( tpm )
-
-	# These are all based on https://www.ebi.ac.uk/gxa/FAQ.html
-
-	if tpm <= 0.5:
-		# if gene_id: log.debug ( "Skipping low TPM count (%d) for gene: %s", tpm, gene_id )
-		return None
-
-	if tpm <= 10: return 'low'
-	if tpm <= 1000: return 'medium'
-	return 'high'	# > 1000
-	
+#/end: rdf_gxa_conditions	
 
 
 
@@ -220,7 +222,7 @@ def load_filtered_genes ( gene_filter_row_src = None ):
 	
 	return result
 
-# The URL of the TPM gene expression levels
+# The URL of the document returning the TPM gene expression levels for the experiment accession
 def gxa_tpm_url ( exp_acc ):
 	return \
 		"https://www.ebi.ac.uk/gxa/experiments-content/" + exp_acc \
@@ -251,3 +253,83 @@ def annotate_condition ( cond_label ):
 	terms = ap.annotator_terms ( cond_label, cutoff = 5, **opts )
 	return terms
 	
+
+"""
+	TODO: comment me!
+"""
+_condre = "'([^']+)'"
+DEX_COND_PATTERN = re.compile ( f"{_condre} vs {_condre}\s*\.(foldChange|pValue)" )
+def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
+	
+	def get_conditions ( conds_header ):
+		if not conds_header: return ()
+		conds_header = conds_header.strip ()
+		if not conds_header: return ()
+		cond_match = DEX_COND_PATTERN.match ( conds_header )
+		if not cond_match: return ()
+		return ( cond_match.get ( 0 ), cond_match ( 1 ) )
+	
+	target_gene_ids = load_filtered_genes ( gene_filter_row_src )
+	
+	if target_gene_ids: log.debug ( "target_gene_ids has %d IDs", len ( target_gene_ids ) )
+
+	for exp_acc in normalize_rows_source ( gxa_rows_src ):
+		
+		dex_url = gxa_dex_url ( exp_acc )
+		log.info ( "Downloading GXA DEG levels from '%s'", exp_acc )
+		log.debug ( "Downloading URL: '%s'", dex_url )
+		
+		# Process the expression data row-by-row
+		conditions = set()
+		is_on_headers = True
+		try:
+			with urlopen ( dex_url ) as gxa_stream:
+				for row in csv.reader ( io.TextIOWrapper ( gxa_stream, encoding = 'utf-8' ), delimiter = "\t" ):
+					# First rows are headers, up to the table's headers, which start with "Gene ID"
+					if is_on_headers:
+						if len( row ) > 0 and row [ 0 ] == "Gene ID":
+							# Condition labels are in the headers
+							conds_row = row [ 2: ]
+							for conds_header in conds_row:
+								conds = get_conditions ( conds_header )
+								if not conds:
+									raise ValueError ( "Bad condition headers for the DXA levels file %s, ignoring this" % exp_acc )
+								conditions.add ( conds [ 0 ] )
+								conditions.add ( conds [ 1 ] )
+							log.debug ( "Conditions: %s", conditions )
+							is_on_headers = False # since now on
+						continue # start reading data after the last header
+	
+					gene_id = row [ 0 ].upper()
+					if target_gene_ids and gene_id not in target_gene_ids:
+						# log.debug ( "Skipping non-target gene: '%s'", gene_id )
+						continue
+	
+					exp_levels = row[ 2: ]
+					j = 0
+					while j < len ( exp_levels ):
+						# TODO: 
+						# FC = value in j, if not good, skip
+						# pval = value in ++j, if not good, skip
+						# extract fact/base/type conditions from the header
+						# call exp_processor ( fact_cond, base_cond, FC, pval )
+						pass
+
+					# /end: column loop
+				# /end: experiment results loop
+			# /end: experiment results stream
+		except FileNotFoundError as ex:
+			log.exception ( "Error: while processing experiment '%s': %s, skipping the experiment", str (ex) )
+			continue
+		if is_on_headers:
+			log.warning ( "Didn't see any data in the experiment " + exp_acc )
+	# /end: experiment loop
+# /end:process_gxa_dex_levels
+
+
+
+# The URL of the document returning the differential gene expression levels for the experiment accession
+def gxa_dex_url ( exp_acc ):
+	return \
+		"https://www.ebi.ac.uk/gxa/experiments-content/" + exp_acc +\
+		"/resources/ExperimentDownloadSupplier.RnaSeqDifferential/tsv"		
