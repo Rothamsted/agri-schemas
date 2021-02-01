@@ -1,6 +1,6 @@
 import unittest
 import io
-from ebigxa.gxa import rdf_gxa_conditions, rdf_gxa_tpm_levels
+from ebigxa.gxa import rdf_gxa_conditions, rdf_gxa_tpm_levels, rdf_gxa_dex_levels
 from etltools.utils import logger_config, sparql_ask
 import rdflib
 
@@ -37,7 +37,8 @@ class GxaTest ( unittest.TestCase ):
 	def test_rdf_gxa_tpm_levels ( self ):
 		accs = [ "E-MTAB-4484" ]
 		gene_filter = [ "TRAESCS3D02G284900", "TRAESCS7B02G271500", "TRAESCS7D02G366600", "TRAESCS7B02G271600", 
-										"TRAESCS3B02G319000", "TRAESCS7D02G366500", "TRAESCS7A02G356200", "TRAESCS7A02G356100" ]
+										"TRAESCS3B02G319000", "TRAESCS7D02G366500", "TRAESCS7A02G356200", "TRAESCS7A02G356100",
+										"TraesCS1A02G115900" ]
 		out = io.StringIO ()
 		cond_labels = rdf_gxa_tpm_levels ( accs, out, gene_filter )
 		outs = out.getvalue ()
@@ -55,6 +56,11 @@ class GxaTest ( unittest.TestCase ):
 		self.assert_rdf ( graph, 
 			"ASK { bkr:gene_traescs7a02g356100 schema:identifier 'TRAESCS7A02G356100' }",
 			"TRAESCS7A02G356100 identifier not stated!"
+		)
+		
+		self.assert_rdf ( graph, 
+			"ASK { bkr:gene_traescs1a02g115900 rdfs:label 'ALI1'. }",
+			"traescs1a02g115900 rdfs:label not stated!"
 		)
 
 		self.assert_rdf ( graph, 
@@ -91,6 +97,84 @@ class GxaTest ( unittest.TestCase ):
 			"Condition not in the result!"
 		)
 
+
+	def test_rdf_gxa_dex_levels ( self ):
+		accs = [ "E-MTAB-4289" ]
+		gene_filter = [ "TRAESCS3D02G284900", "TRAESCS7B02G271500", "TRAESCS7D02G366600", "TRAESCS7B02G271600", 
+										"TRAESCS3B02G319000", "TRAESCS7D02G366500", "TRAESCS7A02G356200", "TRAESCS7A02G356100",
+										"TraesCS1A02G115900" ]
+		out = io.StringIO ()
+		cond_labels = rdf_gxa_dex_levels ( accs, out, gene_filter )
+		outs = out.getvalue ()
+		log.info ( "rdf_gxa_dex_levels() test output (truncated):\n%s\n\n", outs [ 0: 4000 ] )		
+		log.info ( "rdf_gxa_dex_levels(), returned conditions: %s", cond_labels )
+		
+		graph = rdflib.Graph()
+		graph.parse ( data = outs, format = "turtle" )
+		
+		self.assert_rdf ( graph, 
+			"ASK { bkr:gene_traescs7a02g356100 a bioschema:Gene }",
+			"Test gene TRAESCS7A02G356100 not stated!"
+		)
+
+		self.assert_rdf ( graph, 
+			"ASK { bkr:gene_traescs7a02g356100 schema:identifier 'TRAESCS7A02G356100' }",
+			"TRAESCS7A02G356100 identifier not stated!"
+		)
+		
+		self.assert_rdf ( graph, 
+			"ASK { bkr:gene_traescs1a02g115900 rdfs:label 'ALI1'. }",
+			"traescs1a02g115900 rdfs:label not stated!"
+		)
+		
+		cond_uri = "bkr:gxaexp_E-MTAB-4289_traescs7d02g366500_blumeria_graminis_0x3B_24_hour_vs_control"
+		self.assert_rdf ( graph, 
+			f"""ASK {{ {cond_uri} a rdfs:Statement; 
+			      rdf:subject bkr:gene_traescs7d02g366500;
+			      rdf:predicate bioschema:expressedIn;
+			      rdf:object bkr:cond_blumeria_graminis_0x3B_24_hour.
+			    }}""",
+			f"{cond_uri} not stated!"
+		)
+		self.assert_rdf ( graph, 
+			"ASK { bkr:gene_traescs7d02g366500 bioschema:expressedIn bkr:cond_blumeria_graminis_0x3B_24_hour. }",
+			f"{cond_uri} not stated (summary statement)!"
+		)
+		
+		self.assert_rdf ( graph, 
+			f"ASK {{ {cond_uri} agri:log2FoldChange 5.1 }}", f"{cond_uri}'s fold-change not stated!"
+		)
+		
+		self.assert_rdf ( graph, 
+			f"""ASK {{ {cond_uri} agri:pvalue ?pvalue.
+				         FILTER ( ROUND ( 100 * ?pvalue / 1E-16 ) = 116 ) }}""",
+			f"{cond_uri}'s pvalue not stated or bad pvalue!"
+		)
+		
+		self.assert_rdf ( graph, 
+			f"ASK {{ {cond_uri} agri:evidence bkr:exp_E-MTAB-4289 }}", f"{cond_uri}'s evidence not stated!"
+		)
+
+		self.assert_rdf ( graph, 
+			f"ASK {{ {cond_uri} agri:baseCondition bkr:cond_control }}", f"{cond_uri}'s base condition not stated!"
+		)
+		
+		self.assert_rdf ( graph, 
+			"""ASK { bkr:cond_blumeria_graminis_0x3B_24_hour a agri:StudyFactor;
+				       schema:name "Blumeria graminis; 24 hour" }""", 
+			"'Blumeria graminis' condition not defined!"
+		)
+
+		self.assert_rdf ( graph, 
+			"""ASK { bkr:cond_control a agri:StudyFactor;
+			     schema:name "control" }""", 
+			"control condition not defined!"
+		)
+		
+		self.assertEqual ( 
+			set ( [ 'control', 'Blumeria graminis; 24 hour', 'Blumeria graminis; 72 hour' ] ), cond_labels,
+			"Wrong set of conditions returned!"
+		)
 	
 	def assert_rdf ( self, graph, ask_query, fail_msg ):
 		self.assertTrue ( sparql_ask ( graph, ask_query ), fail_msg )		

@@ -21,7 +21,7 @@ log = logging.getLogger ( __name__ )
 """
 def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = None ):
 	condition_labels = set ()
-	def rdf_gxa_tpm_level_processor ( exp_acc, gene_id, condition, tpm, ordinal_tpm ):
+	def rdf_gxa_tpm_level_processor ( exp_acc, gene_id, gene_name, condition, tpm, ordinal_tpm ):
 		rdf_tpl = """
 			{gene} a bioschema:Gene;
 				schema:identifier "{geneAcc}";
@@ -45,9 +45,10 @@ def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = 
 	
 		# TODO: it would be more correct to not change the case, but we want Knet compatibility
 		gene_id_nrm = gene_id.lower()
+		gene_uri = "bkr:gene_" + gene_id_nrm
 	
 		tpl_data = {
-			"gene": "bkr:gene_" + gene_id_nrm,
+			"gene": gene_uri,
 			"geneId": gene_id_nrm,
 			"geneAcc": gene_id,
 			"condition": make_condition_uri ( condition ),
@@ -60,6 +61,10 @@ def rdf_gxa_tpm_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = 
 		}
 	
 		print ( dedent ( rdf_tpl.format ( **tpl_data ) ), file = out )
+		if gene_name and gene_name.lower () != gene_id.lower ():
+			# we use rdfs:label for the name cause we're not so sure if it's a pref or alt name  
+			print ( dedent ( f"\n{gene_uri} rdfs:label \"{gene_name}\".\n" ), file = out )
+						
 		condition_labels.add ( condition )
 			
 	print ( rdf_gxa_namespaces (), file = out )			
@@ -105,12 +110,14 @@ def process_gxa_tpm_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 						# log.debug ( "Skipping non-target gene: '%s'", gene_id )
 						continue
 	
+					gene_name = row [ 1 ]
+	
 					exp_levels = row[ 2: ]
 					for j in range ( len ( exp_levels ) ):
 						tpm = exp_levels [ j ]
 						ordinal_tpm = get_ordinal_tpm ( tpm, gene_id )
 						if not ordinal_tpm: continue
-						exp_processor ( exp_acc, gene_id, conditions [ j ], tpm, ordinal_tpm )
+						exp_processor ( exp_acc, gene_id, gene_name, conditions [ j ], tpm, ordinal_tpm )
 					# /end: column loop
 				# /end: experiment results loop
 			# /end: experiment results stream
@@ -259,19 +266,19 @@ def annotate_condition ( cond_label ):
 """
 def rdf_gxa_dex_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = None ):
 	condition_labels = set ()
-	def rdf_gxa_dex_level_processor ( exp_acc, gene_id, condition, base_condition, fold_change, pvalue ): 
+	def rdf_gxa_dex_level_processor ( exp_acc, gene_id, gene_name, condition, base_condition, fold_change, pvalue ):
 		rdf_tpl = """
 			{gene} a bioschema:Gene;
 				schema:identifier "{geneAcc}";
 			.
 	
-			bkr:gxaexp_{experimentId}_{geneId}_{conditionId}_{baseConditionId} a rdfs:Statement;
+			bkr:gxaexp_{experimentId}_{geneId}_{conditionId}_vs_{baseConditionId} a rdfs:Statement;
 				rdf:subject {gene};
 				rdf:predicate bioschema:expressedIn;
 				rdf:object {condition};
 				agri:baseCondition {baseCondition};
 				agri:log2FoldChange {foldChange};
-				agri:pvalue "{pvalue}";
+				agri:pvalue {pvalue};
 				agri:evidence {experiment}
 			.
 			
@@ -288,17 +295,18 @@ def rdf_gxa_dex_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = 
 	
 		# TODO: it would be more correct to not change the case, but we want Knet compatibility
 		gene_id_nrm = gene_id.lower()
-	
+		gene_uri = "bkr:gene_" + gene_id_nrm
+
 		tpl_data = {
-			"gene": "bkr:gene_" + gene_id_nrm,
+			"gene": gene_uri,
 			"geneId": gene_id_nrm,
 			"geneAcc": gene_id,
 			"condition": make_condition_uri ( condition ),
 			"conditionLabel": condition,
-			"conditionId": make_id ( base_condition, skip_non_word_chars = False ),
+			"conditionId": make_id ( condition, skip_non_word_chars = False ),
 			"baseCondition": make_condition_uri ( base_condition ),
 			"baseConditionLabel": base_condition,
-			"conditionId": make_id ( base_condition, skip_non_word_chars = False ),
+			"baseConditionId": make_id ( base_condition, skip_non_word_chars = False ),
 			"experiment": "bkr:exp_" + exp_acc,
 			"experimentId": exp_acc,
 			"foldChange": fold_change,
@@ -306,6 +314,11 @@ def rdf_gxa_dex_levels ( gxa_accs_rows_src, out = stdout, gene_filter_row_src = 
 		}
 	
 		print ( dedent ( rdf_tpl.format ( **tpl_data ) ), file = out )
+		if gene_name and gene_name.lower () != gene_id.lower ():
+			# we use rdfs:label for the name cause we're not so sure if it's a pref or alt name  
+			print ( dedent ( f"\n{gene_uri} rdfs:label \"{gene_name}\".\n" ), file = out )
+		
+		
 		condition_labels.add ( condition )
 		condition_labels.add ( base_condition )
 			
@@ -322,13 +335,14 @@ _condre = "'([^']+)'"
 DEX_COND_PATTERN = re.compile ( f"{_condre} vs {_condre}\s*\.(foldChange|pValue)" )
 def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 	
+	""" Gets the condition mentioned by a header. See below for details.""" 
 	def get_conditions ( conds_header ):
 		if not conds_header: return ()
 		conds_header = conds_header.strip ()
 		if not conds_header: return ()
 		cond_match = DEX_COND_PATTERN.match ( conds_header )
 		if not cond_match: return ()
-		return ( cond_match.get ( 0 ), cond_match ( 1 ) )
+		return ( cond_match.group ( 1 ), cond_match.group ( 2 ) )
 	
 	target_gene_ids = load_filtered_genes ( gene_filter_row_src )
 	
@@ -363,36 +377,40 @@ def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 						# log.debug ( "Skipping non-target gene: '%s'", gene_id )
 						continue
 	
+					gene_name = row [ 1 ]
+	
 					exp_levels = row[ 2: ]
 					j = 0
 					while j < len ( exp_levels ):
-						fold_change = exp_levels [ j ]
-						if not fold_change:
-							log.debug ( "No fold change for gene %s, skipping", gene_id )
-							continue
-						fold_change = float ( fold_change )
-						if abs ( fold_change ) < 1: 
-							log.debug ( "Skipping low fold change for gene %s", gene_id )
-							continue
-						
-						j += 1
-						pvalue = exp_levels [ j ]
-						if not pvalue:  
-							log.debug ( "No p-value for gene %s, skipping", gene_id )
-							continue
-						pvalue = float ( pvalue )
-						if pvalue > 0.05:
-							log.debug ( "Skipping low p-value for gene %s", gene_id )
-							continue
+						try:
+							# Each condition has two columns, first for log2-FC and second for pvalue
+							# Both have a format like: 'infected' vs 'control'.pValue
+							fold_change = exp_levels [ j ]
+							if not fold_change:
+								log.debug ( "No fold change for gene %s, skipping", gene_id )
+								continue
+							fold_change = float ( fold_change )
+							if abs ( fold_change ) < 1: 
+								log.debug ( "Skipping low fold change for gene %s", gene_id )
+								continue
 							
-						# Now we can get the conditions
-						cond, base_cond = get_conditions ( conditions_header [ j ] )
+							pvalue = exp_levels [ j + 1 ]
+							if not pvalue:  
+								log.debug ( "No p-value for gene %s, skipping", gene_id )
+								continue
+							pvalue = float ( pvalue )
+							if pvalue > 0.05:
+								log.debug ( "Skipping low p-value for gene %s", gene_id )
+								continue
+								
+							# Now we can get the conditions
+							cond, base_cond = get_conditions ( conditions_header [ j ] )
+							
+							# Now, we have everything the processor needs
+							exp_processor ( exp_acc, gene_id, gene_name, cond, base_cond, fold_change, pvalue )
 						
-						# Now, we have everything the processor needs
-						exp_processor ( exp_acc, gene_id, cond, base_cond, fold_change, pvalue )
-						
-						j += 1
-						
+						finally:
+							j += 2
 					# /end: column loop
 				# /end: experiment results loop
 			# /end: experiment results stream

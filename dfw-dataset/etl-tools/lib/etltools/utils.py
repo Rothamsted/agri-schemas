@@ -10,7 +10,7 @@ from subprocess import run
 from builtins import isinstance
 import logging.config
 import yaml
-
+from pyparsing import ParseException
 
 def check_env ():
 	if not os.getenv ( "ETL_OUT" ):
@@ -32,7 +32,7 @@ class XNamespaceManager ( NamespaceManager ):
 
 	def __getattr__ ( self, attr ):
 		return getattr ( self.__base, attr )
- 
+
 	def __setattr__ ( self, attr, val ):
 		if attr == '_XNamespaceManager__base':
 			NamespaceManager.__setattr__ ( self, attr, val )
@@ -59,30 +59,40 @@ class XNamespaceManager ( NamespaceManager ):
 		return '\n'.join ( [  line_template.format ( prefix = prefix, uri = uri ) for prefix, uri in nss ] )
 
 	def to_sparql ( self ):
-	  return self.to_lang ()
+		return self.to_lang ()
 
 	def to_turtle ( self ):
-	  return self.to_lang ( 'prefix {prefix}: <{uri}>' )
+		return self.to_lang ( 'prefix {prefix}: <{uri}>' )
 
-	def load ( self, doc_uri, format = None ):
+	def load ( self, doc_uri, rdf_format = None ):
 		g = Graph ()
-		g.parse ( doc_uri, format = format )
+		g.parse ( doc_uri, format = rdf_format )
 		self.merge_ns_manager ( g.namespace_manager )
- 	
+	
 	def merge_ns_manager ( self, nsm ):
 		for prefx, ns in nsm.namespaces ():
 			self.bind ( prefx, ns, True, True )
- 	
+	
 
 DEFAULT_NAMESPACES = XNamespaceManager ()
 DEFAULT_NAMESPACES.load ( dirname ( abspath ( __file__ ) ) + "/default-namespaces.ttl", "turtle" )
 if os.getenv ( 'NAMESPACES_PATH' ):
 	DEFAULT_NAMESPACES.load ( os.getenv ( 'NAMESPACES_PATH' ), "turtle" )
 
-
-def sparql_ask ( graph: Graph, ask_query, namespaces = DEFAULT_NAMESPACES ):
-	if namespaces: ask_query = namespaces.to_sparql () + "\n" + ask_query
-	return bool ( graph.query ( ask_query ) )
+"""
+	Execute the ASK query against the graph and returns the result. Useful for writing tests.
+	if namespaces is None, nss to prefix ask_query are got from graph.namespace_manager
+	if namespaces is explicitly False, no prefixes are added to the query 
+"""
+def sparql_ask ( graph: Graph, ask_query, namespaces = None ):
+	if not namespaces and namespaces is not False:
+		namespaces = XNamespaceManager ( graph.namespace_manager )
+	if namespaces: 
+		ask_query = namespaces.to_sparql () + "\n" + ask_query
+	try:
+		return bool ( graph.query ( ask_query ) )
+	except ParseException as ex:
+		raise ParseException ( "Error while executing SPARQL: '%s', query:\n%s" % ( ex.msg, ask_query ) ) from ex
 
 
 """
