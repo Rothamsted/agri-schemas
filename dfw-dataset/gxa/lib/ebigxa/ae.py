@@ -1,5 +1,5 @@
 import csv, io
-from sys import stdout, stderr
+from sys import stdout
 from urllib.request import urlopen
 import requests
 from textwrap import dedent
@@ -7,10 +7,28 @@ from textwrap import dedent
 from ebigxa.utils import rdf_str, rdf_gxa_namespaces
 from etltools.utils import normalize_rows_source
 
-from ebigxa.gxa import gxa_tpm_url
+from ebigxa.gxa import gxa_tpm_url, gxa_dex_url
 import logging
 
+from concurrent.futures import ThreadPoolExecutor
+from time import sleep
+
 log = logging.getLogger ( __name__ )
+
+"""
+  A facility that invokes rnaseqer_experiments_download for multiple organism IDs (coming from either a 
+  io.StringIO or a file) and filter them via ae_accessions_filter()
+"""
+def rnaseqer_experiments_download_all ( organism_id_rows_src, out = stdout ):
+	rows_source = normalize_rows_source ( organism_id_rows_src )
+	for organism_id in rows_source:
+		log.info ( "Downloading experiments about %s", organism_id )
+		this_out = io.StringIO ()
+		rnaseqer_experiments_download ( organism_id, this_out )
+		this_out = this_out.getvalue ()
+		this_out = io.StringIO ( this_out, newline = None )
+		for (exp_acc, exp_types) in ae_accessions_filter ( this_out ):
+			print ( "%s\t%s" % (exp_acc, ",".join ( exp_types ) ), file = out )
 
 
 """
@@ -32,28 +50,59 @@ def rnaseqer_experiments_download ( organism_id, out = stdout ):
 """
   Gets a list of GXA, accessions, taking input from the output coming from rnaseqer_experiments_download().
   
-  Such input is filtered by removing accessions not being in AE, or in GXA (for each accession, it's checked
-  that at least TPM or differential expression values are available).
+  Such input is filtered by removing accessions not being in AE, or in GXA. For each accession, it's checked
+  that at least one of TPM or differential expression values are available.
+  
+  The result is a generator yielding binary tuples, each with an accession and another list of the types available 
+  for that accession (current possible values are RNASeq, DEX)
 """
 def ae_accessions_filter ( rows_source ):
-	def is_valid_for_us ( exp_acc ):
-		probes = [ ( "AE/IDF", ae_magetab_url ( exp_acc, "idf" ) ) ]
-		probes.append ( ( "GXA/TPM", gxa_tpm_url ( exp_acc ) ) )
-		for (utype, url) in probes:
-			hreq = requests.get ( url )
-			if not hreq:
-				if "IDF" in utype:
-					log.debug ( "Can't download IDF file for %s, skipping", exp_acc )
-			else:
-				return True
-		log.debug ( "%s hasn't downloadable expression data, skipping", exp_acc )
-		return False
-		
-	rows_source = normalize_rows_source ( rows_source )
+	rows_source = normalize_rows_source ( rows_source )		
 	next ( rows_source ) # Skip the header
-	for row in rows_source:
-		exp_acc = row [ 0 ]
-		if is_valid_for_us ( exp_acc ): yield exp_acc
+	
+	# TODO: Initially, I've tried some parallelism, but it seems that EBI throttling makes things
+	# worse. Possibly switch this back to sequential
+	#
+	with ThreadPoolExecutor ( 1 ) as pool:
+		result = pool.map ( _acc_filter_collector, rows_source, chunksize = 50 )
+		result = filter ( lambda exp_row: exp_row, result )
+		return result
+
+"""
+  Filter the properties of a single experiment by checking its EBI URLs.
+  Returns a tuple that correspond to one of the entries collected by ae_accessions_filter().
+  
+  This should be a function nested in ae_accessions_filter(), but ThreadPoolExecutor.map() doesn't allow
+  that. 
+"""
+def _acc_filter_collector ( exp_row ):
+	"""
+		Tries to get experiment properties (if it has the IDF descriptor, if its RNASeq or DEX) by 
+		checking known EBI URLs that correspond to those properties.
+	"""
+	def _get_exp_type ( exp_acc ):
+		probes = [ ( "IDF", ae_magetab_url ( exp_acc, "idf" ) ) ]
+		probes.append ( ( "RNASeq", gxa_tpm_url ( exp_acc ) ) )
+		probes.append ( ( "DEX", gxa_dex_url ( exp_acc ) ) )
+		types = []
+		for (utype, url) in probes:
+			# TODO: I'm observing heavy EBI throttling, so, slow is betther than stuck. 
+			# See also the notes in ae_accessions_filter()
+			sleep ( 1 )
+			hreq = requests.head ( url, stream=True )
+			if hreq.status_code >= 400:
+				if "IDF" == utype:
+					log.debug ( "Can't download IDF file for %s, skipping", exp_acc )
+					return None
+			else:
+				if "IDF" != utype: types.append ( utype )
+		if not types:
+			log.debug ( "%s hasn't downloadable expression data, skipping", exp_acc )
+		return types
+	exp_acc = exp_row [ 0 ]
+	log.debug ( "Filtering: %s", exp_acc )
+	gxa_types = _get_exp_type ( exp_acc )
+	return (exp_acc, gxa_types) if gxa_types else None 
 		
 		
 """
@@ -66,7 +115,8 @@ def rdf_ae_experiments ( acc_rows_source, out = stdout ):
 	print ( rdf_gxa_namespaces (), file = out )
 
 	# Process the IDF, the MAGETAB file that describes the experiment
-	for exp_acc in normalize_rows_source ( acc_rows_source ):
+	for exp_row in normalize_rows_source ( acc_rows_source ):
+		exp_acc = exp_row if type ( exp_row ) == str else exp_row [ 0 ]
 		rdf = rdf_ae_experiment ( exp_acc )
 		print ( rdf, file = out )
 		
@@ -88,7 +138,8 @@ def rdf_ae_experiment ( exp_accession, specie = "" ):
 	with urlopen ( idf_url ) as idf_stream:
 		csv_reader = csv.reader ( io.TextIOWrapper ( idf_stream, encoding = 'utf-8' ), delimiter = "\t" )
 		# we need to normalise keys to lower case, cause they're used inconsinstently sometimes
-		idf = { row [ 0 ].lower (): row [ 1 ] for row in csv_reader }
+		idf = filter ( lambda row: len ( row ) >= 2, csv_reader ) 
+		idf = { row [ 0 ].lower (): row [ 1 ] for row in idf }
 
 		exp_acc = idf [ "comment[arrayexpressaccession]" ]
 		idf [ "accession" ] = exp_acc # .format() has problems with the original key

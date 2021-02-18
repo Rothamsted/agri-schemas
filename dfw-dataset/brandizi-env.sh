@@ -14,6 +14,8 @@ export AGROPORTAL_APIKEY='c5a0f99c-a061-4175-8d7e-e49c47b6337d'
 . "$ETL_TOOLS/brandizi-env.sh" # Defines some stuff like PYTHONPATH
 
 export ETL_OUT="$DFW_ETL/output" # Overwrites the value set by the etl-tools script.
+export ETL_TMP="$ETL_OUT/tmp" # temp stuff produced by the pipeline
+
 export NAMESPACES_PATH="$mydir/namespaces.ttl"
 export JAVA_TOOL_OPTIONS="-Xmx8G"
 

@@ -84,7 +84,15 @@ def process_gxa_tpm_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 	
 	if target_gene_ids: log.debug ( "target_gene_ids has %d IDs", len ( target_gene_ids ) )
 
-	for exp_acc in normalize_rows_source ( gxa_rows_src ):
+	for exp_row in normalize_rows_source ( gxa_rows_src ):
+		
+		exp_acc = None
+		if type ( exp_row ) == str:
+			exp_acc = exp_row
+		else:
+			# else, it's supposed to have a list of types too
+			exp_acc, exp_types = exp_row
+			if not "RNASeq" in exp_types: continue
 		
 		tpm_url = gxa_tpm_url ( exp_acc )
 		log.info ( "Downloading GXA TPM levels from '%s'", exp_acc )
@@ -213,7 +221,7 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 
 
 
-# Gets genes to be filtered from a file.
+# Gets genes to be filtered from a file or other row source.
 # If the param is null, returns an empty set.
 # All are converted to upper case, to make a case-insensitive match.
 #
@@ -348,7 +356,15 @@ def process_gxa_dex_levels ( gxa_rows_src, exp_processor, gene_filter_row_src ):
 	
 	if target_gene_ids: log.debug ( "target_gene_ids has %d IDs", len ( target_gene_ids ) )
 
-	for exp_acc in normalize_rows_source ( gxa_rows_src ):
+	for exp_row in normalize_rows_source ( gxa_rows_src ):
+		
+		exp_acc = None
+		if type ( exp_row ) == str:
+			exp_acc = exp_row
+		else:
+			# else, it's supposed to have a list of types too
+			exp_acc, exp_types = exp_row
+			if not "DEX" in exp_types: continue
 		
 		dex_url = gxa_dex_url ( exp_acc )
 		log.info ( "Downloading GXA DEG levels from '%s'", exp_acc )
