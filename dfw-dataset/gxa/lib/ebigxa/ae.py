@@ -84,7 +84,7 @@ def _acc_filter_collector ( exp_row ):
 		probes = [ ( "IDF", ae_magetab_url ( exp_acc, "idf" ) ) ]
 		probes.append ( ( "RNASeq", gxa_tpm_url ( exp_acc ) ) )
 		probes.append ( ( "DEX", gxa_dex_url ( exp_acc ) ) )
-		types = []
+		types = [ "RNASeq", "DEX" ]
 		for (utype, url) in probes:
 			# TODO: I'm observing heavy EBI throttling, so, slow is betther than stuck. 
 			# See also the notes in ae_accessions_filter()

@@ -19,7 +19,7 @@ formatters:
   simpleFormatter:
     #class: !!python/name:logging.Formatter
     #class: logging.Formatter
-    format: '%(name)-10s %(asctime)s %(levelname)-5s %(message)s'
+    format: '%(name)-10s %(threadName)s %(asctime)s %(levelname)-5s %(message)s'
     datefmt: '%Y-%m-%d %H:%M:%S'
 
 root:

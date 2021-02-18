@@ -36,7 +36,7 @@ class AeTest ( unittest.TestCase ):
 	"""
 		WARNING: it runs for long time
 	"""
-	def _test_rnaseqer_experiments_download_all ( self ):
+	def test_rnaseqer_experiments_download_all ( self ):
 		out = io.StringIO ()
 		rnaseqer_experiments_download_all ( [ "triticum_aestivum" ], out )
 		outs = out.getvalue ()
