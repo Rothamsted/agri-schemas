@@ -1,13 +1,37 @@
+"""
+	SPARQL Mapping Utilities
+	
+	These employ SPARQL CONSTRUCT to build RDF-to-RDF mapping.
+	
+	@author Marco Brandizi
+"""
+
+
 from os import path, remove
 from sys import stderr
-from etltools.utils import DEFAULT_NAMESPACES, get_jena_home
+from etltools.utils import DEFAULT_NAMESPACES, get_jena_home, XNamespaceManager
 import glob
 import re
 import sh
 
+"""
+	Maps the RDF in a Jena TDB database into some other RDF using a CONSTRUCT statement defined
+	by sparql_rule (see map-rules/ for examples)
+	
+	rule_name is optionally used for output messages.
+	
+	if dump_file is given, the output is sent there
+	
+	sparql_vars can be used to set up {placeholder}s in sparql_rule
+	
+	namespaces are prepended to the sparql_rule, or just ignored if set to None (as you see, we use a 
+	default if not set)
+	
+	The output is a set of triples achieved by the rule, compatible with the .nt format
+"""
 def map_rule ( 
-	tdb_path, sparql_rule, rule_name = None, dump_file = None,
-	sparql_vars = {}, namespaces = DEFAULT_NAMESPACES
+	tdb_path: str, sparql_rule: str, rule_name:  str = None, dump_file: str = None,
+	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES
 ):
 	jena_home = get_jena_home ()
 
@@ -32,10 +56,12 @@ def map_rule (
 	except Exception as ex:
 		raise ChildProcessError ( "Error: while running the query:\n%s " % sparql_rule ) from ex
 
-
+"""
+  map_rule() ran for multiple rules
+"""
 def map_from_rules ( 
-	sparql_rules, tdb_path, dump_file_path = None, sparql_vars = {},
-	namespaces = DEFAULT_NAMESPACES
+	sparql_rules, tdb_path: str, dump_file_path: str = None, sparql_vars: dict = {},
+	namespaces: XNamespaceManager = DEFAULT_NAMESPACES
 ):
 	# Need to join partial results on a new file
 	if ( dump_file_path ):
@@ -54,21 +80,34 @@ def map_from_rules (
 		# Else, we're dumping on stdout
 		map_rule ( tdb_path, rule, rule_name, dump_file_path, sparql_vars, namespaces )				
 
-
+"""
+  map_from_rules(), with the rules read from files.
+  
+  We need One rule (ie, SPARQL construct) per file in rule_paths directories.
+  
+  Rules can have metadata in SPARQL comments (see read_rules_from_files()).
+"""
 def map_from_files ( 
-	rule_paths, tdb_path, dump_file_path,
-	sparql_vars = {}, namespaces = DEFAULT_NAMESPACES
+	rule_paths, tdb_path: str, dump_file_path: str,
+	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES
 ):
 	rules = read_rules_from_files ( rule_paths )	
 	map_from_rules ( rules, tdb_path, dump_file_path, sparql_vars, namespaces )
 
 
-def extract_rule_name ( sparql_rule, default = None ):
+"""
+	See read_rules_from_files()	 
+"""
+def extract_rule_name ( sparql_rule: str, default = None ):
 	nmatch = re.search ( "# Rule Name: (.+)$", sparql_rule, re.MULTILINE )
 	if nmatch: return nmatch.group ( 1 )
 	return default
 	
 """
+	Used by map_from_files().
+	
+	SPARQL-based rules are read from the rule_paths directores.
+
   If a rule has the same 'Rule Name' annotation of another met earlier, this is overridden
   by the new rule.
   

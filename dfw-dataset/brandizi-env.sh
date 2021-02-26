@@ -2,10 +2,12 @@
 mydir="$(pwd)"
 cd "$(dirname ${BASH_SOURCE[0]})"
 
-export DFW_ETL="$(pwd)"
+export DFW_ETL="`pwd`"
 export ETL_TOOLS="$DFW_ETL/etl-tools"
 
+. "$DFW_ETL/../kpyutils/default-env.sh"
 . "$DFW_ETL/../biotools/default-env.sh"
+
 # These are personal! Please, do not use elsewhere!
 export BIOPORTAL_APIKEY='a9f8528b-4db9-4f35-995f-14e81106615f'
 export AGROPORTAL_APIKEY='c5a0f99c-a061-4175-8d7e-e49c47b6337d'
@@ -19,7 +21,7 @@ export ETL_TMP="$ETL_OUT/tmp" # temp stuff produced by the pipeline
 export NAMESPACES_PATH="$mydir/namespaces.ttl"
 export JAVA_TOOL_OPTIONS="-Xmx8G"
 
-for mod in etl-tools gxa
+for mod in gxa
 do
 	. "$mydir/$mod/brandizi-env.sh"
 	cd "$mydir"

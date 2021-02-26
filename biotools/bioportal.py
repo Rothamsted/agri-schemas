@@ -3,44 +3,11 @@
 
   TODO: Moved to the agrischemas/biotools package.
 """
-from urllib.parse import quote
-from urllib.request import urlopen
-import json
+from kpyutils import web
 import os
 
-# TODO: Proper debugging
-is_debug = False
-
-"""
-  Builds a URL parameter, including the URL-encoding of its value.
-"""
-def url_param ( key, value ):
-	return key + "=" + quote ( value )
-
-"""
-  The same as url_param, but prepend a '&' separator.
-"""
-def url_param_append ( key, value ):
-	return "&" + url_param ( key, value )
-
-"""
-  Builds a URL from a dictionary of parameters.
-"""
-def url_build ( baseurl, **params ):
-	url = baseurl
-	for key in params:
-		url += url_param_append ( key, params [ key ] )
-	return url
-
-"""
-	Simple helper to get the URL content
-"""
-def url_get_json ( url ):
-	if is_debug: print ( "url_get_json: " + url )
-	jdoc = urlopen ( url ).read()
-	jdoc = json.loads( jdoc )
-	return jdoc
-
+import logging
+log = logging.getLogger ( __name__ )
 
 """
 	The BioPortal client.
@@ -71,7 +38,7 @@ class BioPortalClient:
 
 	# The API base URL, including the apikey
 	def _bp_baseurl ( self, api_path ):
-		return self._base_url + api_path + "?" + url_param ( "apikey", self.apikey )
+		return self._base_url + api_path + "?" + web.url_param ( "apikey", self.apikey )
 
 	"""
 		The text annotation service.
@@ -81,8 +48,8 @@ class BioPortalClient:
 	def annotator ( self, text, **other_params ):
 		other_params [ "text" ] = text
 		url = self._bp_baseurl ( "/annotator" )
-		url = url_build ( url, **other_params )
-		jterms = url_get_json ( url )
+		url = web.url_build ( url, **other_params )
+		jterms = web.url_get_json ( url )
 		return jterms
 
 	"""
@@ -112,8 +79,8 @@ class BioPortalClient:
 		# Else, let's resolve only those that were retained
 		for new_term in new_terms:
 			durl = new_term [ "self" ]
-			durl += "?" + url_param ( "apikey", self.apikey )
-			dj = url_get_json ( durl )
+			durl += "?" + web.url_param ( "apikey", self.apikey )
+			dj = web.url_get_json ( durl )
 			new_term [ "label" ] = dj [ "prefLabel" ]
 			new_term [ "synonyms" ] = dj [ "synonym" ]
 			defv = dj [ "definition" ]

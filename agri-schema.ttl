@@ -87,6 +87,11 @@ agri:pmedId rdf:type owl:AnnotationProperty ;
             rdfs:subPropertyOf agri:SchemaNewPropertyProposal ,
                                schema:identifier .
 
+agri:doiId rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf agri:SchemaNewPropertyProposal ,
+                               schema:identifier .
+
+
 
 ###  http://agrischemas.org/pvalue
 agri:pvalue rdf:type owl:AnnotationProperty ;
@@ -135,11 +140,14 @@ agri:score rdf:type owl:AnnotationProperty ;
  
 agri:baseCondition rdf:type owl:AnnotationProperty ;
 	schema:rangeIncludes agri:StudyFactor;
-                             rdfs:seeAlso sio:OBI_0000143 ;
-                             rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
-                                                schema:Property .
+	rdfs:seeAlso obo:OBI_0000143 ;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal, schema:Property .
 
-
+agri:timePoint rdf:type owl:AnnotationProperty ;
+	schema:rangeIncludes agri:StudyFactor;
+	rdfs:label "Time Point";
+	rdfs:seeAlso obo:OBI_0001508 ;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal, schema:Property .
 
 ###  http://meta.schema.org/Property
 <http://meta.schema.org/Property> rdf:type owl:AnnotationProperty .
