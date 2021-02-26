@@ -30,5 +30,5 @@ static_files:
     url: http://www.w3.org/TR/skos-reference/skos.rdf
 
 gxa_organisms:
-  - arabidopsis_thaliana
-  - triticum_aestivum
+  - "arabidopsis thaliana"
+  - "triticum aestivum"

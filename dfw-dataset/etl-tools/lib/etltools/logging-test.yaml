@@ -10,7 +10,7 @@ handlers:
 
   file:
     class: logging.FileHandler
-    filename: /tmp/etl-tools.log
+    filename: /tmp/etl-tools-test.log
     mode: w
     level: DEBUG
     formatter: simpleFormatter
