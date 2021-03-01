@@ -389,10 +389,11 @@ def rdf_str ( data, key, rdf_prop ):
 	return rdf_pval ( data, key, rdf_prop, lbuilder )
 
 """
-  Simple utilities that wrap every like of the current traceback into a pair of prefixes/postfixes.
+  Simple utility that wraps every line of the current traceback into a pair of prefixes/postfixes.
   
   This is useful to report errors in a data file that is later read by some other 
   data pipeline component. 
+
 """
 def get_commented_traceback ( comment_prefix: str = "# ", comment_postfix: str = "" ):
 	st = traceback.format_exc()
