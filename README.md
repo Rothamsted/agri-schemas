@@ -32,6 +32,9 @@ extraction/transformation/loading tools (ETL). A few pointers are:
 * [Biotools](biotools), utilities for dealing with biological data
 * [Knetminer Python Utils](kpyutils), generic utilities for the Python environment
 
+## Publications
+
+
 ## References
 [A collection of references](doc/references.md) and links to various similar projects, hackathons, 
 schemas, etc.

@@ -3,6 +3,10 @@ from etltools import sparqlmap
 from etltools.utils import logger_config
 import io
 
+"""
+  The Snakemake workflow to build the DFW prototype dataset
+"""
+
 log = logger_config ( __name__ )
 
 ETL_OUT = os.getenv ( "ETL_OUT" )
