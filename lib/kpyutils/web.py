@@ -3,7 +3,7 @@
 
   Utilities about web, HTTP, web APIs and the like.
 
-	@author: Marco Brandizi
+	:author: Marco Brandizi
 '''
 
 from urllib.parse import quote

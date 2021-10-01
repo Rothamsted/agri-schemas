@@ -1,7 +1,5 @@
 """
-  Simple implementation of clients to invoke Bioportal APIs.
-
-  TODO: Moved to the agrischemas/biotools package.
+  Simple implementation of clients to invoke Bioportal APIs
 """
 from kpyutils import web
 import os
@@ -36,14 +34,14 @@ class BioPortalClient:
 		
 		
 
-	# The API base URL, including the apikey
+	"""The API base URL, including the apikey"""
 	def _bp_baseurl ( self, api_path ):
 		return self._base_url + api_path + "?" + web.url_param ( "apikey", self.apikey )
 
 	"""
-		The text annotation service.
+		The text annotation service
 
-		This returns the plain json
+		This returns the plain json.
 	"""
 	def annotator ( self, text, **other_params ):
 		other_params [ "text" ] = text
@@ -53,12 +51,13 @@ class BioPortalClient:
 		return jterms
 
 	"""
-		The text annotation service.
+		The text annotation service
 
 		Returns the a list term descriptors, which are also cutoff based on the corresponding parameter.
 		The annotar should return terms in order of significance, so the cutoff should retain the most relevant ones.
 
-		if get_uris is set, returns only the term URIs (instead of complete dictionaries with label, synonym, definition).
+		:param cutoff: cuts the list of returned terms, filtering the top-ranked only
+		:param only_uris: if set, returns only the term URIs (instead of complete dictionaries with label, synonym, definition).
 	"""
 	def annotator_terms ( self, text, cutoff = None, only_uris = False, **other_params ):
 		jterms = self.annotator ( text, **other_params )
@@ -93,5 +92,3 @@ class AgroPortalClient ( BioPortalClient ):
 	
 	def __init__ ( self, apikey = None ):
 		self._my_init ( apikey, "AGROPORTAL_APIKEY", AgroPortalClient.AGRO_PORTAL_BASE_URL )
-
-

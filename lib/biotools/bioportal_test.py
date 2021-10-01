@@ -1,6 +1,7 @@
 import unittest
 from biotools.bioportal import BioPortalClient, AgroPortalClient
 from biotools import bioportal
+import json
 
 class BioPortalTest ( unittest.TestCase ):
 	
@@ -13,15 +14,15 @@ class BioPortalTest ( unittest.TestCase ):
 	
 	def test_basics ( self ):
 		#terms = bp.annotator_terms ( "Melanoma is a malignant tumor usually affecting the skin", cutoff = 3, ontologies = "MESH,SNOMED,ICD10" )
-		terms = self.bp.annotator_terms ( "Melanoma is a malignant tumor usually affecting the skin", 5 )
-		print ( terms )
+		terms = self.bp.annotator_terms ( "Melanoma is a malignant tumor usually affecting the skin", cutoff = 20 )
+		#print ( "Text Annotator results:\n" + str ( terms ) )
 		
-		probe = [ term for term in terms if term [ "uri" ] == "http://purl.obolibrary.org/obo/DOID_1909" ]
+		probe = [ term for term in terms if term [ "uri" ] == "http://purl.bioontology.org/ontology/CSP/2020-2434" ]
 		self.assertTrue ( probe, "Test term not returned!" )
 		self.assertTrue ( len ( probe ) == 1, "Too many test terms returned!" )
 		probe = probe [ 0 ]
 		self.assertEqual ( "melanoma", probe [ "label" ], "Test label not fetched!" )
-		self.assertTrue ( "A cell type cancer that has_material_basis_in abnormally" in probe [ "definition" ], "Test definition not fetched!" )
+		self.assertTrue ( "may occur in the skin of any part of the body" in probe [ "definition" ], "Wrong test definition!" )
 		
 
 
@@ -52,7 +53,7 @@ class AgroPortalTest ( unittest.TestCase ):
 		text = "CaPUB1, a Hot Pepper U-box E3 Ubiquitin Ligase, Confers Enhanced Cold Stress Tolerance and " 
 		text += "Decreased Drought Stress Tolerance in Transgenic Rice (Oryza sativa L.)"
 		terms = self.ap.annotator_terms ( text, cutoff = 5, **opts )
-		print ( terms )
+		# print ( terms )
 
 		probe = [ term for term in terms if term [ "uri" ] == "http://purl.obolibrary.org/obo/NCBITaxon_4530" ]
 		self.assertTrue ( probe, "Test term not returned!" )

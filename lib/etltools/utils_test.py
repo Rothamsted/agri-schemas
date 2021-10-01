@@ -1,11 +1,13 @@
-from etltools.utils import DEFAULT_NAMESPACES, normalize_rows_source, logger_config
+from etltools.utils import DEFAULT_NAMESPACES, normalize_rows_source, logger_config, dump_output
+from etltools.utils import download_files
 import unittest, os
-from os.path import dirname, abspath
+from os.path import dirname, abspath, exists, getsize
 from rdflib.namespace import RDFS
 import importlib
 import sys
 import io
 import logging
+from setuptools.command.egg_info import overwrite_arg
 
 class XNamespaceManagerTest ( unittest.TestCase ):
 
@@ -57,7 +59,58 @@ class ProcessDocRowsTest ( unittest.TestCase ):
 		r = process_rows ( os.path.abspath ( os.path.dirname( __file__ ) + "/test.tsv" ) )
 		self.assertTrue ( "Expected string not found in the result!", "L:2, Name: Charles, Surname: Babbage" in r )
 	
-	
+
+class TestDownloadFiles ( unittest.TestCase ):
+	def test_basics ( self ):
+		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
+		
+		download_files ( "https://schema.org/version/latest/schemaorg-current-https.ttl", "/tmp/schema.ttl", "schema.org" )
+		self.assertTrue ( exists ( "/tmp/schema.ttl" ), "test file not downloaded!" )
+
+	def test_multi ( self ):
+		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
+		if exists ( "/tmp/dcterms.ttl" ): os.remove ( "/tmp/dcterms.ttl" )
+
+		download_files ( 
+			[{ "url": "https://schema.org/version/latest/schemaorg-current-https.ttl", 
+			  "out": "schema.ttl" },
+			{ "url": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl", 
+			  "out": "dcterms.ttl" }],
+			out_dir = "/tmp"
+		)
+
+		self.assertTrue ( exists ( "/tmp/schema.ttl" ), "test file not downloaded (schema)!" )
+		self.assertTrue ( exists ( "/tmp/dcterms.ttl" ), "test file not downloaded (dcterms)!" )
+
+	def test_multi_positional_params ( self ):
+		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
+		if exists ( "/tmp/dcterms.ttl" ): os.remove ( "/tmp/dcterms.ttl" )
+
+		download_files ( 
+			[[ "https://schema.org/version/latest/schemaorg-current-https.ttl", 
+			  "schema.ttl" ],
+			[ "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl", 
+			  "dcterms.ttl" ]],
+			out_dir = "/tmp"
+		)
+
+		self.assertTrue ( exists ( "/tmp/schema.ttl" ), "test file not downloaded (schema)!" )
+		self.assertTrue ( exists ( "/tmp/dcterms.ttl" ), "test file not downloaded (dcterms)!" )
+
+	def test_overwrite ( self ):
+		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
+		dump_output ( "/tmp/schema.ttl", lambda out: print ( "1", file = out ) )
+		
+		download_files (
+			"https://schema.org/version/latest/schemaorg-current-https.ttl", "/tmp/schema.ttl", "new schema.org", 
+			overwrite = True
+		)
+		
+		self.assertTrue ( getsize ( "/tmp/schema.ttl" ) > 1000, "overwrite flag didn't work" )
+
+"""
+	There are issues with the already set loggers, keep it as last one.
+"""	
 class TestLogging ( unittest.TestCase ):
 	
 	def test_basics ( self ):
@@ -84,6 +137,8 @@ class TestLogging ( unittest.TestCase ):
 		
 		self.assertTrue ( err_msg in err_str, "Error message not logged!" )
 		self.assertTrue ( info_msg in err_str, "Info message not logged!" )
+
 		
 if __name__ == '__main__':
+	logger_config ()
 	unittest.main()

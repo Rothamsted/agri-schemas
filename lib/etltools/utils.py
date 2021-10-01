@@ -2,7 +2,8 @@
 """
   Utilites about ETL pipelines, see the main package.
   
-  @author Marco Brandizi
+  :Authors: Marco Brandizi
+	:Date: 2020
 """
 
 from builtins import isinstance
@@ -10,7 +11,7 @@ import hashlib
 import json
 import logging.config
 import os, io, csv
-from os.path import dirname, abspath
+from os.path import dirname, abspath, isfile, exists
 import string, re
 from subprocess import run
 from sys import stdout, stderr
@@ -23,6 +24,10 @@ from rdflib.namespace import NamespaceManager
 from rdflib.term import Literal
 from rdflib.util import from_n3
 import yaml
+
+from functools import singledispatch
+import shutil
+
 
 """
 	Check that the environment variables expected by the ETL Tools is set. Raise an error
@@ -270,7 +275,7 @@ class BinaryWriter:
 	- a string: opens it as a file, calls itself recursively (to get a csv.reader()) and returns a generator
 	  that iterates over the csv rows like the previous case (done via yield, so the file is auto-closed)
 	- anything else that supports 'yield': returns the corresponding generator
-	- none of the above: raise an error
+	- none of the above: raises an error
 	
 	As you see, it always returns a generator over which you can iterate independently on the initial source.	 
 """	
@@ -339,7 +344,7 @@ def js_to_file ( js, file_path ):
   to avoid the need to import logging too, when you already import this. Beware that you load a configuration
   one only in your application (so, don't use this method in modules just to get a logger). 
   
-  disable_existing_loggers is false by default, this is the best way to not interfere with modules instantiating
+  param disable_existing_loggers is false by default, this is the best way to not interfere with modules instantiating
   their own module logger, usually before you call this function on top of your application (but usually after 
   all the imports). By default, the Python logging library has this otpion set to true and that typically causes
   all the module loggers to be disabled after the configuration loading. See https://docs.python.org/3/library/logging.config.html
@@ -401,6 +406,49 @@ def get_commented_traceback ( comment_prefix: str = "# ", comment_postfix: str =
 	st = [ comment_prefix + line + comment_postfix + "\n" for line in st ]
 	return "".join ( st )
 
+"""
+  Simple utility to download files from URLs
+  
+  Parameters:
+  
+  There are different forms for the parameters
+  * url: str, out: str, label: str = None, out_dir = None, overwrite = False
+    single download, the URL to download from, the output path, a label for messages, 
+    a base output path, if an existing file is to be replaced (else, the download is skipped)
+  * generator of dictionaries, out_dir, overwrite
+    each dictionary must have the same name as the single case parameters
+  * generator of lists, out_dir, overwrite
+    every list represents the positional parameters passed as the first form  
+"""
+@singledispatch
+def download_files ( param ):
+	raise NotImplementedError ( "Something went wrong with Python single dispatch" )
+
+@download_files.register ( str )
+def _download_files_single ( url: str, out: str, label: str = None, out_dir = None, overwrite = False ):
+	log = logging.getLogger ( __name__ )
+	if not label: label = out
+	target_path = out
+	if out_dir: target_path = out_dir + "/" + target_path
+	if exists ( target_path ):
+		if not isfile ( target_path ):
+			raise ValueError ( f"Download target_path '{target_path}' exists but isn't a file" )
+		if not overwrite: return
+	log.info ( f"Downloading '{label}'" )
+	with urllib.request.urlopen ( url ) as response:
+		with open ( target_path, "wb" ) as out:
+			shutil.copyfileobj ( response, out )
+
+@download_files.register ( object )
+def _download_files_list ( generator, out_dir = None, overwrite = False ):
+  for item in generator:
+    if isinstance ( item, dict ):
+      if out_dir: item [ "out_dir" ] = out_dir
+      if overwrite: item [ "overwrite" ] = overwrite
+      _download_files_single ( **item )
+      continue
+    label = item [ 3 ] if len ( item ) > 2 else None
+    _download_files_single ( item [ 0 ], item [ 1 ], label, out_dir, overwrite )
 
 
 if __name__ == '__main__':
