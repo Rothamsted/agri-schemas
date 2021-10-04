@@ -7,7 +7,6 @@ import importlib
 import sys
 import io
 import logging
-from setuptools.command.egg_info import overwrite_arg
 
 class XNamespaceManagerTest ( unittest.TestCase ):
 

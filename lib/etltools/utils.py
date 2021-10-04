@@ -1,8 +1,8 @@
 
 """
-  Utilites about ETL pipelines, see the main package.
-  
-  :Authors: Marco Brandizi
+	Utilites about ETL pipelines, see the main package.
+	
+	:Authors: Marco Brandizi
 	:Date: 2020
 """
 
@@ -74,7 +74,7 @@ class XNamespaceManager ( NamespaceManager ):
 		from_n3() is used, so the parameter could have other formats too (eg, <http://foo.com/ex>), 
 		but the method isn't designed for that.
 		
-		This returns a rdflib's URIRef, use uri() to get a string.  
+		This returns a rdflib's URIRef, use uri() to get a string.	
 	"""
 	def uri_ref ( self, curie_or_prefix, tail = None ):
 		curie = curie_or_prefix
@@ -88,7 +88,7 @@ class XNamespaceManager ( NamespaceManager ):
 		return str ( self.uri_ref ( curie_or_prefix, tail ) )
 	
 	"""
-	  Returns the URI corresponding to a namespace prefix (as URIRef).
+		Returns the URI corresponding to a namespace prefix (as URIRef).
 	"""
 	def ns_ref ( self, ns_prefix ):
 		if ns_prefix [-1] != ':': ns_prefix += ':'
@@ -108,16 +108,16 @@ class XNamespaceManager ( NamespaceManager ):
 	def to_lang ( self, line_template = 'PREFIX {prefix}: <{uri}>' ) -> str:
 		nss = self.namespaces ()
 		if not nss: return ""
-		return '\n'.join ( [  line_template.format ( prefix = prefix, uri = uri ) for prefix, uri in nss ] )
+		return '\n'.join ( [	line_template.format ( prefix = prefix, uri = uri ) for prefix, uri in nss ] )
 
 	"""
-	  See to_lang()
+		See to_lang()
 	"""
 	def to_sparql ( self ):
 		return self.to_lang ()
 
 	"""
-	  See to_lang()
+		See to_lang()
 	"""
 	def to_turtle ( self ):
 		return self.to_lang ( 'prefix {prefix}: <{uri}>' )
@@ -140,8 +140,8 @@ class XNamespaceManager ( NamespaceManager ):
 	
 """
 	These are loaded from various places:
-	  - /default-namespaces.ttl in this package
-	  - NAMESPACES_PATH if it is set
+		- /default-namespaces.ttl in this package
+		- NAMESPACES_PATH if it is set
 """
 DEFAULT_NAMESPACES = XNamespaceManager ()
 DEFAULT_NAMESPACES.load ( dirname ( abspath ( __file__ ) ) + "/default-namespaces.ttl", "turtle" )
@@ -201,7 +201,7 @@ def make_id ( s, skip_non_word_chars = False, ignore_case = True ):
 	return s
 
 """
-  Extracts the last part of a URI, relying on characters like '#' or '/'.
+	Extracts the last part of a URI, relying on characters like '#' or '/'.
 """
 def uri2accession ( uri ):
 	bits = re.split ( "[\\/,\#,\?]", uri )
@@ -221,7 +221,7 @@ def hash_string ( s: str, ignore_case = True ):
 """
 	Invokes hash_string from each str(element) in the generator.
 	
-	The stringified elements are sorted by default, so that two different lists always generate the same hash/ID.  
+	The stringified elements are sorted by default, so that two different lists always generate the same hash/ID.	
 """
 def hash_generator ( g, ignore_case = True, sort = True ):
 	l = [ str ( i ) for i in g ]
@@ -273,7 +273,7 @@ class BinaryWriter:
 	
 	- an io.TextIOBase: passes it to csv.reader() and returns the resulting generator
 	- a string: opens it as a file, calls itself recursively (to get a csv.reader()) and returns a generator
-	  that iterates over the csv rows like the previous case (done via yield, so the file is auto-closed)
+		that iterates over the csv rows like the previous case (done via yield, so the file is auto-closed)
 	- anything else that supports 'yield': returns the corresponding generator
 	- none of the above: raises an error
 	
@@ -293,16 +293,16 @@ def normalize_rows_source ( rows_source ):
 	yield from rows_source	
 
 """
-  Utility to quickly deal with a writer that writes on a file handle.
-  
-  The function checks if out is an handle or a string, in case of string, interprets it as
-  a file path, opens it and invokes writer() with the corresponding handle.
-   
-  If out is not a string, just invokes writer( out ), which, therefore, must get a file handle
-  as parameter.
-  
-  mode and open_opts are parameters for the open() function. If out isn't a string, they're 
-  ignored.  
+	Utility to quickly deal with a writer that writes on a file handle.
+	
+	The function checks if out is an handle or a string, in case of string, interprets it as
+	a file path, opens it and invokes writer() with the corresponding handle.
+	 
+	If out is not a string, just invokes writer( out ), which, therefore, must get a file handle
+	as parameter.
+	
+	mode and open_opts are parameters for the open() function. If out isn't a string, they're 
+	ignored.	
 """
 def dump_output ( out, writer, mode = "w", **open_opts ):
 	if isinstance ( out, str ):
@@ -311,8 +311,8 @@ def dump_output ( out, writer, mode = "w", **open_opts ):
 	return writer ( out )
 
 """
-  Utility to quickly send a row generator to an output of type string or file handle, as per
-  dump_output()
+	Utility to quickly send a row generator to an output of type string or file handle, as per
+	dump_output()
 """
 def dump_rows ( rows, out = stdout, mode = "w", **open_opts ):
 	def writer ( out ):
@@ -331,23 +331,23 @@ def js_to_file ( js, file_path ):
 	
 
 """
-  Configures the Python logging module with a YAML configuration file.
-  
-  The file name is picked from ETL_LOG_CONF, or from <current directory>/logging.yaml
-  This should be called at the begin of a main program and BEFORE any use of the logging module.
-  Multiple calls of this method are idempotent, ie, the Python logging module configures itself
-  once only (and only before sending in logging messages).
-  
-  An example of logging config file is included in ETL tools.
-  
-  If logger_name is provided, the function returns logging.getLogger ( logger_name ) as a facility
-  to avoid the need to import logging too, when you already import this. Beware that you load a configuration
-  one only in your application (so, don't use this method in modules just to get a logger). 
-  
-  param disable_existing_loggers is false by default, this is the best way to not interfere with modules instantiating
-  their own module logger, usually before you call this function on top of your application (but usually after 
-  all the imports). By default, the Python logging library has this otpion set to true and that typically causes
-  all the module loggers to be disabled after the configuration loading. See https://docs.python.org/3/library/logging.config.html
+	Configures the Python logging module with a YAML configuration file.
+	
+	The file name is picked from ETL_LOG_CONF, or from <current directory>/logging.yaml
+	This should be called at the begin of a main program and BEFORE any use of the logging module.
+	Multiple calls of this method are idempotent, ie, the Python logging module configures itself
+	once only (and only before sending in logging messages).
+	
+	An example of logging config file is included in ETL tools.
+	
+	If logger_name is provided, the function returns logging.getLogger ( logger_name ) as a facility
+	to avoid the need to import logging too, when you already import this. Beware that you load a configuration
+	one only in your application (so, don't use this method in modules just to get a logger). 
+	
+	param disable_existing_loggers is false by default, this is the best way to not interfere with modules instantiating
+	their own module logger, usually before you call this function on top of your application (but usually after 
+	all the imports). By default, the Python logging library has this otpion set to true and that typically causes
+	all the module loggers to be disabled after the configuration loading. See https://docs.python.org/3/library/logging.config.html
 """
 def logger_config ( logger_name = None, disable_existing_loggers = False ):
 	cfg_path = os.getenv ( "ETL_LOG_CONF", "logging.yaml" )
@@ -394,10 +394,10 @@ def rdf_str ( data, key, rdf_prop ):
 	return rdf_pval ( data, key, rdf_prop, lbuilder )
 
 """
-  Simple utility that wraps every line of the current traceback into a pair of prefixes/postfixes.
-  
-  This is useful to report errors in a data file that is later read by some other 
-  data pipeline component. 
+	Simple utility that wraps every line of the current traceback into a pair of prefixes/postfixes.
+	
+	This is useful to report errors in a data file that is later read by some other 
+	data pipeline component. 
 
 """
 def get_commented_traceback ( comment_prefix: str = "# ", comment_postfix: str = "" ):
@@ -407,18 +407,18 @@ def get_commented_traceback ( comment_prefix: str = "# ", comment_postfix: str =
 	return "".join ( st )
 
 """
-  Simple utility to download files from URLs
-  
-  Parameters:
-  
-  There are different forms for the parameters
-  * url: str, out: str, label: str = None, out_dir = None, overwrite = False
-    single download, the URL to download from, the output path, a label for messages, 
-    a base output path, if an existing file is to be replaced (else, the download is skipped)
-  * generator of dictionaries, out_dir, overwrite
-    each dictionary must have the same name as the single case parameters
-  * generator of lists, out_dir, overwrite
-    every list represents the positional parameters passed as the first form  
+	Simple utility to download files from URLs
+	
+	Parameters:
+	
+	There are different forms for the parameters
+	* url: str, out: str, label: str = None, out_dir = None, overwrite = False
+		single download, the URL to download from, the output path, a label for messages, 
+		a base output path, if an existing file is to be replaced (else, the download is skipped)
+	* generator of dictionaries, out_dir, overwrite
+		each dictionary must have the same name as the single case parameters
+	* generator of lists, out_dir, overwrite
+		every list represents the positional parameters passed as the first form	
 """
 @singledispatch
 def download_files ( param ):
@@ -441,14 +441,14 @@ def _download_files_single ( url: str, out: str, label: str = None, out_dir = No
 
 @download_files.register ( object )
 def _download_files_list ( generator, out_dir = None, overwrite = False ):
-  for item in generator:
-    if isinstance ( item, dict ):
-      if out_dir: item [ "out_dir" ] = out_dir
-      if overwrite: item [ "overwrite" ] = overwrite
-      _download_files_single ( **item )
-      continue
-    label = item [ 3 ] if len ( item ) > 2 else None
-    _download_files_single ( item [ 0 ], item [ 1 ], label, out_dir, overwrite )
+	for item in generator:
+		if isinstance ( item, dict ):
+			if out_dir: item [ "out_dir" ] = out_dir
+			if overwrite: item [ "overwrite" ] = overwrite
+			_download_files_single ( **item )
+			continue
+		label = item [ 3 ] if len ( item ) > 2 else None
+		_download_files_single ( item [ 0 ], item [ 1 ], label, out_dir, overwrite )
 
 
 if __name__ == '__main__':
