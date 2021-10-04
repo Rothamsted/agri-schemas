@@ -56,7 +56,7 @@ class SparulMapTest ( unittest.TestCase ):
 		super().__init__ ( methodName )
 
 	def assert_sparql ( self, ask_query, msg ):
-		self.assertTrue ( sparql_ask ( graph, ask_query ), msg )
+		self.assertTrue ( sparql_ask ( graph, ask_query, DEFAULT_NAMESPACES ), msg )
 
 	def test_subclass ( self ):
 		self.assert_sparql ( "ASK { ex:b a ex1:SuperB }", "super-class not inferred!" )

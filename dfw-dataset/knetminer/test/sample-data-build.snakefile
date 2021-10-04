@@ -1,24 +1,21 @@
 import os, sys
+import glob
 from etltools import sparqlmap
-import etltools.getfilescfg as onto_cfg
+from etltools.utils import download_files
 
 ETL_OUT = os.getenv ( "ETL_OUT" )
-ETL_TOOLS = os.getenv ( "ETL_TOOLS" )
-
-etl_lib_path = ETL_TOOLS + "/lib/etltools/"
-
-#configfile: "../../snake-config.yaml"
-include: etl_lib_path + "/getfiles.snakefile"
-
-ODX2RDF = os.getenv ( "ODX2RDF" )
+AG_LIB = os.getenv ( "AG_LIB" )
+etl_lib_path = AG_LIB + "/etltools"
 JENA_HOME = os.getenv ( "JENA_HOME" )
+OXL2NEO_HOME = os.getenv ( "OXL2NEO_HOME" )
 
-onto_cfg.init_config ( config )
-
-TEST_OXL = ODX2RDF + "/examples/text_mining.oxl"
-TEST_RDF = ETL_OUT + "/test/knetminer-sample.ttl"
+TEST_RDF_URL = "https://github.com/Rothamsted/knetminer-backend/blob/master/test-data-server/src/main/resources/poaceae-sample.ttl.bz2?raw=true"
+TEST_RDF = ETL_OUT + "/test/knetminer-sample.ttl.bz2"
 TEST_TDB = ETL_OUT + "/test/test-tdb"
 MAPPING_OUT = ETL_OUT + "/test/knetminer-mapping-test-out.nt"
+
+ontos_dir = ETL_OUT + "/test/ontologies"
+
 
 rule all:
 	input:
@@ -36,23 +33,33 @@ rule all:
 		)
 	
 rule generate_tdb:
-  input: onto_cfg.OUT_FILES + [ TEST_RDF, "../../../agri-schema.ttl" ]
-	output: directory ( TEST_TDB )
+	input:
+	  ontos_dir,
+		"../../../agri-schema.ttl",
+		TEST_RDF
+	output:
+		directory ( TEST_TDB )
 	message:
 		"Generating Test TDB"
 	shell:
-		f"'{JENA_HOME}/bin/tdbloader'" + " --loc={output} {input}"
+		f"'{JENA_HOME}/bin/tdbloader' --loc={{output}} {ontos_dir}/*.* {ontos_dir}/ext/*.* ../../../agri-schema.ttl {TEST_RDF}"
 
-
-rule generate_rdf:
-	input:
-		TEST_OXL
+rule download_rdf:
 	output:
 		TEST_RDF
 	message:
-		"Generating RDF from the test OXL"
+		"Getting Poaceae Sample Dataset RDF"
 	shell:
-		f"'{ODX2RDF}/odx2rdf.sh'" + " {input} {output}"
+		f'wget -O "{{output}}" "{TEST_RDF_URL}"' 
+
+rule download_ontos:
+	output:
+		directory ( ontos_dir )
+	message:
+		"Getting Ontologies"
+	run:
+		shell ( f'mkdir -p "{ontos_dir}"' )
+		shell ( f'"{OXL2NEO_HOME}/get_ontologies.sh" "{{output}}"' )
 
 
 rule clean:

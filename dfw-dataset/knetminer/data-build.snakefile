@@ -6,11 +6,11 @@ log = logger_config ( __name__ )
 
 KNET_RDF_DIR = os.getenv ( "KNET_RDF_DIR" )
 ETL_OUT = os.getenv ( "ETL_OUT" )
-ETL_TOOLS = os.getenv ( "ETL_TOOLS" )
-etl_lib_path = ETL_TOOLS + "/lib/etltools/"
+AG_LIB = os.getenv ( "AG_LIB" )
+etl_lib_path = AG_LIB + "/etltools/"
 JENA_HOME = os.getenv ( "JENA_HOME" )
 
-TDB_DIR = ETL_OUT + "tmp/tdb"
+TDB_DIR = ETL_OUT + "/tmp/tdb"
 MAPPING_OUT = ETL_OUT + "/rdf/knetminer-mapping.nt"
 	
 
@@ -35,6 +35,7 @@ rdf_inputs  = [ "../agri-schema.ttl" ] \
   + glob.glob ( KNET_RDF_DIR + "/ontologies/ext/*.*" ) \
   + glob.glob ( KNET_RDF_DIR + "/*.*" )
 
+
 rule generate_tdb:
   input:
   	rdf_inputs
@@ -43,7 +44,9 @@ rule generate_tdb:
 	message:
 		"Generating Working TDB '%s'" %  TDB_DIR
 	run:
-		print ( "Re-downloading BioKNO mappings" )
-		shell ( "wget 'https://raw.githubusercontent.com/Rothamsted/bioknet-onto/master/bk_mappings.ttl' -O '" + KNET_RDF_DIR + "/ontologies/bk_mappings.ttl'" )
+		#print ( "Re-downloading BioKNO mappings" )
+		#shell ( "wget 'https://raw.githubusercontent.com/Rothamsted/bioknet-onto/master/bk_mappings.ttl' -O '" + KNET_RDF_DIR + "/ontologies/bk_mappings.ttl'" )
+
+		print ( "Running AgriSchemas mappings" )
 		shell ( "'" + JENA_HOME + "/bin/tdbloader' --loc={output} {input}" )
 

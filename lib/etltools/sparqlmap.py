@@ -3,7 +3,7 @@
 	
 	These employ SPARQL CONSTRUCT to build RDF-to-RDF mapping.
 	
-	@author Marco Brandizi
+	:author: Marco Brandizi
 """
 
 

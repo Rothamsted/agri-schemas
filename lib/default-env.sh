@@ -7,3 +7,4 @@ if [[ ! "$PYTHONPATH" =~ "$AG_LIB" ]]; then
 fi
 
 . etltools/default-env.sh
+cd "$AG_LIB"
