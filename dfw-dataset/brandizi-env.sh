@@ -16,15 +16,16 @@ export AGROPORTAL_APIKEY='c5a0f99c-a061-4175-8d7e-e49c47b6337d'
 
 export NAMESPACES_PATH="$DFW_ETL/namespaces.ttl"
 export JAVA_TOOL_OPTIONS="-Xmx8G"
-
 export ETL_LOG_CONF="$AG_DIR/lib/etltools/logging-test.yaml" # or logging.yaml for production
 
-. "$AG_DIR/lib/default-env.sh" 
-
-for mod in dfw-dataset/knetminer # dfw-dataset/gxa TODO
+for mod in lib dfw-dataset/knetminer dfw-dataset/gxa
 do
-	. "$AG_DIR/$mod/brandizi-env.sh"
-	cd "$AG_DIR"
+	for prefix in default brandizi
+	do
+		script="$AG_DIR/$mod/$prefix-env.sh"
+		[[ -e "$script" ]] && . "$script"
+		cd "$AG_DIR"
+	done
 done
 
 . ~/bin/conda-init.sh

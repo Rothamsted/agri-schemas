@@ -31,7 +31,8 @@ import sh
 """
 def map_rule ( 
 	tdb_path: str, sparql_rule: str, rule_name:  str = None, dump_file: str = None,
-	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES
+	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES,
+	compress = False
 ):
 	jena_home = get_jena_home ()
 
@@ -47,12 +48,14 @@ def map_rule (
 		
 	print ( f"Applying '{rule_name}'", file = stderr )
 	
-	tdb_sh = sh.Command ( jena_home + "/bin/tdbquery" )
 	try:
-		sh.awk (
-			tdb_sh ( "--loc=%s" % tdb_path, "--results=tsv", "--query=-", _piped = True, _in = sparql_rule ),
-			'NR > 1 { print $0 "." }', _out = dump_file
-		);
+		tdb_sh = sh.Command ( jena_home + "/bin/tdbquery" )
+		tdb_sh = tdb_sh ( "--loc=%s" % tdb_path, "--results=tsv", "--query=-", _piped = True, _in = sparql_rule )
+		awk_str = 'NR > 1 { print $0 "." }'
+		if not compress:
+			sh.awk ( tdb_sh, awk_str, _out = dump_file );
+		else:
+			sh.bz2 ( sh.awk ( tdb_sh, awk_str, _piped = True ), _out = dump_file )
 	except Exception as ex:
 		raise ChildProcessError ( "Error: while running the query:\n%s " % sparql_rule ) from ex
 
