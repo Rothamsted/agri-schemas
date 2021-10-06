@@ -4,49 +4,22 @@ from etltools.utils import logger_config
 
 log = logger_config ( __name__ )
 
-KNET_RDF_DIR = os.getenv ( "KNET_RDF_DIR" )
-ETL_OUT = os.getenv ( "ETL_OUT" )
-AG_LIB = os.getenv ( "AG_LIB" )
-etl_lib_path = AG_LIB + "/etltools/"
-JENA_HOME = os.getenv ( "JENA_HOME" )
+# The output from the rres pipeline
+KNET_DATASET_DIR = os.getenv ( "KNET_DATASET_DIR" )
 
-TDB_DIR = ETL_OUT + "/tmp/tdb"
-MAPPING_OUT = ETL_OUT + "/rdf/knetminer-mapping.nt"
-	
+TMP_DIR = KNET_DATASET_DIR + "/tmp"
+TDB_DIR = TMP_DIR + "agrischema-tdb"
+ 
 
-rule all_mappings:
+rule update_tdb:
 	input:
-		TDB_DIR
+		TMP_DIR + "/tdb" # Produced by the RRes pipeline
 	output:
-		MAPPING_OUT
-	message:
-		"Generating the RDF mappings"
-	run:
-		sparql_vars = { 'SRC_NAMESPACE': 'bk:' }
-		sparqlmap.map_from_files (
-			[ etl_lib_path + "/map-rules", 
-			  etl_lib_path + "/map-rules/schema-org" ],
-			input[0], output[0], sparql_vars
-		)
-	
-
-rdf_inputs  = [ "../agri-schema.ttl" ] \
-  + glob.glob ( KNET_RDF_DIR + "/ontologies/*.*" ) \
-  + glob.glob ( KNET_RDF_DIR + "/ontologies/ext/*.*" ) \
-  + glob.glob ( KNET_RDF_DIR + "/*.*" )
-
-
-rule generate_tdb:
-  input:
-  	rdf_inputs
-  output:
-    directory ( TDB_DIR )
-	message:
-		"Generating Working TDB '%s'" %  TDB_DIR
-	run:
-		#print ( "Re-downloading BioKNO mappings" )
-		#shell ( "wget 'https://raw.githubusercontent.com/Rothamsted/bioknet-onto/master/bk_mappings.ttl' -O '" + KNET_RDF_DIR + "/ontologies/bk_mappings.ttl'" )
-
-		print ( "Running AgriSchemas mappings" )
-		shell ( "'" + JENA_HOME + "/bin/tdbloader' --loc={output} {input}" )
-
+	  directory ( TDB_DIR ) # We're adding our stuff and working with this
+	shell:
+	  f"""
+	  /bin/cp -R -v "{{input}}" "{{output}}"
+	  
+	  # Load additional ontologies
+	  "{JENA_HOME}/bin/tdbloader" --loc="{{output}}" "{KNET_DATASET_DIR}/ontologies/ext/*.*" ../../../agri-schema.ttl 
+	  """
