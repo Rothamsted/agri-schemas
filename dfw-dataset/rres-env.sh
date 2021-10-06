@@ -33,6 +33,6 @@ do
 	done
 done
 
-conda activate snakemake
+conda activate /home/data/knetminer/software/conda/mamba/envs/snakemake
 
 cd "$DFW_ETL"
