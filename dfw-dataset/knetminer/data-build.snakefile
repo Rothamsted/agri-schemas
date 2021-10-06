@@ -6,14 +6,14 @@ log = logger_config ( __name__ )
 
 # The output from the rres pipeline
 KNET_DATASET_DIR = os.getenv ( "KNET_DATASET_DIR" )
+ETL_TMP = os.getenv ( "ETL_TMP" )
 
-TMP_DIR = KNET_DATASET_DIR + "/tmp"
 TDB_DIR = TMP_DIR + "agrischema-tdb"
  
 
 rule update_tdb:
 	input:
-		TMP_DIR + "/tdb" # Produced by the RRes pipeline
+		ETL_TMP + "/tdb" # Produced by the RRes pipeline
 	output:
 	  directory ( TDB_DIR ) # We're adding our stuff and working with this
 	shell:
