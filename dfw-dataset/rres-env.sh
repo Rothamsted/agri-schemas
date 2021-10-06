@@ -12,7 +12,7 @@ export ETL_TMP="$KNET_DATASET_DIR/tmp" # temp stuff produced by the pipeline
 
 export JENA_HOME=/home/data/knetminer/software/jena
 
-export KNET_SNAKE_OPTS="--profile '$DFW_ETL/config/snakemake/rres-slurm'"
+export KNET_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm"
 
 
 # These are personal! Please, do not use elsewhere!
@@ -33,6 +33,7 @@ do
 	done
 done
 
-conda activate /home/data/knetminer/software/conda/mamba/envs/snakemake
+#conda activate /home/data/knetminer/software/conda/mamba/envs/snakemake
+module load snakemake/6.1.0-foss-2020b
 
 cd "$DFW_ETL"

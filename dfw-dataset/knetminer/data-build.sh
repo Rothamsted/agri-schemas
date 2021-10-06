@@ -7,4 +7,4 @@ fi
 
 cd "$DFW_ETL/knetminer"
 
-snakemake --cores --snakefile data-build.snakefile $KNET_SNAKE_OPTS
+snakemake --cores all --snakefile data-build.snakefile $KNET_SNAKE_OPTS

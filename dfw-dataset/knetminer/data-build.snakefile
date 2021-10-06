@@ -5,17 +5,18 @@ from etltools.utils import logger_config
 log = logger_config ( __name__ )
 
 # The output from the rres pipeline
-KNET_DATASET_DIR = os.getenv ( "KNET_DATASET_DIR" )
+ETL_OUT = os.getenv ( "ETL_OUT" )
 ETL_TMP = os.getenv ( "ETL_TMP" )
-
-TDB_DIR = TMP_DIR + "agrischema-tdb"
+TDB_DIR = ETL_TMP + "/agrischema-tdb"
  
+JENA_HOME = os.getenv ( "JENA_HOME" )
+
 
 rule update_tdb:
 	input:
 		ETL_TMP + "/tdb", # Produced by the RRes pipeline
-		directory ( f"{KNET_DATASET_DIR}/ontologies/ext" ),
-		f"{KNET_DATASET_DIR}/ontologies/ext/agri-schema.ttl"
+		f"{ETL_OUT}/ontologies/ext",
+		f"{ETL_OUT}/ontologies/ext/agri-schema.ttl"
 	message:
 		"Extending Knetminer TDB"
 	output:
@@ -26,15 +27,15 @@ rule update_tdb:
 	  
 	  # Load additional ontologies
 	  '{JENA_HOME}/bin/tdbloader' --loc='{{output}}' \
-	  	'{KNET_DATASET_DIR}/ontologies/ext/'*.* ../agri-schema.ttl 
+	  	'{ETL_OUT}/ontologies/ext/'*.* ../agri-schema.ttl 
 	  """
 
 rule update_ontologies:
 	input:
-		"../agri-schema.ttl"
+		"../../agri-schema.ttl"
 	output:
-		f"{KNET_DATASET_DIR}/ontologies/ext/agri-schema.ttl"
+		f"{ETL_OUT}/ontologies/ext/agri-schema.ttl"
 	message:
 		"Deploying agri-schema ontology"
 	shell:
-		"/bin/cp -R -v '{input}' '{output}'
+		"/bin/cp -R -v '{input}' '{output}'"
