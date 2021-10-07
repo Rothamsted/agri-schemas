@@ -32,7 +32,7 @@ def run_mappings ():
 
 	print ( "--- Loading test data on '%s'" % test_tdb_path )
 	
-	tdb_sh = sh.Command ( get_jena_home () + "/bin/tdbloader" )
+	tdb_sh = sh.Command ( get_jena_home () + "/bin/tdb2.tdbloader" )
 	tdb_sh ( "--loc=%s" % test_tdb_path, test_data_path )
 	
 	sparql_vars = { 'SRC_NAMESPACE': 'ex:' }

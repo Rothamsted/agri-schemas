@@ -49,7 +49,7 @@ def map_rule (
 	print ( f"Applying '{rule_name}'", file = stderr )
 	
 	try:
-		tdb_sh = sh.Command ( jena_home + "/bin/tdbquery" )
+		tdb_sh = sh.Command ( jena_home + "/bin/tdb2.tdbquery" )
 		tdb_sh = tdb_sh ( "--loc=%s" % tdb_path, "--results=tsv", "--query=-", _piped = True, _in = sparql_rule )
 		awk_str = 'NR > 1 { print $0 "." }'
 		if not compress:

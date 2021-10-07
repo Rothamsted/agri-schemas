@@ -42,7 +42,7 @@ rule generate_tdb:
 	message:
 		"Generating Test TDB"
 	shell:
-		f"'{JENA_HOME}/bin/tdbloader' --loc={{output}} {ontos_dir}/*.* {ontos_dir}/ext/*.* ../../../agri-schema.ttl {TEST_RDF}"
+		f"'{JENA_HOME}/bin/tdb2.tdbloader' --loc={{output}} {ontos_dir}/*.* {ontos_dir}/ext/*.* ../../../agri-schema.ttl {TEST_RDF}"
 
 rule download_rdf:
 	output:
