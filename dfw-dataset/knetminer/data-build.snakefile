@@ -11,6 +11,8 @@ TDB_DIR = ETL_TMP + "/agrischema-tdb"
  
 JENA_HOME = os.getenv ( "JENA_HOME" )
 
+update_tdb_done_flag_path = f"{ETL_OUT}/ontologies/ext/agri-schema.ttl"
+
 
 rule update_tdb:
 	input:
@@ -19,7 +21,7 @@ rule update_tdb:
 	message:
 		"Extending Knetminer TDB with additional ontologies"
 	output:
-	  ETL_TMP + "/agrischema.update_tdb.done-flag" # No other way for input = out 
+	  update_tdb_done_flag_path # No other way for input = out 
 	shell:
 	  f"""
 	  '{JENA_HOME}/bin/tdbloader' --loc='{TDB_DIR}' '{ETL_OUT}/ontologies/ext/'*.*
@@ -36,7 +38,7 @@ rule clone_tdb:
 	output:
 	  directory ( TDB_DIR ) # We're adding our stuff and working with this
 	shell:
-	  f"/bin/cp -R -v '{{input}}' '{{output}}'"
+	  f"/bin/cp -R -v '{{input[0]}}' '{{output}}'"
 
 
 rule update_ontologies:
