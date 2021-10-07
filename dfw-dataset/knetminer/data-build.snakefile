@@ -24,8 +24,8 @@ rule update_tdb:
 	  update_tdb_done_flag_path # No other way for input = out 
 	shell:
 	  f"""
-	  '{JENA_HOME}/bin/tdbloader' --loc='{TDB_DIR}' '{ETL_OUT}/ontologies/ext/'*.*
-	  echo "1" >'{{output}}'
+	  '{JENA_HOME}/bin/tdbloader2' --loc='{TDB_DIR}' '{ETL_OUT}/ontologies/ext/'*.*
+	  echo 1 >'{{output}}'
 	  """
 
 
@@ -49,4 +49,5 @@ rule update_ontologies:
 	message:
 		"Deploying agri-schema ontology"
 	shell:
-		"/bin/cp -R -v '{input}' '{output}'"
+		# Pause required by NFS latency
+		"/bin/cp -R -v '{input}' '{output}'; sleep 5"
