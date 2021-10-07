@@ -5,7 +5,7 @@ from etltools.utils import download_files
 
 ETL_OUT = os.getenv ( "ETL_OUT" )
 AG_LIB = os.getenv ( "AG_LIB" )
-etl_lib_path = AG_LIB + "/etltools"
+etl_tools_path = AG_LIB + "/etltools"
 JENA_HOME = os.getenv ( "JENA_HOME" )
 OXL2NEO_HOME = os.getenv ( "OXL2NEO_HOME" )
 
@@ -27,8 +27,8 @@ rule all:
 	run:
 		sparql_vars = { 'SRC_NAMESPACE': 'bk:' }
 		sparqlmap.map_from_files (
-			[ etl_lib_path + "/map-rules", 
-			  etl_lib_path + "/map-rules/schema-org" ],
+			[ etl_tools_path + "/map-rules", 
+			  etl_tools_path + "/map-rules/schema-org" ],
 			input[0], output[0], sparql_vars
 		)
 	

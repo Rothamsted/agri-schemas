@@ -5,36 +5,55 @@ from etltools.utils import logger_config
 log = logger_config ( __name__ )
 
 # The output from the rres pipeline
+AG_LIB = os.getenv ( "AG_LIB" )
+etl_tools_path = AG_LIB + "/etltools"
+
 ETL_OUT = os.getenv ( "ETL_OUT" )
 ETL_TMP = os.getenv ( "ETL_TMP" )
 TDB_DIR = ETL_TMP + "/agrischema-tdb"
- 
+
 JENA_HOME = os.getenv ( "JENA_HOME" )
 
 update_tdb_done_flag_path = f"{ETL_TMP}/update_tdb.done-flag"
 
 
+rule agrischema_map:
+	message:
+		"Creating agri-schemas Mappings"
+	input:
+		TDB_DIR,
+		update_tdb_done_flag_path
+	output:
+		ETL_OUT/agrischemas-map.nt.bz2
+	run:
+		sparqlmap.map_from_files (
+			[ etl_tools_path + "/map-rules", 
+			  etl_tools_path + "/map-rules/schema-org" ],
+			tdb_path = input[0], dump_file_path = output[0], 
+			sparql_vars = sparql_vars, compress = True
+		)
+
+
 rule update_tdb:
+	message:
+		"Extending Knetminer TDB with additional ontologies"
 	input:
 		TDB_DIR,
 		f"{ETL_OUT}/ontologies/ext/agri-schema.ttl"		
-	message:
-		"Extending Knetminer TDB with additional ontologies"
 	output:
 	  update_tdb_done_flag_path # No other way for input = out 
 	shell:
 	  f"""
-	  '{JENA_HOME}/bin/tdb2.tdbloader' --loc='{TDB_DIR}' '{ETL_OUT}/ontologies/ext/'*.*
+	  '{JENA_HOME}/bin/tdb2.tdbloader' --loc='{{input[0]}}' '{ETL_OUT}/ontologies/ext/'*.*
 	  echo 1 >'{{output}}'
 	  """
 
 
 rule clone_tdb:
-	input:
-		ETL_TMP + "/tdb", # Produced by the RRes pipeline
-		f"{ETL_OUT}/ontologies/ext/agri-schema.ttl" # binds it to update_ontologies		
 	message:
 		"Working on a Knetminer TDB copy"
+	input:
+		ETL_TMP + "/tdb", # Produced by the RRes pipeline
 	output:
 	  directory ( TDB_DIR ) # We're adding our stuff and working with this
 	shell:
@@ -42,12 +61,12 @@ rule clone_tdb:
 
 
 rule update_ontologies:
+	message:
+		"Deploying agri-schema ontology"
 	input:
 		"../../agri-schema.ttl"
 	output:
 		f"{ETL_OUT}/ontologies/ext/agri-schema.ttl"
-	message:
-		"Deploying agri-schema ontology"
 	shell:
 		# Pause required by NFS latency
 		"/bin/cp -R -v '{input}' '{output}'; sleep 10"

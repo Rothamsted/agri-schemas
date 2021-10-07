@@ -64,7 +64,8 @@ def map_rule (
 """
 def map_from_rules ( 
 	sparql_rules, tdb_path: str, dump_file_path: str = None, sparql_vars: dict = {},
-	namespaces: XNamespaceManager = DEFAULT_NAMESPACES
+	namespaces: XNamespaceManager = DEFAULT_NAMESPACES,
+	compress = False
 ):
 	# Need to join partial results on a new file
 	if ( dump_file_path ):
@@ -77,11 +78,11 @@ def map_from_rules (
 		# Need to join partial results on a new file
 		if ( dump_file_path ):
 			with open ( dump_file_path, "a" ) as dump_file:
-				map_rule ( tdb_path, rule, rule_name, dump_file, sparql_vars, namespaces )				
+				map_rule ( tdb_path, rule, rule_name, dump_file, sparql_vars, namespaces, compress )				
 			continue
 		
 		# Else, we're dumping on stdout
-		map_rule ( tdb_path, rule, rule_name, dump_file_path, sparql_vars, namespaces )				
+		map_rule ( tdb_path, rule, rule_name, dump_file_path, sparql_vars, namespaces, compress )				
 
 """
   map_from_rules(), with the rules read from files.
@@ -92,10 +93,11 @@ def map_from_rules (
 """
 def map_from_files ( 
 	rule_paths, tdb_path: str, dump_file_path: str,
-	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES
+	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES,
+	compress = False
 ):
 	rules = read_rules_from_files ( rule_paths )	
-	map_from_rules ( rules, tdb_path, dump_file_path, sparql_vars, namespaces )
+	map_from_rules ( rules, tdb_path, dump_file_path, sparql_vars, namespaces, compress )
 
 
 """
