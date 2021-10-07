@@ -27,7 +27,7 @@ rule compress_map:
 	output:
 		mapping_out_path + ".bz2"
 	shell:
-		"bzip2 '{input}' '{output}'"
+		"bzip2 '{input}'"
 
 
 rule agrischemas_map:
