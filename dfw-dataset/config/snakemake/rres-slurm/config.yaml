@@ -1,2 +1,2 @@
 jobs: 16
-cluster: "sbatch --chdir=/home/data/knetminer/software/agri-schemas/dfw-dataset/knetminer --mem=65g --qos=long --time=1-0:0:0  -o .snakemake/log/slurm-{rule}-{wildcards}.out -e .snakemake/log/slurm-{rule}.out"
+cluster: "sbatch --chdir=/home/data/knetminer/software/agri-schemas/dfw-dataset/knetminer --mem=65g --qos=long --time=1-0:0:0  -o .snakemake/log/slurm-{rule}.out -e .snakemake/log/slurm-{rule}.out"

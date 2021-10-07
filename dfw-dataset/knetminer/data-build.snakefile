@@ -23,7 +23,7 @@ rule update_tdb:
 	  directory ( TDB_DIR ) # We're adding our stuff and working with this
 	shell:
 	  f"""
-	  /bin/cp -R -v '{{input}}' '{{output}}'
+	  /bin/cp -R -v '{{input[0]}}' '{{output}}'
 	  
 	  # Load additional ontologies
 	  '{JENA_HOME}/bin/tdbloader' --loc='{{output}}' \
