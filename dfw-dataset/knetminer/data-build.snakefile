@@ -22,7 +22,7 @@ rule update_tdb:
 	  ETL_TMP + "/agrischema.update_tdb.done-flag" # No other way for input = out 
 	shell:
 	  f"""
-	  '{JENA_HOME}/bin/tdbloader' --loc='{{output}}' '{ETL_OUT}/ontologies/ext/'*.*
+	  '{JENA_HOME}/bin/tdbloader' --loc='{TDB_DIR}' '{ETL_OUT}/ontologies/ext/'*.*
 	  echo "1" >'{{output}}'
 	  """
 
@@ -30,23 +30,14 @@ rule update_tdb:
 rule clone_tdb:
 	input:
 		ETL_TMP + "/tdb", # Produced by the RRes pipeline
+		f"{ETL_OUT}/ontologies/ext/agri-schema.ttl" # binds it to update_ontologies		
 	message:
 		"Working on a Knetminer TDB copy"
 	output:
 	  directory ( TDB_DIR ) # We're adding our stuff and working with this
 	shell:
-<<<<<<< Upstream, based on branch 'master' of git@github.com:Rothamsted/agri-schemas.git
-	  f"""
-	  /bin/cp -R -v '{{input[0]}}' '{{output}}'
-	  
-	  # Load additional ontologies
-	  '{JENA_HOME}/bin/tdbloader' --loc='{{output}}' \
-	  	'{ETL_OUT}/ontologies/ext/'*.* ../agri-schema.ttl 
-	  """
-=======
 	  f"/bin/cp -R -v '{{input}}' '{{output}}'"
 
->>>>>>> c006673 Developing Knetminer/RRes pipeline.
 
 rule update_ontologies:
 	input:
