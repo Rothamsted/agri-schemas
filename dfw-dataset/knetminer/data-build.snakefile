@@ -17,14 +17,14 @@ JENA_HOME = os.getenv ( "JENA_HOME" )
 update_tdb_done_flag_path = f"{ETL_TMP}/update_tdb.done-flag"
 
 
-rule agrischema_map:
+rule agrischemas_map:
 	message:
 		"Creating agri-schemas Mappings"
 	input:
 		TDB_DIR,
 		update_tdb_done_flag_path
 	output:
-		ETL_OUT/agrischemas-map.nt.bz2
+		ETL_OUT + "/agrischemas-map.nt.bz2"
 	run:
 		sparqlmap.map_from_files (
 			[ etl_tools_path + "/map-rules", 
