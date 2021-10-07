@@ -31,8 +31,7 @@ import sh
 """
 def map_rule ( 
 	tdb_path: str, sparql_rule: str, rule_name:  str = None, dump_file: str = None,
-	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES,
-	compress = False
+	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES
 ):
 	jena_home = get_jena_home ()
 
@@ -51,11 +50,7 @@ def map_rule (
 	try:
 		tdb_sh = sh.Command ( jena_home + "/bin/tdb2.tdbquery" )
 		tdb_sh = tdb_sh ( "--loc=%s" % tdb_path, "--results=tsv", "--query=-", _piped = True, _in = sparql_rule )
-		awk_str = 'NR > 1 { print $0 "." }'
-		if not compress:
-			sh.awk ( tdb_sh, awk_str, _out = dump_file );
-		else:
-			sh.bz2 ( sh.awk ( tdb_sh, awk_str, _piped = True ), _out = dump_file )
+		sh.awk ( tdb_sh, 'NR > 1 { print $0 "." }', _out = dump_file );
 	except Exception as ex:
 		raise ChildProcessError ( "Error: while running the query:\n%s " % sparql_rule ) from ex
 
@@ -64,8 +59,7 @@ def map_rule (
 """
 def map_from_rules ( 
 	sparql_rules, tdb_path: str, dump_file_path: str = None, sparql_vars: dict = {},
-	namespaces: XNamespaceManager = DEFAULT_NAMESPACES,
-	compress = False
+	namespaces: XNamespaceManager = DEFAULT_NAMESPACES
 ):
 	# Need to join partial results on a new file
 	if ( dump_file_path ):
@@ -78,11 +72,11 @@ def map_from_rules (
 		# Need to join partial results on a new file
 		if ( dump_file_path ):
 			with open ( dump_file_path, "a" ) as dump_file:
-				map_rule ( tdb_path, rule, rule_name, dump_file, sparql_vars, namespaces, compress )				
+				map_rule ( tdb_path, rule, rule_name, dump_file, sparql_vars, namespaces )				
 			continue
 		
 		# Else, we're dumping on stdout
-		map_rule ( tdb_path, rule, rule_name, dump_file_path, sparql_vars, namespaces, compress )				
+		map_rule ( tdb_path, rule, rule_name, dump_file_path, sparql_vars, namespaces )				
 
 """
   map_from_rules(), with the rules read from files.
@@ -93,11 +87,10 @@ def map_from_rules (
 """
 def map_from_files ( 
 	rule_paths, tdb_path: str, dump_file_path: str,
-	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES,
-	compress = False
+	sparql_vars: dict = {}, namespaces: XNamespaceManager = DEFAULT_NAMESPACES
 ):
 	rules = read_rules_from_files ( rule_paths )	
-	map_from_rules ( rules, tdb_path, dump_file_path, sparql_vars, namespaces, compress )
+	map_from_rules ( rules, tdb_path, dump_file_path, sparql_vars, namespaces )
 
 
 """

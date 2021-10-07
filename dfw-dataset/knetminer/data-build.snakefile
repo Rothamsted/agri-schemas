@@ -16,6 +16,19 @@ JENA_HOME = os.getenv ( "JENA_HOME" )
 
 update_tdb_done_flag_path = f"{ETL_TMP}/update_tdb.done-flag"
 
+mapping_out_path = ETL_OUT + "/agrischemas-map.nt" 
+
+
+rule compress_map:
+	message:
+		"Compressing the resulting RDF"
+	input:
+		mapping_out_path
+	output:
+		mapping_out_path + ".bz2"
+	shell:
+		"bzip2 '{input}' '{output}'"
+
 
 rule agrischemas_map:
 	message:
@@ -24,14 +37,13 @@ rule agrischemas_map:
 		TDB_DIR,
 		update_tdb_done_flag_path
 	output:
-		ETL_OUT + "/agrischemas-map.nt.bz2"
+		temp ( mapping_out_path )
 	run:
 		sparqlmap.map_from_files (
 			rule_paths = [ etl_tools_path + "/map-rules", etl_tools_path + "/map-rules/schema-org" ],
 			tdb_path = input[0],
 			dump_file_path = output[0], 
-			sparql_vars = { 'SRC_NAMESPACE': 'bk:' },
-			compress = False
+			sparql_vars = { 'SRC_NAMESPACE': 'bk:' }
 		)
 
 

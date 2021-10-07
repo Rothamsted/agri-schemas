@@ -7,4 +7,5 @@ fi
 
 cd "$DFW_ETL/knetminer"
 
+echo -e "\n\tRunning the SnakeMake pipeline\n"
 snakemake --cores --snakefile data-build.snakefile $KNET_SNAKE_OPTS
