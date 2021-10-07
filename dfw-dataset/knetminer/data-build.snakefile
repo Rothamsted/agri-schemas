@@ -27,10 +27,11 @@ rule agrischemas_map:
 		ETL_OUT + "/agrischemas-map.nt.bz2"
 	run:
 		sparqlmap.map_from_files (
-			[ etl_tools_path + "/map-rules", 
-			  etl_tools_path + "/map-rules/schema-org" ],
-			tdb_path = input[0], dump_file_path = output[0], 
-			sparql_vars = sparql_vars, compress = True
+			rule_paths = [ etl_tools_path + "/map-rules", etl_tools_path + "/map-rules/schema-org" ],
+			tdb_path = input[0],
+			dump_file_path = output[0], 
+			sparql_vars = { 'SRC_NAMESPACE': 'bk:' },
+			compress = True
 		)
 
 
