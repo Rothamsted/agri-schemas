@@ -31,7 +31,7 @@ rule agrischemas_map:
 			tdb_path = input[0],
 			dump_file_path = output[0], 
 			sparql_vars = { 'SRC_NAMESPACE': 'bk:' },
-			compress = True
+			compress = False
 		)
 
 
