@@ -11,7 +11,7 @@ TDB_DIR = ETL_TMP + "/agrischema-tdb"
  
 JENA_HOME = os.getenv ( "JENA_HOME" )
 
-update_tdb_done_flag_path = f"{ETL_OUT}/ontologies/ext/agri-schema.ttl"
+update_tdb_done_flag_path = f"{ETL_TMP}/update_tdb.done-flag"
 
 
 rule update_tdb:
