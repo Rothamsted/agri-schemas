@@ -27,10 +27,10 @@ rule compress_map:
 	output:
 		mapping_out_path + ".bz2"
 	shell:
-		"bzip2 '{input}'"
+		"bzip2 '{input}'; sleep 10"
 
 
-rule agrischemas_map:
+rule map:
 	message:
 		"Creating agri-schemas Mappings"
 	input:
