@@ -17,13 +17,13 @@ log = logging.getLogger ( __name__ )
   A dictionary is returned such that the keys are experiment accessions and the values
   are dictionaries corresponding to the JSON objects that AE gives us.
   
-  The gxa=true flag is used, cause we interested in them only.
+  The GXA=true flag is used, cause we are interested in them only.
 """
 def ae_get_experiment_descriptors ( organisms ) -> dict:
 	def get_one_organism ( organism, result = {} ) -> dict:
 		log.info ( "Getting AE descriptors about %s", organism )
 		url = "https://www.ebi.ac.uk/arrayexpress/json/v3/experiments?"
-		url += web.url_param ( "gxa", "true" )
+		url += web.url_param ( "GXA", "true" )
 		url += web.url_param_append ( "species", '"' + organism + '"' ) 
 		aejs = web.url_get_json ( url )
 		aejs = aejs.get ( "experiments", {} ) # Extract what we need
