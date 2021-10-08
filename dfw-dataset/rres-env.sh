@@ -5,6 +5,8 @@ export DFW_ETL="`pwd`"
 cd ..
 export AG_DIR="`pwd`"
 
+# TODO: Should reuse the variables from the the knetminer-backend scripts 
+# 
 export KNET_DATA_DIR=/home/data/knetminer
 export KNET_DATASET_DIR="$KNET_DATA_DIR/pub/endpoints/poaceae/51"
 export ETL_OUT="$KNET_DATASET_DIR/rdf" 
