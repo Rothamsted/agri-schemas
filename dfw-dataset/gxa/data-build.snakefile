@@ -49,6 +49,6 @@ rule single_exp:
 			with bz2.open ( fout, "w" ) as bout:
 				bout.write ( ( "# Export error: %s\n\n" % str ( ex ) ).encode () )
 				bout.write ( get_commented_traceback ( "# " ).encode () )
-		finally:
-			time.sleep ( 10 )
+#		finally:
+#			time.sleep ( 10 )
 			
