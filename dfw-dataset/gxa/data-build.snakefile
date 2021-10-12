@@ -4,6 +4,7 @@ from ebigxa.gxa import gxa_rdf_all_save, gxa_get_experiment_descriptors_cached, 
 import pathlib
 import json
 import bz2
+import time
 
 log = logger_config ( __name__ )
 
@@ -48,3 +49,6 @@ rule single_exp:
 			with bz2.open ( fout, "w" ) as bout:
 				bout.write ( ( "# Export error: %s\n\n" % str ( ex ) ).encode () )
 				bout.write ( get_commented_traceback ( "# " ).encode () )
+		finally:
+			time.sleep ( 10 )
+			
