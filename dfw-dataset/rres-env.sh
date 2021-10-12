@@ -14,10 +14,10 @@ export ETL_TMP="$KNET_DATASET_DIR/tmp" # temp stuff produced by the pipeline
 
 export JENA_HOME=/home/data/knetminer/software/jena
 
-export KNET_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm"
+export KNET_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm-mem"
 
 # This alternative requests more memory
-export GXA_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm-mem"
+export GXA_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm"
 
 
 # These are personal! Please, do not use elsewhere!
