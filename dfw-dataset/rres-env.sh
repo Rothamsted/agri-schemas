@@ -23,7 +23,8 @@ export AGROPORTAL_APIKEY='c5a0f99c-a061-4175-8d7e-e49c47b6337d'
 
 export NAMESPACES_PATH="$DFW_ETL/namespaces.ttl"
 export JAVA_TOOL_OPTIONS="-Xmx64G"
-export ETL_LOG_CONF="$AG_DIR/lib/etltools/logging-test.yaml" # or logging.yaml for production
+#export ETL_LOG_CONF="$AG_DIR/lib/etltools/logging-test.yaml" # or logging.yaml for production
+export ETL_LOG_CONF="$DFW_ETL/logging.yaml"
 
 for mod in lib dfw-dataset/knetminer dfw-dataset/gxa
 do
@@ -34,6 +35,8 @@ do
 		cd "$AG_DIR"
 	done
 done
+
+
 
 #conda activate /home/data/knetminer/software/conda/mamba/envs/snakemake
 module load snakemake/6.1.0-foss-2020b
