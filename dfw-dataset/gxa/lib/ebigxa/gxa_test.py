@@ -262,6 +262,41 @@ class GxaTest ( unittest.TestCase ):
 		  "DEX statements about 72 hrs not found!"								
 		)		
 		
+	
+	def test_extended_baseline ( self ):
+		cond_labels = set()
+		rdf = rdf_gxa_namespaces();
+		rdf += rdf_gxa_dex_levels ( "E-MTAB-8073", "RNASeq", None, cond_labels, GxaTest.gene_filter )
+		
+		log.info ( "rdf_gxa_dex_levels(Microarray) test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )		
+		log.info ( "rdf_gxa_dex_levels(Microarray), returned conditions: %s", cond_labels )
+		
+		graph = rdflib.Graph()
+		graph.parse ( data = rdf, format = "turtle" )	
+		
+		self.assert_rdf ( graph, 
+		  """ASK { 
+		    ?dex a rdfs:Statement;
+					rdf:subject ?gene;
+					rdf:predicate bioschema:expressedIn;
+					rdf:object bkr:cond_sodium_chloride_0x3B_150_millimolar;
+					agri:baseCondition bkr:cond_none, bkr:cond_wild_type_genotype;
+					agri:log2FoldChange ?fc;
+					agri:pvalue ?pvalue;
+					agri:evidence bkr:exp_E-MTAB-8073;
+				.
+					
+				FILTER ( ?pvalue < 0.05 )
+				FILTER ( ABS( ?fc ) > 1 )
+				
+				
+		  }""",
+		  "DEX statements about sodium_chloride not found!"								
+		)		
+				
+		self.assertTrue( "wild type genotype" in cond_labels, "Extended base condition in DEX experiment not found!" )
+		
+		
 	def test_gxa_rdf_all ( self ):
 		acc = "E-MTAB-4260"
 		exp_js = GxaTest.gxa_exps [ acc ]

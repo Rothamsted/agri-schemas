@@ -10,21 +10,25 @@ log = logging.getLogger ( __name__ )
 
 
 """
-  Gets ArrayExpress experiment descriptors, using the AE API.
-  
-  You can pass either a single string or a generator.
+	Gets ArrayExpress experiment descriptors, using the AE API.
+	
+	You can pass either a single string or a generator.
 
-  A dictionary is returned such that the keys are experiment accessions and the values
-  are dictionaries corresponding to the JSON objects that AE gives us.
-  
-  The GXA=true flag is used, cause we are interested in them only.
+	A dictionary is returned such that the keys are experiment accessions and the values
+	are dictionaries corresponding to the JSON objects that AE gives us.
+	
+	The gxa=true flag is used, cause we are interested in them only.
+	TODO: this flag is currently not used, see below
 """
 def ae_get_experiment_descriptors ( organisms ) -> dict:
 	def get_one_organism ( organism, result = {} ) -> dict:
 		log.info ( "Getting AE descriptors about %s", organism )
 		url = "https://www.ebi.ac.uk/arrayexpress/json/v3/experiments?"
-		url += web.url_param ( "GXA", "true" )
-		url += web.url_param_append ( "species", '"' + organism + '"' ) 
+				
+		url += web.url_param ( "species", '"' + organism + '"' )
+		
+		url += web.url_param_append ( "gxa", "true" )
+
 		aejs = web.url_get_json ( url )
 		aejs = aejs.get ( "experiments", {} ) # Extract what we need
 		aejs = aejs.get ( "experiment", None )
@@ -34,8 +38,13 @@ def ae_get_experiment_descriptors ( organisms ) -> dict:
 			return {}
 		
 		for js in aejs:
+			ae_type = js.get ( "experimenttype", None )
+			
+			# Sometimes it is missing, so let's skip it
+			if not ae_type: continue
+
 			js [ "aeTechnologyType" ] = "Microarray" \
-				if "transcription profiling by array" in js [ "experimenttype" ] \
+				if "transcription profiling by array" in ae_type \
 				else "RNASeq"
 			result [ js [ "accession" ] ] = js
 		
@@ -49,16 +58,16 @@ def ae_get_experiment_descriptors ( organisms ) -> dict:
 
 
 """
-  Renders the RDF about an ArrayExpress/GXA experiment, taking its description from the JSON returned
-  by the AE API, ie, ae_get_experiment_descriptors.
-  
+	Renders the RDF about an ArrayExpress/GXA experiment, taking its description from the JSON returned
+	by the AE API, ie, ae_get_experiment_descriptors.
+	
 	out is passed to print ()'s file parameter, ie, it's the destination stream. If set to None explicitly,
-	a string is generated and returned.  
+	a string is generated and returned.	
 """
 def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 
 	specie2terms = { 
-		"trabidopsis thaliana": [ "http://purl.bioontology.org/ontology/NCBITAXON/3701" ],
+		"arabidopsis thaliana": [ "http://purl.bioontology.org/ontology/NCBITAXON/3701" ],
 		"triticum aestivum": [ "http://purl.bioontology.org/ontology/NCBITAXON/4565" ]
 	}
 

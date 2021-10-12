@@ -8,7 +8,7 @@ from sys import stdout
 from textwrap import dedent
 from urllib.request import urlopen
 
-from biotools.bioportal import AgroPortalClient
+from biotools.bioportal import AgroPortalClient, BioPortalClient
 from ebigxa.ae import ae_get_experiment_descriptors, make_ae_exp_uri, rdf_ae_experiment
 from ebigxa.utils import rdf_gxa_namespaces
 from etltools.utils import make_id, normalize_rows_source, uri2accession, js_from_file, js_to_file, BinaryWriter
@@ -28,6 +28,7 @@ log = logging.getLogger ( __name__ )
 """
 def gxa_get_experiment_descriptors ( organisms ):
 	aejss = ae_get_experiment_descriptors ( organisms )
+	result = {}
 	# This is the API I found by inspecting the HTML UI, it doesn't seem to be accepting any parameter, 
 	# the experiments are already organism-filtered by the AE API call.
 	gxajss = web.url_get_json ( "https://www.ebi.ac.uk/gxa/json/experiments" )
@@ -36,16 +37,16 @@ def gxa_get_experiment_descriptors ( organisms ):
 	for exp_acc, aejs in aejss.items ():
 		if exp_acc not in gxajss:
 			# See above
-			aejs.pop ( exp_acc )
 			continue
 		aejs [ "gxaAnalysisType" ] = gxajss [ exp_acc ] [ "experimentType" ]
-	return aejss  
+		result [ exp_acc ] = aejs
+	return result  
 
 
 """
   Wraps gxa_get_experiment_descriptors() behind a cache file, ie, 
   
-  if gxa_js_file_path() is present, just returns its conents, else
+  if gxa_js_file_path is present, just returns its conents, else
   invokes gxa_get_experiment_descriptors(), saves it into gxa_js_file_path and returns
   the JSON result.
   
@@ -193,7 +194,8 @@ def rdf_gxa_tpm_levels ( exp_acc: str, out = stdout, condition_labels: set = Non
 
 _dex_condre = "'([^']+)'"
 _dex_score_type_re = "\s*\.(foldChange|pValue)"
-DEX_COND_PATTERN = re.compile ( f"{_dex_condre} vs {_dex_condre}{_dex_score_type_re}" )
+# this includes the optional case: "'salicylic acid; 0.5 millimolar' vs 'none' in 'wild type genotype' .foldChange"
+DEX_COND_PATTERN = re.compile ( f"{_dex_condre} vs {_dex_condre}( in {_dex_condre})?{_dex_score_type_re}" )
 DEX_COND_TIME_PATTERN = re.compile ( f"(.+) at '([0-9]+) hour'{_dex_score_type_re}")
 
 """
@@ -223,29 +225,43 @@ def rdf_gxa_dex_levels (
 			result [ 'time' ] = int ( time_match.group ( 2 ) )
 			# Done, cut away the time part and reduce it to the timeless case
 			conds_header = time_match.group ( 1 ) + "." + time_match.group ( 3 )
-		
+				
 		# Now match only cond/baseline
 		cond_match = DEX_COND_PATTERN.match ( conds_header )
 		if not cond_match: return {}
 		
-		# At the end, al the details are in a dictionary  		
+		# At the end, all the details are in a dictionary  		
 		result [ 'baseline' ] = cond_match.group ( 2 )
 		result [ 'condition' ] = cond_match.group ( 1 )
-		result [ 'scoreType' ] = cond_match.group ( 3 )
+		# This is an optional part looking like "in 'wildtype'"
+		in_clause = cond_match.group ( 4 )
+		if in_clause: result [ 'baselineExt' ] = in_clause
+		result [ 'scoreType' ] = cond_match.group ( 5 )
 
 		return result
 
-	def rdf_level ( gene_id, condition_label, base_condition_label, fold_change, pvalue, time_point ):
+	def rdf_level ( gene_id, condition_label, base_condition_label, ext_base_condition_label, fold_change, pvalue, time_point ):
 		# TODO: it would be more correct to not change the case, but we want Knet compatibility
 		exp_uri = make_ae_exp_uri ( exp_acc )
 		gene_id_nrm = gene_id.lower()
 		gene_uri = make_gene_uri ( gene_id )
+		
 		cond_id = make_id ( condition_label, skip_non_word_chars = False )
-		base_cond_id = make_id ( base_condition_label, skip_non_word_chars = False )
 		cond_uri = make_condition_uri ( condition_label )
+
+		base_cond_id = make_id ( base_condition_label, skip_non_word_chars = False )
 		base_cond_uri = make_condition_uri ( base_condition_label )
+
+		ext_base_cond_id, ext_base_cond_uri = None, None
+		if ext_base_condition_label:
+			ext_base_cond_id = make_id ( ext_base_condition_label, skip_non_word_chars = False )
+			ext_base_cond_uri = make_condition_uri ( ext_base_condition_label )
+	
 	
 		exp_stmt_uri = f"bkr:gxaexp_{exp_acc}_{gene_id_nrm}_{cond_id}_vs_{base_cond_id}"
+		if ext_base_cond_uri:
+			exp_stmt_uri += f"_in_{ext_base_cond_id}"
+			
 		if time_point != -1: exp_stmt_uri += f"_{time_point}h"
 	
 		rdf = f"""
@@ -261,7 +277,12 @@ def rdf_gxa_dex_levels (
 				
 			{gene_uri} bioschema:expressedIn {cond_uri}.
 		"""
+
 		rdf = dedent ( rdf )
+		
+		if ext_base_cond_uri:
+			rdf += f"\n{exp_stmt_uri} agri:baseCondition {ext_base_cond_uri}.\n"
+
 			
 		if time_point != -1:
 			time_point_str = str ( time_point ) + " hours"
@@ -319,6 +340,7 @@ def rdf_gxa_dex_levels (
 				
 				levels [ "condition" ] = cond_detail [ "condition" ]
 				levels [ "baseline" ] = cond_detail [ "baseline" ]
+				levels [ "baselineExt" ] = cond_detail.get ( "baselineExt", None )
 
 				all_levels [ time ] = levels
 			#/end: loop on condition columns
@@ -338,11 +360,14 @@ def rdf_gxa_dex_levels (
 
 				condition = levels [ "condition" ]
 				baseline = levels [ "baseline" ]
+				baseline_ext = levels [ "baselineExt" ]
 
-				rdf_level ( gene_id, condition, baseline, fold_change, pvalue, time_point )
+				rdf_level ( gene_id, condition, baseline, baseline_ext, fold_change, pvalue, time_point )
 
 				condition_labels.add ( condition )
 				condition_labels.add ( baseline )
+				if baseline_ext: condition_labels.add ( baseline_ext )
+				
 				if time != -1: condition_labels.add ( str ( time ) + " hours" )
 				gene_has_levels = True
 			#/end: loop all_levels
@@ -471,11 +496,18 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 
 """
   Annotates a condition string with ontology terms from AgroLD, using their Annotator service.
+  
+  You can switch to the alternative BioPortal text annotator, in both cases, a suitable set 
+  of ontologies is passed to the respective API. This annotator option was introduced due to 
+  periodical AgroPortal instability.
+  
+  When this parameter isn't specified, it is taken from
+  the global/static annotate_condition.default_annotator, which you can use to set a global default
+  at the begin of your application/process.
 """
-def annotate_condition ( cond_label: str ) -> str:
-	ap = AgroPortalClient ()
+def annotate_condition ( cond_label: str, annotator = None ) -> str:
+	ap = None
 	opts = {
-		"ontologies": "CO_330,CO_321,TO,CO_121,AFO,EO,AEO,NCBITAXON,AGROVOC,FOODON", 
 		"longest_only": "true",
 		"exclude_numbers": "false",
 		"whole_word_only": "true",
@@ -488,10 +520,20 @@ def annotate_condition ( cond_label: str ) -> str:
 	  "negation": "false",
 	  "score": "cvalue"			
 	}
+	
+	if not annotator: annotator = annotate_condition.default_annotator
+	
+	if annotator == "AgroPortal": 
+		ap = AgroPortalClient ()
+		opts [ "ontologies" ] = "CO_330,CO_321,TO,CO_121,AFO,EO,AEO,NCBITAXON,AGROVOC,FOODON"
+	else:
+		ap = BioPortalClient ()
+		opts [ "ontologies" ] = "PO,CO-WHEAT,CO,NCBITAXON,PAE,PDO_CAS,PEAO,PPO,PTO,CPGA,FOODON"
+
 	terms = ap.annotator_terms ( cond_label, cutoff = 5, **opts )
 	return terms
 
-
+annotate_condition.default_annotator = "AgroPortal"
 
 
 # Gets genes to be filtered from a file or other row source.
