@@ -1,2 +1,3 @@
-jobs: 16
+jobs: 4
+local-cores: 8
 cluster: "sbatch --chdir=/home/data/knetminer/software/agri-schemas/dfw-dataset/gxa --cpus-per-task=8 --qos=long --time=1-0:0:0  -o .snakemake/log/slurm-{rule}-{wildcards.exp_acc}.out -e .snakemake/log/slurm-{rule}-{wildcards.exp_acc}.out"
