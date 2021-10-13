@@ -20,6 +20,9 @@ export NAMESPACES_PATH="$DFW_ETL/namespaces.ttl"
 export JAVA_TOOL_OPTIONS="-Xmx8G"
 export ETL_LOG_CONF="$AG_DIR/lib/etltools/logging-test.yaml" # or logging.yaml for production
 
+. "$AG_DIR/lib/default-env.sh"
+
+#TODO: remove
 #for mod in lib dfw-dataset/knetminer dfw-dataset/gxa
 #do
 #	for prefix in default brandizi
