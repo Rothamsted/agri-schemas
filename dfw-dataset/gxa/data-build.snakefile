@@ -10,6 +10,7 @@ log = logger_config ( __name__ )
 
 ETL_OUT = os.getenv ( "ETL_OUT" )
 ETL_TMP = os.getenv ( "ETL_TMP" )
+GXA_ETL_DIR = os.getenv ( "GXA_ETL_DIR" )
 
 
 EXPERIMENTS_JS = gxa_get_experiment_descriptors_cached ( config [ 'gxa_organisms' ], ETL_TMP + "/gxa/exp-descriptors.js" )
@@ -52,3 +53,11 @@ rule single_exp:
 #		finally:
 #			time.sleep ( 10 )
 			
+
+rule move_local_files:
+	message:
+		"Copying static/fixed local file '{wildcards.file}'"
+	output:
+		expand ( ETL_OUT + "/gxa/{file}", file = "gxa-defaults.ttl" )				
+	shell:
+		f'/bin/cp -v "{GXA_ETL_DIR}/lib/ebigxa/{{wildcards.file}}" "{{output[0]}}"'  
