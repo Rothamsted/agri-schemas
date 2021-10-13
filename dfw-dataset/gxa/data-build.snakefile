@@ -23,6 +23,7 @@ EXPERIMENT_ACCS = EXPERIMENTS_JS.keys ()
 #]
 
 OUT_PATTERN = ETL_OUT + "/{exp_acc}.ttl.bz2" 
+STATIC_OUT_PATTERN = ETL_OUT + "//{file}" # double slash is to eliminate ambiguity with OUT_PATTERN
 
 annotate_condition.default_annotator = config.get ( "text_annotator", annotate_condition.default_annotator )
 
@@ -31,7 +32,8 @@ rule all:
 	message:
 		"Exporting everything"
 	input:
-		expand ( OUT_PATTERN, exp_acc = EXPERIMENT_ACCS )
+		expand ( OUT_PATTERN, exp_acc = EXPERIMENT_ACCS ),
+		expand ( STATIC_OUT_PATTERN, file = [ "gxa-defaults.ttl" ] )
 	
 
 rule single_exp:
@@ -58,6 +60,6 @@ rule move_local_files:
 	message:
 		"Copying static/fixed local file '{wildcards.file}'"
 	output:
-		expand ( ETL_OUT + "/{file}", file = "gxa-defaults.ttl" )				
+		STATIC_OUT_PATTERN
 	shell:
 		f'/bin/cp -v "{GXA_ETL_DIR}/lib/ebigxa/{{wildcards.file}}" "{{output[0]}}"'  
