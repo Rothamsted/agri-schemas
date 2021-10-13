@@ -10,4 +10,6 @@ export AG_DATA_DIR="$KNET_DATA_DIR/pub/endpoints/agri-schemas"
 export ETL_OUT="$AG_DATA_DIR/gxa/v202110"
 export ETL_TMP="$AG_DATA_DIR/tmp"
 
+export ETL_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm-gxa"
+
 cd "$GXA_ETL_DIR"

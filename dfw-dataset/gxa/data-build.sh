@@ -9,5 +9,6 @@ cd "$DFW_ETL/gxa"
 
 echo -e "\n\tRunning the SnakeMake pipeline\n"
 
-[[ -z "$GXA_SNAKE_OPTS" ]] && GXA_SNAKE_OPTS='--cores'
-snakemake --configfile snake-config.yaml --snakefile data-build.snakefile $GXA_SNAKE_OPTS
+snake_opts="$ETL_SNAKE_OPTS"
+[[ -z "$snake_opts" ]] && snake_opts='--cores'
+snakemake --configfile snake-config.yaml --snakefile data-build.snakefile $snake_opts

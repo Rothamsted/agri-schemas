@@ -16,11 +16,6 @@ export ETL_TMP="$KNET_DATASET_DIR/tmp" # temp stuff produced by the pipeline
 
 export JENA_HOME=/home/data/knetminer/software/jena
 
-export KNET_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm-knet"
-
-# This alternative requests more memory
-export GXA_SNAKE_OPTS="--profile $DFW_ETL/config/snakemake/rres-slurm-gxa"
-
 
 # These are personal! Please, do not use elsewhere!
 export BIOPORTAL_APIKEY='a9f8528b-4db9-4f35-995f-14e81106615f'

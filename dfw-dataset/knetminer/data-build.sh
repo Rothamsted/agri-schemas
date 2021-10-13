@@ -9,5 +9,6 @@ cd "$DFW_ETL/knetminer"
 
 echo -e "\n\tRunning the SnakeMake pipeline\n"
 
-[[ -z "$KNET_SNAKE_OPTS" ]] && KNET_SNAKE_OPTS='--cores'
-snakemake --snakefile data-build.snakefile $KNET_SNAKE_OPTS
+snake_opts="$ETL_SNAKE_OPTS"
+[[ -z "$snake_opts" ]] && snake_opts='--cores'
+snakemake --snakefile data-build.snakefile $snake_opts
