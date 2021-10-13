@@ -1,7 +1,9 @@
 # Use this prolog to go to the script's directory
 cd "`dirname ${BASH_SOURCE[0]}`"
 
+cd ../..
 export DFW_ETL="`pwd`"
+
 cd ..
 export AG_DIR="`pwd`"
 
