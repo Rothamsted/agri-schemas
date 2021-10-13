@@ -31,15 +31,15 @@ export JAVA_TOOL_OPTIONS="-Xmx64G"
 #export ETL_LOG_CONF="$AG_DIR/lib/etltools/logging-test.yaml" # or logging.yaml for production
 export ETL_LOG_CONF="$DFW_ETL/logging.yaml"
 
-for mod in lib dfw-dataset/knetminer dfw-dataset/gxa
-do
-	for prefix in default rres
-	do
-		script="$AG_DIR/$mod/$prefix-env.sh"
-		[[ -e "$script" ]] && . "$script"
-		cd "$AG_DIR"
-	done
-done
+#for mod in lib dfw-dataset/knetminer dfw-dataset/gxa
+#do
+#	for prefix in default rres
+#	do
+#		script="$AG_DIR/$mod/$prefix-env.sh"
+#		[[ -e "$script" ]] && . "$script"
+#		cd "$AG_DIR"
+#	done
+#done
 
 
 
