@@ -13,7 +13,7 @@ ETL_TMP = os.getenv ( "ETL_TMP" )
 GXA_ETL_DIR = os.getenv ( "GXA_ETL_DIR" )
 
 
-EXPERIMENTS_JS = gxa_get_experiment_descriptors_cached ( config [ 'gxa_organisms' ], ETL_TMP + "/gxa/exp-descriptors.js" )
+EXPERIMENTS_JS = gxa_get_experiment_descriptors_cached ( config [ 'gxa_organisms' ], ETL_TMP + "/exp-descriptors.js" )
 EXPERIMENT_ACCS = EXPERIMENTS_JS.keys ()
 
 # Test sample
@@ -22,7 +22,7 @@ EXPERIMENT_ACCS = EXPERIMENTS_JS.keys ()
 #	'E-MTAB-6965', 'E-MTAB-7374', 'E-MTAB-6866'
 #]
 
-OUT_PATTERN = ETL_OUT + "/gxa/{exp_acc}.ttl.bz2" 
+OUT_PATTERN = ETL_OUT + "/{exp_acc}.ttl.bz2" 
 
 annotate_condition.default_annotator = config.get ( "text_annotator", annotate_condition.default_annotator )
 
@@ -58,6 +58,6 @@ rule move_local_files:
 	message:
 		"Copying static/fixed local file '{wildcards.file}'"
 	output:
-		expand ( ETL_OUT + "/gxa/{file}", file = "gxa-defaults.ttl" )				
+		expand ( ETL_OUT + "/{file}", file = "gxa-defaults.ttl" )				
 	shell:
 		f'/bin/cp -v "{GXA_ETL_DIR}/lib/ebigxa/{{wildcards.file}}" "{{output[0]}}"'  

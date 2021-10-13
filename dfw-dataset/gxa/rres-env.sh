@@ -5,8 +5,8 @@ cd "`dirname ${BASH_SOURCE[0]}`"
 cd ..
 . config/environments/rres-env.sh
 
-export KNET_DATASET_DIR="$KNET_DATA_DIR/pub/endpoints/agri-schemas/gxa/v202110"
-export ETL_OUT="$KNET_DATASET_DIR" 
-export ETL_TMP="$KNET_DATASET_DIR/tmp"
+export AG_DATA_DIR="$KNET_DATA_DIR/pub/endpoints/agri-schemas"
+export ETL_OUT="$AG_DATA_DIR/gxa/v202110"
+export ETL_TMP="$AG_DATA_DIR/tmp"
 
 cd "$GXA_ETL_DIR"
