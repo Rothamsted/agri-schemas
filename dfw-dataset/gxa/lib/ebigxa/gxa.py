@@ -489,7 +489,7 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 		#/end: for onto_terms
 	#/end: for cond_label
 	if has_errors:
-		log.error ( "The gene expresion conditions annotation has had some errors, probably some terms weren't annotated" )
+		log.error ( "The gene expression conditions annotation has had some errors, probably some terms weren't annotated" )
 	if ( type ( out ) == io.StringIO ): return out.getvalue()	
 #/end: rdf_gxa_conditions	
 

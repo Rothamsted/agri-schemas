@@ -394,6 +394,15 @@ def rdf_str ( data, key, rdf_prop ):
 	return rdf_pval ( data, key, rdf_prop, lbuilder )
 
 """
+	The same as rdf_str, but the value is escaped into triple quotes
+"""
+def rdf_text ( data, key, rdf_prop ):
+	def lbuilder ( s ):
+		return '"""' + str ( Literal ( s ) ) + '"""'
+	return rdf_pval ( data, key, rdf_prop, lbuilder )
+	
+
+"""
 	Simple utility that wraps every line of the current traceback into a pair of prefixes/postfixes.
 	
 	This is useful to report errors in a data file that is later read by some other 

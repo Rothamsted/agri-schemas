@@ -2,7 +2,7 @@ import logging
 from sys import stdout
 from textwrap import dedent
 
-from etltools.utils import rdf_str, rdf_pval, make_id, hash_generator
+from etltools.utils import rdf_str, rdf_text, rdf_pval, make_id, hash_generator
 from kpyutils import web
 
 
@@ -107,8 +107,8 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 			"""
 			rdf = dedent ( rdf )
 
-			rdf += rdf_str ( pub_js, "title", "\tdc:title" )
-			rdf += rdf_str ( pub_js, "authors", "\tagri:authorsList" )
+			rdf += rdf_text ( pub_js, "title", "\tdc:title" )
+			rdf += rdf_text ( pub_js, "authors", "\tagri:authorsList" )
 			rdf += rdf_str ( pub_js, "accession", "\tagri:pmedId" )
 			rdf += rdf_str ( pub_js, "doi", "\tagri:doiId" )
 			rdf += rdf_str ( pub_js, "year", "\tschema:datePublished" )
@@ -126,11 +126,11 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 			schema:identifier "{exp_acc}";
 	"""
 	rdf = dedent ( rdf )
-	rdf += rdf_str ( exp_js, "name", "\tdc:title" )
+	rdf += rdf_text ( exp_js, "name", "\tdc:title" )
 	
 	# TODO: not clear why they're arrays
 	if exp_js [ "description" ]:
-		rdf += rdf_str ( exp_js [ "description" ] [ 0 ], "text", "\tschema:description" )
+		rdf += rdf_text ( exp_js [ "description" ] [ 0 ], "text", "\tschema:description" )
 	
 	rdf += rdf_str ( exp_js, "releasedate", "\tschema:datePublished" )
 
