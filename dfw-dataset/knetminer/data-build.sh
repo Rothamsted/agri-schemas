@@ -12,3 +12,5 @@ echo -e "\n\tRunning the SnakeMake pipeline\n"
 snake_opts="$ETL_SNAKE_OPTS"
 [[ -z "$snake_opts" ]] && snake_opts='--cores'
 snakemake --snakefile data-build.snakefile $snake_opts
+
+# After this, you just need to repeat servers-sync.sh in the RRes pipeline.
