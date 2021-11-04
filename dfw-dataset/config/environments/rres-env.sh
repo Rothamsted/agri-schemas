@@ -10,7 +10,7 @@ export AG_DIR="`pwd`"
 # TODO: Should reuse the variables from the the knetminer-backend scripts 
 # 
 export KNET_DATA_DIR=/home/data/knetminer
-export KNET_DATASET_DIR="$KNET_DATA_DIR/pub/endpoints/poaceae/51"
+export KNET_DATASET_DIR="${KNET_DATASET_DIR-KNET_DATA_DIR/pub/endpoints/poaceae/51}"
 export ETL_OUT="$KNET_DATASET_DIR/rdf" 
 export ETL_TMP="$KNET_DATASET_DIR/tmp" # temp stuff produced by the pipeline
 
@@ -27,18 +27,6 @@ export JAVA_TOOL_OPTIONS="-Xmx64G"
 export ETL_LOG_CONF="$DFW_ETL/logging.yaml"
 
 . "$AG_DIR/lib/default-env.sh"
-
-#TODO: remove
-#for mod in lib
-#do
-#  for prefix in default rres
-#  do
-#		script="$AG_DIR/$mod/$prefix-env.sh"
-#		[[ -e "$script" ]] && . "$script"
-#		cd "$AG_DIR"
-#	done
-#done
-
 
 
 #conda activate /home/data/knetminer/software/conda/mamba/envs/snakemake
