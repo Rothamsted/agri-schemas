@@ -1,4 +1,5 @@
 @prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>.
+@prefix bkr: <http://knetminer.org/data/rdf/resources/>
 @prefix agri: <http://agrischemas.org/>.
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
@@ -113,4 +114,19 @@ res:sample1 a bioschema:Sample ;
 	schema:name			"Land Plot 001";
 	schema:isPartOf			res:study1;
 	agri:hasStudyFactor res:expFact1
+.
+
+## Another one, about Genes, real data from http://knetminer.org/data/rdf/resources/gene_traescs1d02g156000
+bkr:gene_traescs1d02g156000
+	schema:name                  "TRAESCS1D02G156000" ;
+	dc:source                 bko:DFW_ENSEMBL ;
+	dc:identifier             <http://knetminer.org/data/rdf/resources/accsn_wheatexp_traescs1d02g156000> ;
+	bioschema:encodesBioChemEntity  <http://knetminer.org/data/rdf/resources/protein_traescs1d02g156000_1> ;
+	dcterms:identifier            "TRAESCS1D02G156000" ;
+	bko:prefName              "TRAESCS1D02G156000" ;
+	rdf:type                  bioschema:Gene ;
+	rdf:type                  biopax:Gene ;
+	schema:isPartOf              <http://knetminer.org/data/rdf/resources/coexpcluster_3278883> ;
+	rdfs:label                "TRAESCS1D02G156000" ;
+	bko:has_mutant            <http://knetminer.org/data/rdf/resources/snp_3405214> ;
 .
