@@ -17,7 +17,7 @@ have been two DFW hackathons where we have done most of the work so far.
 The work is mainly based on modelling from concrete [use cases](doc/README.md).
 
 ## Prototype
-Based on the models above, We're building a [prototype dataset][dfw-dataset], which includes
+Based on the models above, We're building a [prototype dataset](dfw-dataset), which includes
 [Knetminer](https://knetminer.com/) 
 (biomolecular knowledge graph, which, in turn, includes a number of other data sources and data 
 types), and the [Gene Expression Atlas](https://www.ebi.ac.uk/gxa/home) (experimental data about 
