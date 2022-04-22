@@ -1,0 +1,444 @@
+@prefix ex: <http://agrischemas.org/resources/examples/biohack-2021/junker15/>.
+@prefix agri: <http://agrischemas.org/>.
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ppeo: <http://purl.org/ppeo/PPEO.owl#>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+#### The Investigation is actually a dataset in MIAPPE.
+# 
+ex:investigation a schema:Dataset;
+	schema:identifier "1135FA";
+	schema:name "Quantitative Monitoring of Arabidopsis thaliana Growth and Development Using High-Throughput Plant Phenotyping";
+	schema:description "The dataset is derived from an automated high throughput plant phenotyping system for small plants, which combines a growth chamber for controlled environmental conditions and the imaging chambers for non-invasive trait assessment. In this validation study, Arabidopsis plants have been grown with a large number of replicates and their growth and development has been evaluated with respect to two factors: i) 'moving vs. stationary' to assess if the movement of plants on the conveyor belt influences plant growth and ii) 'covered vs. uncovered' to assess if soil covers influence plant growth. These special soil covers are used for reducing transpiration and to facilitate segmentation of plant pixels from the background during image analysis."
+	# Null values in this instance are reported to show all the possibilities
+	schema:dateCreated ""; # maps submission date
+	schema:datePublished "";
+	schema:creator
+	[
+		a schema:Organization;
+		# schema:URL is a subclass of Text and this also allows for better control of user-typed URLs
+		schema:url "http://www.ipk-gatersleben.de"
+	],
+	[
+		# Was Comment["Consortium URI"] in the original file. Likely, automatic conversion will 
+		# produce schema:additionalProperty instead
+		a schema:Organization;
+		schema:url "http://www.dppn.de"
+	];
+
+	schema:license "https://creativecommons.org/licenses/by/4.0/legalcode";
+	# TODO: bioschemas recommends to use EDAM ontology and DefinedTerms. Moreover, 
+	# it isn't clear whether single or multiple strings is recommended.
+	schema:keywords "plant phenotyping, image analysis, arabidopsis thaliana, lemnatec";
+	schema:isBasedOn ex:study; # as per bioschema (profile) recommendation
+
+	### The publication(s)
+	#
+	schema:citation [
+		# here we know it's an article. In general, agrischemas is proposing ScholarlyPublication
+		a bioschema:ScholarlyArticle;
+		# Bioschemas recommend this for the title
+		schema:name "Optimizing experimental procedures for quantitative evaluation of crop plant performance in high throughput phenotyping systems";
+		# New property to be proposed to schema.org
+		agri:authorsList "Junker, A; Muraya, M; Weigelt-Fischer, K; Arana-Ceballos, F; Klukas, C; Meyer, RC; Riewe, D; Altmann, T;";
+		schema:identifier
+		[
+			# Alternatively, we propose agri:pmedId (to be added to bioschemas)
+			a schema:PropertyValue;
+			schema:propertyID "PubMed ID";
+			schema:value "25653655";
+		],
+		[
+			# Alternatively, we propose agri:doiId (to be added to schema.org)
+			a schema:PropertyValue;
+			schema:propertyID "DOI";
+			schema:value "10.3389/fpls.2014.00770";
+		];
+		schema:datePublished "2015-01-20";
+	];
+
+	### The contributors
+	#
+  # This is the most generic linking property, to be used when it's not clear if it should be
+	# schema:contactPoint
+	#
+  # Following the (weird) approach described here for roles:
+  # schema:contributor -> Role -> Person, as per http://blog.schema.org/2014/06/introducing-role.html
+	# doesn't make any sense to me, but even the Google validators accept it.
+	#
+  schema:contributor
+	[
+    a schema:Role;
+    schema:roleName "Contributor Role", <http://purl.org/credit/ontology#CREDIT_00000000>;
+    schema:contributor
+		[
+			a schema:Person
+			schema:givenName "Astrid";
+			schema:familyName "Junker";
+			schema:email "junkera@ipk-gatersleben.de";
+			schema:telephone "+49(0)39482 5226";
+			schema:affiliation ex:leibnizInstitutePlantsGenetics; # defined below
+			schema:identifier <https://orcid.org/0000-0002-4656-0308>
+		]
+  ],
+	[
+		# Skipping the role
+		a schema:Person
+		schema:givenName "Kathleen";
+		schema:familyName "Weigelt-Fischer";
+		schema:email "weigelt@ipk-gatersleben.de";
+		schema:affiliation ex:leibnizInstitutePlantsGenetics; # defined below
+	]	  
+. 
+# /ex:investigation
+
+
+
+ex:leibnizInstitutePlantsGenetics a schema:Organization;
+	schema:name "Leibniz Institute of Plant Genetics and Crop Plant Research (IPK) Gatersleben";
+.
+
+
+### The study/experiment
+#
+ex:study a bioschema:Study;
+	schema:identifier "1135FA";
+	schema:name "Investigation of movement and soil cover effects on plant growth in a high throughput plant phenotyping system";
+	schema:description "";
+	schema:dateCreated ""; # maps submission date
+	schema:datePublished "";
+	schema:startDate "2011-08-09";
+	schema:endDate "2011-10-02";
+	schema:contactPoint ex:leibnizInstitutePlantsGenetics;
+	
+	schema:studyLocation
+	[
+		a schema:Place;
+		schema:name "LemnaTec Facility";
+		schema:latitude 52.521600;
+		schema:longitude 16.659648;
+		# The alternative is a simple schema:containedInPlace <https://dbpedia.org/resource/Germany>
+		schema:containedInPlace [
+			a schema:Country;
+			schema:name "Germany";
+			schema:sameAs <https://dbpedia.org/resource/Germany>
+		]
+	];
+
+	# agri:studyExperimentalDesign could be an alternative (as new property, deriving from
+	# additional property), but search engines will reconise this more easily, at least for now
+	# (see notes)
+	#
+	schema:additionalProperty
+	[
+		# schema:PropertyValue is redundant, you might want it just to accommodate tools like Google
+		#
+		a agri:ExperimentalDesign, schema:PropertyValue;
+
+		schema:name "study design description"; # optional, useuful for applications understanding schema.org only
+		# See notes, this could be duped into schema:description
+		schema:value "The experiment comprised the analysis of 484 Arabidopsis plants of the C24 genotype, with 384 reps that were placed in the LemnaTec carriers (factor: moving) and 100 reps that were placed on tables in the same phyto-chamber (factor: stationary). The soil surface of half of the pots of each condition (factor: moving/stationary) was either left uncovered or was covered with a blue rubber mat (factor: uncovered/covered)."
+		schema:propertyID ppeo:experimental_design; # optional as above, as per schema.org, this is the property type, not the value
+		# dc:type is instead to add ontology terms of which this particular design is an instance
+		dc:type <http://purl.obolibrary.org/obo/OBI_0500014>; # factorial design
+
+		# Likely, these are going to be omitted by bioschema description, but this is the way 
+		# you can possibly encode it. Note that these are propertties of the design, NOT of
+		# agri:FieldTrialObservationUnit below, since the latter describe the single unit, while
+		# these properties describe the units in general and their arrangement.
+		#
+		schema:additionalProperty
+		[
+			a schema:PropertyValue;
+			schema:name "observation unit level hierarchy";
+			schema:value "plant";
+			schema:propertyID ppeo:observation_level_hierarchy;
+		],
+		[
+			a schema:PropertyValue;
+			schema:name "observation unit description";
+			schema:value "plant";
+			schema:propertyID ppeo:observation_level_hierarchy;
+		]
+		# Possibly, "map of experimental design" is to be encoded the same way
+	],
+
+	### The study factor types
+	# 
+	# They can be linked to the study simply as addtional properties, it's possible to know that an additional property
+	# is a factor, by just querying the type.
+	#
+	ex:fact_soil_cover,
+	ex:fact_plant_movement,
+
+	### the observed variable
+	#
+	# Again, additional property is the simplest way to link studies, samples, data to these.
+	#
+	ex:observed_variable_dried_weight;
+
+	# schema:citation for study-specific publications, to be used as above.
+.
+# /ex:study 
+
+
+### The factor types
+#
+# again, we discussed the option of studyFactorType, but for the moment this accommodates 
+# existing schema: tools better.
+# links to these from factor values are reported in the FV list below
+#
+ex:factor_soil_cover a agri:ExperimentalFactorType, schema:PropertyValue; # redundant as above
+	schema:name "study factor type"; # redundant, optional
+	schema:propertyID ppeo:factor; # redundant, optional, but links to existing ontologies
+	schema:value "Soil Cover";
+	schema:description "This factor differentiate between pots, which have a blue mat to cover the soil and uncovered pots";
+	# As above, dc:type is for instantive relations
+	dc:type <http://aims.fao.org/aos/agrovoc/c_37897>; # land cover	
+	agri:hasExperimentalFactorValue ex:fv_covered, ex:fv_uncovered; # alternative to hasExperimentalFactorType below
+.
+
+ex:factor_plant_movement a agri:ExperimentalFactorType, schema:PropertyValue; # redundant as above
+	schema:name "study factor type"; # redundant, optional
+	schema:propertyID ppeo:factor; # redundant, optional
+	schema:value "Plant Movement";
+	schema:description "This factor differentiate between plants, which where move in the greenhouse to the watering station and those which were not moved";
+.
+
+### The factor values
+#
+ex:fv_covered a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+  schema:name "Factor Type: Soil Cover"; # Redundant if you use hasExperimentalFactorType
+	schema:value "covered";
+	schema:propertyID ppeo:factor_value; # as above
+	agri:hasExperimentalFactorType ex:factor_soil_cover;
+	dc:type ex:factor_soil_cover; # redundant, hasExperimentalFactorType is already subproperty of dc:type
+.
+
+ex:fv_uncovered a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+  schema:name "factor value[soil cover]"; # An alternative pattern, based on ISA conventions. Again, redundant
+	schema:value "covered";
+	schema:propertyID ppeo:factor_value; # as above
+	agri:hasExperimentalFactorType ex:factor_soil_cover;
+	dc:type ex:factor_soil_cover; # redundant, hasExperimentalFactorType is already subproperty of dc:type
+.
+
+ex:fv_rotating a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+  schema:name "Factor Type: Plant Movement";
+	schema:value "rotating";
+	schema:propertyID ppeo:factor_value; # as above
+	agri:hasExperimentalFactorType ex:factor_plant_movement;
+	dc:type ex:factor_plant_movement; # redundant, hasExperimentalFactorType is already subproperty of dc:type
+.
+
+ex:fv_stationary a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+  schema:name "Factor Type: Plant Movement";
+	schema:value "stationary";
+	schema:propertyID ppeo:factor_value; # as above
+	agri:hasExperimentalFactorType ex:factor_plant_movement;
+	dc:type ex:factor_plant_movement; # redundant, hasExperimentalFactorType is already subproperty of dc:type
+.
+
+
+### The growth protocol
+#
+
+# As said, we propose to extend LabProtocol from Action, so that we can use its process-like properties
+# 
+ex:growthProtocol a bioschema:LabProtocol, schema:Action;
+  schema:isPartOf ex:study; # use this to link to study
+
+  # bioschemas recommend headline for the title, but this is seldom used in schema.org examples
+  schema:name "Growth Protocol";
+	# similarly, bioschemas recommend protocolPurpose, yet...
+	schema:description "";
+
+		# a new property, subclass of schema:additionalProperty
+	bioschema:hasProtocolParameter
+	[
+		# a new class, subclass of schema:PropertyValue
+		a agri:LabProtocolParameter, schema:PropertyValue;
+		schema:name "description of growth facility";
+		schema:value "The experiments have been conducted on the Plant Phenotyping System for small plants, situated in a climate-controlled phytochamber. (https://dppn.plant-phenotyping-network.de/index.php?index=67#/tool/107)";
+		
+		# Links to type qualifiers
+		schema:propertyID ppeo:growth_facility;
+	],
+	[
+		a agri:LabProtocolParameter, schema:PropertyValue;
+		schema:name "rooting medium";
+		schema:value "85% (v) red substrate 1 (Klasmann-Deilmann GmbH, Geeste, Germany) / 15% (v) sand)";
+	],
+	[
+		a agri:LabProtocolParameter, schema:PropertyValue;
+		schema:name "Container type";
+		schema:value "pot";
+		dc:type <http://purl.obolibrary.org/obo/AGRO_00000309>;
+	],
+	[
+		a agri:LabProtocolParameter, schema:PropertyValue;
+		schema:name "Container volume";
+		schema:value 0.43;
+		schema:unitCode <http://purl.obolibrary.org/obo/UO_0000099>;
+		schema:unitText "litre";
+	];
+	# TODO: skipping a lot of other params from the ISA-Tab
+	schema:object ex:plant1; # ie the input to the protocol
+	# we propose to make biosampleUsed as a subproperty of schema:object
+	bioschema:bioSampleUsed ex:plant1;  
+	# Having two results generically means that the protocol is a plan and has been used to produce this output from the input
+	# IT IS NOT specified if the protocol was applied once or more times, this would need a more complex model, ie, 
+	# A protocol qualified as a plan and a protocol qualified as an application.
+	schema:result ex:sample_1135FA1001, ex:sample_1135FA1002;
+.
+
+
+
+### The material
+#
+
+ex:plant1_source a agri:FieldTrialMaterialSource, schema:BioChemEntity; # redundant as above
+	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_3702>;
+	schema:name "Arabidopsis Thailana";
+	# Plus the usual fielda in Bioschema and Schema
+	schema:subjectOf ex:study; # TODO: is it correct? Or do we want the material only?
+	schema:identifier <http://eurisco.ipk-gatersleben.de/apex/f?p=103:16:::NO::P16_EURISCO_ACC_ID:1668187>;
+	schema:contentLocation	[
+		a schema:Place;
+		schema:latitude 51.827721;
+		schema:longitude 11.27778;
+	];
+.
+
+ex:plant1 a agri:FieldTrialBioMaterial, schema:BioChemEntity;
+	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_3702>;
+	schema:name "Arabidopsis Thailana";
+	bioschema:isPartOfBioChemEntity ex:plant1_source; # As per bioschemas
+	schema:subjectOf ex:study;
+	schema:contentLocation [
+		a schema:Place;
+		schema:latitude 51.827721;
+		schema:longitude 11.27778;
+	];
+	schema:additionalProperty [ 
+		a schema:PropertyValue;
+		# As per ISA-Tab
+		schema:name "Seed origin";
+		schema:value "http://arabidopsis.info/StockInfo?NASC_id=22680"; 
+	];
+.
+
+# Same for plant2, plant2_source, etc
+
+# As said in the notes, this is a subclass of bioschema:BioChemEntity
+# As usually, redundancy is to maximise findability
+#
+ex:observationUnit1 a agri:FieldTrialObservationUnit, bioschema:BioChemEntity;
+  schema:subjectOf ex:study;
+	dc:type "plant";
+	bioschema:isPartOfBioChemEntity ex:plant1; # As per bioschema profile
+	# TODO: complete
+.
+
+# Same for the other OUs
+
+## The samples
+#
+
+ex:sample_1135FA1001 a bioschema:BioSample;
+  schema:identifier "1135FA1001";
+	bioschema:isPartOfBioChemEntity ex:observationUnit1; # As per bioschema profile
+	# Could be inferred from plant1, but some redundancy can simplify things
+	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_3702>;
+	
+	schema:additionalProperty ex:fv_covered, ex:fv_rotating; # This is how we associate FVs
+.
+
+# Same for the other samples
+
+
+### The data files
+ex:1135FA_manual_phenotyping_xlsx schema:DataDownload
+  schema:description "Dry weights from 1135FA platform, with various combinations of covered/uncovered, rotated/stationary pots.";
+	
+	# As per notes, this marks the entities the data are achieved from
+	agri:evidence 
+		ex:sample_1135FA1001,
+		ex:study;
+	# This can be redundantly added, to serve schema.org applications
+	schema:about
+		ex:sample_1135FA1001,
+		ex:study;
+
+	# See the notes for possible alternatives
+	schema:additionalProperty ex:observed_variable_dried_weight;
+
+	# TODO: more data download descriptors
+.
+  
+
+### The Observation variables and values
+#
+ex:observed_variable_dry_weight a agri:StudyObservedVariable, schema:PropertyValue; # usual redundancy
+  schema:name "study observed variable"; # redundant, as above
+	schema:propertyID PPEO:observed_variable; # redundant, as above
+	
+	dc:type <http://purl.obolibrary.org/obo/TO_0000552>;
+
+	schema:value "Shoot Dry Weight";
+.
+
+ex:observed_value_1135FA1001_dry_weight_covered_rotating a agri: StudyObservedValue, schema:PropertyValue; # usual redundancy
+  schema:name "Observed Value: Dry Weight"; # redundant, as above
+	# schema:propertyID ??? TODO: nothing is available in PPEO
+	agri:hasObservedVariable ex:observed_variable_dried_weight;
+
+	schema:value 846^^xsd:decimal;
+	schema:unitText "mg";
+
+	agri:evidence 
+		ex:sample_1135FA1001;
+		ex:1135FA_manual_phenotyping_xlsx;
+
+		# This is how we associate FVs. It could be inferred from the sample, but that's often very difficult
+		schema:additionalProperty ex:fv_covered, ex:fv_rotating; 
+
+ex:observed_value_1135FA1001_dry_weight_uncovered_rotating a agri: StudyObservedValue, schema:PropertyValue;
+  # TODO: complete
+  # As you can see, for each combination of FVs and for each observation value, we have a new value
+.
+
+### Represening statistical analysis conclusions
+# 
+# This example was taken from the paper describing the ISATab submission 
+#
+ex:observed_value_dry_weight_anova a agri:StudyComputedValue, schema:PropertyValue;
+  schema:name "ANOVA p-value for Dry weight difference";
+
+	agri:hasObservedVariable ex:observed_variable_dried_weight;
+
+	schema:propertyID 
+	  obo:OBI_0000175, sio:SIO_000765, # pvalue
+		<http://purl.obolibrary.org/obo/STATO_0000045>, # 2-way ANOVA
+		<http://purl.obolibrary.org/obo/TO_0000552>; # shoot dry weight
+
+	# The two conditions analysed
+	agri:baseCondition ex:fv_uncovered;
+	agri:hasExperimentalFactorValue ex:fv_covered;
+ 
+	agri:pvalue 0.001; 
+	schema:value 0.001; # redundant, to accommodate scnema.org clients
+
+  agri:evidence 
+	  # Direct evidence
+		ex:observed_value_1135FA1001_dry_weight_covered_rotating,
+		ex:observed_value_1135FA1001_dry_weight_uncovered_rotating,
+		# Transitive evidence, which you might want to attach
+		ex:sample_1135FA1001;
+		ex:study;
+.
+
