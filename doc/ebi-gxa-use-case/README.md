@@ -1,80 +1,126 @@
 # Translating GXA data to agrischemas
 
-## AgriSchema Model
+## Experiment, general description
 
-For the moment, we give a simple, proof-of-concept model about GXA data.
+This is similar to the [MIAPPE use case](../miappe-use-case/README.md).
 
-### Experiment, general description
-
-```javascript
+```yaml
 bkr:exp_E-MTAB-3103 a bioschema:Study;
 	schema:identifier "E-MTAB-3103";
 	dc:title "Tissue layers from developing wheat grain at 12 days post-anthesis";
 	schema:description "Inner pericarp, outer pericarp and endosperm layers from...";
 	schema:datePublished "2015-04-24";
-	schema:about bkr:pmid_26044828;
-	schema:additionalProperty <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
+	schema:subjectOf bkr:pmid_26044828;
+	schema:additionalProperty [
+		a schema:PropertyValue;
+		schema:propertyID "organism";
+		schema:value "triticum aestivum";
+		# See MIAPPE, TODO: move the MIAPPE documentation to a general doc
+		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>
+	]
 .
 
 bkr:pmid_26044828 a agri:ScholarlyPublication;
 	dc:title "Heterologous expression and transcript analysis of gibberellin biosynthetic genes..."
 	agri:pmedId "26044828";
 	agri:authorsList "Pearce S, Huttly AK, Prosser IM, Li YD, Vaughan SP, ...";
+	# Other possible properties: schema:datePublished
+	# other proposed property are: pmedId, doiId (which could also be managed via PropertyValue) 
 .
 ```
 
-This is similar to the [MIAPPE use case](../miappe-use-case/README.md).
+## Gene expression levels, differential expression experiments
 
-### Gene expression levels
+```yaml
+# For quick access, you might redundantly state it without attributes
+bkr:gene_traescs7d02g431500 bioschema:expressedIn cond_4_week_0x3B_cold_temperature_regimen.
 
-```javascript
-# Description of gene and condition in which it is expressed
-#
-bkr:gene_traescs1a02g030900 a bioschema:Gene;
-	schema:identifier "TRAESCS1A02G030900";
+# Then, add attributes via reification
+bkr:gxaexp_E-GEOD-58805_traescs7d02g431500_4_week_0x3B_cold_temperature_regimen_vs_2_week_0x3B_control a rdfs:Statement;
+  rdf:subject bkr:gene_traescs7d02g431500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:subject bkr:cond_4_week_0x3B_cold_temperature_regimen;
+	# We propose a set of specific properties to indicate these sequencing technology details
+	# TODO: there is an alternative representation, based on property values, see the MIAPPE use case
+	agri:log2FoldChange 1.9;
+	agri:pvalue 3.129E-29;
+.
+```
+
+## Gene expression levels, NGS experiments
+```yaml
+# As above, first the base statement.
+bkr:gene_traescs1d02g156000 bioschema:expressedIn bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer.
+
+# Then, add attributes via reification
+bkr:gxaexp_E-GEOD-38344_traescs1d02g156000_14_day_post_anthesis_0x2C_aleurone_layer a rdfs:Statement;
+  rdf:subject bkr:gene_traescs1d02g156000;
+	rdf:predicate bioschema:expressedIn;
+	rdf:subject bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer;
+	# We propose a set of specific properties to indicate these sequencing technology details
+	# TODO: there is an alternative representation, based on property values, see the MIAPPE use case
+	agri:tpmCount 32;
+	# Based on common thresholds used for TPM, but this is a very specific detail
+	agri:ordinalTpm "medium"; 
+	agri:evidence bkr:exp_E-GEOD-38344;
+.
+```
+
+
+## Genes and experimental factors
+
+These are the entities involved in the gene expression level statements above.
+
+```yaml
+# The genes
+bkr:gene_traescs1d02g156000 a bioschema:Gene;
+	schema:identifier "TRAESCS1D02G156000";
+	# other properties, see the biomolecular biology case
 .
 
-bkr:cond_outer_pericarp a agri:StudyFactor; 
-  schema:name "outer pericarp";
+# The reference conditions 
+bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:StudyFactor; 
+  schema:name "14 day post anthesis, aleurone layer";
   # These can come from eg, manual curation or auto-annotation
   # (of course multiple terms are possible)
   dc:type
-    <http://purl.obolibrary.org/obo/PO_0009084>
-.
-
-# expression statement
-#
-
-# For quick access, you might redundantly state it without attributes
-bkr:gene_traescs1a02g030900 bioschema:expressedIn bkr:cond_outer_pericarp.
-
-# Then, add attributes via reification
-bkr:gxaexp_E-MTAB-3103_traescs1a02g030900_outer_pericarp a rdfs:Statement;
-	agri:score "low"; # agri:score accomodates any type of score and can have subclasses (eg, pvalue)
-	rdf:subject bkr:gene_traescs1a02g030900;
-	rdf:predicate bioschema:expressedIn;
-	rdf:object bkr:cond_outer_pericarp;
-	agri:evidence bkr:exp_E-MTAB-3103 # experiment is linked as the entity that provides evidence for it
+    <http://purl.obolibrary.org/obo/PO_0005360>, # aleurone layer
+		<http://www.cropontology.org/rdf/CO_321:0000434>; # day 
 .
 ```
 
-## Queries
-a few sample queries, about original GXA and the AgriSchemas-based modelling shown above, are [here](SPARQL-Queries.md).
+## Real data and Sample Queries
 
-## Conversion implementation and workflow
+In the [Knetminer][10] group we publish data from the EBI's [Gene Expression Atlas][20] as RDF 
+data, using the modelling approach shown above. You can find the data and sample queries on our 
+[SPARQL endpoint][30].
 
-GXA doesn't seem to have a complete API to get all the information we wanted for the modelling reported below. So we had to mix manual operations, script-automated steps and API/download services.  
+[Here][30] you can find the scripts that do the GXA/RDF conversion. These are part of our 
+[DFW dataset][40].
 
-Details are:
-1. We started from web browsing all the experiments about an organism of interest, eg, Triticum. This is an option available in the [home page of their web site](https://www.ebi.ac.uk/gxa/home). We repeated all the hereby steps for Arabidopsis too.
-   * For the moment, we picked baseline experiments only (ie, NGS).
-2. We copy-pasted the corresponding [experiment list](https://www.ebi.ac.uk/gxa/experiments?species=triticum%20aestivum&experimentType=baseline) into Excel and manually cleaned it, keeping the "Experiment" column only (ie, title and link to the experiment page). We saved that as [gxa-exps.xlsm](gxa-exps.xlsm). This file also contains a macro function to extract URLs from hypertext, which we used to obtain a second column with URLs.
-3. We exported the resulting two columns sheet as TSV: [wheat](gxa-wheat-exps.tsv), [arabidopsis](gxa-arabidopsis-exps.tsv)
-4. We wrote the [ae-download](ae-download.py) script (and linked modules), which uses the TSVs above (one at a time) to extract the experiment accession and then a known location, from which we could fetch the experiment's metadata file (which is available as [IDF/MAGETAB](https://www.ebi.ac.uk/arrayexpress/help/magetab_spec.html)). The script uses such raw data to build RDF descriptions `data/*-exp.ttl` ([arabidopsis](data/arabidopsis-exp.ttl), [wheat](data/wheat-exp.ttl))
-5. We wrote and run the [gxa-download](ae-download.py), to process the same TSV and download GXA results from known URLs. Such results were used to build RDF about gene/condition expression levels.
-6. Conditions available as strings were annotated using the [annotator service from AgroPortal](http://agroportal.lirmm.fr/annotator). This is done by the [gxa-conditions-download](gxa-conditions-download.py) script, which, again, uses the experiment list's TSV.
-   * Annotations [were saved as RDF](data/gxa-conditions.ttl), using the same string-minted URIs generated by the other scripts, which ensures the automatic merge of the final results.
-   * This step is provisional. GXA has links from condition labels and samples, plus their own (manually curated and automatic) annotations, which we want to use in future.
-7. Generated RDF files in [data/](data) were uploaded into our Knetminer SPARQL endpoint (TODO: link).
+[10]: http://knetminer.com
+[20]: https://www.ebi.ac.uk/gxa
+[30]: https://github.com/Rothamsted/agri-schemas/tree/master/dfw-dataset/gxa
+[40]: https://github.com/Rothamsted/agri-schemas/tree/master/dfw-dataset
 
-The whole pipeline (except the last point), or part of it, can be re-ran for both the species considered via the [download-all](download-all.sh) script.
+
+## Base conditions and time points
+
+In the GXA conversion above, we modelled details like base conditions and time points:
+
+```yaml
+bkr:gxaexp_E-GEOD-16333_at5g02540_pif4_0x3B_pif5_vs_wild_type_in_far-red_light_1h a rdfs:Statement;
+  rdf:subject bkr:gene_at5g02540;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_pif4_0x3B_pif5;
+	
+	# Both base conditions and time points are conditions, so they're modelled as shown above
+	agri:baseCondition 
+		bkr:cond_wild_type, bkr:cond_far-red_light; 
+	
+	agri:timePoint bkr:cond_1_hours;
+
+agri:log2FoldChange -1.1;
+	agri:pvalue 0.02169;
+	agri:evidence bkr:exp_E-GEOD-16333;
+```

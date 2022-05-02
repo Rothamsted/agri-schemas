@@ -22,17 +22,6 @@ export ETL_LOG_CONF="$AG_DIR/lib/etltools/logging-test.yaml" # or logging.yaml f
 
 . "$AG_DIR/lib/default-env.sh"
 
-#TODO: remove
-#for mod in lib dfw-dataset/knetminer dfw-dataset/gxa
-#do
-#	for prefix in default brandizi
-#	do
-#		script="$AG_DIR/$mod/$prefix-env.sh"
-#		[[ -e "$script" ]] && . "$script"
-#		cd "$AG_DIR"
-#	done
-#done
-
 . ~/bin/conda-init.sh
 conda activate snakemake
 
