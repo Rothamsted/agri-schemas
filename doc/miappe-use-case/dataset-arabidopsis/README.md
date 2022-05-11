@@ -37,7 +37,7 @@ describe some of the choices made.
 	* use `studyLocation`, they're planning to fix it
 	* provisionally, add local extensions to bioschemas, to extend this from `contentLocation` 
 
-## Study's contact
+## Study's contact
 * [Problem](https://github.com/schemaorg/schemaorg/issues/3042):
   `schema:contactPoint`'s domain isn't right
 * Proposed solution:
@@ -58,7 +58,7 @@ describe some of the choices made.
   answer set is a kind of sample in a psychology experiment), current specifications mention it 
 	should be material (TODO: Bioschemas ticket?)
 
-### Specific relations involved in the above entities:
+### Specific relations involved in the above entities:
 * `schema:subjectOf` (or `schema:about`) to be used to link BioChemEntity to `bioschema:Study`
 	(and consequently, the subclasses above).
 	* TODO: `schema:studySubject` would be a more precise alternative and it's mentioned by the
@@ -238,7 +238,7 @@ The follow applies what said above for value/type pairs.
 	* Both ExperimentalFactorType and Study (or schema:Thing?) should be in the range of this 
 	  property, so that we can qualify the factor values and types an entity is about
 
-## New type ExperimentalFactorType
+## New type ExperimentalFactorType
 * this is optional, ExperimentalFactorValue already can accomodate  a type qualifier in
   its name. However, we expect it to be used in most cases (as per common practices)
 * extends PropertyValue, as explained above
@@ -293,7 +293,7 @@ So, our proposal is as follow.
 * Possibly the link from study is established via a new property like `agri:studyObservedVariable`
   * currently, we use `schema:additionalProperty`
 
-### New proposal: agri:StudyObservedValue
+### New proposal: agri:StudyObservedValue
 * A value/type case. 
 * extends `PropertyValue`, ontology terms added as above
 * * Links StudyObservedVariable via `agri:hasObservedVariable`
@@ -327,7 +327,7 @@ So, our proposal is as follow.
 * Considering it a form of observed value (ie, a subclass of it) might be controversial
 * As mentioned above, we might want to consider `schema:Observation`
 
-## New proposal, agri:StudyComputedVariable subClassOf agri:ObservedVariable
+## New proposal, agri:StudyComputedVariable subClassOf agri:ObservedVariable
 * Just as above, it is the counterpart of computed value
 
 ## schema:DataDownload
