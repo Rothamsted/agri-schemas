@@ -139,9 +139,9 @@ ex:study a bioschema:Study;
 		#
 		a agri:ExperimentalDesign, schema:PropertyValue;
 
-		schema:name "study design description"; # optional, useuful for applications understanding schema.org only
-		# See notes, this could be duped into schema:description
-		schema:value "The experiment comprised the analysis of 484 Arabidopsis plants of the C24 genotype, with 384 reps that were placed in the LemnaTec carriers (factor: moving) and 100 reps that were placed on tables in the same phyto-chamber (factor: stationary). The soil surface of half of the pots of each condition (factor: moving/stationary) was either left uncovered or was covered with a blue rubber mat (factor: uncovered/covered)."
+		schema:name "study design"; # optional, useuful for applications understanding schema.org only
+		# See notes, this could be duped into schema:value
+		schema:description "The experiment comprised the analysis of 484 Arabidopsis plants of the C24 genotype, with 384 reps that were placed in the LemnaTec carriers (factor: moving) and 100 reps that were placed on tables in the same phyto-chamber (factor: stationary). The soil surface of half of the pots of each condition (factor: moving/stationary) was either left uncovered or was covered with a blue rubber mat (factor: uncovered/covered)."
 		schema:propertyID ppeo:experimental_design; # optional as above, as per schema.org, this is the property type, not the value
 		# dc:type is instead to add ontology terms of which this particular design is an instance
 		dc:type <http://purl.obolibrary.org/obo/OBI_0500014>; # factorial design
@@ -172,14 +172,14 @@ ex:study a bioschema:Study;
 	# They can be linked to the study simply as addtional properties, it's possible to know that an additional property
 	# is a factor, by just querying the type.
 	#
-	ex:fact_soil_cover,
-	ex:fact_plant_movement,
+	ex:factor_soil_cover,
+	ex:factor_plant_movement,
 
 	### the observed variable
 	#
 	# Again, additional property is the simplest way to link studies, samples, data to these.
 	#
-	ex:observed_variable_dried_weight;
+	ex:observed_variable_dry_weight;
 
 	# schema:citation for study-specific publications, to be used as above.
 .
@@ -258,29 +258,29 @@ ex:growthProtocol a bioschema:LabProtocol, schema:Action;
 	schema:description "";
 
 		# a new property, subclass of schema:additionalProperty
-	bioschema:hasProtocolParameter
+	agri:hasProtocolParameter
 	[
 		# a new class, subclass of schema:PropertyValue
-		a agri:LabProtocolParameter, schema:PropertyValue;
-		schema:name "description of growth facility";
-		schema:value "The experiments have been conducted on the Plant Phenotyping System for small plants, situated in a climate-controlled phytochamber. (https://dppn.plant-phenotyping-network.de/index.php?index=67#/tool/107)";
+		a agri:LabProtocolParameterValue, schema:PropertyValue;
+		schema:name "growth facility";
+		schema:description "The experiments have been conducted on the Plant Phenotyping System for small plants, situated in a climate-controlled phytochamber. (https://dppn.plant-phenotyping-network.de/index.php?index=67#/tool/107)";
 		
 		# Links to type qualifiers
 		schema:propertyID ppeo:growth_facility;
 	],
 	[
-		a agri:LabProtocolParameter, schema:PropertyValue;
+		a agri:LabProtocolParameterValue, schema:PropertyValue;
 		schema:name "rooting medium";
 		schema:value "85% (v) red substrate 1 (Klasmann-Deilmann GmbH, Geeste, Germany) / 15% (v) sand)";
 	],
 	[
-		a agri:LabProtocolParameter, schema:PropertyValue;
+		a agri:LabProtocolParameterValue, schema:PropertyValue;
 		schema:name "Container type";
 		schema:value "pot";
 		dc:type <http://purl.obolibrary.org/obo/AGRO_00000309>;
 	],
 	[
-		a agri:LabProtocolParameter, schema:PropertyValue;
+		a agri:LabProtocolParameterValue, schema:PropertyValue;
 		schema:name "Container volume";
 		schema:value 0.43;
 		schema:unitCode <http://purl.obolibrary.org/obo/UO_0000099>;
@@ -395,7 +395,7 @@ ex:observed_variable_dry_weight a agri:StudyObservedVariable, schema:PropertyVal
 ex:observed_value_1135FA1001_dry_weight_covered_rotating a agri: StudyObservedValue, schema:PropertyValue; # usual redundancy
   schema:name "Observed Value: Dry Weight"; # redundant, as above
 	# schema:propertyID ??? TODO: nothing is available in PPEO
-	agri:hasObservedVariable ex:observed_variable_dried_weight;
+	agri:hasObservedVariable ex:observed_variable_dry_weight;
 
 	schema:value 846^^xsd:decimal;
 	schema:unitText "mg";

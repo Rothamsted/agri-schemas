@@ -4,7 +4,7 @@
 
 This is similar to the [MIAPPE use case](../miappe-use-case/README.md).
 
-```yaml
+```javascript
 bkr:exp_E-MTAB-3103 a bioschema:Study;
 	schema:identifier "E-MTAB-3103";
 	dc:title "Tissue layers from developing wheat grain at 12 days post-anthesis";
@@ -31,7 +31,7 @@ bkr:pmid_26044828 a agri:ScholarlyPublication;
 
 ## Gene expression levels, differential expression experiments
 
-```yaml
+```javascript
 # For quick access, you might redundantly state it without attributes
 bkr:gene_traescs7d02g431500 bioschema:expressedIn cond_4_week_0x3B_cold_temperature_regimen.
 
@@ -48,7 +48,7 @@ bkr:gxaexp_E-GEOD-58805_traescs7d02g431500_4_week_0x3B_cold_temperature_regimen_
 ```
 
 ## Gene expression levels, NGS experiments
-```yaml
+```javascript
 # As above, first the base statement.
 bkr:gene_traescs1d02g156000 bioschema:expressedIn bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer.
 
@@ -71,7 +71,7 @@ bkr:gxaexp_E-GEOD-38344_traescs1d02g156000_14_day_post_anthesis_0x2C_aleurone_la
 
 These are the entities involved in the gene expression level statements above.
 
-```yaml
+```javascript
 # The genes
 bkr:gene_traescs1d02g156000 a bioschema:Gene;
 	schema:identifier "TRAESCS1D02G156000";
@@ -108,7 +108,7 @@ data, using the modelling approach shown above. You can find the data and sample
 
 In the GXA conversion above, we modelled details like base conditions and time points:
 
-```yaml
+```javascript
 bkr:gxaexp_E-GEOD-16333_at5g02540_pif4_0x3B_pif5_vs_wild_type_in_far-red_light_1h a rdfs:Statement;
   rdf:subject bkr:gene_at5g02540;
 	rdf:predicate bioschema:expressedIn;

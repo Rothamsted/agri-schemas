@@ -1,33 +1,28 @@
 # Modelling MIAPPE
 
 ## General Notes
-  * MIAPPE was mapped to ISA, and this is used in eg, http://cropnet.pl/plantphenodb/
-    * We took *Wisniewska et al, 2017* from there as an example. A copy is [here](dataset_WheatFusarium).
-  * MIAPPE docs:
-    * [MIAPPE Diagram](https://github.com/MIAPPE/MIAPPE/tree/master/MIAPPE_Checklist-Data-Model-v1.1)
-    * [MIAPPE checklist](https://github.com/MIAPPE/MIAPPE/blob/master/MIAPPE_Checklist-Data-Model-v1.1/MIAPPE_Checklist-Data-Model-v1.1.pdf)
-    * [Mappings in ISA-Tab Phenotyping](https://github.com/MIAPPE/ISA-Tab-for-plant-phenotyping/blob/master/MIAPPE-ISATab%20mapping.pdf) 
+* Previously, MIAPPE has been mapped to ISA, and this is used in eg, 
+  http://cropnet.pl/plantphenodb/. MIAPPE sections and fields were also mapped to
+  the BrAPI specifications (see below)
+* We took one of the examples that the MIAPPE paper mentions and re-mapped the 
+  ISA-Tab attached to the paper into bioschema.org, schema.org and (possibly new) AgriSchemas types.
+  Details [here](dataset-arabidopsis).
+* Most of the work has been done with the the ELIXIR Plant Biology community. A summary of the 
+  mapping we agreed is here (TODO: the MIAPPE to multiple formats spreadsheet)
 
+* Some MIAPPE docs:
+  * [MIAPPE Diagram](https://github.com/MIAPPE/MIAPPE/tree/master/MIAPPE_Checklist-Data-Model-v1.1)
+  * [MIAPPE checklist](https://github.com/MIAPPE/MIAPPE/blob/master/MIAPPE_Checklist-Data-Model-v1.1/MIAPPE_Checklist-Data-Model-v1.1.pdf)
+  * [Mappings in ISA-Tab Phenotyping](https://github.com/MIAPPE/ISA-Tab-for-plant-phenotyping/blob/master/MIAPPE-ISATab%20mapping.pdf) 
 
-## Modelling in agrischemas
-  * `bioschema:Study`, as in MIAPPE
-    * an Investigation is an `bioschema:Study` with the Investigation `dc:type`, which points to other `bioschema:Study`(es), via `schema:hasPart`/`schema:isPartOf`
-	* MIAPPE Environment Params are linked to `bioschema:Study` via `schema:additionalProperty` and they're identified by means of their ID (or `dc:type`).
-	* `agri:StudyFactor`(s) can be linked to each of study, samples, data file, observed value.
-  * `bioschema:Sample`, includes MIAPPE sample, ISA-Tab source. The latter includes MIAPPE biological material, observational unit values
-  * Samples can be linked one each-other by a new class: `agri:StudyItemEvent`. This is a subclass of `schema:Action` and has `bioschema:LabProtocol` as subclass (which, might include MIAPPE subtypes like rooting, growth, treatement, etc.). Protocols have variables like watering, pesticide, etc. `StudyItemEvent` includes what MIAPPE calls 'event' (ie, non-planned events such as weather phenomena).
-  * Samples can be linked to `schema:DataDownload`, which in turn can be linked to `schema:variableMeasured`. Target value is `agri:ObservedValue` (to be modelled).
-    * an `agri:ObservedValue` can be `schema:additionalProperty` of Study
-    * There isn't much need for assay. Could be an event like data collection from samples
-  
+## MIAPPE mapping, general approach
 
-Here it is a diagram (made with [yED](https://www.yworks.com/products/yed), 
-original file [here](agrischema-miappe-modelling.graphmlz)):
+<a href ="agrischema-miappe-modelling.png"><img src="agrischema-miappe-modelling.png" width = '105%'/></a>
 
-![MIAPPE modelling](agrischema-miappe-modelling.png)
-
-**==> [Use case](../miappe-use-case.ttl)** from the model outlined above
-
+* [Details here](dataset-arabidopsis)
+* *The figure is based on [yED](https://www.yworks.com/products/yed), 
+  original file [here](agrischema-miappe-modelling.graphmlz)*.
+    
 ## Further material
 
 * During the DFW 11/2019 hackathon, we compared AgriSchemas to [GLTen](https://www.glten.org), 
