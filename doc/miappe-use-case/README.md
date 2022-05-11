@@ -17,6 +17,7 @@
 
 ## MIAPPE mapping, general approach
 
+*click on the image for zooming-in*
 <a href ="agrischema-miappe-modelling.png"><img src="agrischema-miappe-modelling.png" width = '105%'/></a>
 
 * [Details here](dataset-arabidopsis)
