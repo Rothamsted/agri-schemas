@@ -287,7 +287,7 @@ So, our proposal is as follow.
 
 ## Observed Variables
 
-### New proposal: agri:StudyObservedVariable
+### New proposal: agri:StudyObservedVariable
 * modelled in a way similar to ExperimentalFactorType (and, again, like value/type pair)
 * So, it extends PropertyValue, ontology term annotations are added as above
 * Possibly the link from study is established via a new property like `agri:studyObservedVariable`
