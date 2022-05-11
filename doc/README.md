@@ -22,7 +22,7 @@ These are the use cases considered:
   * [Molecular Biology, host-pathogen interactions](phi-base-use-case.ttl) (PHI-Base)
   * Dataset description, TODO (based on `bioschema:Dataset`, but CKAN might need DCAT, VoID is also worth to consider)
   * Field trials
-    * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case), [MIAPPE use case](miappe-use-case.ttl)
+    * [MIAPPE and ISA-Tab for phenotyping](miappe-use-case)
     * [AHDB](ahdb-use-case.md)
   * Links between [field trials, cultivars and genes](trials-genes.md)
     * Includes the [EBI Gene Expression Atlas use case](ebi-gxa-use-case/README.md)
