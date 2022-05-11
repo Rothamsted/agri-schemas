@@ -19,6 +19,13 @@ files.
 
 Here, we consider only the factors reported in the ISA-Tab, "soil cover" and "plant movement".
 
+# The use case
+
+In **[RDF/Turtle format](junker-2015-arabidopsis-miappe.ttl)**.  
+
+**IMPORTANT**: see detailed explainations in the next section.
+
+
 # Modelling choices (TODO: PROVISIONAL, TO BE REVIEWED)
 
 Most of the MIAPPE mapping work has been done within the ELIXIR plant community. Hereby, we 
