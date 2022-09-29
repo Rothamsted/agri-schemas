@@ -24,6 +24,14 @@ types), and the [Gene Expression Atlas](https://www.ebi.ac.uk/gxa/home) (experim
 gene expression). The data are published on the 
 [Knetminer's SPARQL endpoint](https://knetminer.org/data).
 
+## Consumers
+Projects and applications that use our prototype data:
+
+**KnetGraphs Gene Traits**  
+A [student project led by Menna Shehata][CN10], which uses our SPARQL endpoint to find significant traits associated to genes of interest, by means of a gene set enrichment analysis approach (GSEA), which leverage the flexibility and power of standardised knowledge graphs.
+
+[CN10]: https://github.com/Rothamsted/knetgraphs-gene-traits
+
 ## Software Tools
 The software we are writing to produce the prototype above are being arranged into re-usable 
 extraction/transformation/loading tools (ETL). A few pointers are:
@@ -33,7 +41,6 @@ extraction/transformation/loading tools (ETL). A few pointers are:
 * [Knetminer Python Utils](kpyutils), generic utilities for the Python environment
 
 ## Publications
-
 
 ## References
 [A collection of references](doc/references.md) and links to various similar projects, hackathons, 
