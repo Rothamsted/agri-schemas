@@ -6,6 +6,7 @@
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix ppeo: <http://purl.org/ppeo/PPEO.owl#>
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix efo: <http://www.ebi.ac.uk/efo/>
 
 
 #### The Investigation is actually a dataset in MIAPPE.
@@ -211,7 +212,7 @@ ex:factor_plant_movement a agri:ExperimentalFactorType, schema:PropertyValue; # 
 
 ### The factor values
 #
-ex:fv_covered a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+ex:fv_covered a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as above
   schema:name "Factor Type: Soil Cover"; # Redundant if you use hasExperimentalFactorType
 	schema:value "covered";
 	schema:propertyID ppeo:factor_value; # as above
@@ -219,15 +220,15 @@ ex:fv_covered a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant a
 	dc:type ex:factor_soil_cover; # redundant, hasExperimentalFactorType is already subproperty of dc:type
 .
 
-ex:fv_uncovered a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+ex:fv_uncovered a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as above
   schema:name "factor value[soil cover]"; # An alternative pattern, based on ISA conventions. Again, redundant
-	schema:value "covered";
+	schema:value "uncovered";
 	schema:propertyID ppeo:factor_value; # as above
 	agri:hasExperimentalFactorType ex:factor_soil_cover;
 	dc:type ex:factor_soil_cover; # redundant, hasExperimentalFactorType is already subproperty of dc:type
 .
 
-ex:fv_rotating a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+ex:fv_rotating a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as above
   schema:name "Factor Type: Plant Movement";
 	schema:value "rotating";
 	schema:propertyID ppeo:factor_value; # as above
@@ -235,7 +236,7 @@ ex:fv_rotating a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant 
 	dc:type ex:factor_plant_movement; # redundant, hasExperimentalFactorType is already subproperty of dc:type
 .
 
-ex:fv_stationary a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as abopve
+ex:fv_stationary a agri:ExperimentalFactorValue, schema:PropertyValue; #redundant as above
   schema:name "Factor Type: Plant Movement";
 	schema:value "stationary";
 	schema:propertyID ppeo:factor_value; # as above
@@ -250,11 +251,16 @@ ex:fv_stationary a agri:ExperimentalFactorValue, schema:PropertyValue; #redundan
 # As said, we propose to extend LabProtocol from Action, so that we can use its process-like properties
 # 
 ex:growthProtocol a bioschema:LabProtocol, schema:Action;
+	# Alternatively, we might define a specific agri:FieldTrialGrowthProtocol as
+	# a subclass of bioschema:LabProtocol
+	dc:type efo:EFO_0003789;
+
+
   schema:isPartOf ex:study; # use this to link to study
 
-  # bioschemas recommend headline for the title, but this is seldom used in schema.org examples
+  # bioschemas recommends headline for the title, but this is seldom used in schema.org examples
   schema:name "Growth Protocol";
-	# similarly, bioschemas recommend protocolPurpose, yet...
+	# similarly, bioschemas recommends protocolPurpose, yet...
 	schema:description "";
 
 		# a new property, subclass of schema:additionalProperty
@@ -305,7 +311,7 @@ ex:plant1_source a agri:FieldTrialMaterialSource, schema:BioChemEntity; # redun
 	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_3702>;
 	schema:name "Arabidopsis Thailana";
 	# Plus the usual fielda in Bioschema and Schema
-	schema:subjectOf ex:study; # TODO: is it correct? Or do we want the material only?
+	schema:subjectOf ex:study; # TODO: is it correct? Or do we want this link for the material only?
 	schema:identifier <http://eurisco.ipk-gatersleben.de/apex/f?p=103:16:::NO::P16_EURISCO_ACC_ID:1668187>;
 	schema:contentLocation	[
 		a schema:Place;
@@ -431,7 +437,7 @@ ex:observed_value_dry_weight_anova a agri:StudyComputedValue, schema:PropertyVal
 	agri:hasExperimentalFactorValue ex:fv_covered;
  
 	agri:pvalue 0.001; 
-	schema:value 0.001; # redundant, to accommodate scnema.org clients
+	schema:value 0.001; # redundant, to accommodate schema.org clients
 
   agri:evidence 
 	  # Direct evidence
