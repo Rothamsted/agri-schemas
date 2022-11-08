@@ -3,8 +3,6 @@
 The notes below reports many discussion points and decisions made together with the 
 ELIXIR Plant Community. 
 
-A summary of the MIAPPE/*Schemas mappings described below is here (TODO)
-
 # Data Source
 
 The example below is based on:
@@ -32,17 +30,15 @@ Most of the MIAPPE mapping work has been done within the ELIXIR plant community.
 describe some of the choices made.
 
 ## MIAPPE:Investigation
-* We propose to introduce `agri:FieldTrialInvestigation` as a subclass of `schema:Dataset`
-* This is to reconcile the hackathon discussions, where it was clarified that Investigation is 
-  intended as dataset with the MIAPPE publication, where... TODO:what does it say? 
-	(https://nph.onlinelibrary.wiley.com/doi/10.1111/nph.16544, figure 1)
+* Should we add `agri:FieldTrialInvestigation` as a subclass of `schema:Dataset`?
+* This would be to reconcile the hackathon discussions, where it was clarified that Investigation is intended as dataset, with the [MIAPPE publication](https://nph.onlinelibrary.wiley.com/doi/10.1111/nph.16544), where the Investigation class is defined (figure 1). The alternatives are: using Dataset straight, using it with qualifiers (dataset type, check bioschemas).
 
 ## Study's location
 * [Problem](https://github.com/BioSchemas/specifications/issues/556):
 	`studyLocation` is preferred, but its domain is wrong and it doesn't extend `contentLocation`
 * Proposed solution: 
 	* use `studyLocation`, they're planning to fix it
-	* provisionally, add local extensions to bioschemas, to extend this from `contentLocation` 
+	* provisionally, add local extensions to bioschemas, to extend `studyLocation` from `contentLocation` 
 
 ## Study's contact
 * [Problem](https://github.com/schemaorg/schemaorg/issues/3042):
@@ -61,49 +57,46 @@ describe some of the choices made.
 * new class `agri:FieldTrialBioMaterial`. IMPORTANT: see notes below
 * new class `agri:FieldTrialMaterialSource`
 * new class `agri:FieldTrialObservationUnit`
-* Keep `bioschema:BioSample`, we propose to see it as an intangible entity (eg a questionnaire 
+* Keep `bioschema:BioSample`. We propose to see it as an intangible entity (eg a questionnaire 
   answer set is a kind of sample in a psychology experiment), current specifications mention it 
-	should be material (TODO: Bioschemas ticket?)
+	should be material (TODO: Bioschemas ticket?). That's because, in many practical cases, this is
+	an abstract blob, a record, a list of properties, etc. Constraining it to be a material sample
+	might be limiting. 
 
 ### Specific relations involved in the above entities:
-* `schema:subjectOf` (or `schema:about`) to be used to link BioChemEntity to `bioschema:Study`
-	(and consequently, the subclasses above).
-	* TODO: `schema:studySubject` would be a more precise alternative and it's mentioned by the
-	  bioschemas study profile, however neither its current domain (MedicalStudy) nor its range (MedicalEntity) are 
-		suitable for plant biology. 
+* `schema:subjectOf` (or `schema:about`) to be used to link `BioChemEntity` to `bioschema:Study` (and consequently, the subclasses above).
+	* TODO: `schema:studySubject` would be a more precise alternative and it's mentioned by the bioschemas study profile. However, neither its current domain (MedicalStudy) nor its range (MedicalEntity) are suitable for plant biology. 
 * At the moment `schema:partOf` hasn't the right domain/range for this.
 * TODO: Possibly, open a ticket to ask for a serious review of mereological relationships 
 	(partOf, about, isRelatedTo, SKOS-like relations like broader, broaderInstantive, all of this is 
 	either missing or poorly modelled in the current schema.org).
 * Possibly, this would raise a big debate over radically different views about ontology engineering 
 	([example](https://github.com/schemaorg/schemaorg/issues/2984)), or it would be dismissed as 
-	something it has already been discussed (and fought?) about. 
-* Use `bioschema:isPartOfBioChemEntity` (or hasBioChemEntityPart) to relate `agri:FieldTrialBioMaterial` from (or to)
+	something it has already been discussed (and fought?). 
+* Use `bioschema:isPartOfBioChemEntity` (or `hasBioChemEntityPart`) to relate `agri:FieldTrialBioMaterial` from (or to)
 	`agri:FieldTrialMaterialSource` (as per bioschemas profile)
 * Same relation to be used to relate `bioschema:BioSample` to `agri:FieldTrialObservationUnit`
 	and this to `agri:FieldTrialBioMaterial`
 * possibly, let's introduce specific properties (derived from `bioschema:isPartOfBioChemEntity`):
 	* `agri:hasBioMaterial` (domain Study, ObsUnit)
-	* `agri:hasMaterialSource` (links FieldTrialBioMaterial/FieldTrialMaterialSource)
-* "Observation Unit Type" mapped to dc:type 
+	* `agri:hasMaterialSource` (links `FieldTrialBioMaterial`/`FieldTrialMaterialSource`)
+* "Observation Unit Type" mapped to `dc:type` 
 	
 
 **Notes** (by M. Brandizi):  
 
 * Adding a super-class to group the ones introduced above isn't worth, 
-  BioChemEntity should be enough.
-* ISA maps ObsUnit to ISA:Sample and MIAPPE:Sample to ISA:Extract. IMHO it's wrong, unless, 
-  * we want keep `bioschema:BioSample` as a generic sample class and then
-	  subclass ObsUnit, Extract, StudyBioSource from `bioschema:BioSample`
+  `BioChemEntity` should be enough.
 * I can't fit `agri:FieldTrialBioMaterial` into more general types in schemas or BioSchemas, 
   not in a way that wouldn't be confusing to the MIAPPE community. That's because, from the point of view of bioschemas, we should have:
-	* MIAPPE:BiologicalMaterial, MIAPPE:MaterialSource, 
-		MIAPPE:ObservationUnit and MIAPPE:BioSample as *subclasses of bioschema:BioSample*, 
-	* new class bioschema:BioExtract to map MIAPPE:BioSample (as per ISA-Tab mapping)
-	* new class bioschema:BioSource to map MIAPPE:BiologicalMaterial (as per ISA-Tab mapping)
-	* a generic bioschema:BioChemEntity object to map MIAPPE:MaterialSource (with links to 
-		bioschema:BioSource).
-* So, given all of the above, the solution proposed is one with a minimal impact on both
+	* `MIAPPE:BiologicalMaterial`, `MIAPPE:MaterialSource`, 
+		`MIAPPE:ObservationUnit` and `MIAPPE:BioSample` as *subclasses of `bioschema:BioSample`*, 
+	* new class `bioschema:BioExtract` to map `MIAPPE:BioSample` (as per ISA-Tab mapping)
+	* new class `bioschema:BioSource` to map `MIAPPE:BiologicalMaterial` (as per ISA-Tab mapping)
+	* a generic `bioschema:BioChemEntity` object to map `MIAPPE:MaterialSource` (with links to 
+		`bioschema:BioSource`).
+* Similarly, ISA maps ObsUnit to `ISA:Sample` and `MIAPPE:Sample` to `ISA:Extract`. IMHO while this makes sense for ISA, but trying to reflect this mapping in bioschemas (as in the previous point) generates confusing mismatching terminology (eg, 'sample' means different things in ISA, MIAPPE, bioschemas).
+* In conclusion, given all of the above, the solution proposed is one with a minimal impact on both
   (bio)schema and MIAPPE
 
 ## Value/Type Pairs
@@ -150,17 +143,18 @@ describe some of the choices made.
 
 
 ### PV extensions that have a value/type relationship (eg, ExperimentalFactorValue/ExperimentalFactorType )
-* The following sections apply to cases like factor value vs type, experiment design 
+* The following sections apply to cases like factor value vs factor type, experiment design 
   (as type only), protocol parameter value vs parameter name/type, observed value vs observed variable. They're similar cases in the structural sense: essentially, they're all 
 	value/type pairs, and they all have similar properties, such as name, specific value, 
-	ontology term annotations, this is similar to other formats, such as ISA-Tab, MAGE-Tab,
+	ontology term annotations. This is similar to other formats, such as ISA-Tab, MAGE-Tab,
   etc.
 * In a number of cases (see below), we want/need to introduce new types, for a number of
   reasons, eg, they're part of the common terminology, they're needed qualifiers.
 * As outlined above, we chose to relate them via `dc:type`, eg, 
   ```javascript
-	ex:nitrogen a agri:ExperimentalFactorValue;
-	  schema:name "Nitrogen, High Concentration";
+	ex:nitrogenHigh a agri:ExperimentalFactorValue;
+	  schema:name "Nitrogen, High Concentration"; # or jusg Nitrogen
+		schema:value "High Concentration";
 		dc:type ex:fertilizer;
 	.
 
@@ -174,38 +168,28 @@ describe some of the choices made.
 * until new terms like ExperimentalFactorValue aren't accepted by schema.org (and aren't parsed 
   by tools like the [Google validator](https://validator.schema.org/)), it is advisable to define 
 	these type instances by adding `schema:PropertyValue` as their class (eg, 
-	`ex:nitrogen a agri:ExperimentalFactorValue, schema:PropertyValue`. This is redundant, but 
+	`ex:nitrogenHigh a agri:ExperimentalFactorValue, schema:PropertyValue`. This is redundant, but 
 	it can help interoperability.
-* we considered `schema:valueReference` as a possible value/type link in place of dc:type, 
+* we considered `schema:valueReference` as a possible value/type link in place of `dc:type`, 
   but that appears very counter-intuitive and confusing
 * Note that `dc:type` can be used for both generic links to the URIs of external ontology terms
-  (see the previous section) and for the case at issue. It's easy (in SPARQL or alike) to 
-	distinguish between the two cases (`?pval dc:type ?ptype. ?ptype a agri:ExperimentalFactorType`).
-  The case of a generic ontology term can possibly be made clearer by using `schema:DefinedTerm`:
+  (see the previous section) and for linking local PV types, as ghe case presented here. It's easy (in SPARQL or alike) to distinguish between the two cases (`?pval dc:type ?ptype. ?ptype a agri:ExperimentalFactorType`). The case of a generic ontology term can possibly be made clearer by using `schema:DefinedTerm`:
 	```javascript
-	ex:sample_prop a agri:ExperimentalFactorValue, schema:PropertyValue;
+	ex:sampleProp a agri:ExperimentalFactorValue, schema:PropertyValue;
 	  schema:name "aleurone layer";
 		dc:type <http://purl.obolibrary.org/obo/PO_0005360>, ex:plantPart.
 
 	<http://purl.obolibrary.org/obo/PO_0005360> a schema:DefinedTerm.
-
-  ex:plantPart a agri:ExperimentalFactorType, schema:PropertyValue;
-	  schema:name "Factor Value Type";
-		schema:value "Collected Plant Part";
-	.
 	```
 
 ### Details about value/type cases
-For the type, use and/or extend `schema:PropertyValue`, as said above. Then:
-
+For the property values used as types (eg, factor type), use and/or extend `schema:PropertyValue`, as said above. Then:
 * Use `schema:name` to describe the category/type (eg, "experimental factor type", "protocol parameter type"). 
-* When you are extending `schema:PropertyValue`, this is redundant, yet it might be useful for
-  visualisation/UI purposes and to ensure applications like Google get the data.
+* When you are using a specific extension of `schema:PropertyValue`, eg, `ExperimentalFactorType`, this is redundant (the new type says the same thing the name says), yet it might be useful for visualisation/UI purposes and to ensure applications like Google get the data.
 * Use `schema:value` for the specific type (eg, "Treatment", "Watering")
 
 
-For the value, use or extend `schema:PropertyValue` too, as above, and then:
-
+For the PVs used as values (of a type PV), use or extend `schema:PropertyValue` too, as above, and then:
 * use `schema:name` use the same or similar value used for its type (eg, "Treatment", 
   "Treatment Type", "Factor Value[Treatment])
 * Again, this is redundant when you're linking the type via `dc:type` as explained above, 
@@ -216,24 +200,23 @@ For details, see below (eg, ExperimentalFactorValue, ExperimentalFactorType, Exp
 
 
 ## New type agri:ExperimentalDesign
-The follow applies what said above for value/type pairs.
+The following applies what said above for value/type pairs.
 * extends `schema:PropertyValue`
 * `schema:name` is "study design", and it's optional
 * `schema:value` is a short textual description of the experimental design (summary or title)
 * `schema:description` maps MIAPPE's `study design description`
   * Optionally, the description could be duped into `schema:value` (to support common practice
 	  with schema.org)
-* `schema:propertyID` to link ontology terms that identify the concept of experimental design,
-   for the specific design (eg, "treatment/control design"), use `dc:type` as explained above
-* `schema:propertyID` should have `ppeo:experimental_design` among its values;
+* `schema:propertyID` should have `ppeo:experimental_design` among its values, ie, to represent the
+  concept that the property is about the design type. Again, this is redundat, yet useful
   * TODO: an alternative is that we propose ExperimentalDesign as a new term and that it
-	  subclasses `ppeo:experimental_design`
+	  subclasses `ppeo:experimental_design` (and PV)
 * possibly, `dc:type` for ontology linking of which a particular value is an instance, eg,
   * `schema:value "factorial design with 2 factors"`, 
 	* `dc:type <http://purl.obolibrary.org/obo/OBI_0500015>`
 * links from study via new property `studyExperimentalDesign`?
   * this was proposed during the hackathon, but there is little point, search engines will 
-	  recognise schema:additionalProperty, not this. We have used additionalProperty in our
+	  recognise `schema:additionalProperty` only, not this. We have used `additionalProperty` in our
 		use case.
 
 ## New type ExperimentalFactorValue
@@ -242,13 +225,13 @@ The follow applies what said above for value/type pairs.
 * we introduce `agri:hasExperimentalFactorType` to link to the type.
 * we also introduce the symmetrical property `agri:hasExperimentalFactorValue`, so that there is
   an easy way to list all the possible factor values for a type.
-	* Both ExperimentalFactorType and Study (or schema:Thing?) should be in the range of this 
+	* Both `ExperimentalFactorType` and `Study` (or schema:Thing?) should be in the range of this 
 	  property, so that we can qualify the factor values and types an entity is about
 
 ## New type ExperimentalFactorType
 * this is optional, ExperimentalFactorValue already can accomodate  a type qualifier in
   its name. However, we expect it to be used in most cases (as per common practices)
-* extends PropertyValue, as explained above
+* extends `PropertyValue`, as explained above
 * Study/Type link is established via additionalProperty (see the discussion about the 
   experimental design above)
 
@@ -263,7 +246,7 @@ that happens in uncontrolled and unplanned way, in the other there is an intende
 So, our proposal is as follow.
 
 * Introduce `agri:StudyEvent` as subclass of `schema:Action`.
-	This might map MIAPPE:Event OR you might want to be more specific with the 
+	This might map `MIAPPE:Event` OR you might want to be more specific with the 
 	`LabProtocol` or `StudyExternalEvent` subclasses mentioned below
 * Make `bioschema:LabProtocol` a subclass of `bioschema:StudyEvent`. Yes, it implies
 	that LabProtocol is also an Action
@@ -272,31 +255,30 @@ So, our proposal is as follow.
 	material of a lab protocol
 	* Make `bioschema:bioSampleUsed` a subproperty of `schema:object`, in order to make it coherent
 		with the upper model given for the Action class
-* Using Action allows for using `schema:result`, with all subclasses in the hierarchy, LabProtocol 
+* Using Action allows for using `schema:result`, with all subclasses in the hierarchy, `LabProtocol` 
   included
 * Domain/range of object/result of a study event include observation unit, sample, data download
 * Introduce `bioschema:StudyExternalEvent`, as a subclass of `bioschema:StudyEvent` and 
-	distinct from LabProtocol
+	distinct from `LabProtocol`
 * Introduce `agri:studyEventType` at the StudyEvent level, with a range of text or URL or DefinedTerm or PropertyValue
   This will allow to define things like "growing protocol", "rainfall", "watering" and applies
 	to both protocols and external events
-* As elsewhere, `schema:subjectOf` links StudyEvent to Study (and hence, all the mentioned subclasses)
+* As elsewhere, `schema:subjectOf` links `StudyEvent` to `Study` (and hence, all the mentioned subclasses)
 	* TODO: `schema:partOf` or `schema:studySubject` would be more appropriate, but neither have the right 
-	  domain or range.
+	  domain or range, as mentioned above.
 
 ### LabProtocolParameterValue and LabProtocolParameterType
 
 * Introduce `agri:LabProtocolParameterValue` as subclass of `schema:PropertyValue`.
-  Similarly, introduce `agri:LabProtocolParameterValue` (both modelled as per the discussion above on value/type pairs).
-	* TODO: do we need hasProtocolParameterType, or is `dc:type` enough?
+  Similarly, introduce `agri:LabProtocolParameterType` (both modelled as per the discussion above on value/type pairs).
 * introduce `agri:hasProtocolParameter` as subproperty of `schema:additionalProperty`
   (to link a protocol to its parameter values or types)
 
 ## Observed Variables
 
 ### New proposal: agri:StudyObservedVariable
-* modelled in a way similar to ExperimentalFactorType (and, again, like value/type pair)
-* So, it extends PropertyValue, ontology term annotations are added as above
+* modelled in a way similar to `ExperimentalFactorType` (and, again, like value/type pair)
+* So, it extends `PropertyValue`, ontology term annotations are added as above
 * Possibly the link from study is established via a new property like `agri:studyObservedVariable`
   * currently, we use `schema:additionalProperty`
 
@@ -307,7 +289,7 @@ So, our proposal is as follow.
 	* a subproperty of `dc:type`, as above
 * Can link `schema:DataDownload` via `agri:hasObservedValue`. Optionally, this can also link 
   `bioschema:BioSample`, `agri:FieldTrialObservationUnit` to an obs value
-  * TODO: not sure at all we need this, additionalProperty would be enough (currently, we do this in the 
+  * TODO: not sure at all we need this, `additionalProperty` would be enough (currently, we do this in the 
 	  use case).
 	* TODO: an alternative to link from DataDownload is `schema:variableMeasured`, but this would require 
 	  a domain addition (to be asked to schema.org).
@@ -338,7 +320,7 @@ So, our proposal is as follow.
 * Just as above, it is the counterpart of computed value
 
 ## schema:DataDownload
-* This is to represent MIAPPE:DataFile
+* This is to represent `MIAPPE:DataFile`
 * It's is used to report data files associated to samples or observation units, or generically to 
   the whole study
 * `schema:subjectOf` (or the symmetric `schema:about`) from these entities to DataDownload 
@@ -349,15 +331,15 @@ So, our proposal is as follow.
 
 ## MIAPPE Environment, Proposal
 * Proposal: use an instance of `agri:LabProtocolParameter`
-* linked to Study, via additionalProperty (optional)
+* linked to Study, via `additionalProperty` (optional)
 * linked to growth protocol, via `agri:hasProtocolParameter` (optional)
 
 ## Cultural Practices
-* one of the LabProtocolParameter(s) that can be associated to growth protocol
+* one of the `LabProtocolParameter`(s) that can be associated to growth protocol
 
 ## Growth Facility
-* There is a LabProtocol of type "LabProtocol"
-* Growth facility is a LabProtocolParameterValue
+* an `agri:LabProtocol` of type "Growth Protocol"
+* Growth facility is a `LabProtocolParameterValue`, linked to this protocol
 * with `schema:propertyID ppeo:growth_facility`
 * `schema:name "growth facility"`
 * `schema:value` for the short name/title, if any 
