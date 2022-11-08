@@ -131,7 +131,7 @@ ex:study a bioschema:Study;
 	];
 
 	# agri:studyExperimentalDesign could be an alternative (as new property, deriving from
-	# additional property), but search engines will reconise this more easily, at least for now
+	# additional property), but search engines will recognise this more easily, at least for now
 	# (see notes)
 	#
 	schema:additionalProperty

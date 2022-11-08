@@ -153,7 +153,7 @@ describe some of the choices made.
 * As outlined above, we chose to relate them via `dc:type`, eg, 
   ```javascript
 	ex:nitrogenHigh a agri:ExperimentalFactorValue;
-	  schema:name "Nitrogen, High Concentration"; # or jusg Nitrogen
+	  schema:name "Nitrogen, High Concentration";
 		schema:value "High Concentration";
 		dc:type ex:fertilizer;
 	.
