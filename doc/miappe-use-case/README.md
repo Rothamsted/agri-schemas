@@ -20,9 +20,9 @@
 *click on the image for zooming-in*
 <a href ="agrischema-miappe-modelling.png"><img src="agrischema-miappe-modelling.png" width = '105%'/></a>
 
-* [Details here](dataset-arabidopsis)
-* *The figure is based on [yED](https://www.yworks.com/products/yed), 
-  original file [here](agrischema-miappe-modelling.graphmlz)*.
+* [A real use case here](dataset-arabidopsis)
+
+*The figure is based on [yED](https://www.yworks.com/products/yed), original file [here](agrischema-miappe-modelling.graphmlz)*.
     
 ## Further material
 
