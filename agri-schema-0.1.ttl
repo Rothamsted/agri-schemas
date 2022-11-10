@@ -1,0 +1,333 @@
+@prefix : <http://agrischemas.org/ontology#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <https://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix agri: <http://agrischemas.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix metaSchema: <https://meta.schema.org/> .
+@base <http://agrischemas.org/ontology> .
+
+<http://agrischemas.org/ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://agrischemas.org/BioSchemasNewPropertyProposal
+agri:BioSchemasNewPropertyProposal rdf:type owl:AnnotationProperty ;
+                                   rdfs:seeAlso agri:SchemaNewClassProposal .
+
+
+###  http://agrischemas.org/SchemaNewPropertyProposal
+agri:SchemaNewPropertyProposal rdf:type owl:AnnotationProperty ;
+                               rdfs:seeAlso agri:SchemaNewClassProposal .
+
+
+###  http://agrischemas.org/Soil
+agri:Soil rdf:type owl:AnnotationProperty .
+
+
+###  http://agrischemas.org/StudyObservedValue
+agri:StudyObservedValue rdf:type owl:AnnotationProperty .
+
+
+###  http://agrischemas.org/authorsList
+agri:authorsList rdf:type owl:AnnotationProperty;
+	rdfs:subPropertyOf dc:creator .
+
+
+###  http://agrischemas.org/evidence
+agri:evidence rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf agri:SchemaNewPropertyProposal ,
+                                 oa:motivatedBy .
+
+
+###  http://agrischemas.org/hasGeneExpressionIn
+agri:hasGeneExpressionIn rdf:type owl:AnnotationProperty ;
+                         rdfs:comment "Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter." ;
+                         rdfs:seeAlso obo:GO_0010467 ;
+                         rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                            agri:isBiologicallyRelatedTo .
+
+
+###  http://agrischemas.org/interactionHost
+agri:interactionHost rdf:type owl:AnnotationProperty ;
+                     schema:domainIncludes agri:HostPathogenInteraction ;
+                     schema:rangeIncludes schema:Phenotype ;
+                     rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                        schema:hasPart .
+
+
+###  http://agrischemas.org/interactionPathogen
+agri:interactionPathogen rdf:type owl:AnnotationProperty ;
+                         schema:domainIncludes agri:HostPathogenInteraction ;
+                         schema:rangeIncludes schema:Phenotype ;
+                         rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                            schema:hasPart .
+
+
+###  http://agrischemas.org/isBiologicallyRelatedTo
+agri:isBiologicallyRelatedTo rdf:type owl:AnnotationProperty ;
+                             rdfs:seeAlso sio:SIO_000897 ;
+                             rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                                schema:Property .
+
+
+###  http://agrischemas.org/pmedId
+agri:pmedId rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf agri:SchemaNewPropertyProposal ,
+                               schema:identifier .
+
+agri:doiId rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf agri:SchemaNewPropertyProposal ,
+                               schema:identifier .
+
+
+
+###  http://agrischemas.org/pvalue
+agri:pvalue rdf:type owl:AnnotationProperty ;
+            dc:type obo:OBI_0000175, sio:SIO_000765;
+            schema:rangeIncludes schema:Number ;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:score .
+
+agri:tpmCount rdf:type owl:AnnotationProperty ;
+						schema:alternateName "Transcripts Per Million";
+						rdfs:comment "The transcripts per million count, as measured in RNA-Seq data. See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
+            dc:type  obo:STATO_0000047, sio:SIO_000794;
+            schema:rangeIncludes schema:Number ;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:score .
+
+agri:ordinalTpm rdf:type owl:AnnotationProperty ;
+						rdfs:label "TPM level";
+						rdfs:comment "The ordinal ('low', 'medium', 'high') level of TPM. This is established from the TPM count, using the EBI thresholds: [0.5-10]/low, [11-1000] med, >1000. See: See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
+            schema:rangeIncludes schema:Text ;
+						rdfs:seeAlso agri:tpmCount;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:score .
+
+
+agri:foldChange rdf:type owl:AnnotationProperty ;
+            dc:type obo:STATO_0000169, sio:SIO_001078;
+            schema:rangeIncludes schema:Number ;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:score .
+
+agri:log2FoldChange rdf:type owl:AnnotationProperty ;
+            dc:type obo:STATO_0000169, sio:SIO_001078;
+            rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                               agri:foldChange .
+
+
+###  http://agrischemas.org/score
+agri:score rdf:type owl:AnnotationProperty ;
+           dc:type obo:OBI_0000071 ;
+           schema:rangeIncludes schema:Enumeration ,
+                                schema:Number ,
+                                schema:Text ;
+           rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                              <http://meta.schema.org/Property> .
+ 
+agri:baseCondition rdf:type owl:AnnotationProperty ;
+	schema:rangeIncludes agri:StudyFactor;
+	rdfs:seeAlso obo:OBI_0000143 ;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal, schema:Property .
+
+agri:timePoint rdf:type owl:AnnotationProperty ;
+	schema:rangeIncludes agri:StudyFactor;
+	rdfs:label "Time Point";
+	rdfs:seeAlso obo:OBI_0001508 ;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal, schema:Property .
+
+###  http://meta.schema.org/Property
+<http://meta.schema.org/Property> rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/Property
+schema:Property rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/abstract
+schema:abstract rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/additionalType
+dc:type rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/alternateName
+schema:alternateName rdf:type owl:AnnotationProperty ;
+                     rdfs:seeAlso schema:name ;
+                     rdfs:subPropertyOf skos:altLabel .
+
+
+###  http://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/domainIncludes
+schema:domainIncludes rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/hasPart
+schema:hasPart rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/name
+schema:name rdf:type owl:AnnotationProperty ;
+            rdfs:comment "schema:name is described and used as preferred name, so here we map to skos:prefLabel.";
+            rdfs:subPropertyOf skos:prefLabel .
+
+
+###  http://schema.org/rangeIncludes
+schema:rangeIncludes rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/oa#motivatedBy
+oa:motivatedBy rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://agrischemas.org/BioPathway
+agri:BioPathway rdf:type owl:Class ;
+                rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                agri:BiologicalAssociation .
+
+
+###  http://agrischemas.org/BioSchemasNewClassProposal
+agri:BioSchemasNewClassProposal rdf:type owl:Class ;
+                                rdfs:seeAlso agri:BioSchemasNewClassProposal .
+
+
+###  http://agrischemas.org/BiologicalAssociation
+agri:BiologicalAssociation rdf:type owl:Class ;
+                           rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                           schema:Intangible .
+
+
+###  http://agrischemas.org/HostPathogenInteraction
+agri:HostPathogenInteraction rdf:type owl:Class ;
+                             rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                             agri:BiologicalAssociation .
+
+
+###  http://agrischemas.org/SchemaNewClassProposal
+agri:SchemaNewClassProposal rdf:type owl:Class ;
+                            schema:description "Top-level containers named *New*Proposal are markers to track actions needed for new terms (eg, propose to schema/bioschemas)." .
+
+
+###  http://agrischemas.org/ScholarlyPublication
+agri:ScholarlyPublication rdf:type owl:Class ;
+                          rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                          schema:CreativeWork .
+
+
+###  http://agrischemas.org/Soil
+agri:Soil rdf:type owl:Class ;
+          rdfs:subClassOf bioschema:BioChemEntity .
+
+
+###  http://agrischemas.org/StudyDesign
+agri:StudyDesign rdf:type owl:Class ;
+                 rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                 agri:StudyItemEvent .
+
+
+###  http://agrischemas.org/StudyFactor
+agri:StudyFactor rdf:type owl:Class ;
+                 owl:equivalentClass obo:OBI_0000750 ,
+                                     <http://www.ebi.ac.uk/efo/EFO_0000001> ;
+                 rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                 schema:PropertyValue .
+
+
+###  http://agrischemas.org/StudyItemEvent
+agri:StudyItemEvent rdf:type owl:Class ;
+                    rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                    schema:Action ;
+                    schema:description """An event that occurs to a sample or a data set/file, which yields another item, 
+		knowlingly or potentially affecting the characteristics such new item has. 
+		This might be an on-purpose action (ie, a bioschema:LabProtocol), or a tracked event that 
+		might have affected an experiment step (eg, a weather change on a field location). 
+		Events can also be used to represent data extraction from samples (what is considered an 
+		assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation 
+		of differentially expressed genes, gene enrichment). This might also represent a plan or potential
+		event""" .
+
+
+###  http://agrischemas.org/StudyObservedValue
+agri:StudyObservedValue rdf:type owl:Class ;
+                        owl:equivalentClass <http://purl.org/ppeo/PPEO.owl#observed_variable> ;
+                        rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                        schema:PropertyValue .
+
+
+
+###  http://bioschemas.org/BioChemEntity
+bioschema:BioChemEntity rdf:type owl:Class .
+
+
+###  http://bioschemas.org/LabProtocol
+bioschema:LabProtocol rdf:type owl:Class ;
+                      rdfs:subClassOf agri:StudyItemEvent .
+
+
+###  http://purl.obolibrary.org/obo/OBI_0000750
+obo:OBI_0000750 rdf:type owl:Class .
+
+
+###  http://purl.org/ppeo/PPEO.owl#observed_variable
+<http://purl.org/ppeo/PPEO.owl#observed_variable> rdf:type owl:Class .
+
+
+###  http://schema.org/Action
+schema:Action rdf:type owl:Class .
+
+
+###  http://schema.org/CreativeWork
+schema:CreativeWork rdf:type owl:Class .
+
+
+###  http://schema.org/Intangible
+schema:Intangible rdf:type owl:Class .
+
+
+###  http://schema.org/PropertyValue
+schema:PropertyValue rdf:type owl:Class .
+
+
+###  http://schema.org/ScholarlyArticle
+schema:ScholarlyArticle rdf:type owl:Class ;
+                        rdfs:subClassOf agri:ScholarlyPublication .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000001
+<http://www.ebi.ac.uk/efo/EFO_0000001> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

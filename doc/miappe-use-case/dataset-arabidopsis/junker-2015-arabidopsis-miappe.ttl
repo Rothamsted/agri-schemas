@@ -10,7 +10,7 @@
 
 
 #### The Investigation is actually a dataset in MIAPPE.
-# 
+#
 ex:investigation a schema:Dataset;
 	schema:identifier "1135FA";
 	schema:name "Quantitative Monitoring of Arabidopsis thaliana Growth and Development Using High-Throughput Plant Phenotyping";
@@ -308,7 +308,8 @@ ex:growthProtocol a bioschema:LabProtocol, schema:Action;
 #
 
 ex:plant1_source a agri:FieldTrialMaterialSource, schema:BioChemEntity; # redundant as above
-	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_3702>;
+  bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_3702>; # as per bioschema specs
+	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_3702>; # possibly, you can redundantly add this
 	schema:name "Arabidopsis Thailana";
 	# Plus the usual fielda in Bioschema and Schema
 	schema:subjectOf ex:study; # TODO: is it correct? Or do we want this link for the material only?

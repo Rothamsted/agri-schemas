@@ -57,11 +57,12 @@ describe some of the choices made.
 	* `schema:studySubject` would be a more precise alternative and it's mentioned by the bioschemas study profile. However, its current domain/range (MedicalStudy) aren't suitable for plant biology, and this property seems to be specifically about the organism, plant, patient, etc that have been studied, while here, we are linking all the biochem entities that have been used for the purpose of studying one of them (eg, a plant variety). 
 * Another alternative might be `schema:partOf`, but currently it hasn't the right domain/range for this, and it seems there is a peculiar view on schema.org community about these generic mereological relationships ([example](https://github.com/schemaorg/schemaorg/issues/2984).  
 
+* Use `bioschema:taxonomicRange` to describe the specie of any of these BioChemEntity(s). This is as per [Bioschema specifications](https://bioschemas.org/types/BioChemEntity/0.7-RELEASE-2019_06_19), see also [here](https://bioschemas.org/tutorials/community/plant). `dc:type` can redundantly be used for the organism, for sake of interoperability
 * Use `bioschema:isPartOfBioChemEntity` (or `hasBioChemEntityPart`) to relate `agri:FieldTrialBioMaterial` from (or to) `agri:FieldTrialMaterialSource` (as per bioschemas profile)
 * Same relation to be used to relate `bioschema:BioSample` to `agri:FieldTrialObservationUnit`, and this to `agri:FieldTrialBioMaterial`
 * We don't see such a need to introduce specific properties for this (like `agri:hasBioMaterial`, `agri:hasMaterialSource`).
-* Use `dc:type` in `agri:FieldTrialObservationUnit` for MIAPPE:"Observation Unit Type"
-	
+* Use `dc:type` in `agri:FieldTrialObservationUnit` for MIAPPE:"Observation Unit Type"	
+
 * We considered a specific a super-class to group the ones introduced above, we gave up with this, since this class wouldn't add much to `schema:BioChemEntity`.
   * See [details here](dataset-arabidopsis/discussion-biohack-2021.md) about other alternatives we have considered, before reaching consensus on the modelling described above.
 
@@ -75,8 +76,9 @@ describe some of the choices made.
 To clarify the type qualifier further, consider this:
 
 ```javascript
-ex:sample_prop a schema:PropertyValue; 
-	schema:name "14 day post anthesis, aleurone layer";
+ex:sample_prop a schema:PropertyValue;
+  schema:name 'Phenotype'
+	schema:value "14 day post anthesis, aleurone layer";
 	# These can come from eg, manual curation or auto-annotation
 	# (of course multiple terms are possible)
 	dc:type
