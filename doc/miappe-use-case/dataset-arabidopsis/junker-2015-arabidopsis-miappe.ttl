@@ -264,7 +264,7 @@ ex:growthProtocol a bioschema:LabProtocol, schema:Action;
 	schema:description "";
 
 		# a new property, subclass of schema:additionalProperty
-	agri:hasProtocolParameter
+	schema:additionalProperty
 	[
 		# a new class, subclass of schema:PropertyValue
 		a agri:LabProtocolParameterValue, schema:PropertyValue;

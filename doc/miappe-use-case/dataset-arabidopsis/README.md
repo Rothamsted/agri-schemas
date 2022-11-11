@@ -167,10 +167,9 @@ The following applies what said above for value/type pairs.
 * As above, this is an extension of PropertyValue
 * ontology terms added as above, using dc:type
 * we introduce `agri:hasExperimentalFactorType` to link to the type.
-* we also introduce the symmetrical property `agri:hasExperimentalFactorValue`, so that there is
-  an easy way to list all the possible factor values for a type.
-	* Both `ExperimentalFactorType` and `Study` (or schema:Thing?) should be in the range of this 
-	  property, so that we can qualify the factor values and types an entity is about
+* we also introduce the symmetrical property `agri:hasExperimentalFactorValue`, so that there is an easy way to list all the possible factor values for a type.
+	* These two properties are **only** to link value/type. To link from other entitied (eg, study -> factor types or values), use `schema:additionalProperty`
+  * Moreover, you might want to keep things simple, by using `dc:type` in place of these specific new predicates. It's always possible to know the factor type for a factor value, by including the classes in the queries. 
 
 ## New type ExperimentalFactorType
 * this is optional, ExperimentalFactorValue already can accomodate  a type qualifier in
@@ -202,19 +201,16 @@ So, our proposal is as follow.
 * Domain/range of object/result of a study event include observation unit, sample, data download
 * We propose the new `bioschema:StudyExternalEvent`, as a subclass of `bioschema:StudyEvent` and 
 	distinct from `LabProtocol`
-* Introduce `agri:studyEventType` at the StudyEvent level, with a range of text or URL or DefinedTerm or PropertyValue
-  This will allow to define things like "growing protocol", "rainfall", "watering" and applies
-	to both protocols and external events
+* Use `dc:type` to qualify the event type with MIAPPE/PPOE terms, eg, "growing protocol", "rainfall", "watering". This applies to both protocols and external events.
 * As elsewhere, `schema:subjectOf` links `StudyEvent` to `Study` (and hence, all the mentioned subclasses)
 	* As said above prefer this to `schema:partOf`. `schema:studySubject` has a very different meaning.
 
 ### LabProtocolParameterValue and LabProtocolParameterType
 
-* We propose the new `agri:LabProtocolParameterValue` as subclass of `schema:PropertyValue`.
-  Similarly, introduce `agri:LabProtocolParameterType` (both modelled as per the discussion above on value/type pairs).
-* introduce `agri:hasProtocolParameter` as subproperty of `schema:additionalProperty`
-  (to link a protocol to its parameter values or types)
-
+* We propose the new `agri:LabProtocolParameterValue` as subclass of `schema:PropertyValue`. Similarly, introduce `agri:LabProtocolParameterType` (both modelled as per the discussion above on value/type pairs).
+* introduce `agri:hasLabProtocolParameterValue` as subproperty of `dc:type`, to link a param type to its values. Introduce its inverse, `agri:hasLabProtocolParameterType`.
+	* As in other cases, these two properties are **only** to link value/type. To link from other entitied (eg, event -> parameters), use `schema:additionalProperty`
+  * Moreover, you might want to keep things simple, by using `dc:type` in place of these specific new predicates (see the factor value case). 
 ## Observed Variables
 
 ### New proposal: agri:StudyObservedVariable
@@ -226,8 +222,11 @@ So, our proposal is as follow.
 ### New proposal: agri:StudyObservedValue
 * Another value/type case. 
 * extends `PropertyValue`, ontology terms added as above
-* * Links StudyObservedVariable via `agri:hasObservedVariable`
+* Links StudyObservedVariable via `agri:hasObservedVariable`
 	* a subproperty of `dc:type`, as above
+	* As in other cases, these two properties are **only** to link value/type. To link from other entitied (eg, sample -> obs value), use `schema:additionalProperty`
+  * Moreover, you might want to keep things simple, by using `dc:type` in place of these specific new predicates (see the factor value case). 
+
 * Use `schema:additionalProperty` to link to this from `schema:DataDownload`, `bioschema:BioSample`, `agri:FieldTrialObservationUnit`.
 	* We haven't decided if to add something like `agri:hasObservedValue` for this.
 * TODO: an alternative to link from DataDownload is `schema:variableMeasured`, but this would require 
@@ -265,9 +264,8 @@ So, our proposal is as follow.
   * An alternative for this would be `schema:subjectOf` (or the symmetric `schema:about`). But the new evidence property is more explicit. Possibly, add these schema annotations too, for interoperability.
 
 ## MIAPPE Environment, Proposal
-* Proposal: use an instance of `agri:LabProtocolParameter`
+* Proposal: use an instance of `agri:LabProtocolParameterValue` and `agri:LabProtocolParameterType`
 * linked to Study, via `additionalProperty` (optional)
-* linked to growth protocol, via `agri:hasProtocolParameter` (optional)
 
 ## Cultural Practices
 * one of the `LabProtocolParameter`(s) that can be associated to growth protocol

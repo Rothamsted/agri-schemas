@@ -27,7 +27,7 @@
 ###  http://agrischemas.org/BioSchemasNewPropertyProposal
 agri:BioSchemasNewPropertyProposal rdf:type owl:AnnotationProperty .
 
-
+ 
 ###  http://agrischemas.org/SchemaNewPropertyProposal
 agri:SchemaNewPropertyProposal rdf:type owl:AnnotationProperty .
 
@@ -59,6 +59,18 @@ agri:evidence rdf:type owl:AnnotationProperty ;
 agri:foldChange rdf:type owl:AnnotationProperty ;
                 rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
                                    agri:score .
+
+
+###  http://agrischemas.org/hasExperimentalFactorType
+agri:hasExperimentalFactorType rdf:type owl:AnnotationProperty ;
+                               rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                                  dc:type .
+
+
+###  http://agrischemas.org/hasExperimentalFactorValue
+agri:hasExperimentalFactorValue rdf:type owl:AnnotationProperty ;
+                                rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                                   dc:type .
 
 
 ###  http://agrischemas.org/hasGeneExpressionIn
@@ -164,6 +176,10 @@ schema:hasPart rdf:type owl:AnnotationProperty .
 schema:identifier rdf:type owl:AnnotationProperty .
 
 
+###  http://schema.org/inverseOf
+schema:inverseOf rdf:type owl:AnnotationProperty .
+
+
 ###  http://schema.org/name
 schema:name rdf:type owl:AnnotationProperty ;
             rdfs:subPropertyOf skos:prefLabel .
@@ -171,10 +187,6 @@ schema:name rdf:type owl:AnnotationProperty ;
 
 ###  http://schema.org/rangeIncludes
 schema:rangeIncludes rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#subClassOf
-rdfs:subClassOf rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#altLabel
@@ -187,10 +199,6 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/ns/oa#motivatedBy
 oa:motivatedBy rdf:type owl:AnnotationProperty .
-
-
-###  https://www.w3.org/2002/07/owl#equivalentClass
-owl:equivalentClass rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -215,23 +223,59 @@ agri:BiologicalAssociation rdf:type owl:Class ;
 
 ###  http://agrischemas.org/ExperimentalDesign
 agri:ExperimentalDesign rdf:type owl:Class ;
-                        owl:equivalentClass obo:OBI_0500000 ,
-                                            ppeo:experimental_design ,
-                                            <http://www.ebi.ac.uk/efo/EFO_0001426> ;
                         rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                        schema:PropertyValue .
+                                        obo:OBI_0500000 ,
+                                        ppeo:experimental_design ,
+                                        schema:PropertyValue ,
+                                        <http://www.ebi.ac.uk/efo/EFO_0001426> .
+
+
+###  http://agrischemas.org/ExperimentalFactorType
+agri:ExperimentalFactorType rdf:type owl:Class ;
+                            rdfs:subClassOf agri:BioSchemasNewClassProposal .
 
 
 ###  http://agrischemas.org/ExperimentalFactorValue
 agri:ExperimentalFactorValue rdf:type owl:Class ;
                              rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                             schema:PropertyValue .
+                                             obo:OBI_0000750 ,
+                                             schema:PropertyValue ,
+                                             <http://www.ebi.ac.uk/efo/EFO_0000001> .
+
+
+###  http://agrischemas.org/FIeldTrialBioMaterial
+agri:FIeldTrialBioMaterial rdf:type owl:Class ;
+                           rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                           schema:BioChemEntity .
+
+
+###  http://agrischemas.org/FieldTrialMaterialSource
+agri:FieldTrialMaterialSource rdf:type owl:Class ;
+                              rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                              schema:BioChemEntity .
+
+
+###  http://agrischemas.org/FieldTrialObservationUnit
+agri:FieldTrialObservationUnit rdf:type owl:Class ;
+                               rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                               schema:BioChemEntity .
 
 
 ###  http://agrischemas.org/HostPathogenInteraction
 agri:HostPathogenInteraction rdf:type owl:Class ;
                              rdfs:subClassOf agri:BioSchemasNewClassProposal ,
                                              agri:BiologicalAssociation .
+
+
+###  http://agrischemas.org/LabProtocolParameterType
+agri:LabProtocolParameterType rdf:type owl:Class ;
+                              rdfs:subClassOf agri:BioSchemasNewClassProposal .
+
+
+###  http://agrischemas.org/LabProtocolParameterValue
+agri:LabProtocolParameterValue rdf:type owl:Class ;
+                               rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                               schema:PropertyValue .
 
 
 ###  http://agrischemas.org/ScholarlyPublication
@@ -249,12 +293,17 @@ agri:StudyEvent rdf:type owl:Class ;
 ###  http://agrischemas.org/StudyObservedValue
 agri:StudyObservedValue rdf:type owl:Class ;
                         rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+                                        ppeo:observed_variable ,
                                         schema:PropertyValue .
 
 
 ###  http://bioschemas.org/LabProtocol
 bioschema:LabProtocol rdf:type owl:Class ;
                       rdfs:subClassOf agri:StudyEvent .
+
+
+###  http://purl.obolibrary.org/obo/OBI_0000750
+obo:OBI_0000750 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/OBI_0500000
@@ -265,8 +314,16 @@ obo:OBI_0500000 rdf:type owl:Class .
 ppeo:experimental_design rdf:type owl:Class .
 
 
+###  http://purl.org/ppeo/PPEO.owl#observed_variable
+ppeo:observed_variable rdf:type owl:Class .
+
+
 ###  http://schema.org/Action
 schema:Action rdf:type owl:Class .
+
+
+###  http://schema.org/BioChemEntity
+schema:BioChemEntity rdf:type owl:Class .
 
 
 ###  http://schema.org/CreativeWork
@@ -284,6 +341,10 @@ schema:PropertyValue rdf:type owl:Class .
 ###  http://schema.org/ScholarlyArticle
 schema:ScholarlyArticle rdf:type owl:Class ;
                         rdfs:subClassOf agri:ScholarlyPublication .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000001
+<http://www.ebi.ac.uk/efo/EFO_0000001> rdf:type owl:Class .
 
 
 ###  http://www.ebi.ac.uk/efo/EFO_0001426
@@ -309,6 +370,12 @@ owl:Ontology rdf:type owl:Class .
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://agrischemas.org/agrischemas-ontology
+agri: rdf:type owl:NamedIndividual ,
+               owl:Ontology ;
+      rdfs:label "AgriSchemas Ontology"@en .
+
 
 ###  http://agrischemas.org/BioPathway
 agri:BioPathway rdf:type owl:NamedIndividual ,
@@ -340,16 +407,44 @@ agri:ExperimentalDesign rdf:type owl:NamedIndividual ,
                                  owl:NamedIndividual .
 
 
+###  http://agrischemas.org/ExperimentalFactorType
+agri:ExperimentalFactorType rdf:type owl:NamedIndividual ,
+                                     owl:Class ,
+                                     owl:NamedIndividual .
+
+
 ###  http://agrischemas.org/ExperimentalFactorValue
 agri:ExperimentalFactorValue rdf:type owl:NamedIndividual ,
                                       owl:Class ,
                                       owl:NamedIndividual .
 
 
+###  http://agrischemas.org/FieldTrialMaterialSource
+agri:FieldTrialMaterialSource rdf:type owl:NamedIndividual ,
+                                       owl:Class .
+
+
+###  http://agrischemas.org/FieldTrialObservationUnit
+agri:FieldTrialObservationUnit rdf:type owl:NamedIndividual ,
+                                        owl:Class .
+
+
 ###  http://agrischemas.org/HostPathogenInteraction
 agri:HostPathogenInteraction rdf:type owl:NamedIndividual ,
                                       owl:Class ,
                                       owl:NamedIndividual .
+
+
+###  http://agrischemas.org/LabProtocolParameterType
+agri:LabProtocolParameterType rdf:type owl:NamedIndividual ,
+                                       owl:Class ,
+                                       owl:NamedIndividual .
+
+
+###  http://agrischemas.org/LabProtocolParameterValue
+agri:LabProtocolParameterValue rdf:type owl:NamedIndividual ,
+                                        owl:Class ,
+                                        owl:NamedIndividual .
 
 
 ###  http://agrischemas.org/SchemaNewClassProposal
@@ -419,6 +514,18 @@ agri:evidence rdf:type owl:NamedIndividual ,
 agri:foldChange rdf:type owl:NamedIndividual ,
                          owl:AnnotationProperty ,
                          owl:NamedIndividual .
+
+
+###  http://agrischemas.org/hasExperimentalFactorType
+agri:hasExperimentalFactorType rdf:type owl:NamedIndividual ,
+                                        owl:AnnotationProperty ,
+                                        owl:NamedIndividual .
+
+
+###  http://agrischemas.org/hasExperimentalFactorValue
+agri:hasExperimentalFactorValue rdf:type owl:NamedIndividual ,
+                                         owl:AnnotationProperty ,
+                                         owl:NamedIndividual .
 
 
 ###  http://agrischemas.org/hasGeneExpressionIn
@@ -517,15 +624,28 @@ obo:OBI_0000750 rdf:type owl:NamedIndividual ,
                          owl:NamedIndividual .
 
 
+###  http://purl.obolibrary.org/obo/OBI_0500000
+obo:OBI_0500000 rdf:type owl:NamedIndividual ,
+                         owl:Class ,
+                         owl:NamedIndividual .
+
+
 ###  http://purl.org/dc/elements/1.1/creator
 dc:creator rdf:type owl:NamedIndividual ,
-                    owl:AnnotationProperty .
+                    owl:AnnotationProperty ,
+                    owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/elements/1.1/type
 dc:type rdf:type owl:NamedIndividual ,
                  owl:AnnotationProperty ,
                  owl:NamedIndividual .
+
+
+###  http://purl.org/ppeo/PPEO.owl#experimental_design
+ppeo:experimental_design rdf:type owl:NamedIndividual ,
+                                  owl:Class ,
+                                  owl:NamedIndividual .
 
 
 ###  http://purl.org/ppeo/PPEO.owl#observed_variable
@@ -538,6 +658,11 @@ ppeo:observed_variable rdf:type owl:NamedIndividual ,
 schema:Action rdf:type owl:NamedIndividual ,
                        owl:Class ,
                        owl:NamedIndividual .
+
+
+###  http://schema.org/BioChemEntity
+schema:BioChemEntity rdf:type owl:NamedIndividual ,
+                              owl:Class .
 
 
 ###  http://schema.org/CreativeWork
@@ -606,6 +731,12 @@ schema:identifier rdf:type owl:NamedIndividual ,
                            owl:NamedIndividual .
 
 
+###  http://schema.org/inverseOf
+schema:inverseOf rdf:type owl:NamedIndividual ,
+                          owl:AnnotationProperty ,
+                          owl:NamedIndividual .
+
+
 ###  http://schema.org/name
 schema:name rdf:type owl:NamedIndividual ,
                      owl:AnnotationProperty ,
@@ -622,6 +753,18 @@ schema:rangeIncludes rdf:type owl:NamedIndividual ,
 <http://www.ebi.ac.uk/efo/EFO_0000001> rdf:type owl:NamedIndividual ,
                                                 owl:Class ,
                                                 owl:NamedIndividual .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0001426
+<http://www.ebi.ac.uk/efo/EFO_0001426> rdf:type owl:NamedIndividual ,
+                                                owl:Class ,
+                                                owl:NamedIndividual .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#subClassOf
+rdfs:subClassOf rdf:type owl:NamedIndividual ,
+                         owl:AnnotationProperty ,
+                         owl:NamedIndividual .
 
 
 ###  http://www.w3.org/2004/02/skos/core#altLabel
@@ -644,27 +787,42 @@ oa:motivatedBy rdf:type owl:NamedIndividual ,
 
 ###  https://www.w3.org/2002/07/owl#AnnotationProperty
 owl:AnnotationProperty rdf:type owl:NamedIndividual ,
-                                owl:Class .
+                                owl:Class ,
+                                owl:NamedIndividual .
 
 
 ###  https://www.w3.org/2002/07/owl#Class
 owl:Class rdf:type owl:NamedIndividual ,
                    owl:Class ,
-                   owl:Class .
+                   owl:Class ,
+                   owl:NamedIndividual .
+
+
+###  https://www.w3.org/2002/07/owl#NamedIndividual
+owl:NamedIndividual rdf:type owl:NamedIndividual ,
+                             owl:Class ,
+                             owl:Class ,
+                             owl:NamedIndividual .
 
 
 ###  https://www.w3.org/2002/07/owl#Ontology
 owl:Ontology rdf:type owl:NamedIndividual ,
-                      owl:Class .
+                      owl:Class ,
+                      owl:NamedIndividual .
 
 
 ###  https://www.w3.org/2002/07/owl#equivalentClass
 owl:equivalentClass rdf:type owl:NamedIndividual ,
-                             owl:AnnotationProperty .
+                             owl:AnnotationProperty ,
+                             owl:NamedIndividual .
 
 
 [ rdf:type owl:Ontology
 ] .
+
+[ rdf:type owl:Ontology
+ ] .
+
 
 #################################################################
 #    Annotations
@@ -683,8 +841,14 @@ This is a a schema:PropertyValue and conventionally, schema:value should be used
 Until this becomes part of some official schema/bioschema specification, you might want to adopt some conventional redundancy, see https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case/dataset-arabidopsis for details."""@en .
 
 
-agri:ExperimentalFactorValue rdfs:subClassOf <http://www.ebi.ac.uk/efo/EFO_0000001> ,
-                                             obo:OBI_0000750 .
+agri:ExperimentalFactorType rdfs:seeAlso agri:ExperimentalFactorValue ;
+                            schema:description """A variable that is considered to perform a study, such as a life science study. An experimental factor is the independent variable of the study, which might be varied as part of the experimental design for the purpose of investigating how potentially dependent variables vary with different factor values.
+
+Examples are: treatmemt, administered diet, fertilisation."""@en .
+
+
+agri:ExperimentalFactorValue rdfs:seeAlso agri:ExperimentalFactorType ;
+                             schema:description "A value for an independent variable investigated by an experiment/study."@en .
 
 
 agri:SchemaNewPropertyProposal rdfs:seeAlso agri:SchemaNewClassProposal .
@@ -695,16 +859,24 @@ agri:StudyEvent schema:description """An event that might happen during a study/
 Events can also be used to represent data extraction from samples (what is considered an assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation of differentially expressed genes, gene enrichment). An event of this type can represent a plan or a particular occurrence, ie, similarly to other cases in schema.org, we don't distinguish between the two, as it is done in BFO/DOLCE ontologies."""@en .
 
 
-agri:StudyObservedValue owl:equivalentClass ppeo:observed_variable .
-
-
 agri:baseCondition rdfs:seeAlso obo:OBI_0000143 ;
-                   schema:rangeIncludes agri:StudyFactor .
+                   schema:rangeIncludes agri:ExperimentalFactorValue .
 
 
-agri:foldChange dc:type obo:STATO_0000169 ,
-                        sio:SIO_001078 ;
+agri:foldChange dc:type sio:SIO_001078 ,
+                        obo:STATO_0000169 ;
                 schema:rangeIncludes schema:Number .
+
+
+agri:hasExperimentalFactorType schema:rangeIncludes agri:ExperimentalFactorType ;
+                               schema:inverseOf agri:hasExperimentalFactorValue ;
+                               schema:domainIncludes agri:ExperimentalFactorValue .
+
+
+agri:hasExperimentalFactorValue schema:description "Links a factor value to its agri:ExperimentalFactorType. These properties are more specific subproperties of dc:type. You might have datasets where dc:type only is used to link factor values to their types. Ideally, use both maximise interoperability (see AgriSchemas documentation)."@en ;
+                                schema:inverseOf agri:hasExperimentalFactorType ;
+                                schema:domainIncludes agri:ExperimentalFactorType ;
+                                schema:rangeIncludes agri:ExperimentalFactorValue .
 
 
 agri:hasGeneExpressionIn rdfs:seeAlso obo:GO_0010467 ;
@@ -738,13 +910,13 @@ agri:pvalue schema:rangeIncludes schema:Number ;
 
 
 agri:score schema:rangeIncludes schema:Text ,
-                                schema:Number ;
-           dc:type obo:OBI_0000071 ;
-           schema:rangeIncludes schema:Enumeration .
+                                schema:Number ,
+                                schema:Enumeration ;
+           dc:type obo:OBI_0000071 .
 
 
 agri:timePoint rdfs:seeAlso obo:OBI_0001508 ;
-               schema:rangeIncludes agri:StudyFactor ;
+               schema:rangeIncludes agri:ExperimentalFactorValue ;
                rdfs:label "Time Point" .
 
 
