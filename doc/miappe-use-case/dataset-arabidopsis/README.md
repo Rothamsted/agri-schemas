@@ -1,6 +1,6 @@
 
 # Modelling of a MIAPPE/ISA-Tab use case
-The notes below reports many discussion points and decisions made together with the  ELIXIR Plant Community. This document is an updated version of a [discusssion document](dataset-arabidopsis/discussion-biohack-2021.md) that emerged from the ELIXIR Biohackathon 2021 and 2022.
+The notes below reports many discussion points and decisions made together with the  ELIXIR Plant Community. This document is an updated version of a [discusssion document](discussion-biohack-2021.md) that emerged from the ELIXIR Biohackathon 2021 and 2022.
 
 # Data Source
 

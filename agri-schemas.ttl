@@ -15,10 +15,10 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix metaSchema: <https://meta.schema.org/> .
-@base <http://www.w3.org/2002/07/owl#> .
+@base <http://agrischemas.org/> .
 
-[ rdf:type owl:Ontology
- ] .
+<http://agrischemas.org/> rdf:type owl:Ontology ;
+                           rdfs:label "AgriSchemas Ontology"@en .
 
 #################################################################
 #    Annotation properties
@@ -27,7 +27,7 @@
 ###  http://agrischemas.org/BioSchemasNewPropertyProposal
 agri:BioSchemasNewPropertyProposal rdf:type owl:AnnotationProperty .
 
- 
+
 ###  http://agrischemas.org/SchemaNewPropertyProposal
 agri:SchemaNewPropertyProposal rdf:type owl:AnnotationProperty .
 
@@ -69,14 +69,30 @@ agri:hasExperimentalFactorType rdf:type owl:AnnotationProperty ;
 
 ###  http://agrischemas.org/hasExperimentalFactorValue
 agri:hasExperimentalFactorValue rdf:type owl:AnnotationProperty ;
-                                rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
-                                                   dc:type .
+                                rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal .
 
 
 ###  http://agrischemas.org/hasGeneExpressionIn
 agri:hasGeneExpressionIn rdf:type owl:AnnotationProperty ;
                          rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
                                             agri:isBiologicallyRelatedTo .
+
+
+###  http://agrischemas.org/hasObservedValue
+agri:hasObservedValue rdf:type owl:AnnotationProperty ;
+                      schema:inverseOf agri:hasObservedVariable ;
+                      rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ;
+                      rdfs:range agri:StudyObservedValue ;
+                      rdfs:domain agri:StudyObservedVariable .
+
+
+###  http://agrischemas.org/hasObservedVariable
+agri:hasObservedVariable rdf:type owl:AnnotationProperty ;
+                         schema:inverseOf agri:hasObservedValue ;
+                         rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
+                                            dc:type ;
+                         rdfs:range agri:StudyObservedVariable ;
+                         rdfs:domain agri:StudyObservedValue .
 
 
 ###  http://agrischemas.org/interactionHost
@@ -297,6 +313,11 @@ agri:StudyObservedValue rdf:type owl:Class ;
                                         schema:PropertyValue .
 
 
+###  http://agrischemas.org/StudyObservedVariable
+agri:StudyObservedVariable rdf:type owl:Class ;
+                           rdfs:subClassOf agri:BioSchemasNewClassProposal .
+
+
 ###  http://bioschemas.org/LabProtocol
 bioschema:LabProtocol rdf:type owl:Class ;
                       rdfs:subClassOf agri:StudyEvent .
@@ -371,12 +392,6 @@ owl:Ontology rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://agrischemas.org/agrischemas-ontology
-agri: rdf:type owl:NamedIndividual ,
-               owl:Ontology ;
-      rdfs:label "AgriSchemas Ontology"@en .
-
-
 ###  http://agrischemas.org/BioPathway
 agri:BioPathway rdf:type owl:NamedIndividual ,
                          owl:Class ,
@@ -419,14 +434,21 @@ agri:ExperimentalFactorValue rdf:type owl:NamedIndividual ,
                                       owl:NamedIndividual .
 
 
+###  http://agrischemas.org/FIeldTrialBioMaterial
+agri:FIeldTrialBioMaterial rdf:type owl:NamedIndividual ,
+                                    owl:Class .
+
+
 ###  http://agrischemas.org/FieldTrialMaterialSource
 agri:FieldTrialMaterialSource rdf:type owl:NamedIndividual ,
-                                       owl:Class .
+                                       owl:Class ,
+                                       owl:NamedIndividual .
 
 
 ###  http://agrischemas.org/FieldTrialObservationUnit
 agri:FieldTrialObservationUnit rdf:type owl:NamedIndividual ,
-                                        owl:Class .
+                                        owl:Class ,
+                                        owl:NamedIndividual .
 
 
 ###  http://agrischemas.org/HostPathogenInteraction
@@ -558,12 +580,6 @@ agri:log2FoldChange rdf:type owl:NamedIndividual ,
                              owl:NamedIndividual .
 
 
-###  http://agrischemas.org/ontology
-agri:ontology rdf:type owl:NamedIndividual ,
-                       owl:NamedIndividual ,
-                       owl:Ontology .
-
-
 ###  http://agrischemas.org/ordinalTpm
 agri:ordinalTpm rdf:type owl:NamedIndividual ,
                          owl:AnnotationProperty ,
@@ -662,7 +678,8 @@ schema:Action rdf:type owl:NamedIndividual ,
 
 ###  http://schema.org/BioChemEntity
 schema:BioChemEntity rdf:type owl:NamedIndividual ,
-                              owl:Class .
+                              owl:Class ,
+                              owl:NamedIndividual .
 
 
 ###  http://schema.org/CreativeWork
@@ -823,6 +840,8 @@ owl:equivalentClass rdf:type owl:NamedIndividual ,
 [ rdf:type owl:Ontology
  ] .
 
+[ rdf:type owl:Ontology
+ ] .
 
 #################################################################
 #    Annotations
@@ -863,13 +882,13 @@ agri:baseCondition rdfs:seeAlso obo:OBI_0000143 ;
                    schema:rangeIncludes agri:ExperimentalFactorValue .
 
 
-agri:foldChange dc:type sio:SIO_001078 ,
-                        obo:STATO_0000169 ;
+agri:foldChange dc:type obo:STATO_0000169 ,
+                        sio:SIO_001078 ;
                 schema:rangeIncludes schema:Number .
 
 
-agri:hasExperimentalFactorType schema:rangeIncludes agri:ExperimentalFactorType ;
-                               schema:inverseOf agri:hasExperimentalFactorValue ;
+agri:hasExperimentalFactorType schema:inverseOf agri:hasExperimentalFactorValue ;
+                               schema:rangeIncludes agri:ExperimentalFactorType ;
                                schema:domainIncludes agri:ExperimentalFactorValue .
 
 
@@ -894,8 +913,8 @@ agri:interactionPathogen schema:domainIncludes agri:HostPathogenInteraction ;
 agri:isBiologicallyRelatedTo rdfs:seeAlso sio:SIO_000897 .
 
 
-agri:log2FoldChange dc:type obo:STATO_0000169 ,
-                            sio:SIO_001078 .
+agri:log2FoldChange dc:type sio:SIO_001078 ,
+                            obo:STATO_0000169 .
 
 
 agri:ordinalTpm rdfs:comment "The ordinal ('low', 'medium', 'high') level of TPM. This is established from the TPM count, using the EBI thresholds: [0.5-10]/low, [11-1000] med, >1000. See: See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/" ;
@@ -910,9 +929,9 @@ agri:pvalue schema:rangeIncludes schema:Number ;
 
 
 agri:score schema:rangeIncludes schema:Text ,
-                                schema:Number ,
-                                schema:Enumeration ;
-           dc:type obo:OBI_0000071 .
+                                schema:Number ;
+           dc:type obo:OBI_0000071 ;
+           schema:rangeIncludes schema:Enumeration .
 
 
 agri:timePoint rdfs:seeAlso obo:OBI_0001508 ;
