@@ -13,7 +13,7 @@ ETL_TMP = os.getenv ( "ETL_TMP" )
 GXA_ETL_DIR = os.getenv ( "GXA_ETL_DIR" )
 
 
-EXPERIMENTS_JS = gxa_get_experiment_descriptors_cached ( config [ 'gxa_organisms' ], ETL_TMP + "/exp-descriptors.js" )
+EXPERIMENTS_JS = gxa_get_experiment_descriptors_cached ( config [ 'gxa_organisms' ], ETL_TMP + "/exp-descriptors.json" )
 EXPERIMENT_ACCS = EXPERIMENTS_JS.keys ()
 
 # Test sample
