@@ -40,7 +40,7 @@ res:cit_tob1_23236473 a rdf:Statement;
 .
 
 # TODO: should we use bioschema:SemanticTextAnnotation? At the moment it has issues:
-#  * TODO
+#  * https://github.com/BioSchemas/specifications/issues/640
 #  * https://bioschemas.org/profiles/SemanticTextAnnotation/0.3-DRAFT?
 #
 # oa:Annotation is to qualify it further
