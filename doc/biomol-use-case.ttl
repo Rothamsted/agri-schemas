@@ -38,11 +38,13 @@ res:tob1  a bioschema:Protein ;
 res:pub_23236473 schema:mentions res:tob1.
 
 # plain triples might be enriched via reification
+# See also statements-annotations.ttl
 res:cit_tob1_23236473 a rdf:Statement;
 	rdf:subject res:pub_23236473;
 	rdf:object res:tob1;
 	rdf:predicate schema:mentions;
-	agri:score 0.95
+	agri:score 0.95;
+	agri:evidence "Ondex Text Mining"
 .
 
 # This is a possible alternative, based on a variant of n-ary properties. This might be more practical
@@ -55,7 +57,8 @@ res:pub_23236473 schema:mentions res:cit_tob1_23236473.
 res:cit_tob1_23236473 a schema:StructuredValue;
   rdf:object res:tob1;
   agri:score 0.95;
-	agri:evidence "Ondex Text Mining"
+	agri:evidence "Ondex Text Mining";
+	agri:score 0.95
 .
 
 

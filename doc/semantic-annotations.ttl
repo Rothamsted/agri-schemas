@@ -1,0 +1,148 @@
+@prefix res: <http://knetminer.org/data/rdf/resources/>
+@prefix agri: <http://agrischemas.org/>.
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+# These examples are about entities that have annotations such as: provenance/evidence (database, experimental
+# data), score (pvalue, F-score), time or other limits (from/to).
+# 
+
+# Text mining example, sample entities from 
+# https://github.com/Rothamsted/agri-schemas/blob/master/doc/biomol-use-case.ttl
+#
+res:cit_tob1_23236473 a rdf:Statement;
+	rdf:subject res:pub_23236473;
+	rdf:object res:tob1;
+	rdf:predicate schema:mentions;
+	agri:score 0.95;
+	agri:evidence "instrument: Ondex Text Mining";
+	agri:evidence "source sentence: The sentence mentioning the protein TOB1 in the publication"
+.
+
+res:tob1  a bioschema:Protein.
+res:pub_23236473 a agri:ScholarlyPublication.
+
+# Same as above, but with more structured data about provenance and evidence
+#
+res:cit_tob1_23236473 a rdf:Statement;
+	rdf:subject res:pub_23236473;
+	rdf:object res:tob1;
+	rdf:predicate schema:mentions;
+	# This statement is the result of this annotation action and all the details about how it
+	# was obtained is below on the action
+	agri:evidence res:text_mining_run_0
+.
+
+# TODO: should we use bioschema:SemanticTextAnnotation? At the moment it has issues:
+#  * TODO
+#  * https://bioschemas.org/profiles/SemanticTextAnnotation/0.3-DRAFT?
+#
+# oa:Annotation is to qualify it further
+# 
+res:text_mining_run_0 a schema:CreateAction, oa:Annotation;
+	
+	# In this context (only), this is the inverse of agri:evidence
+	#
+	schema:result
+		res:cit_protein1_pub1_1, 
+		res:cit_protein1_pub1_2,
+		res:cit_protein1_pub2_1,
+		res:cit_protein2_pub3_1;
+	
+	# This is another redundant statement (the publication is already in the statement), which 
+	# you might want to add for interoperability
+	schema:object res:pub_23236473;
+
+	schema:object [
+		# A possible way to represent the source sentence, beyond just a simple string. 
+		# This might be useful for representing the sentence location on the original text,
+		# TODO: do we need them?
+		a schema:CreativeWork;
+		schema:text "The sentence mentioning the protein TOB1 in the publication"
+	]
+  # The usual properties to qualify the annotation details
+	agri:score 0.95;
+	schema:startTime "2023-03-06";
+
+  # As above, this can be either a simple string, or something like an instance of schema:SoftwareApplication
+	schema:instrument [
+		# TODO: Possibly use EDAM for a more precise qualifier
+		a schema:SoftwareApplication;
+		schema:name "The ZOOMA Text Mining Tool";
+		schema:author [
+			a schema:Organization;
+			schema:name "EMBL-EBI"
+		]
+	]
+.
+
+
+# Another variant: The text mining tool has produced multiple relations
+# These are statements having the same form as above
+#
+res:cit_protein1_pub1_1 a rdfs:Statement
+  agri:evidence res:text_mining_run_1
+.
+res:cit_protein1_pub1_2 a rdfs:Statement.
+  agri:evidence res:text_mining_run_1
+.
+res:cit_protein1_pub2_1 a rdfs:Statement.
+  agri:evidence res:text_mining_run_1
+.
+res:cit_protein2_pub3_1 a rdfs:Statement.
+  agri:evidence res:text_mining_run_1
+.
+
+
+# This is an annotation action, just as the previous case 
+res:text_mining_run_1 a schema:CreateAction, oa:Annotation;
+	
+	# The only difference is that we haven multiple results. The same trick can be used to 
+	# point to single entities (other than statements), in particular ontology terms (ie, 
+	# schema:DefinedTerm)
+	#
+	schema:result
+		res:cit_protein1_pub1_1, 
+		res:cit_protein1_pub1_2,
+		res:cit_protein1_pub2_1,
+		res:cit_protein2_pub3_1;
+	
+  # You can use the same properties as above
+
+	schema:object res:pub_23236473;
+	agri:score 0.95;
+	schema:startTime "2023-03-06";
+	schema:instrument "Ondex Text Mining Tool"
+.
+
+
+## Another example, similar to the ones above, showing how to annotated entities
+#
+res:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:StudyFactor; 
+  schema:name "14 day post anthesis, aleurone layer";
+  # Computed by the AgroPortal Annotator (a clone of BioPortal)
+  dc:type
+    <http://purl.obolibrary.org/obo/PO_0005360>, # aleurone layer
+		<http://www.cropontology.org/rdf/CO_321:0000434>; # day 
+	
+	agri:evidence [
+		a schema:CreateAction, oa:Annotation;
+		# Yet another way to introduce the usual agri:evidence/schema:result redundance
+		schema:result res:cond_14_day_post_anthesis_0x2C_aleurone_layer;
+		schema:instrument [
+			a schema:SoftwareApplication;
+			schema:name "AgroPortal Annotator";
+			schema:url "https://agroportal.lirmm.fr/annotator"
+		]
+		agri:score 0.97;
+		schema:startTime "2023-03-06";
+		# Really not needed, the annotator is always given schema:name, so that's the object too
+		# schema:object "14 day post anthesis, aleurone layer"
+	]
+.
