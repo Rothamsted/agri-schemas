@@ -19,10 +19,20 @@ res:study1 a bioschema:Study;
 # Original URIs can be reused. The resource will receive additional annotations.
 # 
 # Pathways are a specific case of process, action, or alike. See the notes in the PHI-Base use case.
-#
-<http://www.wikipathways.org/id1> a agri:BioPathway ; 
-	agri:evidence  "Imported from Database"
-	schema:name  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>
+# 
+# As usually, we redundantly add direct links like schema:Action, to ease consumers like
+# Google
+<http://www.wikipathways.org/id1> a agri:BioPathway, schema:Action;
+	schema:additionalType
+		<http://purl.obolibrary.org/obo/GO_0008150>, # BioProc
+		<http://semanticscience.org/resource/SIO_001107>; # Biological process
+	
+	# Very optional, this is how schema.org knows it's not a real occurrent, but a plan,
+	# a process description, an abstract process, or, as they say, an idealised action
+	schema:actionStatus schema:PotentialActionStatus;
+
+	agri:evidence  "Imported from Database";
+	schema:name  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>;
 .
         
 res:tob1  a bioschema:Protein ;
@@ -30,8 +40,11 @@ res:tob1  a bioschema:Protein ;
 	# having to introduce a specific ID like this.
 	schema:identifier      res:TOB1_acc ;
 	schema:name         "TOB1"^^xsd:string;
+	
 	# A simplified link, hiding BioPax pathwayComponent -> BioChemicalReaction|Complex -> Protein
-	schema:isPartOf 		  <http://www.wikipathways.org/id1>
+	# schema:potentialAction is the inverse of schema:object, the name isn't ideal at all
+	# but it's better to use it for compliance 
+	schema:potentialAction 		  <http://www.wikipathways.org/id1>
 .
 
 # Generic mentions by a publication (schema:subjectOf is an alternative)

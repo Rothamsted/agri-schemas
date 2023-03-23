@@ -8,22 +8,35 @@
 
 
 # Host-pathogen interactions are a specific case of process, action, or alike
-# schema.org has Action, which is something a schema:agent does upon a schema:target. But 
-# it seems specific to human actions (agent is restricted to Organization or Person).
+# We use schema:Action for that. This is somewhat close, not ideal, to what we mean, since 
+# schema actions seem specific to human actions (eg, agent is restricted to Organization or Person).
 # 
 # Probably it requires some other kind of process/action, or a better definition of the existing Action.
 # Bioschemas doesn't seem to have any mention of these concepts
 #
-# Clearly, this is relevant in the defition of pathways too (see biomolecular use case).
+# Clearly, this is relevant in the defition of pathways too (see the biomolecular use case).
 #
 
-res:phiInt001 a agri:HostPathogenInteraction;
+# schema:Action can be redundantly added, to ease consumers like Google
+res:phiInt001 a schema:Action, agri:HostPathogenInteraction;	
+	# Similarly, this is redundant but could help
+	schema:additionalType
+  	# host-pathogen interaction
+		<http://purl.obolibrary.org/obo/OHPI_0000001>,
+		# biological process involved in symbiotic interaction
+  	<http://purl.obolibrary.org/obo/GO_0044403.
 
-	agri:interactionHost [
+	# in schema.org, object is synonym of participant
+	schema:object [
 		a bioschema:Phenotype;
 
 		schema:name "Triticum aestivum";
 		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
+
+		schema:role [
+			a schema:Role;
+			schema:roleName "host";
+		]
 
 		schema:additionalProperty [
 			a schema:PropertyValue;
@@ -32,11 +45,16 @@ res:phiInt001 a agri:HostPathogenInteraction;
 		]
 	];
 
-	agri:interactionPathogen [
+	schema:object [
 		a bioschema:Phenotype;
 
 		schema:name "Fusarium graminearum";
 		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
+
+		schema:role [
+			a schema:Role;
+			schema:roleName "pathogen";
+		]
 
 		schema:additionalProperty [
 			a schema:PropertyValue;
@@ -45,26 +63,26 @@ res:phiInt001 a agri:HostPathogenInteraction;
 		]
 	];
 
+	schema:object res:gene_FG00332;
+
+	schema:result [
+		a schema:PropertyValue;
+
+		dc:type obo:TO_0000663;
+
+		# As you can see from the gene annotation above, 
+		# these could be taken from resolving the dc:type, but they're often added to ease data
+		# consumers
+		schema:propertyID "disease name";
+		schema:value "Fusarium Ear Blight";
+	];
+
 	agri:evidence res:pmed_18943005;
 
 	agri:evidence [
 		a schema:PropertyValue;
 		schema:propertyID "phiBase:experimental technique";
 		schema:value "Gene disruption"
-	];
-
-  # TODO: this or additionalProperty?
-	schema:hasPart res:gene_FG00332;
-
-  # TODO: this or additionalProperty?
-	schema:hasPart [
-		a schema:PropertyValue;
-
-		# We don't introduce a new type when this could be inferred from the additionalType annotation.
-		# We instead use prop-value + ID, in order to ease application consumers.
-		schema:propertyID "disease name";
-		schema:value "Fusarium Ear Blight";
-		dc:type obo:TO_0000663
 	]
 .
 

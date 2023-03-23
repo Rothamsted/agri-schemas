@@ -95,18 +95,6 @@ agri:hasObservedVariable rdf:type owl:AnnotationProperty ;
                          rdfs:domain agri:StudyObservedValue .
 
 
-###  http://agrischemas.org/interactionHost
-agri:interactionHost rdf:type owl:AnnotationProperty ;
-                     rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
-                                        schema:hasPart .
-
-
-###  http://agrischemas.org/interactionPathogen
-agri:interactionPathogen rdf:type owl:AnnotationProperty ;
-                         rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
-                                            schema:hasPart .
-
-
 ###  http://agrischemas.org/isBiologicallyRelatedTo
 agri:isBiologicallyRelatedTo rdf:type owl:AnnotationProperty ;
                              rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
@@ -223,18 +211,16 @@ oa:motivatedBy rdf:type owl:AnnotationProperty .
 
 ###  http://agrischemas.org/BioPathway
 agri:BioPathway rdf:type owl:Class ;
-                rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                agri:BiologicalAssociation .
+  rdfs:subClassOf agri:BioSchemasNewClassProposal ,
+  schema:Action,
+  <http://purl.obolibrary.org/obo/GO_0008150>, # BioProc
+  <http://semanticscience.org/resource/SIO_001107> # Biological pathway
+.
 
 
 ###  http://agrischemas.org/BioSchemasNewClassProposal
 agri:BioSchemasNewClassProposal rdf:type owl:Class .
 
-
-###  http://agrischemas.org/BiologicalAssociation
-agri:BiologicalAssociation rdf:type owl:Class ;
-                           rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                           schema:Intangible .
 
 
 ###  http://agrischemas.org/ExperimentalDesign
@@ -279,8 +265,14 @@ agri:FieldTrialObservationUnit rdf:type owl:Class ;
 
 ###  http://agrischemas.org/HostPathogenInteraction
 agri:HostPathogenInteraction rdf:type owl:Class ;
-                             rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                             agri:BiologicalAssociation .
+  rdfs:subClassOf 
+    agri:BioSchemasNewClassProposal,
+    schema:Action, 
+    # host-pathogen interaction
+    <http://purl.obolibrary.org/obo/OHPI_0000001>,
+    # biological process involved in symbiotic interaction
+    <http://purl.obolibrary.org/obo/GO_0044403.
+.
 
 
 ###  http://agrischemas.org/LabProtocolParameterType
