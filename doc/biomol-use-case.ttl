@@ -23,6 +23,7 @@ res:study1 a bioschema:Study;
 # As usually, we redundantly add direct links like schema:Action, to ease consumers like
 # Google
 <http://www.wikipathways.org/id1> a agri:BioPathway, schema:Action;
+	# Redundance as above
 	schema:additionalType
 		<http://purl.obolibrary.org/obo/GO_0008150>, # BioProc
 		<http://semanticscience.org/resource/SIO_001107>; # Biological process
@@ -33,6 +34,9 @@ res:study1 a bioschema:Study;
 
 	agri:evidence  "Imported from Database";
 	schema:name  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>;
+
+	# the inverse of potentialAction
+	schema:object res:tob1, 
 .
         
 res:tob1  a bioschema:Protein ;
