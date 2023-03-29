@@ -9,13 +9,12 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix oa: <http://www.w3.org/ns/oa#> .
 
-# These examples are about entities that have annotations such as: provenance/evidence (database, experimental
-# data), score (pvalue, F-score), time or other limits (from/to).
-# 
-
-# Text mining example, sample entities from 
-# https://github.com/Rothamsted/agri-schemas/blob/master/doc/biomol-use-case.ttl
+# Use case about text mining and semantic annotations
 #
+# Sample entities from 
+# https://github.com/Rothamsted/agri-schemas/blob/master/doc/biomol-use-case.ttl
+# 
+
 res:cit_tob1_23236473 a rdf:Statement;
 	rdf:subject res:pub_23236473;
 	rdf:object res:tob1;
