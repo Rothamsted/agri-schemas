@@ -14,15 +14,33 @@
 # 
 # 
 
+# TODO: to be completed with:
+# - host-pathogen interaction as known knowledge
+# - semantic annotation, to link sentence, publication, and event
+#
+
+
+# The TM annotations has found this event about the effect that a pathogen has had on a crop
+#
 res:event_0 a schema:CreateAction, oa:Annotation;
-	# Qualifies specific GBCL properties
+  # This link can be set at the event level, at the crop/biomaterial level below, or both
+	schema:object res:study_0;
+
+	# This is normally related to the study, but can be reported here too, for convenience, or 
+	# because the TM is able to distinguish between different treatments.
+	schema:object res:treatment_0;
+
+  # Similarly, this is normally a study property, but can be linked from here too, for 
+	# convenience
+	schema: res:location_lemna_tec_0;
+
+	# Qualify specific GBCL properties
 	schema:additionalProperty [
-		# Qualifies specific GBCL properties
 		a schema:PropertyValue;
 		schema:propertyID "gbcl-text-mining:yield mention";
 		schema:value "yield";
-	],
-  [
+	];
+  schema:additionalProperty [
 		a schema:PropertyValue;
 		schema:propertyID "gbcl-text-mining:impact direction";
 		schema:value "loss";
@@ -37,7 +55,119 @@ res:event_0 a schema:CreateAction, oa:Annotation;
 		# This can be a code from UN/CEFAT or an URL to an ontology term (eg UO ontology)
 		# Use schema:unitText for more informal unit strings
 		schema:unitCode "%"; 
-	]
+	];
 
-  # TODO: to be completed, just started
+  # The specific crop used in this study.
+	#
+	# See the MIAPPE use case for details (https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case).
+	# Trial materials can be many more details, including their specific location (and the locatio of
+	# the material provider), the deployment in the study units (eg, plots with rows/columns, pots in 
+	# a greenhouse).
+  #
+	schema:object [
+		#
+		# This is a biomaterial in the MIAPPE sense, ie, the plant/seeds that were cultivated and used
+		# for the trial. The source is where the material was obtained from (eg, seed/germplasm bank),
+		# the samples are the samples taken from this cultivated material (eg, leaves, cells).
+		a agri:FieldTrialBioMaterial, schema:BioChemEntity;
+		
+		# This is prescribed by Bioschemas
+		bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_2529935>;
+		# While the same can possibly be stated this way, to ensure further interoperability
+		dc:type <http://purl.obolibrary.org/obo/NCBITaxon_2529935>;
+		schema:name "Triticum aestivum var. graecum";
+
+		schema:subjectOf res:study_0; # links to the study below
+
+		# Where this study material comes from. The same mechanism can be used to describe 
+		# the taxonomical hierarchy
+		#
+		bioschema:isPartOfBioChemEntity [
+			a agri:FieldTrialMaterialSource, schema:BioChemEntity;
+			bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_4565>; 
+			schema:name "Triticum Aestivum";
+			schema:identifier <http://eurisco.ipk-gatersleben.de/apex/f?p=103:16:::NO::P16_EURISCO_ACC_ID:1668187>;
+			# This is the location of the source, not of the study (FieldTrialBioMaterial or bioschema:Study
+			# can have their own location).
+			schema:contentLocation [
+				a schema:Place;
+				schema:latitude 51.827721;
+				schema:longitude 11.27778;
+			];
+		]; # /FieldTrialMaterialSource
+	]; # /FieldTrialBioMaterial
+
+  # The pathogen that affected the crop
+	schema:object res:pathogen_0;
+
+. # /event_0
+
+
+# The pathogen. This is an organism, so it's model like the crop
+res:pathogen_0 a schema:BioChemEntity;
+	bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_168172>;
+	# While the same can possibly be stated this way, to ensure further interoperability
+	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_168172>;
+
+  # TODO: do we need a property for scientific name? 
+	# The alternative is schema:additionalProperty
+	schema:name "Puccinia striiformis f. sp. tritici";
+	schema:alternateName "Yellow Rust";
+
+  # if you use this, this resource becomes the pathogen mentioned in the study only, it can't
+	# be generalised to represent the y. rust, since it has this role specifically in the study
+	#
+	# The alternative is using the a reified statement like: (<event object pathogen> role)
+	schema:role [
+		a schema:Role;
+		schema:roleName "pathogen";
+	]
+.
+
+
+
+# The study that the above event, text mining annotation and publication is about
+# See the MIAPPE example and Bioschemas, there is a rich set of slots to describe a study.
+#
+res:study_0 a bioschema:Study;
+	schema:identifier "1135FA";
+	schema:name "Trial to investigate how a new pesticide affects the yellow rust damage...";
+	schema:description "Blah Blah Blah...";
+	schema:dateCreated ""; # maps the submission date
+	schema:datePublished "";
+	schema:startDate "2011-08-09";
+	schema:endDate "2011-10-02";
 	
+	schema:studyLocation res:location_lemna_tec_0;
+
+	schema:additionalProperty res:treatment_0;
+
+.
+
+
+# The study location
+# schema: allows for different ways and granularity to describe places and addresses
+#
+res:location_lemna_tec_0 a schema:Place;
+	schema:name "LemnaTec Facility";
+	schema:latitude 52.521600;
+	schema:longitude 16.659648;
+	# The alternative to this is a simple schema:containedInPlace <https://dbpedia.org/resource/Germany>
+	schema:containedInPlace [
+		a schema:Country;
+		schema:name "Germany";
+		schema:sameAs <https://dbpedia.org/resource/Germany>
+	]
+.
+
+res:treatment_0 a agri:ExperimentalFactorValue, schema:PropertyValue;
+  schema:name "treatment:nitrogen"; # Redundant if you use hasExperimentalFactorType
+	schema:propertyID ppeo:factor_value;
+	schema:value 20;
+	# Sa above, unitCode for CEFAT/terms, this for informal text
+	schema:unitText "mg/ha";
+	# See the MIAPPE use case, we have provisions to describe type/value separately
+	# You can additionally use dc:type or schema:additionalProperty to link to the type
+	# agri:hasExperimentalFactorType ...
+	dc:type http://purl.obolibrary.org/obo/CHEBI_29351
+.
