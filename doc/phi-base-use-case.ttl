@@ -24,7 +24,7 @@ res:phiInt001 a schema:Action, agri:HostPathogenInteraction;
   	# host-pathogen interaction
 		<http://purl.obolibrary.org/obo/OHPI_0000001>,
 		# biological process involved in symbiotic interaction
-  	<http://purl.obolibrary.org/obo/GO_0044403.
+  	<http://purl.obolibrary.org/obo/GO_0044403>.
 
 	# in schema.org, object is synonym of participant
 	schema:object [
