@@ -21,7 +21,7 @@ res:cit_tob1_23236473 a rdf:Statement;
 	rdf:predicate schema:mentions;
 	agri:score 0.95;
 	agri:evidence "instrument: Ondex Text Mining";
-	agri:evidence "source sentence: The sentence mentioning the protein TOB1 in the publication"
+	agri:evidence "source sentence: The sentence mentioning the protein TOB1 in the publication";
 .
 
 res:tob1  a bioschema:Protein.
@@ -63,8 +63,8 @@ res:text_mining_run_0 a schema:CreateAction, oa:Annotation;
 		# This might be useful for representing the sentence location on the original text,
 		# TODO: do we need them?
 		a schema:CreativeWork;
-		schema:text "The sentence mentioning the protein TOB1 in the publication"
-	]
+		schema:text "The sentence mentioning the protein TOB1 in the publication";
+	];
   # The usual properties to qualify the annotation details
 	agri:score 0.95;
 	schema:startTime "2023-03-06";

@@ -14,10 +14,52 @@
 # 
 # 
 
-# TODO: to be completed with:
-# - host-pathogen interaction as known knowledge
-# - semantic annotation, to link sentence, publication, and event
+# TODO: review
+
+# Semantic annotation, to link sentence, publication, and event
 #
+# TODO: should we use bioschema:SemanticTextAnnotation? At the moment it has issues:
+#  * https://github.com/BioSchemas/specifications/issues/640
+#  * https://bioschemas.org/profiles/SemanticTextAnnotation/0.3-DRAFT?
+#
+# oa:Annotation is to qualify it further
+
+res:text_mining_annotation_0 a schema:CreateAction, oa:Annotation;
+	schema:result res:event_0;
+	schema:result res:study_0; # redundant, you might want it here too for convenience
+
+	# This is another redundant statement (the publication is already in the statement), which 
+	# you might want to add for interoperability.
+	#
+	# See the biomolecular use case for an example of how publication details can be represented:
+	# https://github.com/Rothamsted/agri-schemas/blob/master/doc/biomol-use-case.ttl
+	schema:object res:pub_23236473;
+
+	schema:object [
+		# A possible way to represent the source sentence, beyond just a simple string. 
+		# This might be useful for representing the sentence location on the original text,
+		# TODO: do we need them?
+		a schema:CreativeWork;
+		schema:text "This sees yellow rust <pest_name_common>  rating for varieties such as Zyatt, Insitor, Gleam and Shabras drop <impact_direction>  from 7s to 5s, and the brown rust rating of Firefly fall <impact_direction>  from a 6 to 5. New winter wheat";
+		schema:isBasedOn res:pub_23236473;
+	];
+  # The usual properties to qualify the annotation details
+	agri:score 0.95;
+	schema:startTime "2023-03-06";
+
+  # As above, this can be either a simple string, or something like an instance of schema:SoftwareApplication
+	schema:instrument [
+		# TODO: Possibly use EDAM for a more precise qualifier
+		a schema:SoftwareApplication;
+		schema:name "The GBCL Text Mining Tool";
+		schema:author [
+			a schema:Organization;
+			schema:name "CABI"
+		]
+	]
+. # /text_mining_annotation_0
+
+
 
 
 # The TM annotations has found this event about the effect that a pathogen has had on a crop
@@ -103,6 +145,22 @@ res:event_0 a schema:CreateAction, oa:Annotation;
 . # /event_0
 
 
+# The t. aestivum.
+res:triticum_aestivum_0 a agri:FieldTrialMaterialSource, schema:BioChemEntity;
+	bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_4565>; 
+	schema:name "Triticum Aestivum";
+	schema:identifier <http://eurisco.ipk-gatersleben.de/apex/f?p=103:16:::NO::P16_EURISCO_ACC_ID:1668187>;
+	# This is the location of the source, not of the study (FieldTrialBioMaterial or bioschema:Study
+	# can have their own location).
+	schema:contentLocation [
+		a schema:Place;
+		schema:latitude 51.827721;
+		schema:longitude 11.27778;
+	];
+.
+
+
+
 # The pathogen. This is an organism, so it's model like the crop
 res:pathogen_0 a schema:BioChemEntity;
 	bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_168172>;
@@ -142,6 +200,8 @@ res:study_0 a bioschema:Study;
 
 	schema:additionalProperty res:treatment_0;
 
+	# This can alternatively be stated using the inverse pub schema:about study
+	schema:subjectOf res:pub_23236473;
 .
 
 
@@ -171,3 +231,47 @@ res:treatment_0 a agri:ExperimentalFactorValue, schema:PropertyValue;
 	# agri:hasExperimentalFactorType ...
 	dc:type http://purl.obolibrary.org/obo/CHEBI_29351
 .
+
+
+
+# Host-pathogen interaction as known general knowledge.
+#
+# This is similar to the PHI-Base use case:
+# https://github.com/Rothamsted/agri-schemas/blob/master/doc/phi-base-use-case.ttl
+#
+# schema:Action can be redundantly added, to ease consumers like Google
+res:host_pathogen_interaction_0 a schema:Action, agri:HostPathogenInteraction;	
+	# Similarly, this is redundant but could help
+	schema:additionalType
+  	# host-pathogen interaction
+		<http://purl.obolibrary.org/obo/OHPI_0000001>,
+		# biological process involved in symbiotic interaction
+  	<http://purl.obolibrary.org/obo/GO_0044403>.
+
+	# in schema.org, object is synonym of participant
+
+  # The host and the pathogen. Roles can be attached as shown above, or 
+	# as recommended by schema.org/Role: object/[ a Role; object <host/pathogen>)]
+	schema:object res:triticum_aestivum_0;
+	# And the pathogen
+	schema:object res:pathogen_0;
+
+	schema:result [
+		a schema:PropertyValue;
+
+    # Can't find a term for this, but this is the way to annotate
+		# dc:type <http://purl.obolibrary.org/obo/TO_0000905>;
+
+		# As you can see from the gene annotation above, 
+		# these could be taken from resolving the dc:type, but they're often added to ease data
+		# consumers
+		schema:propertyID "gbcl:impact type";
+		schema:value "yield loss";
+	];
+
+	agri:evidence event_0;
+	# These are redundant, but you might still want them here
+	agri:evidence res:study_0, res:pub_23236473;
+
+.
+
