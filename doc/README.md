@@ -19,7 +19,7 @@ These are the use cases considered:
 
   * [Molecular Biology, pathways/genes/proteins](biomol-use-case.ttl) (from Knetminer)
   * [Molecular Biology, ontology terms](ontology-use-case.ttl) (from Knetminer)
-  * [Semantic annotations](doc/text-mining-use-case) (ex, text mining annotations)
+  * [Semantic annotations](text-mining-use-case) (ex, text mining annotations)
   * [Molecular Biology, host-pathogen interactions](phi-base-use-case.ttl) (PHI-Base)
   * Dataset description, TODO (based on `bioschema:Dataset`, but CKAN might need DCAT, VoID is also worth to consider)
   * Field trials
