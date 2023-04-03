@@ -100,19 +100,70 @@ res:event_0 a schema:CreateAction, oa:Annotation;
 	];
 
   # The specific crop used in this study.
-	#
-	# See the MIAPPE use case for details (https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case).
-	# Trial materials can be many more details, including their specific location (and the locatio of
-	# the material provider), the deployment in the study units (eg, plots with rows/columns, pots in 
-	# a greenhouse).
+	# Se the definition of this entity below for details.
   #
-	schema:object [
-		#
-		# This is a biomaterial in the MIAPPE sense, ie, the plant/seeds that were cultivated and used
-		# for the trial. The source is where the material was obtained from (eg, seed/germplasm bank),
-		# the samples are the samples taken from this cultivated material (eg, leaves, cells).
-		a agri:FieldTrialBioMaterial, schema:BioChemEntity;
-		
+	schema:object res:crop_2529935;
+
+  # The pathogen that affected the crop
+	schema:object res:pathogen_0;
+
+. # /event_0
+
+
+# This can be used to make it clear that this organism plays the pathogen role in the 
+# event above. Note that the schema.org way to state the same is:
+# 
+#   event - object -> [ a Role; name 'pathogen', object -> pathogen_0 ]
+#  
+# While this can be optionally added, we aren't using it here, both to be coherent with
+# many other cases of annotated relationships and because reified statements can easily be turned
+# into a native relationships with properties in RDF-star or property graphs, ie, 
+# you could have a simpler:
+#
+#  (event_0) - [ object{ roleName 'pathogen' } ] -> (pathogen_0)
+#
+res:event_0_object_pathogen_0 a rdf:Statement;
+  rdf:predicate schema:object;
+	rdf:subject res:event_0;
+	rdf:object res:pathogen_0;
+	# The domain of this is schema:Role, but the validator won't complain, since it doesn't
+	# check types that aren't within schema:
+	schema:roleName "pathogen";
+.
+
+# Exactly the same for the crop
+res:event_0_object_crop_0 a rdf:Statement;
+  rdf:predicate schema:object;
+	rdf:subject res:event_0;
+	rdf:object res:triticum_aestivum_0;
+	schema:roleName "crop";
+.
+
+# The pathogen. This is an organism, so it's model like the crop below
+res:pathogen_0 a schema:BioChemEntity;
+	bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_168172>;
+	# While the same can possibly be stated this way, to ensure further interoperability
+	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_168172>;
+
+  # TODO: do we need a property for scientific name? 
+	# The alternative is schema:additionalProperty
+	schema:name "Puccinia striiformis f. sp. tritici";
+	schema:alternateName "Yellow Rust";
+.
+
+
+# The specific crop used in this study.
+#
+# See the MIAPPE use case for details (https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case).
+# Trial materials can be many more details, including their specific location (and the location of
+# the material provider), the deployment in the study units (eg, plots with rows/columns, pots in 
+# a greenhouse).
+#
+# This is a biomaterial in the MIAPPE sense, ie, the plant/seeds that were cultivated and used
+# for the trial. The source is where the material was obtained from (eg, seed/germplasm bank),
+# the samples are the samples taken from this cultivated material (eg, leaves, cells).
+#
+res:crop_2529935 a agri:FieldTrialBioMaterial, schema:BioChemEntity;
 		# This is prescribed by Bioschemas
 		bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_2529935>;
 		# While the same can possibly be stated this way, to ensure further interoperability
@@ -124,28 +175,13 @@ res:event_0 a schema:CreateAction, oa:Annotation;
 		# Where this study material comes from. The same mechanism can be used to describe 
 		# the taxonomical hierarchy
 		#
-		bioschema:isPartOfBioChemEntity [
-			a agri:FieldTrialMaterialSource, schema:BioChemEntity;
-			bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_4565>; 
-			schema:name "Triticum Aestivum";
-			schema:identifier <http://eurisco.ipk-gatersleben.de/apex/f?p=103:16:::NO::P16_EURISCO_ACC_ID:1668187>;
-			# This is the location of the source, not of the study (FieldTrialBioMaterial or bioschema:Study
-			# can have their own location).
-			schema:contentLocation [
-				a schema:Place;
-				schema:latitude 51.827721;
-				schema:longitude 11.27778;
-			];
-		]; # /FieldTrialMaterialSource
+		bioschema:isPartOfBioChemEntity res:triticum_aestivum_0;
 	]; # /FieldTrialBioMaterial
-
-  # The pathogen that affected the crop
-	schema:object res:pathogen_0;
-
-. # /event_0
 
 
 # The t. aestivum.
+# Again, this is material source in the MIAPPE sense.
+#
 res:triticum_aestivum_0 a agri:FieldTrialMaterialSource, schema:BioChemEntity;
 	bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_4565>; 
 	schema:name "Triticum Aestivum";
@@ -158,30 +194,6 @@ res:triticum_aestivum_0 a agri:FieldTrialMaterialSource, schema:BioChemEntity;
 		schema:longitude 11.27778;
 	];
 .
-
-
-
-# The pathogen. This is an organism, so it's model like the crop
-res:pathogen_0 a schema:BioChemEntity;
-	bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_168172>;
-	# While the same can possibly be stated this way, to ensure further interoperability
-	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_168172>;
-
-  # TODO: do we need a property for scientific name? 
-	# The alternative is schema:additionalProperty
-	schema:name "Puccinia striiformis f. sp. tritici";
-	schema:alternateName "Yellow Rust";
-
-  # if you use this, this resource becomes the pathogen mentioned in the study only, it can't
-	# be generalised to represent the y. rust, since it has this role specifically in the study
-	#
-	# The alternative is using the a reified statement like: (<event object pathogen> role)
-	schema:role [
-		a schema:Role;
-		schema:roleName "pathogen";
-	]
-.
-
 
 
 # The study that the above event, text mining annotation and publication is about
