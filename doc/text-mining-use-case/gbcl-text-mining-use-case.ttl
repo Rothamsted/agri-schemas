@@ -14,8 +14,6 @@
 # 
 # 
 
-# TODO: review
-
 # Semantic annotation, to link sentence, publication, and event
 #
 # TODO: should we use bioschema:SemanticTextAnnotation? At the moment it has issues:
