@@ -110,7 +110,7 @@ class GxaTest ( unittest.TestCase ):
 		)
 
 		self.assert_rdf ( graph, 
-			"ASK { bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a rdfs:Statement }",
+			"ASK { bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a rdf:Statement }",
 			"traescs7a02g356100/stage-30-50 not stated!"
 		)
 
@@ -172,7 +172,7 @@ class GxaTest ( unittest.TestCase ):
 		
 		cond_uri = "bkr:gxaexp_E-MTAB-4289_traescs7d02g366500_blumeria_graminis_0x3B_72_hour_vs_control"
 		self.assert_rdf ( graph, 
-			f"""ASK {{ {cond_uri} a rdfs:Statement; 
+			f"""ASK {{ {cond_uri} a rdf:Statement; 
 				rdf:subject bkr:gene_traescs7d02g366500;
 				rdf:predicate bioschema:expressedIn;
 				rdf:object bkr:cond_blumeria_graminis_0x3B_72_hour;
@@ -221,7 +221,7 @@ class GxaTest ( unittest.TestCase ):
 		
 		self.assert_rdf ( graph, 
 		  """ASK { 
-		    ?dex a rdfs:Statement;
+		    ?dex a rdf:Statement;
 					rdf:subject ?gene;
 					rdf:predicate bioschema:expressedIn;
 					rdf:object bkr:cond_vip2_overexpression;
@@ -245,7 +245,7 @@ class GxaTest ( unittest.TestCase ):
 		
 		self.assert_rdf ( graph, 
 		  """ASK { 
-		    ?dex a rdfs:Statement;
+		    ?dex a rdf:Statement;
 					rdf:subject ?gene;
 					rdf:predicate bioschema:expressedIn;
 					rdf:object ?cond;
@@ -276,7 +276,7 @@ class GxaTest ( unittest.TestCase ):
 		
 		self.assert_rdf ( graph, 
 		  """ASK { 
-		    ?dex a rdfs:Statement;
+		    ?dex a rdf:Statement;
 					rdf:subject ?gene;
 					rdf:predicate bioschema:expressedIn;
 					rdf:object bkr:cond_sodium_chloride_0x3B_150_millimolar;
@@ -313,7 +313,7 @@ class GxaTest ( unittest.TestCase ):
 		)
 		
 		self.assert_rdf ( graph, 
-			"ASK { bkr:gxaexp_E-MTAB-4260_traescs1a02g115900_endosperm_and_seed_coat_0x2C_4_days_after_pollination a rdfs:Statement }",
+			"ASK { bkr:gxaexp_E-MTAB-4260_traescs1a02g115900_endosperm_and_seed_coat_0x2C_4_days_after_pollination a rdf:Statement }",
 			"Gene expression statement not found!"
 		)
 

@@ -36,12 +36,14 @@ bkr:pmid_26044828 a agri:ScholarlyPublication;
 bkr:gene_traescs7d02g431500 bioschema:expressedIn cond_4_week_0x3B_cold_temperature_regimen.
 
 # Then, add attributes via reification
-bkr:gxaexp_E-GEOD-58805_traescs7d02g431500_4_week_0x3B_cold_temperature_regimen_vs_2_week_0x3B_control a rdfs:Statement;
+bkr:gxaexp_E-GEOD-58805_traescs7d02g431500_4_week_0x3B_cold_temperature_regimen_vs_2_week_0x3B_control a rdf:Statement;
   rdf:subject bkr:gene_traescs7d02g431500;
 	rdf:predicate bioschema:expressedIn;
 	rdf:object bkr:cond_4_week_0x3B_cold_temperature_regimen;
 	# We propose a set of specific properties to indicate these sequencing technology details
-	# TODO: there is an alternative representation, based on property values, see the MIAPPE use case
+	# TODO: there is an alternative representation, based on property values, see the MIAPPE use case. 
+	# That is, the expressedIn statement becomes a ComputedValue too, so that we have a uniform
+	# representation of experimental results.
 	agri:log2FoldChange 1.9;
 	agri:pvalue 3.129E-29;
 .
@@ -53,12 +55,12 @@ bkr:gxaexp_E-GEOD-58805_traescs7d02g431500_4_week_0x3B_cold_temperature_regimen_
 bkr:gene_traescs1d02g156000 bioschema:expressedIn bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer.
 
 # Then, add attributes via reification
-bkr:gxaexp_E-GEOD-38344_traescs1d02g156000_14_day_post_anthesis_0x2C_aleurone_layer a rdfs:Statement;
+bkr:gxaexp_E-GEOD-38344_traescs1d02g156000_14_day_post_anthesis_0x2C_aleurone_layer a rdf:Statement;
   rdf:subject bkr:gene_traescs1d02g156000;
 	rdf:predicate bioschema:expressedIn;
 	rdf:object bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer;
 	# We propose a set of specific properties to indicate these sequencing technology details
-	# TODO: there is an alternative representation, based on property values, see the MIAPPE use case
+	# TODO: again, could be based on the ComputedValue proposed for MIAPPE.
 	agri:tpmCount 32;
 	# Based on common thresholds used for TPM, but this is a very specific detail
 	agri:ordinalTpm "medium"; 
@@ -109,7 +111,7 @@ data, using the modelling approach shown above. You can find the data and sample
 In the GXA conversion above, we modelled details like base conditions and time points:
 
 ```javascript
-bkr:gxaexp_E-GEOD-16333_at5g02540_pif4_0x3B_pif5_vs_wild_type_in_far-red_light_1h a rdfs:Statement;
+bkr:gxaexp_E-GEOD-16333_at5g02540_pif4_0x3B_pif5_vs_wild_type_in_far-red_light_1h a rdf:Statement;
   rdf:subject bkr:gene_at5g02540;
 	rdf:predicate bioschema:expressedIn;
 	rdf:object bkr:cond_pif4_0x3B_pif5;

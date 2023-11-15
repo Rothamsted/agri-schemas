@@ -127,7 +127,7 @@ def rdf_gxa_tpm_levels ( exp_acc: str, out = stdout, condition_labels: set = Non
 		cond_uri = make_condition_uri ( condition_label )
 	
 		rdf = f"""
-			bkr:gxaexp_{exp_acc}_{gene_id_nrm}_{cond_id} a rdfs:Statement;
+			bkr:gxaexp_{exp_acc}_{gene_id_nrm}_{cond_id} a rdf:Statement;
 				agri:tpmCount {tpm};
 				agri:ordinalTpm "{ordinal_tpm}";
 				rdf:subject {gene_uri};
@@ -265,7 +265,7 @@ def rdf_gxa_dex_levels (
 		if time_point != -1: exp_stmt_uri += f"_{time_point}h"
 	
 		rdf = f"""
-			{exp_stmt_uri} a rdfs:Statement;
+			{exp_stmt_uri} a rdf:Statement;
 				rdf:subject {gene_uri};
 				rdf:predicate bioschema:expressedIn;
 				rdf:object {cond_uri};

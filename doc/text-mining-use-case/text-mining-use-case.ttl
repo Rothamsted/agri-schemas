@@ -85,16 +85,16 @@ res:text_mining_run_0 a schema:CreateAction, oa:Annotation;
 # Another variant: The text mining tool has produced multiple relations
 # These are statements having the same form as above
 #
-res:cit_protein1_pub1_1 a rdfs:Statement
+res:cit_protein1_pub1_1 a rdf:Statement
   agri:evidence res:text_mining_run_1
 .
-res:cit_protein1_pub1_2 a rdfs:Statement.
+res:cit_protein1_pub1_2 a rdf:Statement.
   agri:evidence res:text_mining_run_1
 .
-res:cit_protein1_pub2_1 a rdfs:Statement.
+res:cit_protein1_pub2_1 a rdf:Statement.
   agri:evidence res:text_mining_run_1
 .
-res:cit_protein2_pub3_1 a rdfs:Statement.
+res:cit_protein2_pub3_1 a rdf:Statement.
   agri:evidence res:text_mining_run_1
 .
 

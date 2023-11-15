@@ -113,7 +113,7 @@ res:pub_23236473 a agri:ScholarlyPublication;
 #
 res:tob1  bioschema:expressedIn "Treated with Pesticide 1".
 
-bkr:degex_tob1_sample1 a rdfs:Statement;
+bkr:degex_tob1_sample1 a rdf:Statement;
 	agri:pvalue     "0.000000600497806344172"^^xsd:double ;
 	# This points precisely to the sample that allow for achieving this result from the data analysis, 
 	# but it could be a more indirect likn, eg, to the experiment.
