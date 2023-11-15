@@ -1,5 +1,7 @@
 # Translating GXA data to agrischemas
 
+<img src = "gxa-use-case.png" width = "120%" />
+
 ## Experiment, general description
 
 This is similar to the [MIAPPE use case](../miappe-use-case/README.md).
@@ -80,7 +82,10 @@ bkr:gene_traescs1d02g156000 a bioschema:Gene;
 	# other properties, see the biomolecular biology case
 .
 
-# The reference conditions 
+# The reference conditions
+# TODO: agri:ExperimentalFactorValue to be migrated to ExperimentalFactorValue
+# (as per MIAPPE agreements)
+#  
 bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:StudyFactor; 
   schema:name "14 day post anthesis, aleurone layer";
   # These can come from eg, manual curation or auto-annotation
