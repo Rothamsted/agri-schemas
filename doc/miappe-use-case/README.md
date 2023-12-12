@@ -7,8 +7,7 @@
 * We took one of the examples that the MIAPPE paper mentions and re-mapped the 
   ISA-Tab attached to the paper into bioschema.org, schema.org and (possibly new) AgriSchemas types.
   Details [here](dataset-arabidopsis).
-* Most of the work has been done with the the ELIXIR Plant Biology community. A summary of the 
-  mapping we agreed is here (TODO: the MIAPPE to multiple formats spreadsheet)
+* Most of the work has been done with the the ELIXIR Plant Biology community. A summary of [the mapping we agreed is here](MIAPPE-multiple-mappings.xlsx).
 
 * Some MIAPPE docs:
   * [MIAPPE Diagram](https://github.com/MIAPPE/MIAPPE/tree/master/MIAPPE_Checklist-Data-Model-v1.1)
@@ -20,7 +19,7 @@
 *click on the image for zooming-in*
 <a href ="agrischema-miappe-modelling.png"><img src="agrischema-miappe-modelling.png" width = '105%'/></a>
 
-* [A real use case here](dataset-arabidopsis)
+* [A real use case here](dataset-arabidopsis), together with explanations about data modelling choices emerged during the plant biology collaboration.
 
 *The figure is based on [yED](https://www.yworks.com/products/yed), original file [here](agrischema-miappe-modelling.graphmlz)*.
     
