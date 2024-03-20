@@ -408,7 +408,7 @@ ex:observed_value_1135FA1001_dry_weight_covered_rotating a agri: StudyObservedV
 	schema:unitText "mg";
 
 	agri:evidence 
-		ex:sample_1135FA1001;
+		ex:sample_1135FA1001,
 		ex:1135FA_manual_phenotyping_xlsx;
 
 		# This is how we associate FVs. It could be inferred from the sample, but that's often very difficult

@@ -8,12 +8,9 @@ The work was born within the [Design Future Wheat](https://designingfuturewheat.
 
 ## Use cases
 
-This work has started with a first DFW hackathon in 2018, where we first [outlined the possible 
-types](https://docs.google.com/document/d/15yMoJDvVEE-mDQgIUY-l1foTb35Qp_qsMIgReyP5VoQ/edit) (ie, 
-classes, properties/relations) that we might need in DFW-relevant data.
+This work has started with a first DFW hackathon in 2018, where we first [outlined the possible types](https://docs.google.com/document/d/15yMoJDvVEE-mDQgIUY-l1foTb35Qp_qsMIgReyP5VoQ/edit) (ie, classes, properties/relations) that we might need in DFW-relevant data.
 
-Leveraging that, we have started considering use cases from real data, and we have started 
-modelling them using existing schemas. At the same time, we have started to [propose new types](agri-schema.ttl) as needed.
+Leveraging that, we have started considering use cases from real data, and we have started modelling them using existing schemas. At the same time, we have started to [propose new types](agri-schema.ttl) as needed.
 
 These are the use cases considered:
 
@@ -30,9 +27,7 @@ These are the use cases considered:
   * [Weather conditions and forecasts](weather-use-case.md)
 
 ## Modelling principles
-[Some notes](modelling-principles.md) on general criteria adopted to outline the use case models
-above.
+[Some notes](modelling-principles.md) on general criteria adopted to outline the use case models above.
 
 ## References
-[A collection of references](references.md) and links to various similar projects, hackathons, 
-schemas, etc.
+[A collection of references](references.md) and links to various similar projects hackathons, schemas, etc.
