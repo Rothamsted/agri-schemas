@@ -49,6 +49,9 @@ res:phiInt001 a schema:Action, agri:HostPathogenInteraction;
 		a bioschema:Phenotype;
 
 		schema:name "Fusarium graminearum";
+		# As per bioschemas
+		bioschema:taxonomicRange <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
+		# Possibly, an additional annotation that is more standard
 		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
 
 		schema:role [

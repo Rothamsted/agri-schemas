@@ -23,21 +23,26 @@
 # oa:Annotation is to qualify it further
 
 res:text_mining_annotation_0 a schema:CreateAction, oa:Annotation;
+	# The annotation extracted info about event_0
 	schema:result res:event_0;
-	schema:result res:study_0; # redundant, you might want it here too for convenience
+	# and info about study_0. This is redundant (event is linked to study), 
+	# you might want it here too for convenience
+	schema:result res:study_0; 
 
-	# This is another redundant statement (the publication is already in the statement), which 
-	# you might want to add for interoperability.
+	# This is another redundant statement (the publication is already linked from the statement), 
+	# which you might want to add for interoperability.
 	#
 	# See the biomolecular use case for an example of how publication details can be represented:
 	# https://github.com/Rothamsted/agri-schemas/blob/master/doc/biomol-use-case.ttl
 	schema:object res:pub_23236473;
 
 	schema:object [
-		# A possible way to represent the source sentence, beyond just a simple string. 
-		# This might be useful for representing the sentence location on the original text,
-		# TODO: do we need them?
+		# A possible way to represent the source sentence, beyond just a simple string.
+		# Having this as a resource might be useful for representing the sentence location 
+		# on the original text.
 		a schema:CreativeWork;
+		schema:additionalType <http://semanticscience.org/resource/SIO_000113>; # sentence
+
 		schema:text "This sees yellow rust <pest_name_common>  rating for varieties such as Zyatt, Insitor, Gleam and Shabras drop <impact_direction>  from 7s to 5s, and the brown rust rating of Firefly fall <impact_direction>  from a 6 to 5. New winter wheat";
 		schema:isBasedOn res:pub_23236473;
 	];
@@ -60,7 +65,7 @@ res:text_mining_annotation_0 a schema:CreateAction, oa:Annotation;
 
 
 
-# The TM annotations has found this event about the effect that a pathogen has had on a crop
+# The TM annotation has found this event about the effect that a pathogen has had on a crop
 #
 res:event_0 a schema:CreateAction, oa:Annotation;
   # This link can be set at the event level, at the crop/biomaterial level below, or both
@@ -72,7 +77,7 @@ res:event_0 a schema:CreateAction, oa:Annotation;
 
   # Similarly, this is normally a study property, but can be linked from here too, for 
 	# convenience
-	schema: res:location_lemna_tec_0;
+	schema:location res:location_lemna_tec_0;
 
 	# Qualify specific GBCL properties
 	schema:additionalProperty [
@@ -162,19 +167,19 @@ res:pathogen_0 a schema:BioChemEntity;
 # the samples are the samples taken from this cultivated material (eg, leaves, cells).
 #
 res:crop_2529935 a agri:FieldTrialBioMaterial, schema:BioChemEntity;
-		# This is prescribed by Bioschemas
-		bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_2529935>;
-		# While the same can possibly be stated this way, to ensure further interoperability
-		dc:type <http://purl.obolibrary.org/obo/NCBITaxon_2529935>;
-		schema:name "Triticum aestivum var. graecum";
+	# This is prescribed by Bioschemas
+	bioschema:taxonomicRange <http://purl.obolibrary.org/obo/NCBITaxon_2529935>;
+	# While the same can possibly be stated this way, to ensure further interoperability
+	dc:type <http://purl.obolibrary.org/obo/NCBITaxon_2529935>;
+	schema:name "Triticum aestivum var. graecum";
 
-		schema:subjectOf res:study_0; # links to the study below
+	schema:subjectOf res:study_0; # links to the study below
 
-		# Where this study material comes from. The same mechanism can be used to describe 
-		# the taxonomical hierarchy
-		#
-		bioschema:isPartOfBioChemEntity res:triticum_aestivum_0;
-	]; # /FieldTrialBioMaterial
+	# Where this study material comes from. The same mechanism can be used to describe 
+	# the taxonomical hierarchy
+	#
+	bioschema:isPartOfBioChemEntity res:triticum_aestivum_0;
+. # /FieldTrialBioMaterial
 
 
 # The t. aestivum.
@@ -282,6 +287,5 @@ res:host_pathogen_interaction_0 a schema:Action, agri:HostPathogenInteraction;
 	agri:evidence event_0;
 	# These are redundant, but you might still want them here
 	agri:evidence res:study_0, res:pub_23236473;
-
 .
 

@@ -166,21 +166,24 @@ ex:study a bioschema:Study;
 			schema:propertyID ppeo:observation_level_hierarchy;
 		]
 		# Possibly, "map of experimental design" is to be encoded the same way
-	],
+
+	]; # /ExperimentalDesign
 
 	### The study factor types
 	# 
 	# They can be linked to the study simply as addtional properties, it's possible to know that an additional property
 	# is a factor, by just querying the type.
 	#
+schema:additionalProperty
 	ex:factor_soil_cover,
 	ex:factor_plant_movement,
 
-	### the observed variable
+	### the observed variables
 	#
 	# Again, additional property is the simplest way to link studies, samples, data to these.
 	#
-	ex:observed_variable_dry_weight;
+	ex:observed_variable_dry_weight, # Bare weight values
+	ex:observed_variable_dry_weight_anova_pvalue; # Computed values
 
 	# schema:citation for study-specific publications, to be used as above.
 .
@@ -249,19 +252,34 @@ ex:fv_stationary a agri:ExperimentalFactorValue, schema:PropertyValue; #redundan
 #
 
 # As said, we propose to extend LabProtocol from Action, so that we can use its process-like properties
-# 
+#
+# TODO: In the Bioschema drafts, we now have LabProtocol and LabProcess, to distinguish
+# between a plan and a process:
+# - https://bioschemas.org/types/LabProtocol/0.5-DRAFT
+# - https://bioschemas.org/types/LabProcess/0.1-DRAFT
+# 
+# However:
+# - This is specific to Bioschemas and scaled to schema.org
+# - Input and output modelled as FormalParameter, sample and reagent are considered
+#   separated properties, not inputs
+# - Confusion between labEquiment, and schema.org properties: instrument, tool,
+#   supply
+# - Confusion between yield and protcolOutcome
+#
+# A first slight improvement here, might be describing the protocol as plan separately, as a
+# LabProtocol, and then use LabProcess here, where we link inputs/outputs
+#
 ex:growthProtocol a bioschema:LabProtocol, schema:Action;
 	# Alternatively, we might define a specific agri:FieldTrialGrowthProtocol as
 	# a subclass of bioschema:LabProtocol
-	dc:type efo:EFO_0003789;
-
+	dc:type efo:EFO_0003789; # Growth Protocol
 
   schema:isPartOf ex:study; # use this to link to study
 
   # bioschemas recommends headline for the title, but this is seldom used in schema.org examples
   schema:name "Growth Protocol";
 	# similarly, bioschemas recommends protocolPurpose, yet...
-	schema:description "";
+	schema:description "...";
 
 		# a new property, subclass of schema:additionalProperty
 	schema:additionalProperty
@@ -275,6 +293,9 @@ ex:growthProtocol a bioschema:LabProtocol, schema:Action;
 		schema:propertyID ppeo:growth_facility;
 	],
 	[
+		# TODO: we might change this according to bioschemas, which proposes 
+		# bioschema:parameterValue <PropertyValue>
+		#
 		a agri:LabProtocolParameterValue, schema:PropertyValue;
 		schema:name "rooting medium";
 		schema:value "85% (v) red substrate 1 (Klasmann-Deilmann GmbH, Geeste, Germany) / 15% (v) sand)";
@@ -382,7 +403,7 @@ ex:1135FA_manual_phenotyping_xlsx schema:DataDownload
 		ex:study;
 
 	# See the notes for possible alternatives
-	schema:additionalProperty ex:observed_variable_dried_weight;
+	schema:additionalProperty ex:observed_variable_dry_weight;
 
 	# TODO: more data download descriptors
 .
@@ -399,7 +420,7 @@ ex:observed_variable_dry_weight a agri:StudyObservedVariable, schema:PropertyVal
 	schema:value "Shoot Dry Weight";
 .
 
-ex:observed_value_1135FA1001_dry_weight_covered_rotating a agri: StudyObservedValue, schema:PropertyValue; # usual redundancy
+ex:observed_value_1135FA1001_dry_weight_covered_rotating a agri:StudyObservedValue, schema:PropertyValue; # usual redundancy
   schema:name "Observed Value: Dry Weight"; # redundant, as above
 	# schema:propertyID ??? TODO: nothing is available in PPEO
 	agri:hasObservedVariable ex:observed_variable_dry_weight;
@@ -419,19 +440,38 @@ ex:observed_value_1135FA1001_dry_weight_uncovered_rotating a agri: StudyObserve
   # As you can see, for each combination of FVs and for each observation value, we have a new value
 .
 
+
 ### Represening statistical analysis conclusions
 # 
 # This example was taken from the paper describing the ISATab submission 
 #
-ex:observed_value_dry_weight_anova a agri:StudyComputedValue, schema:PropertyValue;
-  schema:name "ANOVA p-value for Dry weight difference";
 
-	agri:hasObservedVariable ex:observed_variable_dried_weight;
-
-	schema:propertyID 
+ex:observed_variable_dry_weight_anova_pvalue a agri:StudyObservedVariable, schema:PropertyValue; # usual redundancy
+  schema:name "study observed variable"; # redundant, as above
+	schema:propertyID PPEO:observed_variable; # redundant, as above
+	
+	dc:type 
 	  obo:OBI_0000175, sio:SIO_000765, # pvalue
 		<http://purl.obolibrary.org/obo/STATO_0000045>, # 2-way ANOVA
 		<http://purl.obolibrary.org/obo/TO_0000552>; # shoot dry weight
+
+  schema:value "ANOVA p-value for Dry weight difference";
+.
+
+
+
+ex:observed_value_dry_weight_anova a agri:StudyComputedValue, schema:PropertyValue;
+  schema:name "ANOVA p-value for Dry weight difference";
+
+	# You can either attach this to describe the variable type, or 
+	# add details below. The first form is more coherent with bare variables
+	agri:hasObservedVariable ex:observed_variable_dry_weight_anova_pvalue;
+
+  # Alternative way to qualify it
+	#schema:propertyID 
+	#  obo:OBI_0000175, sio:SIO_000765, # pvalue
+	#	 <http://purl.obolibrary.org/obo/STATO_0000045>, # 2-way ANOVA
+	#  <http://purl.obolibrary.org/obo/TO_0000552>; # shoot dry weight
 
 	# The two conditions analysed
 	agri:baseCondition ex:fv_uncovered;
@@ -448,4 +488,3 @@ ex:observed_value_dry_weight_anova a agri:StudyComputedValue, schema:PropertyVal
 		ex:sample_1135FA1001;
 		ex:study;
 .
-

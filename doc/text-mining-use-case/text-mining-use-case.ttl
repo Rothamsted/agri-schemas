@@ -34,7 +34,7 @@ res:cit_tob1_23236473 a rdf:Statement;
 	rdf:object res:tob1;
 	rdf:predicate schema:mentions;
 	# This statement is the result of this annotation action and all the details about how it
-	# was obtained is below on the action
+	# was obtained are below on the action text_mining_run_0
 	agri:evidence res:text_mining_run_0
 .
 
@@ -49,6 +49,7 @@ res:text_mining_run_0 a schema:CreateAction, oa:Annotation;
 	# In this context (only), this is the inverse of agri:evidence
 	#
 	schema:result
+		res:cit_tob1_23236473, # The mentions statement above
 		res:cit_protein1_pub1_1, 
 		res:cit_protein1_pub1_2,
 		res:cit_protein1_pub2_1,
@@ -82,8 +83,8 @@ res:text_mining_run_0 a schema:CreateAction, oa:Annotation;
 .
 
 
-# Another variant: The text mining tool has produced multiple relations
-# These are statements having the same form as above
+# This is like res:cit_tob1_23236473, the text mining tool has produced multiple relations.
+# These are statements having the same form as above.
 #
 res:cit_protein1_pub1_1 a rdf:Statement
   agri:evidence res:text_mining_run_1
@@ -99,7 +100,7 @@ res:cit_protein2_pub3_1 a rdf:Statement.
 .
 
 
-# This is an annotation action, just as the previous case 
+# This is another annotation action, just as the previous case 
 res:text_mining_run_1 a schema:CreateAction, oa:Annotation;
 	
 	# The only difference is that we haven multiple results. The same trick can be used to 
@@ -121,7 +122,8 @@ res:text_mining_run_1 a schema:CreateAction, oa:Annotation;
 .
 
 
-## Another example, similar to the ones above, showing how to annotated entities
+## Another example, similar to the ones above, showing how to annotate a property
+#  with types and the text mining software that inferred them.
 #
 res:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:StudyFactor; 
   schema:name "14 day post anthesis, aleurone layer";
