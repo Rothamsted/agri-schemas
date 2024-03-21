@@ -1,6 +1,8 @@
 # General Modelling Principles
 
-The modelling above is being based on the following principles.
+The modelling in AgriSchemas is being based on the following principles.
+
+**==> We have added many more while [working on MIAPPE](miappe-use-case/dataset-arabidopsis/README.md).**
 
 ## Leverage primarily on schema.org and bioschemas 
 
