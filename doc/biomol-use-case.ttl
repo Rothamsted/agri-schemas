@@ -17,11 +17,12 @@ res:study1 a bioschema:Study;
 .
 
 # Original URIs can be reused. The resource will receive additional annotations.
+# Pathways are a specific case of process, action, or alike. See the notes in the 
+# PHI-Base use case.
 # 
-# Pathways are a specific case of process, action, or alike. See the notes in the PHI-Base use case.
-# 
-# As usually, we redundantly add direct links like schema:Action, to ease consumers like
-# Google
+# As usually, we redundantly add direct links like schema:Action, to ease 
+# consumers like Google.
+#
 <http://www.wikipathways.org/id1> a agri:BioPathway, schema:Action;
 	# Redundance as above
 	schema:additionalType
@@ -40,8 +41,8 @@ res:study1 a bioschema:Study;
 .
         
 res:tob1  a bioschema:Protein ;
-  # TODO: possibly we could use schema:identifier (which applies to schema:Thing), without
-	# having to introduce a specific ID like this.
+  # schema:identifier can be uses with text or property values, when
+	# you need to represent accessions and their provenance
 	schema:identifier      res:TOB1_acc ;
 	schema:name         "TOB1"^^xsd:string;
 	
@@ -80,21 +81,25 @@ res:cit_tob1_23236473 a schema:StructuredValue;
 
 
 # Structured accession, allow for linking of identifier and context.
-# We don't feel the need to introduce a new accession property, schema has already this mechanism for it, 
-# as described in the documentation of schema:identifier.
+# We don't feel the need to introduce a new accession property or type, 
+# schema has already this mechanism for it, as described in the documentation
+# of schema:identifier.
 #
-res:TOB1_acc  				a schema:PropertyValue;
-	# This might be redundant when you assume that any value of schema:identifier is like an accession.
-	# You might want this further qualifier for sake of precision or for practical purposes (eg, an app
-	# might have both a generic ID and accessions extracted from public DBs).
+res:TOB1_acc a schema:PropertyValue;
+	# This might be redundant when you assume that any value of schema:identifier 
+	# is like an accession. You might want this further qualifier for sake of 
+	# precision or for practical purposes (eg, an app might have both a generic 
+	# ID and accessions extracted from public DBs).
 	schema:propertyID "agri:Accession";
 	
-	# schema:value is normally used for PropertyValue, but you might want identifier too for accessions.
+	# schema:value is normally used for PropertyValue, but you might want identifier 
+	# too for accessions.
   schema:value 		"TOB1"^^<xsd:string> ;
   schema:identifier 		"TOB1"^^<xsd:string> ;
   
 	dc:source       		<https://www.uniprot.org/>;
-	# Could be part-of, but keep annotations simple enough and without too much variation
+	# Could be part-of, but keep annotations simple enough and without too much 
+	# variation
   rdfs:seeAlso 				obo:GO_0030014
 .
 
@@ -136,9 +141,10 @@ res:sample1 a bioschema:Sample ;
 	agri:hasStudyFactor res:expFact1
 .
 
-## Another one, about Genes, real data from http://knetminer.org/data/rdf/resources/gene_traescs1d02g156000
+## Another one, about Genes, real data from 
+# http://knetminer.org/data/rdf/resources/gene_traescs1d02g156000
 bkr:gene_traescs1d02g156000
-	schema:name                  "TRAESCS1D02G156000" ;
+	schema:name               "TRAESCS1D02G156000" ;
 	dc:source                 bko:DFW_ENSEMBL ;
 	dc:identifier             <http://knetminer.org/data/rdf/resources/accsn_wheatexp_traescs1d02g156000> ;
 	bioschema:encodesBioChemEntity  <http://knetminer.org/data/rdf/resources/protein_traescs1d02g156000_1> ;
@@ -146,7 +152,7 @@ bkr:gene_traescs1d02g156000
 	bko:prefName              "TRAESCS1D02G156000" ;
 	rdf:type                  bioschema:Gene ;
 	rdf:type                  biopax:Gene ;
-	schema:isPartOf              <http://knetminer.org/data/rdf/resources/coexpcluster_3278883> ;
+	schema:isPartOf           <http://knetminer.org/data/rdf/resources/coexpcluster_3278883> ;
 	rdfs:label                "TRAESCS1D02G156000" ;
 	bko:has_mutant            <http://knetminer.org/data/rdf/resources/snp_3405214> ;
 .

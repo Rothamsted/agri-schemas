@@ -43,10 +43,11 @@ bkr:gxaexp_E-GEOD-58805_traescs7d02g431500_4_week_0x3B_cold_temperature_regimen_
 	rdf:predicate bioschema:expressedIn;
 	rdf:object bkr:cond_4_week_0x3B_cold_temperature_regimen;
 
-	# We propose a set of specific properties to indicate these sequencing technology details
-	# TODO: there is an alternative representation, based on property values, see the MIAPPE use case. 
-	# That is, the expressedIn statement becomes a ComputedValue too, so that we have a uniform
-	# representation of experimental results.
+	# We propose a set of specific properties to indicate these sequencing technology details.
+	#
+	# TODO: there is an alternative representation, based on property values, 
+	# see the MIAPPE use case. That is, the expressedIn statement becomes a ComputedValue too, 
+	# so that we have a uniform representation of experimental results.
 	agri:log2FoldChange 1.9;
 	agri:pvalue 3.129E-29;
 	agri:evidence bkr:exp_E-GEOD-38344;
@@ -64,7 +65,7 @@ bkr:gxaexp_E-GEOD-38344_traescs1d02g156000_14_day_post_anthesis_0x2C_aleurone_la
 	rdf:predicate bioschema:expressedIn;
 	rdf:object bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer;
 	# We propose a set of specific properties to indicate these sequencing technology details
-	# TODO: again, could be based on the ComputedValue proposed for MIAPPE.
+	# TODO: again, could be based on the agri:StudyComputedValue proposed for MIAPPE.
 	agri:tpmCount 32;
 	# Based on common thresholds used for TPM, but this is a very specific detail
 	agri:ordinalTpm "medium"; 
@@ -85,10 +86,8 @@ bkr:gene_traescs1d02g156000 a bioschema:Gene;
 .
 
 # The reference conditions
-# TODO: agri:ExperimentalFactorValue to be migrated to ExperimentalFactorValue
-# (as per MIAPPE agreements)
 #  
-bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:StudyFactor; 
+bkr:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:ExperimentalFactorValue; 
   schema:name "14 day post anthesis, aleurone layer";
   # These can come from eg, manual curation or auto-annotation
   # (of course multiple terms are possible)
@@ -132,4 +131,5 @@ bkr:gxaexp_E-GEOD-16333_at5g02540_pif4_0x3B_pif5_vs_wild_type_in_far-red_light_1
 	agri:log2FoldChange -1.1;
 	agri:pvalue 0.02169;
 	agri:evidence bkr:exp_E-GEOD-16333;
+.
 ```
