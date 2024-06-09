@@ -188,29 +188,32 @@ that happens in uncontrolled and unplanned way, in the other there is an intende
 So, our proposal is as follow.
 
 * We propose the new `agri:StudyEvent` as subclass of `schema:Action`.
-	This maps `MIAPPE:Event` generically, OR, possibly, we have more specific subclsasses:
-* `bioschema:LabProtocol` is made a subclass of `bioschema:StudyEvent`. Yes, it implies
-	that LabProtocol is also an Action
-	* According to documentation, `bioschema:bioSampleUsed` can link generic 
+	This maps `MIAPPE:Event` generically, OR, possibly, we have more specific subclasses:
+* `bioschema:LabProcess` (which is already being proposed as an `Action`) is made a subclass of `bioschema:StudyEvent`.
+	* According to documentation, `bioschema:bioSample` can link generic 
 	`bioschema:BioChemEntity`, not necessarily biosamples. So, this could be used to link the input 
 	material of a lab protocol
-	* `bioschema:bioSampleUsed` is made a subproperty of `schema:object`, in order to make it coherent
-		with the upper model given for the Action class. Until this is 
-* Using Action allows for using `schema:result`, with all subclasses in the hierarchy, `LabProtocol` 
-  included
+	* `bioschema:bioSample` is made a subproperty of `schema:object`, in order to make it coherent
+		with the upper model given for the `Action` class.
+* `bioschema:LabProtocol` is used to model a protocol as a plan, which can be applied in a place and time, ie, it's linked to `bioschema:LabProcess`.
+* Using Action allows for using `schema:result`, with all subclasses in the hierarchy, including `LabProcess`
 * Domain/range of object/result of a study event include observation unit, sample, data download
 * We propose the new `bioschema:StudyExternalEvent`, as a subclass of `bioschema:StudyEvent` and 
-	distinct from `LabProtocol`
+	distinct from `LabProcess`
 * Use `dc:type` to qualify the event type with MIAPPE/PPOE terms, eg, "growing protocol", "rainfall", "watering". This applies to both protocols and external events.
 * As elsewhere, `schema:subjectOf` links `StudyEvent` to `Study` (and hence, all the mentioned subclasses)
 	* As said above prefer this to `schema:partOf`. `schema:studySubject` has a very different meaning.
+* **==>** We still see issues with the way Bioschemas is proposing to model `LabProtocol`/`LabProcess`, see [here](https://github.com/BioSchemas/specifications/issues/675)
+
 
 ### LabProtocolParameterValue and LabProtocolParameterType
 
 * We propose the new `agri:LabProtocolParameterValue` as subclass of `schema:PropertyValue`. Similarly, introduce `agri:LabProtocolParameterType` (both modelled as per the discussion above on value/type pairs).
-* introduce `agri:hasLabProtocolParameterValue` as subproperty of `dc:type`, to link a param type to its values. Introduce its inverse, `agri:hasLabProtocolParameterType`.
+* Introduce `agri:hasLabProtocolParameterValue` as subproperty of `dc:type`, to link a param type to its values. Introduce its inverse, `agri:hasLabProtocolParameterType`.
 	* As in other cases, these two properties are **only** to link value/type. To link from other entitied (eg, event -> parameters), use `schema:additionalProperty`
-  * Moreover, you might want to keep things simple, by using `dc:type` in place of these specific new predicates (see the factor value case). 
+  * Moreover, you might want to keep things simple, by using `dc:type` in place of these specific new predicates (see the factor value case).
+* We use `bioschema:parameterValue` to link a `bioschema:LabProcess` to `agri:LabProtocolParameterValue`. Coherently, we introduce agri:parameter, to link from `LabProtocol` to `agri:LabProtocolParameterType`.
+
 ## Observed Variables
 
 ### New proposal: agri:StudyObservedVariable

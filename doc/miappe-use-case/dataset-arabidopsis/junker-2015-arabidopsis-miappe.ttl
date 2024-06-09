@@ -251,43 +251,63 @@ ex:fv_stationary a agri:ExperimentalFactorValue, schema:PropertyValue; #redundan
 ### The growth protocol
 #
 
-# As said, we propose to extend LabProtocol from Action, so that we can use its process-like properties
+# We try to follow the Bioschemas proposals, which use LabProtocol for the plan/description of 
+# the procedure, extending from HowTo/CreativeWork and LabProcess, which is an 
+# instance/application of a protocol and extends from Action.
 #
-# TODO: In the Bioschema drafts, we now have LabProtocol and LabProcess, to distinguish
-# between a plan and a process:
 # - https://bioschemas.org/types/LabProtocol/0.5-DRAFT
 # - https://bioschemas.org/types/LabProcess/0.1-DRAFT
 # 
-# However:
-# - This is specific to Bioschemas and not scaled to schema.org
+# Issues:
+# - This modelling is specific to Bioschemas and not scaled to schema.org
 # - Input and output modelled as FormalParameter, sample and reagent are considered
-#   separated properties, not inputs or parameters
-# - Confusion between labEquiment, and schema.org properties: instrument, tool,
+# - Confusion between labEquiment and schema.org properties: instrument, tool,
 #   supply
 # - Confusion between yield and protcolOutcome
+# - I've explained some of this here: https://github.com/BioSchemas/specifications/issues/675
 #
-# A first slight improvement here, might be describing the protocol as plan separately, as a
-# LabProtocol, and then use LabProcess here, where we link inputs/outputs
-#
-ex:growthProtocol a bioschema:LabProtocol, schema:Action;
+ex:growthProtocol a bioschema:LabProtocol, schema:HowTo;
 	# Alternatively, we might define a specific agri:FieldTrialGrowthProtocol as
 	# a subclass of bioschema:LabProtocol
 	dc:type efo:EFO_0003789; # Growth Protocol
 
   schema:isPartOf ex:study; # use this to link to study
 
-  # bioschemas recommends headline for the title, but this is seldom used in schema.org examples
   schema:name "Growth Protocol";
 	# similarly, bioschemas recommends protocolPurpose, yet...
 	schema:description "...";
 
-	# TODO: we might change this according to bioschemas, which proposes 
-	# bioschema:parameterValue <PropertyValue>
-	schema:additionalProperty
+	# Proposing this and naming it consistently with the current Bioschemas proposal
+	# This is supposed to be consistent with the values below
+	agri:parameter 
+	[
+		a agri:LabProtocolParameterType;
+		schema:name "growth facility";
+		schema:description "Details about the growth facility used in an instance of the protocol";
+		# Links to type qualifiers
+		schema:propertyID ppeo:growth_facility;
+	]
+
+.
+
+ex:growthProtocolProc1 a bioschema:LabProcess, schema:Action;
+  
+	# the inverse bioschema:executesLabProtocol is available too
+	bioschema:executesLabProtocol ex:growthProtocol;
+
+	# use this to link to study, could be inferred from bioschema:LabProcess, but it's 
+	# good to repeat it
+  schema:isPartOf ex:study; 
+
+  # Following the Bioschemas proposals	
+	bioschema:parameterValue
 	[
 		# a new class, subclass of schema:PropertyValue
 		a agri:LabProtocolParameterValue, schema:PropertyValue;
-		schema:name "growth facility";
+
+		# Links to LabProtocolParameterType in bioschema:LabProtocol
+		schema:name "growth facility"; 
+
 		schema:description "The experiments have been conducted on the Plant Phenotyping System for small plants, situated in a climate-controlled phytochamber. (https://dppn.plant-phenotyping-network.de/index.php?index=67#/tool/107)";
 		
 		# Links to type qualifiers
@@ -312,9 +332,13 @@ ex:growthProtocol a bioschema:LabProtocol, schema:Action;
 		schema:unitText "litre";
 	];
 	# TODO: skipping a lot of other params from the ISA-Tab
+
+	# TODO: we proposed bioschemas people to support biosample for LabProcess to and to 
+	# have it as a sub-property of object (or input). For the moment, we just follow
+	# the schema:Action specification
 	schema:object ex:plant1; # ie the input to the protocol
-	# we propose to make biosampleUsed as a subproperty of schema:object
-	bioschema:bioSampleUsed ex:plant1;  
+	# bioschema:bioSample ex:plant1;  
+
 	# Having two results generically means that the protocol is a plan and has been used to produce this output from the input
 	# IT IS NOT specified if the protocol was applied once or more times, this would need a more complex model, ie, 
 	# A protocol qualified as a plan and a protocol qualified as an application.
