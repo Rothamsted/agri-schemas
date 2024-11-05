@@ -17,6 +17,8 @@ from subprocess import run
 from sys import stdout, stderr
 import traceback
 import urllib
+import unittest
+
 
 from pyparsing import ParseException
 from rdflib import Graph
@@ -380,13 +382,13 @@ def rdf_stmt ( data, key, rdf_tpl, rdf_val_provider = lambda v: v ):
 	return rdf_tpl.format ( **data )
 
 """
-	The same, but builds the RDF from an RDF property and a converter
+	The same as rdf_stmt(), but builds the RDF from an RDF property and a converter
 """
 def rdf_pval ( data, key, rdf_prop, rdf_val_provider ):
 	return rdf_stmt ( data, key, rdf_prop + " {" + key + "};\n", rdf_val_provider )
 
 """
-	The same, for string values to be translated as literals.
+	The same as rdf_pval(), for string values to be translated as literals.
 """
 def rdf_str ( data, key, rdf_prop ):
 	def lbuilder ( s ):
@@ -394,7 +396,7 @@ def rdf_str ( data, key, rdf_prop ):
 	return rdf_pval ( data, key, rdf_prop, lbuilder )
 
 """
-	The same as rdf_str, but the value is escaped into triple quotes
+	The same as rdf_str(), but the value is escaped into triple quotes
 """
 def rdf_text ( data, key, rdf_prop ):
 	def lbuilder ( s ):
@@ -458,6 +460,13 @@ def _download_files_list ( generator, out_dir = None, overwrite = False ):
 			continue
 		label = item [ 3 ] if len ( item ) > 2 else None
 		_download_files_single ( item [ 0 ], item [ 1 ], label, out_dir, overwrite )
+
+"""
+	TODO: comment me
+"""
+class XTestCase ( unittest.TestCase ):
+	def assert_rdf ( self, graph, ask_query, fail_msg ):
+		self.assertTrue ( sparql_ask ( graph, ask_query ), fail_msg )		
 
 
 if __name__ == '__main__':
