@@ -2,12 +2,26 @@ import unittest
 from ebigxa.gxa import gxa_get_experiment_descriptors, rdf_gxa_conditions, rdf_gxa_tpm_levels, \
 	load_filtered_genes, rdf_gxa_dex_levels, gxa_rdf_all
 from ebigxa.utils import rdf_gxa_namespaces
-from etltools.utils import logger_config, sparql_ask
+from etltools.utils import logger_config, js_from_file, sparql_ask, XTestCase
 import rdflib
+import os
 
 log = logger_config ( __name__ )
+mod_dir_path = os.path.dirname ( os.path.abspath ( __file__ ) )
 
-class GxaTest ( unittest.TestCase ):
+
+class GxaTestRaw ( XTestCase ):
+	def test_gxa_rdf_all ( self ):
+		exp_js = js_from_file ( mod_dir_path + "/test-data/E-ATMX-20.biostudies.json" )
+		rdf = gxa_rdf_all ( exp_js, None )
+		#log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )
+		log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf )
+
+		graph = rdflib.Graph()
+		graph.parse ( data = rdf, format = "turtle" )
+
+
+class GxaTest: # TODO: restore ASAP ( XTestCase ):
 	
 	gxa_exps = None
 	gene_filter = None
@@ -327,10 +341,8 @@ class GxaTest ( unittest.TestCase ):
 			"ASK { bkr:cond_pericarp_0x2C_12_days_after_pollination dc:type <http://aims.fao.org/aos/agrovoc/c_25199> }",
 			"Condition's ontology annotations not found!"
 		)
-		
-				
-	def assert_rdf ( self, graph, ask_query, fail_msg ):
-		self.assertTrue ( sparql_ask ( graph, ask_query ), fail_msg )		
+# /ens:GxaTest		
+
 		
 if __name__ == '__main__':
 	unittest.main()

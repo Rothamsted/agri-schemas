@@ -1,5 +1,7 @@
 {
   "accno": "E-ATMX-20",
+  "aeTechnologyType": "Microarray",
+  "gxaAnalysisType": "Differential",
   "attributes": [
       {
           "name": "Title",

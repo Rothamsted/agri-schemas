@@ -1,12 +1,11 @@
 import unittest
 from etltools.utils import logger_config, sparql_ask, js_from_file, XTestCase
-from ebigxa.ae import ae_get_experiment_descriptors, rdf_ae_experiment
+from ebigxa.ae import ae_get_experiment_accessions, rdf_ae_experiment
 from ebigxa.utils import rdf_gxa_namespaces
 import rdflib
 import os
 
 log = logger_config ( __name__ )
-
 mod_dir_path = os.path.dirname ( os.path.abspath ( __file__ ) )
 
 """
@@ -45,10 +44,10 @@ class AeTest ( XTestCase ):
 	
 	@classmethod
 	def setUpClass(cls):
-		AeTest.ae_exps = ae_get_experiment_descriptors ( [ "Arabidopsis thaliana", "Triticum aestivum" ] ) 
+		AeTest.ae_exps = ae_get_experiment_accessions ( [ "Arabidopsis thaliana", "Triticum aestivum" ] ) 
 		#log.info ( "EXPS:\n%s", ae_exps ) 
 		
-	def test_ae_descriptors ( self ):
+	def test_ae_accessions ( self ):
 		self.assertTrue ( "E-MTAB-9838" in AeTest.ae_exps, "Arabidopsis experiment not found!" )
 		self.assertTrue ( "E-GEOD-25759" in AeTest.ae_exps, "Wheat experiment not found!" )
 		self.assertTrue ( "E-MEXP-254" in AeTest.ae_exps, "page 6 experiment not found!" )

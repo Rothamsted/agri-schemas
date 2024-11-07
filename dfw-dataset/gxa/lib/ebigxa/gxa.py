@@ -9,7 +9,7 @@ from textwrap import dedent
 from urllib.request import urlopen
 
 from biotools.bioportal import AgroPortalClient, BioPortalClient
-from ebigxa.ae import ae_get_experiment_descriptors, make_ae_exp_uri, rdf_ae_experiment
+from ebigxa.ae import ae_get_experiment_accessions, make_ae_exp_uri, rdf_ae_experiment
 from ebigxa.utils import rdf_gxa_namespaces
 from etltools.utils import make_id, normalize_rows_source, uri2accession, js_from_file, js_to_file, BinaryWriter
 from kpyutils import web
@@ -78,7 +78,7 @@ def gxa_rdf_all ( exp_js: dict, out = stdout, target_gene_ids: set = None ):
 	print ( rdf_gxa_namespaces(), file = out )
 	rdf_ae_experiment ( exp_js, out )
 		
-	exp_acc = exp_js [ 'accession' ]
+	exp_acc = exp_js [ 'accno' ]
 	ae_tech_type = exp_js [ "aeTechnologyType" ]
 	gxa_analysis_type = exp_js [ 'gxaAnalysisType' ]
 	cond_labels = set()

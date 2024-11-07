@@ -370,7 +370,7 @@ def logger_config ( logger_name = None, disable_existing_loggers = False ):
 
 
 """
-	Returns an RDF/Turtle string, if the key exists in the data dictionary.
+	Returns an RDF/Turtle string if the key exists in the 'data' treated as dictionary.
 	rdf_tpl must be a template like: dc:title "{title}", where 'title' is a data key 
 	(usually the same as key) 
 """

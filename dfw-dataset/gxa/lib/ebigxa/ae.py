@@ -13,7 +13,7 @@ log = logging.getLogger ( __name__ )
 
 
 """
-	Gets ArrayExpress experiment descriptors, using the BioStudies API.
+	Gets ArrayExpress experiments accessions, using the BioStudies API.
 	
 	As organisms, you can pass either a single string or a generator.
 
@@ -26,7 +26,7 @@ log = logging.getLogger ( __name__ )
 	the pages and we return the merge of all page results. If you call the function without
 	the page param, you'll get the merge from page 1. 
 """
-def ae_get_experiment_descriptors ( organisms, page = 1 ) -> dict:
+def ae_get_experiment_accessions ( organisms, page = 1 ) -> dict:
 	if type ( organisms ) == str: organisms = [ organisms ]
 	if page == 1:
 		log.info ( "Getting AE descriptors about %s", organisms )
@@ -52,9 +52,10 @@ def ae_get_experiment_descriptors ( organisms, page = 1 ) -> dict:
 	if page == 1: log.debug ( "Total pages: %d, hits: %d, page size: %d", total_pages, total_hits, page_size )
 
 	if page < total_pages:
-		result += ae_get_experiment_descriptors ( organisms, page + 1 )
+		result += ae_get_experiment_accessions ( organisms, page + 1 )
 	
 	return result
+# /ens:ae_get_experiment_accessions()
 
 
 """
@@ -68,7 +69,7 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 
 	# TODO: Pull it out, it's useful elsewhere too
 	specie2terms = { 
-		"Arabidopsis thaliana": [ "http://purl.bioontology.org/ontology/NCBITAXON/3701" ],
+		"Arabidopsis thaliana": [ "http://purl.bioontology.org/ontology/NCBITAXON/3702" ],
 		"Triticum aestivum": [ "http://purl.bioontology.org/ontology/NCBITAXON/4565" ]
 	}
 
@@ -76,48 +77,79 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 		if not specie_label: return ""
 		specie_uri = "bkr:specie_" + make_id ( specie_label, skip_non_word_chars = True )
 		rdf = f"""
-			{exp_uri} schema:additionalProperty {specie_uri}.
-			{specie_uri} a schema:PropertyValue;
-				schema:propertyID "organism";
-				schema:value "{specie_label}";
+			{specie_uri} a agri:FieldTrialMaterial, schema:BioChemEntity;
+				schema:name "{specie_label}";
+				schema:subjectOf {exp_uri};
 		"""
 		rdf = dedent ( rdf )
 		
 		specie_terms = specie2terms.get ( specie_label )
 		if specie_terms:
 			rdf_terms = ", ".join ( [ "<" + s + ">" for s in specie_terms ] )
+			rdf += "\tbioschema:taxonomicRange " + rdf_terms + ";\n"			
 			rdf += "\tdc:type " + rdf_terms + ";\n"
 		
 		rdf += ".\n"
 		return rdf
 
 	def rdf_publication ( exp_uri, exp_js ):
-		if "bibliography" not in exp_js: return ""
+		# Extract it from subsections
+		section = exp_js.get ( "section", {} )
+		subsections = section.get ( "subsections", [] )
+
+		pub_js = next ( 
+			o for o in subsections 
+		  if type (o) is dict and o [ "type" ] == "Publication"
+		)
+		if not pub_js: return ""
+
+		pub_attribs = attribs2dict ( pub_js.get ( "attributes", [] ) )
+
+		pmed_id = pub_js.get ( "accno" )
+		doi = pub_attribs.get ( "DOI" )
+		title = pub_attribs.get ( "Title" )
+		authors = pub_attribs.get ( "Authors" )
+
+		# Without this very minimum, it's hardly a meaningful entry
+		if not ( pmed_id or doi or title ): return ""
+
 		rdf = ""
-		for pub_js in exp_js [ "bibliography" ]:
-			# Without this very minimum, it's hardly a meaningful entry
-			if not ( "title" in pub_js or "accession" in pub_js or "doi" in pub_js ): continue
-			if "accession" in pub_js:
-				pub_uri = "bkr:pmid_" + str ( pub_js [ "accession" ] )
-			elif "doi" in pub_js: pub_uri = pub_js [ "doi" ]
-			else: pub_uri = "bkr:pub_" + hash_generator ( pub_js.values () )
-			
+
+		if pmed_id: pub_uri = "bkr:pmid_" + pmed_id
+		elif doi: pub_uri = doi
+		else: pub_uri = "bkr:pub_" + hash_generator ( ( title, authors ) )
+	
+	  # We don't know if it's an article, 
+		rdf += f"""
+		{exp_uri} schema:subjectOf {pub_uri}.
+		{pub_uri} a agri:ScholarlyPublication;
+		"""
+		rdf = dedent ( rdf )
+
+		rdf += rdf_text ( pub_attribs, "Title", "\tdc:title" )
+		rdf += rdf_text ( pub_attribs, "Authors", "\tagri:authorsList" )
+
+		for (acc, acc_type, agri_acc_prop) in ( 
+			(pmed_id, "PubMed ID", "pmedId"), 
+			(doi, "DOI", "doiId" )
+		):
+			if not acc: continue
 			rdf += f"""
-				{exp_uri} schema:subjectOf {pub_uri}.
-				{pub_uri} a agri:ScholarlyPublication;
+
+				agri:{agri_acc_prop} "{acc}";
+			 	schema:identifier [
+					a schema:PropertyValue;
+					schema:propertyID "{acc_type}";
+					schema:value "{acc}";
+				];
 			"""
-			rdf = dedent ( rdf )
 
-			rdf += rdf_text ( pub_js, "title", "\tdc:title" )
-			rdf += rdf_text ( pub_js, "authors", "\tagri:authorsList" )
-			rdf += rdf_str ( pub_js, "accession", "\tagri:pmedId" )
-			rdf += rdf_str ( pub_js, "doi", "\tagri:doiId" )
-			rdf += rdf_str ( pub_js, "year", "\tschema:datePublished" )
-			
-			rdf += ".\n"
+		# TODO: year seems to be missing from Biostudies
+		rdf += rdf_str ( pub_attribs, "Year", "\tschema:datePublished" )
+		
+		rdf += ".\n"
 
-		return dedent ( rdf )
-
+		return rdf
 
 	exp_acc = exp_js [ "accno" ]
 	exp_uri = make_ae_exp_uri ( exp_acc )
@@ -136,7 +168,6 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 	rdf += rdf_str ( top_attrs, "ReleaseDate", "\tschema:datePublished" )
 
   # TODO: convert from new format
-
 	# gxaAnalysisType is added by gxa.gxa_get_experiment_descriptors() and they can be 'Differential', 'Baseline'
 	# Detailed specifications for such types are in gxa-defaults.ttl, here we create a link to the corresponding 
 	# URIs used there
@@ -147,8 +178,9 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 		lambda gxa_type: "bkr:gxa_analysis_type_" + make_id ( gxa_type, skip_non_word_chars = True ) 
 	)
 	"""	
-	
+
 	rdf += ".\n"
+	rdf += rdf_publication ( exp_uri, exp_js )
 	
 	# TODO: can we have multiple species? How is it represented? Should attribs2dict()
 	# support multiple values per key?
