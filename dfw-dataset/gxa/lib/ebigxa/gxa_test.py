@@ -23,6 +23,8 @@ class GxaTestRaw ( XTestCase ):
 		rdf = gxa_rdf_all ( exp_js, None )
 		#log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )
 		#log.info ( "gxa_rdf_all() test output:\n%s\n\n", rdf )
+		print ( rdf )
+
 
 		graph = rdflib.Graph()
 		graph.parse ( data = rdf, format = "turtle" )
@@ -31,7 +33,8 @@ class GxaTestRaw ( XTestCase ):
 		exp_js = js_from_file ( mod_dir_path + "/test-data/E-MTAB-4484.biostudies.json" )
 		rdf = gxa_rdf_all ( exp_js, None, target_gene_ids = test_genes )
 		#log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )
-		log.info ( "gxa_rdf_all() test output:\n%s\n\n", rdf )
+		# log.info ( "gxa_rdf_all() test output:\n%s\n\n", rdf )
+		#print ( rdf )
 
 		graph = rdflib.Graph()
 		graph.parse ( data = rdf, format = "turtle" )
