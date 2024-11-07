@@ -77,7 +77,7 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 		if not specie_label: return ""
 		specie_uri = "bkr:specie_" + make_id ( specie_label, skip_non_word_chars = True )
 		rdf = f"""
-			{specie_uri} a agri:FieldTrialMaterial, schema:BioChemEntity;
+			{specie_uri} a agri:FieldTrialMaterialSource, schema:BioChemEntity;
 				schema:name "{specie_label}";
 				schema:subjectOf {exp_uri};
 		"""

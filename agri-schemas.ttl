@@ -234,7 +234,8 @@ agri:ExperimentalDesign rdf:type owl:Class ;
 
 ###  http://agrischemas.org/ExperimentalFactorType
 agri:ExperimentalFactorType rdf:type owl:Class ;
-                            rdfs:subClassOf agri:BioSchemasNewClassProposal .
+                            rdfs:subClassOf agri:BioSchemasNewClassProposal,
+                            ppeo:factor .
 
 
 ###  http://agrischemas.org/ExperimentalFactorValue
@@ -242,25 +243,29 @@ agri:ExperimentalFactorValue rdf:type owl:Class ;
                              rdfs:subClassOf agri:BioSchemasNewClassProposal ,
                                              obo:OBI_0000750 ,
                                              schema:PropertyValue ,
-                                             <http://www.ebi.ac.uk/efo/EFO_0000001> .
+                                             <http://www.ebi.ac.uk/efo/EFO_0000001>,
+                                             ppeo:factor_value .
 
 
 ###  http://agrischemas.org/FIeldTrialBioMaterial
 agri:FIeldTrialBioMaterial rdf:type owl:Class ;
                            rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                           schema:BioChemEntity .
+                                           schema:BioChemEntity,
+                                           ppeo:biological_material .
 
 
 ###  http://agrischemas.org/FieldTrialMaterialSource
 agri:FieldTrialMaterialSource rdf:type owl:Class ;
                               rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                              schema:BioChemEntity .
+                                              schema:BioChemEntity,
+                                              ppeo:material_source .
 
 
 ###  http://agrischemas.org/FieldTrialObservationUnit
 agri:FieldTrialObservationUnit rdf:type owl:Class ;
                                rdfs:subClassOf agri:BioSchemasNewClassProposal ,
-                                               schema:BioChemEntity .
+                                               schema:BioChemEntity,
+                                               ppeo:observation_unit .
 
 
 ###  http://agrischemas.org/HostPathogenInteraction

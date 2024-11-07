@@ -13,13 +13,25 @@ bkr:exp_E-MTAB-3103 a bioschema:Study;
 	schema:description "Inner pericarp, outer pericarp and endosperm layers from...";
 	schema:datePublished "2015-04-24";
 	schema:subjectOf bkr:pmid_26044828;
-	schema:additionalProperty [
-		a schema:PropertyValue;
-		schema:propertyID "organism";
-		schema:value "triticum aestivum";
-		# See MIAPPE, TODO: move the MIAPPE documentation to a general doc
-		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>
-	]
+.
+
+# The organism specification
+# If a more specific characterisation is missing (ie, you only have the organism associated to
+# the experiment), the best class to use should be FieldTrialMaterialSource, so that the same
+# source could be re-used for multiple experiments or other purposes.
+# >>> It should be FieldTrialMaterial, if it needs to have some experiment-specific property.
+# 
+bkr:specie_triticum_aestivum a agri:FieldTrialMaterialSource, schema:BioChemEntity;
+  
+	# While agri:FieldTrialMaterialSource is already a subclass of ppeo:material_source,
+	# you might want to add this redundancy, for the sake of more interoperability.
+	# Basically, this is static the role of the BioChementity
+	schema:additionalType ppeo:material_source;
+	
+	schema:name "Triticum aestivum";
+	schema:subjectOf bkr:exp_E-MTAB-4484;
+	bioschema:taxonomicRange <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
+	dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
 .
 
 bkr:pmid_26044828 a agri:ScholarlyPublication;

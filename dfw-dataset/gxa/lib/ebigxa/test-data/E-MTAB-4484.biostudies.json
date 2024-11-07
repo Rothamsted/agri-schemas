@@ -1,0 +1,1450 @@
+{
+    "accno": "E-MTAB-4484",
+    "aeTechnologyType": "Microarray",
+    "gxaAnalysisType": "Baseline",  
+    "attributes": [
+        {
+            "name": "Title",
+            "value": "Whole transcriptome sequencing of wheat 3B chromosome"
+        },
+        {
+            "name": "ReleaseDate",
+            "value": "2014-09-08"
+        },
+        {
+            "name": "RootPath",
+            "value": "E-MTAB-4484"
+        },
+        {
+            "name": "AttachTo",
+            "value": "ArrayExpress"
+        }
+    ],
+    "section": {
+        "accno": "s-E-MTAB-4484",
+        "type": "Study",
+        "attributes": [
+            {
+                "name": "Title",
+                "value": "Whole transcriptome sequencing of wheat 3B chromosome"
+            },
+            {
+                "name": "Study type",
+                "value": "RNA-seq of coding RNA",
+                "valqual": [
+                    {
+                        "name": "Ontology",
+                        "value": "EFO"
+                    },
+                    {
+                        "name": "TermId",
+                        "value": "EFO_0003738"
+                    }
+                ]
+            },
+            {
+                "name": "Organism",
+                "value": "Triticum aestivum"
+            },
+            {
+                "name": "Description",
+                "value": "To study the expression profiles of hexaploid wheat chromosome 3B genes during the life cycle of a wheat plant and establish a transcriptome atlas for this chromosome, deep transcriptome sequencing was conducted in duplicates in 15 wheat samples corresponding to five different organs (leaf, shoot, root, spike, and grain) at three developmental stages each. Strand-non-specific and strand-specific libraries were used to produce 2.52 billion paired-end reads (232 Gb) and 615.3 single-end reads (62 Gb), respectively."
+            }
+        ],
+        "links": [
+            [
+                {
+                    "url": "ERP004714",
+                    "attributes": [
+                        {
+                            "name": "Type",
+                            "value": "ENA"
+                        }
+                    ]
+                },
+                {
+                    "url": "E-MTAB-4484",
+                    "attributes": [
+                        {
+                            "name": "Type",
+                            "value": "gxa"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "subsections": [
+            [
+                {
+                    "accno": "SEQUENCING_PROTOCOL_1",
+                    "type": "Protocols",
+                    "attributes": [
+                        {
+                            "name": "Name",
+                            "value": "SEQUENCING_PROTOCOL_1"
+                        },
+                        {
+                            "name": "Type",
+                            "value": "nucleic acid sequencing protocol",
+                            "valqual": [
+                                {
+                                    "name": "Ontology",
+                                    "value": "EFO"
+                                },
+                                {
+                                    "name": "TermId",
+                                    "value": "EFO_0004170"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Description",
+                            "value": "Illumina HiSeq 2000 software. Illumina HiSeq2000 flow cell preparation: PE-401-3001: TruSeq PE Cluster Kit v3 - cBot - HS; GD-401-3001: TruSeq SR Cluster Kit v3 - cBot - HS; FC-401-3001: TruSeq SBS Kit v3 - HS (200-cycles). http://www.illumina.com/technology/sequencing_technology.ilmn"
+                        },
+                        {
+                            "name": "Hardware",
+                            "value": "Illumina HiSeq 2000"
+                        }
+                    ]
+                },
+                {
+                    "accno": "LIBRARY_CONSTRUCTION_PROTOCOL_1",
+                    "type": "Protocols",
+                    "attributes": [
+                        {
+                            "name": "Name",
+                            "value": "LIBRARY_CONSTRUCTION_PROTOCOL_1"
+                        },
+                        {
+                            "name": "Type",
+                            "value": "nucleic acid library construction protocol",
+                            "valqual": [
+                                {
+                                    "name": "Ontology",
+                                    "value": "EFO"
+                                },
+                                {
+                                    "name": "TermId",
+                                    "value": "EFO_0004184"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Description",
+                            "value": "none provided"
+                        },
+                        {
+                            "name": "Hardware"
+                        }
+                    ]
+                }
+            ],
+            {
+                "type": "Author",
+                "attributes": [
+                    {
+                        "name": "Name",
+                        "value": "william William"
+                    },
+                    {
+                        "name": "Email",
+                        "value": "william@genoscope.cns.fr"
+                    },
+                    {
+                        "name": "Role",
+                        "value": "submitter"
+                    },
+                    {
+                        "name": "affiliation",
+                        "value": "o1",
+                        "reference": true
+                    }
+                ]
+            },
+            {
+                "accno": "o1",
+                "type": "Organization",
+                "attributes": [
+                    {
+                        "name": "Name",
+                        "value": "GSC, The Genoscope center"
+                    },
+                    {
+                        "name": "Address",
+                        "value": "2 rue Gaston Cremieux CP5706 91057 Evry cedex"
+                    }
+                ]
+            },
+            {
+                "accno": "25853487",
+                "type": "Publication",
+                "attributes": [
+                    {
+                        "name": "Title",
+                        "value": "Deep transcriptome sequencing provides new insights into the structural and functional organization of the wheat genome"
+                    },
+                    {
+                        "name": "Authors",
+                        "value": "Pingault L, Choulet F, Alberti A, Glover N, Wincker P, Feuillet C, Paux E"
+                    },
+                    {
+                        "name": "DOI",
+                        "value": "10.1186/s13059-015-0601-9"
+                    }
+                ],
+                "links": [
+                    {
+                        "url": "10.1186/s13059-015-0601-9",
+                        "attributes": [
+                            {
+                                "name": "Type",
+                                "value": "DOI"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "accno": "s-samples-factors-E-MTAB-4484",
+                "type": "Samples",
+                "attributes": [
+                    {
+                        "name": "Sample count",
+                        "value": "35"
+                    },
+                    {
+                        "name": "Experimental Factors",
+                        "value": "organism part",
+                        "valqual": [
+                            {
+                                "name": "TermName",
+                                "value": "organism part"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Experimental Factors",
+                        "value": "developmental stage",
+                        "valqual": [
+                            {
+                                "name": "TermName",
+                                "value": "developmental stage"
+                            }
+                        ]
+                    }
+                ],
+                "subsections": [
+                    {
+                        "accno": "exp_factor-E-MTAB-4484",
+                        "type": "Experimental Factors",
+                        "attributes": [
+                            {
+                                "name": "Organism part",
+                                "value": "stem"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "inflorescence"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "leaf"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "fruit"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "root"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "SE.99 maximum stem length reached stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "whole plant fruit ripening stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "2.03 main shoot and axillary shoots visible at three nodes stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "SE.00 stem elongation begins stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "whole plant fruit formation stage 30 to 50%"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "SE.02 two nodes or internodes visible stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "pool"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "cotyledon emergence stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "whole plant fruit formation stage 70% to final size"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "FL.02 1/2 of flowers open stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "LP.03 three leaves visible stage"
+                            }
+                        ],
+                        "subsections": [
+                            [
+                                {
+                                    "accno": "factors_0",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit ripening stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399939,ERS399947"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_1",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit formation stage 30 to 50%"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399954,ERS399956"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_2",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399949"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_3",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit formation stage 70% to final size"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399931,ERS399933"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_4",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "FL.02 1/2 of flowers open stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399929,ERS399934"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_5",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.99 maximum stem length reached stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399952-ERS399953"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_6",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399927"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_7",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.02 two nodes or internodes visible stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399932,ERS399936"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_8",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "cotyledon emergence stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399948,ERS399951"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_9",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399924"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_10",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit formation stage 30 to 50%"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399938,ERS399940"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_11",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "2.03 main shoot and axillary shoots visible at three nodes stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399943,ERS399945"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_12",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.99 maximum stem length reached stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399926,ERS399928"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_13",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399944"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_14",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "cotyledon emergence stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399930,ERS399955"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_15",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "LP.03 three leaves visible stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399935,ERS399937"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_16",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399925"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_17",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.00 stem elongation begins stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399946,ERS399950"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_18",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.02 two nodes or internodes visible stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399922-ERS399923"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "factors_19",
+                                    "type": "Factors Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "FL.02 1/2 of flowers open stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399941-ERS399942"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        ]
+                    },
+                    {
+                        "accno": "source_chars-E-MTAB-4484",
+                        "type": "Source Characteristics",
+                        "attributes": [
+                            {
+                                "name": "Organism",
+                                "value": "Triticum aestivum"
+                            },
+                            {
+                                "name": "Cultivar",
+                                "value": "Chinese Spring"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "stem"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "inflorescence"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "leaf"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "fruit"
+                            },
+                            {
+                                "name": "Organism part",
+                                "value": "root"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "SE.99 maximum stem length reached stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "whole plant fruit ripening stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "2.03 main shoot and axillary shoots visible at three nodes stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "SE.00 stem elongation begins stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "whole plant fruit formation stage 30 to 50%"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "SE.02 two nodes or internodes visible stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "pool"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "cotyledon emergence stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "whole plant fruit formation stage 70% to final size"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "FL.02 1/2 of flowers open stage"
+                            },
+                            {
+                                "name": "Developmental stage",
+                                "value": "LP.03 three leaves visible stage"
+                            }
+                        ],
+                        "subsections": [
+                            [
+                                {
+                                    "accno": "source_0",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit ripening stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399939,ERS399947"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_1",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit formation stage 30 to 50%"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399954,ERS399956"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_2",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399949"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_3",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "fruit"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit formation stage 70% to final size"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399931,ERS399933"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_4",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "FL.02 1/2 of flowers open stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399929,ERS399934"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_5",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.99 maximum stem length reached stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399952-ERS399953"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_6",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399927"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_7",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "inflorescence"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.02 two nodes or internodes visible stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399932,ERS399936"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_8",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "cotyledon emergence stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399948,ERS399951"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_9",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399924"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_10",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "whole plant fruit formation stage 30 to 50%"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399938,ERS399940"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_11",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "leaf"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "2.03 main shoot and axillary shoots visible at three nodes stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399943,ERS399945"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_12",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.99 maximum stem length reached stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399926,ERS399928"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_13",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399944"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_14",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "cotyledon emergence stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399930,ERS399955"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_15",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "root"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "LP.03 three leaves visible stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399935,ERS399937"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_16",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "pool"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "1",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399925"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_17",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.00 stem elongation begins stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399946,ERS399950"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_18",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "SE.02 two nodes or internodes visible stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399922-ERS399923"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "accno": "source_19",
+                                    "type": "Characteristics Table",
+                                    "attributes": [
+                                        {
+                                            "name": "organism part",
+                                            "value": "stem"
+                                        },
+                                        {
+                                            "name": "developmental stage",
+                                            "value": "FL.02 1/2 of flowers open stage"
+                                        },
+                                        {
+                                            "name": "No. of Samples",
+                                            "value": "2",
+                                            "valqual": [
+                                                {
+                                                    "name": "url",
+                                                    "value": "https://www.ebi.ac.uk/ena/browser/view/ERS399941-ERS399942"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            },
+            {
+                "accno": "s-assays-data-E-MTAB-4484",
+                "type": "Assays and Data",
+                "attributes": [
+                    {
+                        "name": "Assay count",
+                        "value": "57"
+                    },
+                    {
+                        "name": "Technology",
+                        "value": "Sequencing assay"
+                    },
+                    {
+                        "name": "Assay by Molecule",
+                        "value": "RNA assay"
+                    }
+                ],
+                "subsections": [
+                    {
+                        "accno": "mt-E-MTAB-4484",
+                        "type": "MAGE-TAB Files",
+                        "files": [
+                            [
+                                {
+                                    "path": "E-MTAB-4484.idf.txt",
+                                    "size": 2704,
+                                    "attributes": [
+                                        {
+                                            "name": "Type",
+                                            "value": "IDF File"
+                                        },
+                                        {
+                                            "name": "Format",
+                                            "value": "tab-delimited text"
+                                        },
+                                        {
+                                            "name": "Description",
+                                            "value": "Investigation Design Format (IDF)"
+                                        }
+                                    ],
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "E-MTAB-4484.sdrf.txt",
+                                    "size": 43874,
+                                    "attributes": [
+                                        {
+                                            "name": "Type",
+                                            "value": "SDRF File"
+                                        },
+                                        {
+                                            "name": "Format",
+                                            "value": "tab-delimited text"
+                                        },
+                                        {
+                                            "name": "Description",
+                                            "value": "Sample and Data Relationship Format (SDRF)"
+                                        }
+                                    ],
+                                    "type": "file"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            },
+            {
+                "accno": "score-E-MTAB-4484",
+                "type": "MINSEQE Score",
+                "attributes": [
+                    {
+                        "name": "Exp. Design",
+                        "value": "-"
+                    },
+                    {
+                        "name": "Variables",
+                        "value": "*"
+                    },
+                    {
+                        "name": "Raw",
+                        "value": "*"
+                    },
+                    {
+                        "name": "Processed",
+                        "value": "-"
+                    },
+                    {
+                        "name": "Protocols",
+                        "value": "-"
+                    }
+                ]
+            }
+        ]
+    },
+    "type": "submission"
+}

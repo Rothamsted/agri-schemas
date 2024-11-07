@@ -8,14 +8,30 @@ import os
 
 log = logger_config ( __name__ )
 mod_dir_path = os.path.dirname ( os.path.abspath ( __file__ ) )
-
+test_genes = load_filtered_genes ( 
+	[ "TRAESCS3D02G284900", "TRAESCS7B02G271500", "TRAESCS7D02G366600", "TRAESCS7B02G271600", 
+		"TRAESCS3B02G319000", "TRAESCS7D02G366500", "TRAESCS7A02G356200", "TRAESCS7A02G356100",
+		"TraesCS1A02G115900", "AT1G01010", "AT1G01030", "AT1G01040", "AT1G01070", "AT1G01080", 
+		"AT1G01110", "AT1G01120", "AT1G01130", "AT1G01140", "AT1G01190", "AT1G01220", "AT1G01225", 
+		"AT1G01250", "AT1G01290", "AT1G01320", "AT1G01360", "AT1G01390", "AT1G01420", "AT1G01470", 
+		"AT1G01480", "AT1G01560", "AT4G03210", "AT4G30280", "AT5G59710", "AT1G22810", "AT3G30720",
+		"ENSRNA050013890" ])		
 
 class GxaTestRaw ( XTestCase ):
-	def test_gxa_rdf_all ( self ):
+	def test_gxa_rdf_all_differential_exp ( self ):
 		exp_js = js_from_file ( mod_dir_path + "/test-data/E-ATMX-20.biostudies.json" )
 		rdf = gxa_rdf_all ( exp_js, None )
 		#log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )
-		log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf )
+		#log.info ( "gxa_rdf_all() test output:\n%s\n\n", rdf )
+
+		graph = rdflib.Graph()
+		graph.parse ( data = rdf, format = "turtle" )
+
+	def test_gxa_rdf_all_baseline_exp ( self ):
+		exp_js = js_from_file ( mod_dir_path + "/test-data/E-MTAB-4484.biostudies.json" )
+		rdf = gxa_rdf_all ( exp_js, None, target_gene_ids = test_genes )
+		#log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )
+		log.info ( "gxa_rdf_all() test output:\n%s\n\n", rdf )
 
 		graph = rdflib.Graph()
 		graph.parse ( data = rdf, format = "turtle" )
@@ -24,18 +40,9 @@ class GxaTestRaw ( XTestCase ):
 class GxaTest: # TODO: restore ASAP ( XTestCase ):
 	
 	gxa_exps = None
-	gene_filter = None
 	
 	@classmethod
 	def setUpClass(cls):
-		GxaTest.gene_filter = load_filtered_genes ( 
-			[ "TRAESCS3D02G284900", "TRAESCS7B02G271500", "TRAESCS7D02G366600", "TRAESCS7B02G271600", 
-				"TRAESCS3B02G319000", "TRAESCS7D02G366500", "TRAESCS7A02G356200", "TRAESCS7A02G356100",
-				"TraesCS1A02G115900", "AT1G01010", "AT1G01030", "AT1G01040", "AT1G01070", "AT1G01080", 
-				"AT1G01110", "AT1G01120", "AT1G01130", "AT1G01140", "AT1G01190", "AT1G01220", "AT1G01225", 
-				"AT1G01250", "AT1G01290", "AT1G01320", "AT1G01360", "AT1G01390", "AT1G01420", "AT1G01470", 
-				"AT1G01480", "AT1G01560", "AT4G03210", "AT4G30280", "AT5G59710", "AT1G22810", "AT3G30720",
-				"ENSRNA050013890" ])
 		GxaTest.gxa_exps = gxa_get_experiment_descriptors ( [ "arabidopsis thaliana", "triticum aestivum" ] ) 
 		#log.info ( gxa_exps )
 	
@@ -100,7 +107,7 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 	def test_rdf_gxa_tpm_levels ( self ):
 		cond_labels = set()
 		rdf = rdf_gxa_namespaces();
-		rdf += rdf_gxa_tpm_levels ( "E-MTAB-4484", None, cond_labels, GxaTest.gene_filter )
+		rdf += rdf_gxa_tpm_levels ( "E-MTAB-4484", None, cond_labels, test_genes )
 		
 		log.info ( "rdf_gxa_tpm_levels() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )		
 		log.info ( "rdf_gxa_tpm_levels(), returned conditions: %s", cond_labels )
@@ -161,7 +168,7 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 	def test_rdf_gxa_dex_levels ( self ):
 		cond_labels = set()
 		rdf = rdf_gxa_namespaces();
-		rdf += rdf_gxa_dex_levels ( "E-MTAB-4289", "RNASeq", None, cond_labels, GxaTest.gene_filter )
+		rdf += rdf_gxa_dex_levels ( "E-MTAB-4289", "RNASeq", None, cond_labels, test_genes )
 		
 		log.info ( "rdf_gxa_dex_levels() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )		
 		log.info ( "rdf_gxa_dex_levels(), returned conditions: %s", cond_labels )
@@ -225,7 +232,7 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 	def test_rdf_gxa_dex_levels_microarray ( self ):
 		cond_labels = set()
 		rdf = rdf_gxa_namespaces();
-		rdf += rdf_gxa_dex_levels ( "E-MTAB-8326", "Microarray", None, cond_labels, GxaTest.gene_filter )
+		rdf += rdf_gxa_dex_levels ( "E-MTAB-8326", "Microarray", None, cond_labels, test_genes )
 		
 		log.info ( "rdf_gxa_dex_levels(Microarray) test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )		
 		log.info ( "rdf_gxa_dex_levels(Microarray), returned conditions: %s", cond_labels )
@@ -280,7 +287,7 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 	def test_extended_baseline ( self ):
 		cond_labels = set()
 		rdf = rdf_gxa_namespaces();
-		rdf += rdf_gxa_dex_levels ( "E-MTAB-8073", "RNASeq", None, cond_labels, GxaTest.gene_filter )
+		rdf += rdf_gxa_dex_levels ( "E-MTAB-8073", "RNASeq", None, cond_labels, test_genes )
 		
 		log.info ( "rdf_gxa_dex_levels(Microarray) test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )		
 		log.info ( "rdf_gxa_dex_levels(Microarray), returned conditions: %s", cond_labels )
@@ -315,7 +322,7 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 		acc = "E-MTAB-4260"
 		exp_js = GxaTest.gxa_exps [ acc ]
 		
-		rdf = gxa_rdf_all ( exp_js, out = None, target_gene_ids = GxaTest.gene_filter )
+		rdf = gxa_rdf_all ( exp_js, out = None, target_gene_ids = test_genes )
 		log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf )		
 
 		graph = rdflib.Graph()
