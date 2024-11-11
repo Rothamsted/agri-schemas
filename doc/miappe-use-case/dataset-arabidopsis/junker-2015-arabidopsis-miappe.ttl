@@ -130,11 +130,10 @@ ex:study a bioschema:Study;
 		]
 	];
 
-	# agri:studyExperimentalDesign could be an alternative (as new property, deriving from
-	# additional property), but search engines will recognise this more easily, at least for now
-	# (see notes)
+	# TODO: this is prescribed by Bioschema, we might want it to be subproperty of additionalProperty,
+	# for interoperability. 
 	#
-	schema:additionalProperty
+	bioschema:studyProcess
 	[
 		# schema:PropertyValue is redundant, you might want it just to accommodate tools like Google
 		#

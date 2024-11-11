@@ -7,12 +7,28 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
+# TODO: onto terms missing for tech/analysis, see the use case documentation
+
 bkr:gxa_analysis_type_differential a schema:PropertyValue;
-	schema:propertyID "gxaEperimentType";
+	schema:propertyID "gxaAnalysisType";
+	schema:name "EBI Gene Expression Atlas Analysis Type";
 	schema:value "EBI/GXA Differential Gene Expression Analysis";
 .
 
 bkr:gxa_analysis_type_baseline a schema:PropertyValue;
-	schema:propertyID "gxaEperimentType";
+	schema:propertyID "gxaAnalysisType";
+	schema:name "EBI Gene Expression Atlas Analysis Type";
 	schema:value "EBI/GXA Baseline Gene Expression Analysis";
+.
+
+bkr:ae_technology_type_microarray a schema:PropertyValue;
+	schema:propertyID "aeTechnologyType";
+	schema:name "EBI ArrayExpress Technology Type";
+	schema:value "Transcription Profiling by Array";
+.
+
+bkr:ae_technology_type_rna_sequencing a schema:PropertyValue;
+	schema:propertyID "aeTechnologyType";
+	schema:name "EBI ArrayExpress Technology Type";
+	schema:value "RNA-seq of coding RNA";
 .

@@ -1,6 +1,6 @@
 {
     "accno": "E-MTAB-4484",
-    "aeTechnologyType": "Microarray",
+    "aeTechnologyType": "RNASeq",
     "gxaAnalysisType": "Baseline",  
     "attributes": [
         {

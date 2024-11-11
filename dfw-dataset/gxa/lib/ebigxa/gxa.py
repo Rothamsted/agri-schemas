@@ -9,7 +9,7 @@ from textwrap import dedent
 from urllib.request import urlopen
 
 from biotools.bioportal import AgroPortalClient, BioPortalClient
-from ebigxa.ae import ae_get_experiment_accessions, make_ae_exp_uri, rdf_ae_experiment
+from ebigxa.ae import ae_get_experiment_accessions, make_ae_exp_uri, ae_get_experiment_descriptor, rdf_ae_experiment
 from ebigxa.utils import rdf_gxa_namespaces
 from etltools.utils import make_id, normalize_rows_source, uri2accession, js_from_file, js_to_file, BinaryWriter
 from kpyutils import web
@@ -18,6 +18,8 @@ from kpyutils import web
 log = logging.getLogger ( __name__ )
 
 """
+  TODO: re-comment me!
+
   Merges experiment descriptors from the AE API (via ae_get_experiment_descriptors()) and GXA API.
   
   It returns the JSON coming from ae_get_experiment_descriptors(), with the additional field
@@ -26,40 +28,39 @@ log = logging.getLogger ( __name__ )
   AE experiments that aren't in GXA results are also filtered away from the final result. We have seen
   this happens sometimes (due delayed updates?).
 """
-def gxa_get_experiment_descriptors ( organisms ):
-	aejss = ae_get_experiment_descriptors ( organisms )
+def gxa_get_experiment_summaries ( organisms ):
+	ae_accs = ae_get_experiment_accessions ( organisms )
 	result = {}
 	# This is the API I found by inspecting the HTML UI, it doesn't seem to be accepting any parameter, 
 	# the experiments are already organism-filtered by the AE API call.
-	gxajss = web.url_get_json ( "https://www.ebi.ac.uk/gxa/json/experiments" )
-	gxajss = gxajss [ "experiments" ] # Extract what we need
-	gxajss = { js [ "experimentAccession" ]: js for js in gxajss }
-	for exp_acc, aejs in aejss.items ():
-		if exp_acc not in gxajss:
-			# See above
+	gxa_exps_js = web.url_get_json ( "https://www.ebi.ac.uk/gxa/json/experiments" )
+	gxa_exps_js = gxa_exps_js [ "experiments" ] # Extract what we need
+	gxa_exps_js = { js [ "experimentAccession" ]: js for js in gxa_exps_js }
+	for ae_acc in ae_accs:
+		if ae_acc not in gxa_exps_js:
+			# See above
 			continue
-		aejs [ "gxaAnalysisType" ] = gxajss [ exp_acc ] [ "experimentType" ]
-		result [ exp_acc ] = aejs
+		result [ ae_acc ] = gxa_exps_js [ ae_acc ] [ "experimentType" ]
 	return result  
 
 
 """
-  Wraps gxa_get_experiment_descriptors() behind a cache file, ie, 
+  Wraps gxa_get_experiment_summaries() behind a cache file, ie, 
   
   if gxa_js_file_path is present, just returns its conents, else
-  invokes gxa_get_experiment_descriptors(), saves it into gxa_js_file_path and returns
+  invokes gxa_get_experiment_summaries(), saves it into gxa_js_file_path and returns
   the JSON result.
   
   This is useful in Snakemake, where you can't have global variables (every rule execution
   is a new process), so you can save global states in files.
   
 """
-def gxa_get_experiment_descriptors_cached ( organisms, gxa_js_file_path: str ) -> dict:
+def gxa_get_experiment_summaries_cached ( organisms, gxa_js_file_path: str ) -> dict:
 	if pathlib.Path ( gxa_js_file_path ).exists ():
-		log.info ( "Loading AE/GXA descriptor from local file: '%s'", gxa_js_file_path )
+		log.debug ( "Loading AE/GXA details from local file: '%s'", gxa_js_file_path )
 		return js_from_file ( gxa_js_file_path )
-	gxa_js = gxa_get_experiment_descriptors ( organisms )
-	js_to_file ( gxa_js, gxa_js_file_path )
+	result = gxa_get_experiment_summaries ( organisms )
+	js_to_file ( result, gxa_js_file_path )
 	return gxa_js
 
 
@@ -71,16 +72,28 @@ def gxa_get_experiment_descriptors_cached ( organisms, gxa_js_file_path: str ) -
   - rdf_gxa_tpm_levels() or rdf_gxa_dex_levels(), depending on the experiment type
   - rdf_gxa_conditions()
   
+	:param 	dict exp_js: If given, this is the JSON that is used as input and exp_acc + gxa_analysis_type
+					are ignored, no ae_get_experiment_descriptor() is invoked. This is here for writing unit tests,
+					normally you shouldn't need it.
 """
-def gxa_rdf_all ( exp_js: dict, out = stdout, target_gene_ids: set = None ):
+def gxa_rdf_all ( 
+	exp_acc: str, gxa_analysis_type: str, out = stdout, target_gene_ids: set = None,
+	exp_js: dict = None
+):
 	if not out: out = io.StringIO ()
+
+	if not exp_js:
+		exp_js = ae_get_experiment_descriptor ( exp_acc )
+		exp_js [ "gxaAnalysisType" ] = gxa_analysis_type
 	
 	print ( rdf_gxa_namespaces(), file = out )
 	rdf_ae_experiment ( exp_js, out )
 		
 	exp_acc = exp_js [ 'accno' ]
 	ae_tech_type = exp_js [ "aeTechnologyType" ]
+	# In case it came from exp_js
 	gxa_analysis_type = exp_js [ 'gxaAnalysisType' ]
+	
 	cond_labels = set()
 	
 	if "Baseline" == gxa_analysis_type:
@@ -199,6 +212,8 @@ DEX_COND_PATTERN = re.compile ( f"{_dex_condre} vs {_dex_condre}( in {_dex_condr
 DEX_COND_TIME_PATTERN = re.compile ( f"(.+) at '([0-9]+) hour'{_dex_score_type_re}")
 
 """
+	TODO: re-comment me!
+	
   Yields the RDF for the TPM levels of a baseline experiment.
 
 	Parameters are the same as rdf_gxa_dex_levels()  
@@ -563,11 +578,12 @@ def gxa_tpm_url ( exp_acc: str ) -> str:
 	
 # The URL of the document returning the differential gene expression levels for the experiment accession
 def gxa_dex_url ( exp_acc, technology_type ):
-	tech_selector = "Microarray/query-results" if technology_type == "Microarray" else "RnaSeqDifferential/tsv"
+	tech_selector = "Microarray/query-results" if technology_type == "Microarray" \
+		else "BulkDifferential/tsv"
 	return \
 		"https://www.ebi.ac.uk/gxa/experiments-content/" + exp_acc +\
 		"/resources/ExperimentDownloadSupplier." + tech_selector		
-		
+
 def make_gene_uri ( gene_id: str ) -> str:
 	return "bkr:gene_" + gene_id.lower()
 		

@@ -13,6 +13,42 @@ bkr:exp_E-MTAB-3103 a bioschema:Study;
 	schema:description "Inner pericarp, outer pericarp and endosperm layers from...";
 	schema:datePublished "2015-04-24";
 	schema:subjectOf bkr:pmid_26044828;
+
+	bioschema:studyProcess # What Bioschemas prescribes for study design
+	[
+		# schema:PropertyValue is redundant, See MIAPPE case
+		#
+		a agri:ExperimentalDesign, schema:PropertyValue;
+
+		schema:name "study design"; # optional, useuful for applications understanding schema.org
+		# See notes, this could be duped into schema:value
+		schema:description "The experiment comprised the analysis of 484 Arabidopsis plants of the C24 genotype, with 384 reps that were placed in the LemnaTec carriers...";
+		schema:propertyID ppeo:experimental_design; # optional as above, as per schema.org, this is the property type, not the value
+		# dc:type is instead to add ontology terms of which this particular design is an instance
+		dc:type <http://purl.obolibrary.org/obo/OBI_0500014>; # factorial design
+
+		schema:additionalProperty
+		[
+			a schema:PropertyValue;
+			schema:name "EBI ArrayExpress Technology Type";
+			schema:value "transcription profiling by array";
+			schema:propertyID "aeTechnologyType";
+			dc:type efo:EFO_0002768; # transcription profiling by array
+
+			# The alternative is: ID: "RNASeq", label: "RNA-seq of coding RNA", EFO_0003738
+		],
+		[
+			# Very GXA specific property, has values 'Differential' or 'Baseline'
+			a schema:PropertyValue;
+			schema:name "EBI Gene Expression Atlas Analysis Type";
+			schema:value "differential expression analysis data transformation";
+			schema:propertyID "gxaAnalysisType";
+			dc:type obo:OBI_0000650;
+
+			# TODO: the alternative is Baseline and we're not sure which term should be used for that
+			# maybe "sequence data feature count tabulation" (OBI_0002568)?
+		],
+	]; # /ExperimentalDesign	
 .
 
 # The organism specification

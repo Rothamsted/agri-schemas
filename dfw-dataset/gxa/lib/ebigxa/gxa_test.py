@@ -1,5 +1,5 @@
 import unittest
-from ebigxa.gxa import gxa_get_experiment_descriptors, rdf_gxa_conditions, rdf_gxa_tpm_levels, \
+from ebigxa.gxa import gxa_get_experiment_summaries, rdf_gxa_conditions, rdf_gxa_tpm_levels, \
 	load_filtered_genes, rdf_gxa_dex_levels, gxa_rdf_all
 from ebigxa.utils import rdf_gxa_namespaces
 from etltools.utils import logger_config, js_from_file, sparql_ask, XTestCase
@@ -17,10 +17,11 @@ test_genes = load_filtered_genes (
 		"AT1G01480", "AT1G01560", "AT4G03210", "AT4G30280", "AT5G59710", "AT1G22810", "AT3G30720",
 		"ENSRNA050013890" ])		
 
+#@unittest.skip ( "TODO: restore ASAP" )
 class GxaTestRaw ( XTestCase ):
 	def test_gxa_rdf_all_differential_exp ( self ):
 		exp_js = js_from_file ( mod_dir_path + "/test-data/E-ATMX-20.biostudies.json" )
-		rdf = gxa_rdf_all ( exp_js, None )
+		rdf = gxa_rdf_all ( None, None, out = None, target_gene_ids = test_genes, exp_js = exp_js )
 		#log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )
 		#log.info ( "gxa_rdf_all() test output:\n%s\n\n", rdf )
 		print ( rdf )
@@ -29,9 +30,13 @@ class GxaTestRaw ( XTestCase ):
 		graph = rdflib.Graph()
 		graph.parse ( data = rdf, format = "turtle" )
 
+		# TODO: tests
+	# /end: test_gxa_rdf_all_differential_exp()
+
+
 	def test_gxa_rdf_all_baseline_exp ( self ):
 		exp_js = js_from_file ( mod_dir_path + "/test-data/E-MTAB-4484.biostudies.json" )
-		rdf = gxa_rdf_all ( exp_js, None, target_gene_ids = test_genes )
+		rdf = gxa_rdf_all ( None, None, out = None, target_gene_ids = test_genes, exp_js = exp_js )
 		#log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf [ 0: 4000 ] )
 		# log.info ( "gxa_rdf_all() test output:\n%s\n\n", rdf )
 		#print ( rdf )
@@ -39,14 +44,19 @@ class GxaTestRaw ( XTestCase ):
 		graph = rdflib.Graph()
 		graph.parse ( data = rdf, format = "turtle" )
 
+		# TODO: tests	
+	# /end: test_gxa_rdf_all_baseline_exp()	
+# /end: GxaTestRaw
 
-class GxaTest: # TODO: restore ASAP ( XTestCase ):
+
+#@unittest.skip ( "TODO: restore ASAP" )
+class GxaTest ( XTestCase ):
 	
-	gxa_exps = None
+	gxa_exp_summaries = None
 	
 	@classmethod
 	def setUpClass(cls):
-		GxaTest.gxa_exps = gxa_get_experiment_descriptors ( [ "arabidopsis thaliana", "triticum aestivum" ] ) 
+		GxaTest.gxa_exp_summaries = gxa_get_experiment_summaries ( [ "arabidopsis thaliana", "triticum aestivum" ] ) 
 		#log.info ( gxa_exps )
 	
 	# TODO: Agroportal isn't so stable
@@ -68,15 +78,18 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 			  "Cannot find RDF for 10 days after anthesis!" ),
 			( "bkr:cond_pericarp dc:type <http://aims.fao.org/aos/agrovoc/c_25199>", 
 			  "Cannot find agrovoc:c_25199 for pericarp!" ),
-			( "<http://aims.fao.org/aos/agrovoc/c_25199> schema:name \"pericarp\"", 
-				"Cannot find schema:name for pericarp!" ),
+			# TODO: currently, AgroPortal returns oplodie
+			# ( "<http://aims.fao.org/aos/agrovoc/c_25199> schema:name \"pericarp\"", 
+			#	"Cannot find schema:name for pericarp (AGROVOC)!" ),
 			( "<http://purl.obolibrary.org/obo/PO_0009084> schema:identifier \"PO_0009084\"", 
-			  "Cannot find schema:name for pericarp!"),
-			(	"<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009010>", 
-				"Cannot fine knetminer/PO sameAs annotation for PO:0009010!" ),
+			  "Cannot find schema:identifier for pericarp!"),
+			( "<http://purl.obolibrary.org/obo/PO_0009084> schema:name \"pericarp\"", 
+			  "Cannot find schema:name for pericarp (PO)!"),
+			(	"<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009084> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009084>", 
+				"Cannot find knetminer/PO sameAs annotation for PO:0009010!" ),
 			( "bkr:cond_10_days_after_anthesis dc:type <http://aims.fao.org/aos/agrovoc/c_2992>",
 			 	"Cannot find 'flowering' annotation for anthesis entry!" ),
-			( "bkr:cond_10_days_after_anthesis dc:type <http://www.cropontology.org/rdf/CO_330:0000155>",
+			( "bkr:cond_10_days_after_anthesis dc:type <https://cropontology.org/rdf/CO_330:0000155>",
 				"Cannot find 'days' annotation for anthesis entry!"),
 			( """
 					bkr:cond_24_hours a agri:StudyFactor;
@@ -94,15 +107,15 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 	
 	
 	def test_gxa_get_experiment_descriptors ( self ):
-		self.assertTrue ( "E-MTAB-8326" in GxaTest.gxa_exps, "Arabidopsis experiment not found!" )
+		self.assertTrue ( "E-MTAB-8326" in GxaTest.gxa_exp_summaries, "Arabidopsis experiment not found!" )
 		self.assertEqual ( 
 			"Differential", 
-			GxaTest.gxa_exps [ "E-MTAB-8326" ] [ "gxaAnalysisType" ],
+			GxaTest.gxa_exp_summaries [ "E-MTAB-8326" ],
 			"Wrong gxaAnalysisType for ara. experiment!"
 		) 
 		self.assertEqual ( 
 			"Baseline", 
-			GxaTest.gxa_exps [ "E-MTAB-4260" ] [ "gxaAnalysisType" ],
+			GxaTest.gxa_exp_summaries [ "E-MTAB-4260" ],
 			"Wrong gxaAnalysisType for wheat experiment!"
 		) 
 		
@@ -323,9 +336,9 @@ class GxaTest: # TODO: restore ASAP ( XTestCase ):
 		
 	def test_gxa_rdf_all ( self ):
 		acc = "E-MTAB-4260"
-		exp_js = GxaTest.gxa_exps [ acc ]
+		gxa_analysis_type = GxaTest.gxa_exp_summaries [ acc ]
 		
-		rdf = gxa_rdf_all ( exp_js, out = None, target_gene_ids = test_genes )
+		rdf = gxa_rdf_all ( acc, gxa_analysis_type, out = None, target_gene_ids = test_genes )
 		log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf )		
 
 		graph = rdflib.Graph()
