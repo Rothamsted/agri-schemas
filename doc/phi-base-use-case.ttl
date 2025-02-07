@@ -7,6 +7,8 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 
+# This is the container that glue things together, based on PHIBase records.
+#
 # Host-pathogen interactions are a specific case of process, action, or alike
 # We use schema:Action for that. This is somewhat close, not ideal, to what we mean, since 
 # schema actions seem specific to human actions (eg, agent is restricted to Organization or Person).
@@ -16,7 +18,6 @@
 #
 # Clearly, this is relevant in the defition of pathways too (see the biomolecular use case).
 #
-
 # schema:Action can be redundantly added, to ease consumers like Google
 res:phiInt001 a schema:Action, agri:HostPathogenInteraction;	
 	# Similarly, this is redundant but could help
@@ -26,60 +27,25 @@ res:phiInt001 a schema:Action, agri:HostPathogenInteraction;
 		# biological process involved in symbiotic interaction
   	<http://purl.obolibrary.org/obo/GO_0044403>.
 
-	# in schema.org, object is synonym of participant
-	schema:object [
-		a bioschema:Phenotype;
+	# in schema.org, schema:object is synonym of an Action participant.
+	# So, in this interaction a host, a pathogen and a pathogen's gene are the participants.
+	# 
+	# An alternative could be linking the gene to the pathogen and then link the gene only here
+	# to the interaction.
+	#
+	schema:object 
+		phiInt001_host,
+		res:phiInt001_pathogen,
+		res:gene_FGRAMPH1_01T00873;
 
-		schema:name "Triticum aestivum";
-		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
-
-		schema:role [
-			a schema:Role;
-			schema:roleName "host";
-		]
-
-		schema:additionalProperty [
-			a schema:PropertyValue;
-			schema:propertyID "phiBase:Phenotype";
-			schema:value "reduced virulence"
-		]
-	];
-
-	schema:object [
-		a bioschema:Phenotype;
-
-		schema:name "Fusarium graminearum";
-		# As per bioschemas
-		bioschema:taxonomicRange <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
-		# Possibly, an additional annotation that is more standard
-		dc:type <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
-
-		schema:role [
-			a schema:Role;
-			schema:roleName "pathogen";
-		]
-
-		schema:additionalProperty [
-			a schema:PropertyValue;
-			schema:propertyID "phiBase:Postpenetration defect";
-			schema:value "yes"
-		]
-	];
-
-	schema:object res:gene_FG00332;
-
-	schema:result [
-		a schema:PropertyValue;
-
-		dc:type obo:TO_0000663;
-
-		# As you can see from the gene annotation above, 
-		# these could be taken from resolving the dc:type, but they're often added to ease data
-		# consumers
-		schema:propertyID "disease name";
-		schema:value "Fusarium Ear Blight";
-	];
-
+  # Means we get these results from this interaction and the above participants
+	#
+	schema:result 
+	  # The resulting PHI Host-related Phenotype
+		res:phiInt001_host_phenotype,
+	  # The resulting PHI pathogen-related Phenotype
+		res:phiInt001_pathogen_phenotype;
+	
 	agri:evidence res:pmed_18943005;
 
 	agri:evidence [
@@ -89,16 +55,119 @@ res:phiInt001 a schema:Action, agri:HostPathogenInteraction;
 	]
 .
 
-res:gene_FG00332 a bioschema:Gene;
-	schema:identifier "FG00332";
-	schema:name "Transducin beta-subunit";
-	bioschema:encodes res:protein_I1RA15;
+
+# A PHI host phenotype, resulting from some PHI interaction
+#
+res:phiInt001_host_phenotype a bioschema:Phenotype;
+	# TODO: schema:role has been removed, so we propose to introduce this agri:role property
+	# An alternative could be: additionalType: phiBase:HostPhenotype, but this.
+	# 
+	# A possible alternative could be <this> schema:roleName "host", which would maket the host
+	# a role too (a bit dirty)
+	# 
+	agri:role [
+		a schema:Role;
+		schema:roleName "PHI Host Phenotype";
+	];
+	
+	schema:additionalProperty [
+		a schema:PropertyValue;
+		schema:propertyID "phiBase:Phenotype";
+		schema:value "reduced virulence"
+	];
+
+	# This could be as simple as a plain string, here we show how to attach annotations
+	# such as ontology terms.
+	#
+	bioschema:associatedDisease [
+		# As usually, we imagine this to be created from imported strings + annotations
+		# like text mining annotation. Due to that, this is a property value, since we aren't
+		# sure it's a DefinedTerm. As you can see, the latter can be added.
+		#
+		a schema:PropertyValue;
+		
+		dc:type obo:TO_0000663;
+
+		# As you can see from the gene annotation below, 
+		# these could be taken from resolving the dc:type, but they're often added to ease data
+		# consumers
+		schema:propertyID "disease name";
+		schema:value "Fusarium Ear Blight";
+	];
+
+	# Redundant (it's already in the Action above), but complies with bioschemas and could 
+	# be useful
+	bioschema:bioChemAssociation res:phiInt001_host;
+	# You might want this redundancy too, to quickly link a gene to a phenotype
+	bioschema:bioChemAssociation res:gene_FGRAMPH1_01T00873;
+.
+
+
+# A PHI pathogen phenotype, resulting from some PHI interaction
+#
+res:phiInt001_pathogen_phenotype a bioschema:Phenotype;
+	# TODO: see notes above
+	# 
+	agri:role [
+		a schema:Role;
+		schema:roleName "PHI Pathogen Phenotype";
+	];
+	
+	schema:additionalProperty [
+		a schema:PropertyValue;
+		schema:propertyID "phiBase:Postpenetration defect";
+		schema:value "yes"
+	]
+
+	# As above, redundant since it's already in the Action above.
+	bioschema:bioChemAssociation res:phiInt001_pathogen;
+.
+
+
+# The host details
+#
+res:phiInt001_host a schema:BioChemEntity;
+	schema:name "Triticum aestivum";
+	dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
+
+	# See notes above
+	agri:role [
+		a schema:Role;
+		schema:roleName "host";
+	]
+.
+
+# The pathogen details
+#
+res:phiInt001_pathogen a schema:BioChemEntity;
+	schema:name "Fusarium graminearum";
+	# As per bioschemas
+	bioschema:taxonomicRange <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
+	# Possibly, an additional annotation that is more standard
+	dc:type <http://purl.bioontology.org/ontology/NCBITAXON/5518>;
+
+	# See notes above
+	schema:role [
+		a schema:Role;
+		schema:roleName "pathogen";
+	]
+.
+
+
+# The gene and protein details
+#
+res:gene_FGRAMPH1_01T00873 a bioschema:Gene;
+	schema:identifier "FGRAMPH1_01T00873";
+	schema:name "Transducin beta-subunit", "TBL1";
+	bioschema:encodes res:protein_A0A1C3YHH5;
 	dc:type obo:GO_0009405, obo:GO_0044412 .
 
-res:protein_I1RA15 a bioschema:Protein;
+res:protein_A0A1C3YHH5 a bioschema:Protein;
 	dc:source "UniProt"
 .
 
+# the publication evidence
+#
 res:pmed_18943005 a agri:ScholarlyPublication;
 	dc:title  "Random Insertional Mutagenesis Identifies Genes Associated with Virulence in the Wheat Scab Fungus Fusarium graminearum.";
 
