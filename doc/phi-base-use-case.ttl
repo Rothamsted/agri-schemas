@@ -98,8 +98,6 @@ res:phiInt001_host_phenotype a bioschema:Phenotype;
 	# Redundant (it's already in the Action above), but complies with bioschemas and could 
 	# be useful
 	bioschema:bioChemAssociation res:phiInt001_host;
-	# You might want this redundancy too, to quickly link a gene to a phenotype
-	bioschema:bioChemAssociation res:gene_FGRAMPH1_01T00873;
 .
 
 
@@ -121,6 +119,9 @@ res:phiInt001_pathogen_phenotype a bioschema:Phenotype;
 
 	# As above, redundant since it's already in the Action above.
 	bioschema:bioChemAssociation res:phiInt001_pathogen;
+
+	# You might want this redundancy too, to quickly link a gene to a phenotype
+	bioschema:bioChemAssociation res:gene_FGRAMPH1_01T00873;
 .
 
 
