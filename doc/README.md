@@ -24,6 +24,7 @@ These are the use cases considered:
     * [AHDB](ahdb-use-case.md)
   * Links between [field trials, cultivars and genes](trials-genes.md)
     * Includes the [EBI Gene Expression Atlas use case](ebi-gxa-use-case/README.md)
+  * [Patents linked to life science entities](patents/README.md)
   * [Weather conditions and forecasts](weather-use-case.md)
 
 ## Modelling principles

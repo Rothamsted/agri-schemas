@@ -2,7 +2,7 @@
 
 In this folder, you find a provisional first draft to describe patents and link them to relevant life science entities, such as genes.
 
-This comes from some work we're doing in KnetMiner and everything should be considered in very experimental state.
+This comes from some work we're doing in KnetMiner and everything should be considered in very experimental state. This is a [raw file we used as example](patent-data-example.csv).
 
 ## How to go from RDF to Labelled Property Graphs
 
