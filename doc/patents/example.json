@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "res": "http://agrischemas.org/examples/dfw-hack-2019/resources/",
+    "agri": "http://agrischemas.org/",
+    "bioschema": "http://bioschemas.org/",
+    "schema": "http://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "patent": "http://data.epo.org/linked-data/def/patent/",
+    "knetminer": "http://knetminer.com/terms/"
+  },
+  "@id": "res:patent001",
+  "@type": "schema:CreativeWork",
+  "schema:additionalType": [
+    {
+      "@id": "patent:Publication"
+    },
+    {
+      "@id": "patent:Application"
+    }
+  ],
+  "schema:headline": "Triticum aestivum delavayi synthase THI1 gene and application thereof in plant \n    resistance to Chinese wheat mosaic virus",
+  "schema:abstract": "The invention provides a Triticum aestivum delavayi synthase THI1 gene \n    and its application in plant resistance to Chinese wheat mosaic virus. \n    The nucleotide sequence of the gene is provided as SEQ ID NO: 1. \n    The gene is introduced into Triticum aestivum, leading to \n    its overexpression and enhanced resistance to the virus. \n    The patent also covers applications of the gene, its recombinant vector, and the encoded \n    protein in viral resistance.",
+  "agri:authorsList": "YANG JIN, YANG JIAN, LIU PENG, CHEN JIANPING",
+  "agri:creatorsList": "UNIV NINGBO",
+  "schema:copyrightHolder": "<Unknown>",
+  "schema:countryOfOrigin": "CN",
+  "schema:dateCreated": "2021-05-26",
+  "schema:datePublished": "2021-03-09",
+  "patent:publicationKindLabel": "Patent Application",
+  "knetminer:citedPatentsCount": 2,
+  "knetminer:citedByPatentsCount": 0,
+  "knetminer:patentLegalStatus": "active",
+  "knetminer:applicationKind": "Patent Application",
+  "knetminer:patentDisplayKey": "CN 202110575068 A",
+  "patent:applicationNumber": "CN 113337527 A",
+  "schema:about": [
+    {
+      "@id": "res:gene_TRAES0001"
+    },
+    {
+      "@id": "res:gene_TRAES0002"
+    },
+    {
+      "@id": "res:gene_TRAES0003"
+    }
+  ]
+}

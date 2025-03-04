@@ -1,0 +1,74 @@
+
+/*
+ * This format is provisional and similar to the output given by the Neo4j browser. 
+ * We need to decide which exchange forma to use for LPGs
+ *
+ * See example.ttl for details on the choice of types.
+ */
+{
+  "nodes": [
+    {
+      "labels": [ "PatentDescription", "Concept" ],
+      "properties": {
+        // This is needed in the current KnetMiner, will change in future to something like
+        // knetId and we will privilege giving it some semantics (eg, knetId: "CN 113337527 A")
+        "ondexId": "001",
+        "headline": "Triticum aestivum delavayi synthase THI1 gene and application thereof in plant \n    resistance to Chinese wheat mosaic virus",
+        "abstract": "The invention provides a Triticum aestivum delavayi synthase THI1 gene \n    and its application in plant resistance to Chinese wheat mosaic virus. \n    The nucleotide sequence of the gene is provided as SEQ ID NO: 1. \n    The gene is introduced into Triticum aestivum, leading to \n    its overexpression and enhanced resistance to the virus. \n    The patent also covers applications of the gene, its recombinant vector, and the encoded \n    protein in viral resistance.",
+        "authorsList": "YANG JIN, YANG JIAN, LIU PENG, CHEN JIANPING",
+        "creatorsList": "UNIV NINGBO",
+        "copyrightHolder": "<Unknown>",
+        "countryOfOrigin": "CN",
+        "dateCreated": "2021-05-26",
+        "datePublished": "2021-03-09",
+        "publicationKindLabel": "Patent Application",
+        "citedPatentsCount": 2,
+        "citedByPatentsCount": 0,
+        "patentLegalStatus": "active",
+        // We use the namespace prefix when the short name of a type is too ambiguos to 
+        // be used alone. 
+        "patent:applicationKind": "Patent Application",
+        "patentDisplayKey": "CN 202110575068 A",
+        "patent:applicationNumber": "CN 113337527 A"
+      }
+    },
+
+    // Obviously, genes could be described in other data sets and 
+    // be merged into a single dataset later. In that cases, you can still refer them in 
+    // the 'relationship' section below
+    //
+    {
+      "labels": [ "Gene", "Concept" ],
+      "properties": {
+        "ondexId": "002",
+        "identifer": "gene_TRAES0001"
+        // ...
+      }
+    },
+
+    {
+      "labels": [ "Gene", "Concept" ],
+      "properties": {
+        "ondexId": "003",
+        "identifer": "gene_TRAES0002"
+        // ...
+      }
+    },
+
+    {
+      "labels": [ "Gene", "Concept" ],
+      "properties": {
+        "ondexId": "004",
+        "identifer": "gene_TRAES0003"
+        // ...
+      }
+    }
+  ], // nodes
+
+  "relationships": [
+    // Possible other properties can be added (eg, source, text mining tool)
+    { "type": "about", "start": "001", "end": "002" },
+    { "type": "about", "start": "001", "end": "003" },
+    { "type": "about", "start": "001", "end": "004" }
+  ] // relationships
+} // root

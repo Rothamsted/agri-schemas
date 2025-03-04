@@ -1,0 +1,116 @@
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>.
+@prefix agri: <http://agrischemas.org/>.
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix patent: <http://data.epo.org/linked-data/def/patent/> .
+
+# Used for KnetMiner-specific definitions (possibly to be generalised later)
+@prefix knetminer: <http://knetminer.com/terms/>.
+
+# A very incomplete draft to model patents, based on KnetMiner work
+#
+# See example-knetminer.json for an idea of how this translates to an 
+# LPG/graph database/JSON form 
+
+res:patent001
+  # As an alternative, we might introduce a knetminer:PatentDescription (subclass of schema:CreativeWork), 
+  # which would be a mix of Application and Publication.
+  # 
+  # At least for now, we're going to use this PatentPublication in KnetMiner.
+  #
+  # This might overcome the ambiguity of certain properties (eg, author/inventor, see below).
+  # 
+  # In practical terms, all that follows would remain the same, it's just that patent001 would
+  # have this new type.
+  # 
+  a schema:CreativeWork;
+  schema:additionalType patent:Publication, patent:Application;
+
+  schema:headline """Triticum aestivum delavayi synthase THI1 gene and application thereof in plant 
+    resistance to Chinese wheat mosaic virus""";
+  
+  schema:abstract """The invention provides a Triticum aestivum delavayi synthase THI1 gene 
+    and its application in plant resistance to Chinese wheat mosaic virus. 
+    The nucleotide sequence of the gene is provided as SEQ ID NO: 1. 
+    The gene is introduced into Triticum aestivum, leading to 
+    its overexpression and enhanced resistance to the virus. 
+    The patent also covers applications of the gene, its recombinant vector, and the encoded 
+    protein in viral resistance.""";
+  
+  # These properties might have two issues
+  # - schema:author is not good with a string containing a list of authors, since the formal definition
+  #   requires one or multiple Author objects as targets. Moreover, with "author" it's not possible
+  #   (apart from euristics) to know if the string value contains a single name or multiple auhthors
+  # - There might be confustion between "patent inventors" and "patent publication authors", 
+  #   as well as between "patent creators" and "patent publication creators". If you want to 
+  #   overcome such ambiguity, introduce knetminer:inventorsList, knetminer:patentApplicantsList
+  #   
+  agri:authorsList "YANG JIN, YANG JIAN, LIU PENG, CHEN JIANPING";
+  agri:creatorsList "UNIV NINGBO"; # TODO: add to agri:
+
+  # Same (both) issues as above.
+  # 
+  # NEVER write this in real datasets, just omit the property. Here, it's reported just to show
+  # its usage
+  schema:copyrightHolder "<Unknown>";
+
+  # Again, the correct form for this should be attaching a country, which has "CN" as identifier.
+  # Probably you don't want to use country codes here, but the extended name, using some
+  # mapping file or translation service.
+  schema:countryOfOrigin "CN";
+
+  # Again, if you're fine with mixing publication date and application date 
+  schema:dateCreated "2021-05-26";
+  schema:datePublished "2021-03-09";
+
+  # In RDF, we might want to add both this and schema:genre, to improve interoperability.
+  # In KnetMiner, 'genre' is more general, if you don't need to be specific on the kind of 
+  # patent publication, use this, else use publicationKindLabel. 
+  patent:publicationKindLabel "Patent Application"; 
+
+  # TODO: subproperty of agri:score
+  knetminer:citedPatentsCount 2;
+  knetminer:citedByPatentsCount 0;
+
+  # If you want a more general, but less specific property, use schema:creativeWorkStatus
+  # (but beware it's not an official schema: property yet)
+  # you might want an enumeration/controlled vocabulary for this.
+  knetminer:patentLegalStatus "active";
+
+  # Again, use schema:creativeWorkStatus or schema:genre if you're willing to trade specificity
+  # with interoperability, else, introduce this custom property.
+  # 
+  # Note that this is conceptually equivalent to patent:applicationKind, but the latter requires
+  # that you use instances from a controlled vocabulary.
+  # 
+  knetminer:applicationKind "Patent Application";
+
+  # Use schema:identifier if you're fine with making it generic
+  # Use schema:identifier + schema:PropertyValue, + schema:propertyID "patent:applicationNumber"
+  # to stay within schema: and ensure more interoperability
+  #
+  # Use schema:identifier if you want that KnetMiner recognizes this as an accession 
+  patent:applicationNumber "CN 113337527 A";
+
+  # Same considerations as above, but there is no patentDisplayKey in patent:
+  knetminer:patentDisplayKey "CN 202110575068 A";
+
+
+  # The links to the gene(s) that this patent is about
+  # 
+  # These are all nodes of type Gene. This link can be described with either schema:about or
+  # its inverse: <Gene> schema:subjectOf <Patent Publication>.
+  #
+  # === Knetminer-related notes ===
+  # There is no particular preference, the only important thing is that we use one or the other
+  # consistently in our datasets.
+  # 
+  # As in the cases above, introduce something like knetminer:patentAbout, or 
+  # knetminer:patentSubject if you want to be more specific (might help with semantic motif queries).
+  #
+  # This are fake gene accessions.
+  #
+  schema:about res:gene_TRAES0001, res:gene_TRAES0002, res:gene_TRAES0003;
+
+.
