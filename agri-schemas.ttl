@@ -276,7 +276,7 @@ agri:HostPathogenInteraction rdf:type owl:Class ;
     # host-pathogen interaction
     <http://purl.obolibrary.org/obo/OHPI_0000001>,
     # biological process involved in symbiotic interaction
-    <http://purl.obolibrary.org/obo/GO_0044403.
+    <http://purl.obolibrary.org/obo/GO_0044403>
 .
 
 
