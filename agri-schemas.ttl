@@ -82,8 +82,8 @@ agri:hasGeneExpressionIn rdf:type owl:AnnotationProperty ;
 agri:hasObservedValue rdf:type owl:AnnotationProperty ;
                       schema:inverseOf agri:hasObservedVariable ;
                       rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ;
-                      rdfs:range agri:StudyObservedValue ;
-                      rdfs:domain agri:StudyObservedVariable .
+                      schema:rangeIncludes agri:StudyObservedValue ;
+                      schema:domainIncludes agri:StudyObservedVariable .
 
 
 ###  http://agrischemas.org/hasObservedVariable
@@ -91,8 +91,8 @@ agri:hasObservedVariable rdf:type owl:AnnotationProperty ;
                          schema:inverseOf agri:hasObservedValue ;
                          rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ,
                                             dc:type ;
-                         rdfs:range agri:StudyObservedVariable ;
-                         rdfs:domain agri:StudyObservedValue .
+                         schema:rangeIncludes agri:StudyObservedVariable ;
+                         schema:domainIncludes agri:StudyObservedValue .
 
 
 ###  http://agrischemas.org/isBiologicallyRelatedTo
