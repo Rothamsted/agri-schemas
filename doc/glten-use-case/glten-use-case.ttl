@@ -1,11 +1,11 @@
-@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>
-@prefix agri: <http://agrischemas.org/>
+@prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>.
+@prefix agri: <http://agrischemas.org/>.
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-@prefix milax: <http://agrischemas.org/milax/>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix milax: <http://agrischemas.org/milax/>.
 
 
 res:glten_r_bk a bioschema:Study;
@@ -24,25 +24,25 @@ res:glten_r_bk a bioschema:Study;
 	schema:description "The Broadbalk experiment is one of the oldest continuous agronomic experiments in the world. Started by Lawes and Gilbert in the autumn of 1843, winter wheat has been sown and harvested on all or part of the field every year since then.";
 	
 	# TODO: This is "objectives" in GL/TEN spec. The specific example uses purpose instead?!
-	# TODO: schema.org has a problem with this having bad domain/range, but there's an issue about it
+	# TODO: schema.org has a problem with this having bad domain/range, but there's an issue about it
 	# (https://github.com/schemaorg/schemaorg/issues/2435)
 	schema:purpose "To test effects of organic and inorganic fertilizer inputs on wheat yields";
 	
-	# This maps "Data Access"
+	# This maps "Data Access"
 	schema:conditionsOfAccess "Data access is on request";
 	schema:license [
 		# TODO: This is to map "Data Access Policy" = yes, "Data Access Policy URL" = "Not online"
 		schema:name "Data Access Policy is available off line"
 	];
 
-	schema:startDate 1843^^xsd:gYear # or xsd:date;
+	schema:startDate 1843^^xsd:gYear; # or xsd:date;
   schema:additionalProperty [
 		a schema:PropertyValue;
 		# This is the way to encode particular uncommon properties that are not explicitly defined
 		# in existing schemas.
 		# TODO: do we need "Establishement period end"? What is it, exactly?
 		schema:propertyID "milax:Establishement period end";
-		schema:value "1851"^^xsd:gYear # or xsd:date
+		schema:value "1851"^^xsd:gYear # or xsd:date
 	];
 
   # TODO: modelling orgs/people with schema:Ogranization is pretty straightforward, omitted for now.
@@ -52,7 +52,7 @@ res:glten_r_bk a bioschema:Study;
 	# schema:contributor -> Role -> Person, as per http://blog.schema.org/2014/06/introducing-role.html
 	schema:contributor [
 		a schema:Role;
-		# Experiment Manager
+		# Experiment Manager
 		schema:roleName <http://purl.obolibrary.org/obo/AGRO_00000381>, "Experiment Manager";
 		schema:startDate "2015-01-01"^^xsd:date;
 		schema:contributor [
@@ -154,7 +154,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 		schema:name "Total straw";
 		schema:description "Total yield of straw at field moisture content"
 	];
-	# Other observed value	
+	# Other observed value	
 
 
 	schema:additionalProperty [
@@ -172,11 +172,11 @@ res:glten_r_bk_1843_1925 a schema:Study;
 
 	schema:additionalProperty [
 		# Again, this doesn't seem common or critical, so it can be represented in this loose way
-		# Same for horizontal FV combinations
+		# Same for horizontal FV combinations
 		a schema:PropertyValue;
 		schema:propertyID "milax:Factor Value Combinations";
 		schema:value "Nil;FYM;FYM+N2..."
-	]
+	];
 
 	rdfs:seeAlso [
 		# This structure allows us to do two things
@@ -195,7 +195,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 	  "Note 1, Harvesting\nFrom 1844 to 1901 the wheat crop was cut by hand by scythes, from 1902 to 1956 a self-binder was used, originally horse drawn, and then powered by a tractor. Hand cutting with scythes was often necessary if the ground was very wet or the crop was badly lodged (flattened). After cutting the crop was bound into sheaves which were ‘stooked’ and left on the plot for about two weeks then ‘carted’ into barns where they were threshed over the winter. Cutting and carting may have been spread over several days. Thus the earlier datasets BBKYIELD and BBKYIELD_F include the dates of both cutting and carting the crop. From 1957 the plots have been harvested by a small plot combine harvester; only the central strip of each plot is taken for yield and samples. Before 1957 the plots were usually cut in early August, since 1957 combining has been in August or early September. Sowing and harvest dates are available from the e-RA Curators.",
 		"Note 2, Plot areas\nWhen the experiment was established in 1843 most of the plots were very large. Most comprised an ‘a’ and ‘b’ half (each 3.77m wide) and were 320m long (the length of the field). Plots 21 and 22 are a little narrower. In 1894 the two halves were combined, giving a total plot area of 0.24ha. As the experiment progressed these large plots have been subdivided into different Sections (see ‘Background’ for more details), with corresponding changes in the area harvested. The current plot lengths vary depending on the Section and are between 15.24m (Section 0) and 28.04m (Section 1). The plots are now 6m wide (except plots 21 and 22 which are 4m wide) with 48 rows at 12.5 cm spacing. The harvested area is 2.1m wide. The harvested area is shown in most of the datasets."
 
-	# redundantly marks the fact there's a sample with location. isPartOf should be used anyway.
+	# redundantly marks the fact there's a sample with location. isPartOf should be used anyway.
 	schema:contentLocation glten_r_bk_site 
 .
 

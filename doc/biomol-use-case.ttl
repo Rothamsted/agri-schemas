@@ -1,5 +1,5 @@
 @prefix res: <http://agrischemas.org/examples/dfw-hack-2019/resources/>.
-@prefix bkr: <http://knetminer.org/data/rdf/resources/>
+@prefix bkr: <http://knetminer.org/data/rdf/resources/>.
 @prefix agri: <http://agrischemas.org/>.
 @prefix bioschema: <http://bioschemas.org/> .
 @prefix schema: <http://schema.org/> .
@@ -37,7 +37,7 @@ res:study1 a bioschema:Study;
 	schema:name  "Bone Morphogenic Protein (BMP) Signalling and Regulation"^^<xsd:string>;
 
 	# the inverse of potentialAction
-	schema:object res:tob1, 
+	schema:object res:tob1
 .
         
 res:tob1  a bioschema:Protein ;
@@ -125,7 +125,7 @@ bkr:degex_tob1_sample1 a rdf:Statement;
 	agri:evidence  	res:sample1;
 	rdf:subject    	res:tob1;
 	rdf:predicate		bioschema:expressedIn;
-	rdf:object     	res:expFact1.
+	rdf:object     	res:expFact1
 .
   
 
