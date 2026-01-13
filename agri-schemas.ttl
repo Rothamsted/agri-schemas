@@ -23,6 +23,96 @@
 <http://agrischemas.org/> rdf:type owl:Ontology ;
                            rdfs:label "AgriSchemas Ontology"@en .
 
+agri:SchemaNewClassProposal a rdfs:Class ;
+  rdfs:comment "Top-level containers named *New*Proposal are markers to track actions needed for new terms (eg, propose to schema/bioschemas)." .
+
+agri:SchemaNewPropertyProposal a rdf:Property ;
+  rdfs:seeAlso agri:SchemaNewClassProposal .
+
+
+## Classes
+
+agri:BioSchemasNewClassProposal rdf:type owl:Class ;
+  rdfs:seeAlso agri:BioSchemasNewClassProposal .
+
+agri:BioPathway a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ,
+    <http://purl.obolibrary.org/obo/GO_0008150> , # BioProc
+    <http://semanticscience.org/resource/SIO_001107> # Biological pathway
+  .
+
+agri:ExperimentalDesign a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , obo:OBI_0500000 , ppeo:experimental_design , schema:PropertyValue , <http://www.ebi.ac.uk/efo/EFO_0001426> ;
+  rdfs:comment """A description of the study's experimental design. For instance, \"control/treatment design\", \"factorial design with 2 factors\".
+
+This is a a schema:PropertyValue and conventionally, schema:value should be used by instances to at least give a short description (or label) for a experimental design. schema:description could be optionally be used to additionally offer a longer description.
+
+Until this becomes part of some official schema/bioschema specification, you might want to adopt some conventional redundancy, see https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case/dataset-arabidopsis for details."""@en .
+
+agri:ExperimentalFactorType a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , ppeo:factor ;
+  rdfs:seeAlso agri:ExperimentalFactorValue ;
+  rdfs:comment """A variable that is considered to perform a study, such as a life science study. An experimental factor is the independent variable of the study, which might be varied as part of the experimental design for the purpose of investigating how potentially dependent variables vary with different factor values.
+
+Examples are: treatmemt, administered diet, fertilisation."""@en .
+
+agri:ExperimentalFactorValue a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , obo:OBI_0000750 , schema:PropertyValue , <http://www.ebi.ac.uk/efo/EFO_0000001> , ppeo:factor_value ;
+  rdfs:seeAlso agri:ExperimentalFactorType ;
+  rdfs:comment "A value for an independent variable investigated by an experiment/study."@en .
+
+agri:FIeldTrialBioMaterial a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:biological_material .
+
+agri:FieldTrialMaterialSource a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:material_source .
+
+agri:FieldTrialObservationUnit a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:observation_unit .
+
+agri:HostPathogenInteraction a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ,
+    # host-pathogen interaction
+    <http://purl.obolibrary.org/obo/OHPI_0000001> ,
+
+    # biological process involved in symbiotic interaction
+    <http://purl.obolibrary.org/obo/GO_0044403>
+  .
+
+agri:LabProtocolParameterType a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal .
+
+agri:LabProtocolParameterValue a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:PropertyValue .
+
+agri:ScholarlyPublication a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:CreativeWork .
+
+agri:StudyEvent a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ;
+  rdfs:comment """An event that might happen during a study/experiment. This typically occurs to a sample or a data set/file, which yields another item (another sample or data file). Events are explicitly caused (eg, a lab protocol is applied, irrigation, patient treatment), or it might happen due to the environment (eg, rain, patient infection). Subclasses are defined for the two types of event.
+
+Events can also be used to represent data extraction from samples (what is considered an assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation of differentially expressed genes, gene enrichment). An event of this type can represent a plan or a particular occurrence, ie, similarly to other cases in schema.org, we don't distinguish between the two, as it is done in BFO/DOLCE ontologies."""@en
+  .
+
+agri:StudyObservedValue a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal , ppeo:observed_variable , schema:PropertyValue .
+
+agri:StudyObservedVariable a rdfs:Class ;
+  rdfs:subClassOf agri:BioSchemasNewClassProposal .
+
+bioschema:LabProtocol a rdfs:Class ;
+  rdfs:subClassOf agri:StudyEvent .
+
+schema:ScholarlyArticle a rdfs:Class ;
+  rdfs:subClassOf agri:ScholarlyPublication .
+
+
+agri:Soil a rdfs:Class
+# TODO: details, see FAIRAgro
+.
+
+
 
 ## Properties
 
@@ -136,92 +226,3 @@ agri:interactionPathogen a rdf:Property ;
 schema:alternateName rdfs:subPropertyOf skos:altLabel .
 
 schema:name rdfs:subPropertyOf skos:prefLabel .
-
-
-## Classes
-
-agri:BioSchemasNewClassProposal rdf:type owl:Class ;
-  rdfs:seeAlso agri:BioSchemasNewClassProposal .
-
-agri:BioPathway a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ,
-    <http://purl.obolibrary.org/obo/GO_0008150> , # BioProc
-    <http://semanticscience.org/resource/SIO_001107> # Biological pathway
-  .
-
-agri:ExperimentalDesign a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , obo:OBI_0500000 , ppeo:experimental_design , schema:PropertyValue , <http://www.ebi.ac.uk/efo/EFO_0001426> ;
-  rdfs:comment """A description of the study's experimental design. For instance, \"control/treatment design\", \"factorial design with 2 factors\".
-
-This is a a schema:PropertyValue and conventionally, schema:value should be used by instances to at least give a short description (or label) for a experimental design. schema:description could be optionally be used to additionally offer a longer description.
-
-Until this becomes part of some official schema/bioschema specification, you might want to adopt some conventional redundancy, see https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case/dataset-arabidopsis for details."""@en .
-
-agri:ExperimentalFactorType a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , ppeo:factor ;
-  rdfs:seeAlso agri:ExperimentalFactorValue ;
-  rdfs:comment """A variable that is considered to perform a study, such as a life science study. An experimental factor is the independent variable of the study, which might be varied as part of the experimental design for the purpose of investigating how potentially dependent variables vary with different factor values.
-
-Examples are: treatmemt, administered diet, fertilisation."""@en .
-
-agri:ExperimentalFactorValue a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , obo:OBI_0000750 , schema:PropertyValue , <http://www.ebi.ac.uk/efo/EFO_0000001> , ppeo:factor_value ;
-  rdfs:seeAlso agri:ExperimentalFactorType ;
-  rdfs:comment "A value for an independent variable investigated by an experiment/study."@en .
-
-agri:FIeldTrialBioMaterial a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:biological_material .
-
-agri:FieldTrialMaterialSource a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:material_source .
-
-agri:FieldTrialObservationUnit a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:observation_unit .
-
-agri:HostPathogenInteraction a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ,
-    # host-pathogen interaction
-    <http://purl.obolibrary.org/obo/OHPI_0000001> ,
-
-    # biological process involved in symbiotic interaction
-    <http://purl.obolibrary.org/obo/GO_0044403>
-  .
-
-agri:LabProtocolParameterType a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal .
-
-agri:LabProtocolParameterValue a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:PropertyValue .
-
-agri:ScholarlyPublication a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:CreativeWork .
-
-agri:StudyEvent a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ;
-  rdfs:comment """An event that might happen during a study/experiment. This typically occurs to a sample or a data set/file, which yields another item (another sample or data file). Events are explicitly caused (eg, a lab protocol is applied, irrigation, patient treatment), or it might happen due to the environment (eg, rain, patient infection). Subclasses are defined for the two types of event.
-
-Events can also be used to represent data extraction from samples (what is considered an assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation of differentially expressed genes, gene enrichment). An event of this type can represent a plan or a particular occurrence, ie, similarly to other cases in schema.org, we don't distinguish between the two, as it is done in BFO/DOLCE ontologies."""@en
-  .
-
-agri:StudyObservedValue a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , ppeo:observed_variable , schema:PropertyValue .
-
-agri:StudyObservedVariable a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal .
-
-bioschema:LabProtocol a rdfs:Class ;
-  rdfs:subClassOf agri:StudyEvent .
-
-schema:ScholarlyArticle a rdfs:Class ;
-  rdfs:subClassOf agri:ScholarlyPublication .
-
-agri:SchemaNewClassProposal a rdfs:Class ;
-  rdfs:comment "Top-level containers named *New*Proposal are markers to track actions needed for new terms (eg, propose to schema/bioschemas)." .
-
-agri:SchemaNewPropertyProposal a rdf:Property ;
-  rdfs:seeAlso agri:SchemaNewClassProposal .
-
-agri:Soil a rdfs:Class
-# TODO: details, see FAIRAgro
-.
-
