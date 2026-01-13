@@ -1,111 +1,178 @@
-@prefix : <http://agrischemas.org/> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix oa: <http://www.w3.org/ns/oa#> .
-@prefix obo: <http://purl.obolibrary.org/obo/> .
-@prefix owl: <https://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix sio: <http://semanticscience.org/resource/> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ppeo: <http://purl.org/ppeo/PPEO.owl#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix : <http://agrischemas.org/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix oa: <http://www.w3.org/ns/oa#>.
+@prefix obo: <http://purl.obolibrary.org/obo/>.
+@prefix owl: <https://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sio: <http://semanticscience.org/resource/>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ppeo: <http://purl.org/ppeo/PPEO.owl#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 # TODO: migrate to https
-@prefix schema: <http://schema.org/> .
-@prefix bioschema: <http://bioschemas.org/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix metaSchema: <https://meta.schema.org/> .
+@prefix schema: <http://schema.org/>.
+@prefix bioschema: <http://bioschemas.org/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix metaSchema: <https://meta.schema.org/>.
 # TODO: recover control of the DNS and point it to a suitable place
-@prefix agri: <http://agrischemas.org/> .
-@base <http://agrischemas.org/> .
+@prefix agri: <http://agrischemas.org/>.
+@base <http://agrischemas.org/>.
 
 # TODO: conformsTo RDF-S?
-<http://agrischemas.org/> rdf:type owl:Ontology ;
-                           rdfs:label "AgriSchemas Ontology"@en .
-
-agri:SchemaNewClassProposal a rdfs:Class ;
-  rdfs:comment "Top-level containers named *New*Proposal are markers to track actions needed for new terms (eg, propose to schema/bioschemas)." .
-
-agri:SchemaNewPropertyProposal a rdf:Property ;
-  rdfs:seeAlso agri:SchemaNewClassProposal .
+<http://agrischemas.org/> rdf:type owl:Ontology;
+	rdfs:label "AgriSchemas Ontology"
+.
 
 
-## Classes
+agri:SchemaNewClassProposal a rdfs:Class;
+	rdfs:comment "Top-level containers named *New*Proposal are markers to track actions needed for new terms (eg, propose to schema/bioschemas)."
+.
 
-agri:BioSchemasNewClassProposal rdf:type owl:Class ;
-  rdfs:seeAlso agri:BioSchemasNewClassProposal .
 
-agri:BioPathway a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ,
-    <http://purl.obolibrary.org/obo/GO_0008150> , # BioProc
-    <http://semanticscience.org/resource/SIO_001107> # Biological pathway
-  .
+agri:SchemaNewPropertyProposal a rdf:Property;
+	rdfs:seeAlso agri:SchemaNewClassProposal
+.
 
-agri:ExperimentalDesign a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , obo:OBI_0500000 , ppeo:experimental_design , schema:PropertyValue , <http://www.ebi.ac.uk/efo/EFO_0001426> ;
-  rdfs:comment """A description of the study's experimental design. For instance, \"control/treatment design\", \"factorial design with 2 factors\".
+
+##	Classes
+
+agri:BioSchemasNewClassProposal a owl:Class;
+	rdfs:seeAlso agri:BioSchemasNewClassProposal
+.
+
+
+agri:BioPathway a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:Action,
+		<http://purl.obolibrary.org/obo/GO_0008150>,
+		<http://semanticscience.org/resource/SIO_001107>
+.
+
+
+agri:ExperimentalDesign a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		obo:OBI_0500000,
+		ppeo:experimental_design,
+		schema:PropertyValue,
+		<http://www.ebi.ac.uk/efo/EFO_0001426>;
+	rdfs:comment """A description of the study's experimental design. For instance, \"control/treatment design\", \"factorial design with 2 factors\".
 
 This is a a schema:PropertyValue and conventionally, schema:value should be used by instances to at least give a short description (or label) for a experimental design. schema:description could be optionally be used to additionally offer a longer description.
 
-Until this becomes part of some official schema/bioschema specification, you might want to adopt some conventional redundancy, see https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case/dataset-arabidopsis for details."""@en .
+Until this becomes part of some official schema/bioschema specification, you might want to adopt some conventional redundancy, see https://github.com/Rothamsted/agri-schemas/tree/master/doc/miappe-use-case/dataset-arabidopsis for details."""
+.
 
-agri:ExperimentalFactorType a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , ppeo:factor ;
-  rdfs:seeAlso agri:ExperimentalFactorValue ;
-  rdfs:comment """A variable that is considered to perform a study, such as a life science study. An experimental factor is the independent variable of the study, which might be varied as part of the experimental design for the purpose of investigating how potentially dependent variables vary with different factor values.
 
-Examples are: treatmemt, administered diet, fertilisation."""@en .
+agri:ExperimentalFactorType a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		ppeo:factor;
+	rdfs:label "Experimental Factor Type";
+	rdfs:comment """A variable that is considered to perform a study, such as a life science study. An experimental factor is the independent variable of the study, which might be varied as part of the experimental design for the purpose of investigating how potentially dependent variables vary with different factor values.
 
-agri:ExperimentalFactorValue a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , obo:OBI_0000750 , schema:PropertyValue , <http://www.ebi.ac.uk/efo/EFO_0000001> , ppeo:factor_value ;
-  rdfs:seeAlso agri:ExperimentalFactorType ;
-  rdfs:comment "A value for an independent variable investigated by an experiment/study."@en .
+Examples are: treatmemt, administered diet, fertilisation.""";
+	rdfs:seeAlso agri:ExperimentalFactorValue
+.
 
-agri:FIeldTrialBioMaterial a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:biological_material .
 
-agri:FieldTrialMaterialSource a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:material_source .
+agri:ExperimentalFactorValue a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		obo:OBI_0000750,
+		schema:PropertyValue,
+		<http://www.ebi.ac.uk/efo/EFO_0000001>,
+		ppeo:factor_value;
+	rdfs:seeAlso agri:ExperimentalFactorType;
+	rdfs:comment "A value for an independent variable investigated by an experiment/study."
+.
 
-agri:FieldTrialObservationUnit a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:BioChemEntity , ppeo:observation_unit .
 
-agri:HostPathogenInteraction a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ,
-    # host-pathogen interaction
-    <http://purl.obolibrary.org/obo/OHPI_0000001> ,
+agri:FIeldTrialBioMaterial a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:BioChemEntity,
+		ppeo:biological_material
+.
 
-    # biological process involved in symbiotic interaction
-    <http://purl.obolibrary.org/obo/GO_0044403>
-  .
 
-agri:LabProtocolParameterType a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal .
+agri:FieldTrialMaterialSource a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:BioChemEntity,
+		ppeo:material_source
+.
 
-agri:LabProtocolParameterValue a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:PropertyValue .
 
-agri:ScholarlyPublication a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:CreativeWork .
+agri:FieldTrialObservationUnit a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:BioChemEntity,
+		ppeo:observation_unit
+.
 
-agri:StudyEvent a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , schema:Action ;
-  rdfs:comment """An event that might happen during a study/experiment. This typically occurs to a sample or a data set/file, which yields another item (another sample or data file). Events are explicitly caused (eg, a lab protocol is applied, irrigation, patient treatment), or it might happen due to the environment (eg, rain, patient infection). Subclasses are defined for the two types of event.
 
-Events can also be used to represent data extraction from samples (what is considered an assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation of differentially expressed genes, gene enrichment). An event of this type can represent a plan or a particular occurrence, ie, similarly to other cases in schema.org, we don't distinguish between the two, as it is done in BFO/DOLCE ontologies."""@en
-  .
+agri:HostPathogenInteraction a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:Action,
+		<http://purl.obolibrary.org/obo/OHPI_0000001>,
+		<http://purl.obolibrary.org/obo/GO_0044403>
+.
 
-agri:StudyObservedValue a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal , ppeo:observed_variable , schema:PropertyValue .
 
-agri:StudyObservedVariable a rdfs:Class ;
-  rdfs:subClassOf agri:BioSchemasNewClassProposal .
+agri:LabProtocolParameterType a rdfs:Class;
+	rdfs:subClassOf agri:BioSchemasNewClassProposal
+.
 
-bioschema:LabProtocol a rdfs:Class ;
-  rdfs:subClassOf agri:StudyEvent .
 
-schema:ScholarlyArticle a rdfs:Class ;
-  rdfs:subClassOf agri:ScholarlyPublication .
+agri:LabProtocolParameterValue a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:PropertyValue
+.
+
+
+agri:ScholarlyPublication a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:CreativeWork
+.
+
+
+agri:StudyEvent a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		schema:Action;
+	rdfs:comment """An event that might happen during a study/experiment. This typically occurs to a sample or a data set/file, which yields another item (another sample or data file). Events are explicitly caused (eg, a lab protocol is applied, irrigation, patient treatment), or it might happen due to the environment (eg, rain, patient infection). Subclasses are defined for the two types of event.
+
+Events can also be used to represent data extraction from samples (what is considered an assaying procedure in ISA-Tab), or data transformations (eg, normalisation, computation of differentially expressed genes, gene enrichment). An event of this type can represent a plan or a particular occurrence, ie, similarly to other cases in schema.org, we don't distinguish between the two, as it is done in BFO/DOLCE ontologies."""
+.
+
+
+agri:StudyObservedValue a rdfs:Class;
+	rdfs:subClassOf
+		agri:BioSchemasNewClassProposal,
+		ppeo:observed_variable,
+		schema:PropertyValue
+.
+
+
+agri:StudyObservedVariable a rdfs:Class;
+	rdfs:subClassOf agri:BioSchemasNewClassProposal
+.
+
+
+bioschema:LabProtocol a rdfs:Class;
+	rdfs:subClassOf agri:StudyEvent
+.
+
+
+schema:ScholarlyArticle a rdfs:Class;
+	rdfs:subClassOf agri:ScholarlyPublication
+.
 
 
 agri:Soil a rdfs:Class
@@ -113,116 +180,172 @@ agri:Soil a rdfs:Class
 .
 
 
-
-## Properties
+##	Properties
 
 agri:authorsList a rdf:Property;
-  rdfs:subPropertyOf dc:creator
+	rdfs:subPropertyOf dc:creator
 .
 
-agri:baseCondition a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ;
-  rdfs:seeAlso obo:OBI_0000143 ;
-  schema:rangeIncludes agri:ExperimentalFactorValue
+
+agri:baseCondition a rdf:Property;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
+	rdfs:seeAlso obo:OBI_0000143;
+	schema:rangeIncludes agri:ExperimentalFactorValue
 .
+
 
 agri:doiId a rdf:Property;
-  rdfs:subPropertyOf agri:SchemaNewPropertyProposal , schema:identifier.
+	rdfs:subPropertyOf
+		agri:SchemaNewPropertyProposal,
+		schema:identifier
+.
 
-agri:evidence a rdf:Property ;
-  rdfs:subPropertyOf agri:SchemaNewPropertyProposal , oa:motivatedBy .
+
+agri:evidence a rdf:Property;
+	rdfs:subPropertyOf
+		agri:SchemaNewPropertyProposal,
+		oa:motivatedBy
+.
+
 
 agri:foldChange a rdf:Property, obo:STATO_0000169, sio:SIO_001078;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal , agri:score;
-  schema:rangeIncludes schema:Number
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		agri:score;
+	schema:rangeIncludes schema:Number
 .
+
 
 agri:hasExperimentalFactorType a rdf:Property;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal, dc:type;
-  schema:inverseOf agri:hasExperimentalFactorValue;
-  schema:rangeIncludes agri:ExperimentalFactorType;
-  schema:domainIncludes agri:ExperimentalFactorValue
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		dc:type;
+	schema:inverseOf agri:hasExperimentalFactorValue;
+	schema:rangeIncludes agri:ExperimentalFactorType;
+	schema:domainIncludes agri:ExperimentalFactorValue
 .
+
 
 agri:hasExperimentalFactorValue a rdf:Property;
-  rdfs:comment "Links a factor value to its agri:ExperimentalFactorType. These properties are more specific subproperties of dc:type. You might have datasets where dc:type only is used to link factor values to their types. Ideally, use both maximise interoperability (see AgriSchemas documentation)."@en;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
-  schema:domainIncludes agri:ExperimentalFactorType;
-  schema:rangeIncludes agri:ExperimentalFactorValue;
-  
-  schema:inverseOf agri:hasExperimentalFactorType
+	rdfs:comment "Links a factor value to its agri:ExperimentalFactorType. These properties are more specific subproperties of dc:type. You might have datasets where dc:type only is used to link factor values to their types. Ideally, use both maximise interoperability (see AgriSchemas documentation).";
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
+	schema:domainIncludes agri:ExperimentalFactorType;
+	schema:rangeIncludes agri:ExperimentalFactorValue;
+	schema:inverseOf agri:hasExperimentalFactorType
 .
 
-agri:hasGeneExpressionIn a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal , agri:isBiologicallyRelatedTo ;
-  rdfs:seeAlso obo:GO_0010467 ;
-  rdfs:comment "Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter." .
 
-agri:hasObservedValue a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ;
-  schema:inverseOf agri:hasObservedVariable ;
-  schema:rangeIncludes agri:StudyObservedValue ;
-  schema:domainIncludes agri:StudyObservedVariable .
+agri:hasGeneExpressionIn a rdf:Property;
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		agri:isBiologicallyRelatedTo;
+	rdfs:seeAlso obo:GO_0010467;
+	rdfs:comment "Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter."
+.
 
-agri:hasObservedVariable a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal , dc:type ;
-  schema:inverseOf agri:hasObservedValue ;
-  schema:rangeIncludes agri:StudyObservedVariable ;
-  schema:domainIncludes agri:StudyObservedValue .
 
-agri:isBiologicallyRelatedTo a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ;
-  rdfs:seeAlso sio:SIO_000897 .
+agri:hasObservedValue a rdf:Property;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
+	schema:inverseOf agri:hasObservedVariable;
+	schema:rangeIncludes agri:StudyObservedValue;
+	schema:domainIncludes agri:StudyObservedVariable
+.
 
-agri:log2FoldChange a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal , agri:foldChange ;
-  dc:type sio:SIO_001078 , obo:STATO_0000169 .
+
+agri:hasObservedVariable a rdf:Property;
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		dc:type;
+	schema:inverseOf agri:hasObservedValue;
+	schema:rangeIncludes agri:StudyObservedVariable;
+	schema:domainIncludes agri:StudyObservedValue
+.
+
+
+agri:isBiologicallyRelatedTo a rdf:Property;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
+	rdfs:seeAlso sio:SIO_000897
+.
+
+
+agri:log2FoldChange a rdf:Property;
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		agri:foldChange;
+	dc:type sio:SIO_001078, obo:STATO_0000169
+.
+
 
 agri:ordinalTpm a rdf:Property;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal, agri:score;
-  rdfs:label "TPM level";
-  rdfs:comment "The ordinal ('low', 'medium', 'high') level of TPM. This is established from the TPM count, using the EBI thresholds: [0.5-10]/low, [11-1000] med, >1000. See: See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
-  schema:rangeIncludes schema:Text;
-  rdfs:seeAlso agri:tpmCount;
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		agri:score;
+	rdfs:label "TPM level";
+	rdfs:comment "The ordinal ('low', 'medium', 'high') level of TPM. This is established from the TPM count, using the EBI thresholds: [0.5-10]/low, [11-1000] med, >1000. See: See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
+	schema:rangeIncludes schema:Text;
+	rdfs:seeAlso agri:tpmCount
 .
 
-agri:pmedId a rdf:Property ;
-  rdfs:subPropertyOf agri:SchemaNewPropertyProposal , schema:identifier .
 
-agri:pvalue a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal , agri:score ;
-  schema:rangeIncludes schema:Number ;
-  dc:type obo:OBI_0000175 , sio:SIO_000765 .
+agri:pmedId a rdf:Property;
+	rdfs:subPropertyOf
+		agri:SchemaNewPropertyProposal,
+		schema:identifier
+.
 
-agri:score a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ;
-  schema:rangeIncludes schema:Text , schema:Number , schema:Enumeration ;
-  dc:type obo:OBI_0000071 .
 
-agri:timePoint a rdf:Property ;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal ;
-  rdfs:seeAlso obo:OBI_0001508 ;
-  schema:rangeIncludes agri:ExperimentalFactorValue ;
-  rdfs:label "Time Point" .
+agri:pvalue a rdf:Property;
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		agri:score;
+	schema:rangeIncludes schema:Number;
+	dc:type obo:OBI_0000175, sio:SIO_000765
+.
+
+
+agri:score a rdf:Property;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
+	schema:rangeIncludes schema:Text, schema:Number, schema:Enumeration;
+	dc:type obo:OBI_0000071
+.
+
+
+agri:timePoint a rdf:Property;
+	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
+	rdfs:seeAlso obo:OBI_0001508;
+	schema:rangeIncludes agri:ExperimentalFactorValue;
+	rdfs:label "Time Point"
+.
+
 
 agri:tpmCount a rdf:Property;
-  rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal, agri:score; 
-  rdfs:comment "The transcripts per million count, as measured in RNA-Seq data. See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
-  dc:type obo:STATO_0000047, sio:SIO_000794;
-  schema:alternateName "Transcripts Per Million" ;
-  schema:rangeIncludes schema:Number
+	rdfs:subPropertyOf
+		agri:BioSchemasNewPropertyProposal,
+		agri:score;
+	rdfs:comment "The transcripts per million count, as measured in RNA-Seq data. See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
+	dc:type obo:STATO_0000047, sio:SIO_000794;
+	schema:alternateName "Transcripts Per Million";
+	schema:rangeIncludes schema:Number
 .
 
-agri:interactionHost a rdf:Property ;
-  schema:domainIncludes agri:HostPathogenInteraction ;
-  schema:rangeIncludes schema:Phenotype .
 
-agri:interactionPathogen a rdf:Property ;
-  schema:domainIncludes agri:HostPathogenInteraction ;
-  schema:rangeIncludes schema:Phenotype .
+agri:interactionHost a rdf:Property;
+	schema:domainIncludes agri:HostPathogenInteraction;
+	schema:rangeIncludes schema:Phenotype
+.
 
-## External mappings
 
-schema:alternateName rdfs:subPropertyOf skos:altLabel .
+agri:interactionPathogen a rdf:Property;
+	schema:domainIncludes agri:HostPathogenInteraction;
+	schema:rangeIncludes schema:Phenotype
+.
 
-schema:name rdfs:subPropertyOf skos:prefLabel .
+
+##	External mappings
+
+schema:alternateName rdfs:subPropertyOf skos:altLabel
+.
+
+
+schema:name rdfs:subPropertyOf skos:prefLabel
+.
