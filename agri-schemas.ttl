@@ -46,18 +46,18 @@ agri:BioPathway a rdfs:Class;
 	rdfs:subClassOf
 		agri:BioSchemasNewClassProposal,
 		schema:Action,
-		<http://purl.obolibrary.org/obo/GO_0008150>,
-		<http://semanticscience.org/resource/SIO_001107>
+    <http://purl.obolibrary.org/obo/GO_0008150>, # BioProc
+    <http://semanticscience.org/resource/SIO_001107> # Biological pathway
 .
 
 
 agri:ExperimentalDesign a rdfs:Class;
 	rdfs:subClassOf
 		agri:BioSchemasNewClassProposal,
-		obo:OBI_0500000,
+		obo:OBI_0500000, # study design
 		ppeo:experimental_design,
 		schema:PropertyValue,
-		<http://www.ebi.ac.uk/efo/EFO_0001426>;
+		<http://www.ebi.ac.uk/efo/EFO_0001426>; # study design
 	rdfs:comment """A description of the study's experimental design. For instance, \"control/treatment design\", \"factorial design with 2 factors\".
 
 This is a a schema:PropertyValue and conventionally, schema:value should be used by instances to at least give a short description (or label) for a experimental design. schema:description could be optionally be used to additionally offer a longer description.
@@ -81,9 +81,9 @@ Examples are: treatmemt, administered diet, fertilisation.""";
 agri:ExperimentalFactorValue a rdfs:Class;
 	rdfs:subClassOf
 		agri:BioSchemasNewClassProposal,
-		obo:OBI_0000750,
 		schema:PropertyValue,
-		<http://www.ebi.ac.uk/efo/EFO_0000001>,
+		obo:OBI_0000750, # study design independent variable
+		<http://www.ebi.ac.uk/efo/EFO_0000001>, # experimental factor
 		ppeo:factor_value;
 	rdfs:seeAlso agri:ExperimentalFactorType;
 	rdfs:comment "A value for an independent variable investigated by an experiment/study."
@@ -118,8 +118,10 @@ agri:HostPathogenInteraction a rdfs:Class;
 	rdfs:subClassOf
 		agri:BioSchemasNewClassProposal,
 		schema:Action,
+    # host pathogen interaction
 		<http://purl.obolibrary.org/obo/OHPI_0000001>,
-		<http://purl.obolibrary.org/obo/GO_0044403>
+    # biological process involved in symbiotic interaction
+		<http://purl.obolibrary.org/obo/GO_0044403> 
 .
 
 
@@ -176,7 +178,7 @@ schema:ScholarlyArticle a rdfs:Class;
 
 
 agri:Soil a rdfs:Class
-# TODO: details, see FAIRAgro
+  # TODO: details, see FAIRAgro
 .
 
 
@@ -189,6 +191,7 @@ agri:authorsList a rdf:Property;
 
 agri:baseCondition a rdf:Property;
 	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
+  # baseline participant role
 	rdfs:seeAlso obo:OBI_0000143;
 	schema:rangeIncludes agri:ExperimentalFactorValue
 .
@@ -239,7 +242,7 @@ agri:hasGeneExpressionIn a rdf:Property;
 	rdfs:subPropertyOf
 		agri:BioSchemasNewPropertyProposal,
 		agri:isBiologicallyRelatedTo;
-	rdfs:seeAlso obo:GO_0010467;
+	rdfs:seeAlso obo:GO_0010467; # gene expression
 	rdfs:comment "Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter."
 .
 
@@ -264,7 +267,7 @@ agri:hasObservedVariable a rdf:Property;
 
 agri:isBiologicallyRelatedTo a rdf:Property;
 	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
-	rdfs:seeAlso sio:SIO_000897
+	rdfs:seeAlso sio:SIO_000897 # association
 .
 
 
@@ -272,7 +275,10 @@ agri:log2FoldChange a rdf:Property;
 	rdfs:subPropertyOf
 		agri:BioSchemasNewPropertyProposal,
 		agri:foldChange;
-	dc:type sio:SIO_001078, obo:STATO_0000169
+	dc:type 
+    # differential gene expression ratio (labelled this way, but the ontology clearly shows it's more general)
+    sio:SIO_001078, 
+    obo:STATO_0000169 # fold change
 .
 
 
@@ -299,20 +305,22 @@ agri:pvalue a rdf:Property;
 		agri:BioSchemasNewPropertyProposal,
 		agri:score;
 	schema:rangeIncludes schema:Number;
-	dc:type obo:OBI_0000175, sio:SIO_000765
+	dc:type
+    obo:OBI_0000175, # p-value
+    sio:SIO_000765 # probability value (wrong label, but the description says it's p-value)
 .
 
 
 agri:score a rdf:Property;
 	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
 	schema:rangeIncludes schema:Text, schema:Number, schema:Enumeration;
-	dc:type obo:OBI_0000071
+	dc:type obo:OBI_0000071 # quantitative confidence value
 .
 
 
 agri:timePoint a rdf:Property;
 	rdfs:subPropertyOf agri:BioSchemasNewPropertyProposal;
-	rdfs:seeAlso obo:OBI_0001508;
+	rdfs:seeAlso obo:OBI_0001508; # sampling time measurement datum
 	schema:rangeIncludes agri:ExperimentalFactorValue;
 	rdfs:label "Time Point"
 .
@@ -323,7 +331,9 @@ agri:tpmCount a rdf:Property;
 		agri:BioSchemasNewPropertyProposal,
 		agri:score;
 	rdfs:comment "The transcripts per million count, as measured in RNA-Seq data. See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/";
-	dc:type obo:STATO_0000047, sio:SIO_000794;
+	dc:type
+    obo:STATO_0000047, # sampling time measurement datum
+    sio:SIO_000794; # count
 	schema:alternateName "Transcripts Per Million";
 	schema:rangeIncludes schema:Number
 .
@@ -341,11 +351,9 @@ agri:interactionPathogen a rdf:Property;
 .
 
 
-##	External mappings
+##	Additional external mappings
 
-schema:alternateName rdfs:subPropertyOf skos:altLabel
-.
+schema:alternateName rdfs:subPropertyOf skos:altLabel.
 
 
-schema:name rdfs:subPropertyOf skos:prefLabel
-.
+schema:name rdfs:subPropertyOf skos:prefLabel.
