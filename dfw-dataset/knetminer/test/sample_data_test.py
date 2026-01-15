@@ -41,8 +41,6 @@ def run_mappings ():
 	
 	graph.parse ( DFW_ETL + "/../agri-schema.ttl", format = "turtle" )
 
-
-
 	print ( "----- Test Initialised -----\n\n" )
 	
 

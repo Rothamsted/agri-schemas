@@ -22,7 +22,8 @@ export ETL_LOG_CONF="$AG_DIR/lib/etltools/logging-test.yaml" # or logging.yaml f
 
 . "$AG_DIR/lib/default-env.sh"
 
-. ~/bin/conda-init.sh
-conda activate snakemake
+# 202601: I installed Snake from Homebrew
+# . ~/bin/conda-init.sh
+# conda activate snakemake
 
 cd "$DFW_ETL"

@@ -2,7 +2,7 @@ gxa_organisms:
   - "arabidopsis thaliana"
   - "triticum aestivum"
 
-# Sometimes, this is instable, this option allows for switching to BioPortal. They mainly differ
+# Sometimes, this is unstable, this option allows for switching to BioPortal. They mainly differ
 # for the list of supported ontologies 
 # 
 text_annotator: "AgroPortal"
