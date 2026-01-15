@@ -24,7 +24,7 @@ res:study1 a bioschema:Study;
 # consumers like Google.
 #
 <http://www.wikipathways.org/id1> a agri:BioPathway, schema:Action;
-	# Redundance as above
+	# Redundancy as above
 	schema:additionalType
 		<http://purl.obolibrary.org/obo/GO_0008150>, # BioProc
 		<http://semanticscience.org/resource/SIO_001107>; # Biological process
@@ -63,20 +63,6 @@ res:cit_tob1_23236473 a rdf:Statement;
 	rdf:predicate schema:mentions;
 	agri:score 0.95;
 	agri:evidence "Ondex Text Mining"
-.
-
-# This is a possible alternative, based on a variant of n-ary properties. This might be more practical
-# (you don't need to specify 3-triple statements). However, it's not very standard.
-# 
-# When searching for schema:mentions ?target, the two cases can be distinguished by means of:
-# ?target a bioschema:Protein, or: MINUS { ?target a schema:StructuredValue }
-# 
-res:pub_23236473 schema:mentions res:cit_tob1_23236473.
-res:cit_tob1_23236473 a schema:StructuredValue;
-  rdf:object res:tob1;
-  agri:score 0.95;
-	agri:evidence "Ondex Text Mining";
-	agri:score 0.95
 .
 
 

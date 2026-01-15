@@ -47,7 +47,11 @@ agri:BioPathway a rdfs:Class;
 		agri:BioSchemasNewClassProposal,
 		schema:Action,
     <http://purl.obolibrary.org/obo/GO_0008150>, # BioProc
-    <http://semanticscience.org/resource/SIO_001107> # Biological pathway
+    <http://semanticscience.org/resource/SIO_001107>; # Biological pathway
+	dc:type 
+		# This usually assumes a BioPax representation, so the loose mapping here
+		# TODO: more BioPax mappings (eg, gene, protein)
+		<http://www.biopax.org/release/biopax-level3.owl#Pathway>
 .
 
 
