@@ -150,7 +150,7 @@ class XNamespaceManager ( NamespaceManager ):
 DEFAULT_NAMESPACES = XNamespaceManager ()
 DEFAULT_NAMESPACES.load ( 
 	os.path.abspath ( 
-		os.path.dirname ( __file__ ) + "/../../resources/etltools/default-namespaces.ttl" 
+		os.path.dirname ( __file__ ) + "/default-namespaces.ttl" 
 	),
 	"turtle"
 )

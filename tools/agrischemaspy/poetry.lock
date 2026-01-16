@@ -2,14 +2,14 @@
 
 [[package]]
 name = "brandizpyes"
-version = "1.1.1"
+version = "1.1.2"
 description = "Brandiz Pyes - Python Utilities"
 optional = false
 python-versions = ">=3.14"
 groups = ["main"]
 files = [
-    {file = "brandizpyes-1.1.1-py3-none-any.whl", hash = "sha256:fae0ba623351f927cf67a824c151526efa85c1e262edd043b9b18734076498c0"},
-    {file = "brandizpyes-1.1.1.tar.gz", hash = "sha256:52cd0934bce21bdb3b7ab27bbb08f5ee165978b60edfd00051f34666aff6a862"},
+    {file = "brandizpyes-1.1.2-py3-none-any.whl", hash = "sha256:6af9a1a91915d697ccd63a327cb4c97a315c5f0df0f6c71583cc66b0f93d06ba"},
+    {file = "brandizpyes-1.1.2.tar.gz", hash = "sha256:18b7b319ee5f409ecdd726530cd67e368bcf2271b14fe037c1b772691f4674dc"},
 ]
 
 [package.dependencies]
@@ -241,4 +241,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.14"
-content-hash = "c00e4313a3ef30e1b59fceb23232e5e41a114b296c877d73ed37b7b0926774b6"
+content-hash = "d214b4c7c37bd2305dd40ddeac0a2c6fc8c40475e909b33ca280b41f0e74ae19"
