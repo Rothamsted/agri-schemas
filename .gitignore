@@ -4,3 +4,4 @@ __pycache__
 .pydevproject
 .snakemake
 .vscode
+.venv

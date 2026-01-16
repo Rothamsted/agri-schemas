@@ -8,6 +8,8 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.14" # ^3.14 doesn't work with PyP
 
+[tool.poetry]
+packages = [{include = "agrischemas", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.14"

@@ -1,5 +1,5 @@
-from agrischemaspy.etltools.utils import DEFAULT_NAMESPACES, normalize_rows_source
-from agrischemaspy.etltools.utils import download_files
+from agrischemas.etltools.utils import DEFAULT_NAMESPACES, normalize_rows_source
+from agrischemas.etltools.utils import download_files
 
 from brandizpyes.logging import logger_config
 from brandizpyes.ioutils import dump_output
@@ -45,7 +45,7 @@ class XNamespaceManagerTest ( unittest.TestCase ):
 
 	def test_ns_path ( self ):
 		# To make the module pick the new NS file, we need to reload it
-		from agrischemaspy.etltools import utils as utl
+		from agrischemas.etltools import utils as utl
 		os.environ[ 'NAMESPACES_PATH' ] = _TEST_DIR + "/test-namespaces.ttl"
 		importlib.reload ( utl )
 		self.assertEqual( utl.DEFAULT_NAMESPACES.ns ( 'foo:' ), "http://www.foo.com/ns/", "NAMESPACES_PATH didn't work!" )

@@ -1,7 +1,7 @@
 """
   Simple implementation of clients to invoke Bioportal APIs
 """
-from agrischemaspy.kpyutils import web
+from agrischemas.kpyutils import web
 import os
 
 import logging

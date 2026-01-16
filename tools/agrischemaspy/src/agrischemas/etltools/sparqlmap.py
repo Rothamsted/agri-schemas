@@ -9,7 +9,7 @@
 
 from os import path, remove
 from sys import stderr
-from agrischemaspy.etltools.utils import DEFAULT_NAMESPACES, get_jena_home, XNamespaceManager
+from agrischemas.etltools.utils import DEFAULT_NAMESPACES, get_jena_home, XNamespaceManager
 import glob
 import re
 import sh

@@ -1,6 +1,6 @@
 import unittest
-from agrischemaspy.etltools import sparqlmap
-from agrischemaspy.etltools.utils import get_jena_home, sparql_ask, DEFAULT_NAMESPACES
+from agrischemas.etltools import sparqlmap
+from agrischemas.etltools.utils import get_jena_home, sparql_ask, DEFAULT_NAMESPACES
 import os, shutil
 from os.path import dirname, abspath
 

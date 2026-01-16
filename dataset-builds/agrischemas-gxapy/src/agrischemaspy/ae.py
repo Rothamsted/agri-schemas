@@ -5,8 +5,8 @@ from textwrap import dedent
 import urllib.parse
 import math
 
-from etltools.utils import rdf_str, rdf_text, rdf_pval, make_id, hash_generator
-from kpyutils import web
+from agrischemaspy.etltools.utils import rdf_str, rdf_text, make_id, hash_generator
+from agrischemaspy.kpyutils import web
 
 
 log = logging.getLogger ( __name__ )
