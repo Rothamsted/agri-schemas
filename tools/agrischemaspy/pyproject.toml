@@ -3,7 +3,7 @@ name = "agrischemaspy"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Marco Brandizi",email = "marco.brandizi@knetminer.com"}
+  {name = "Marco Brandizi",email = "marco@knetminer.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.14" # ^3.14 doesn't work with PyP
@@ -22,7 +22,7 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
-    "pytest (>=9.0.2,<10.0.0)"
+  "pytest (>=9.0.2,<10.0.0)"
 ]
 
 [tool.pytest.ini_options]
