@@ -14,12 +14,25 @@ dev = [
 ]
 
 [tool.poetry]
-packages = [{include = "agrischemaspy", from = "src"}]
+packages = [{include = "agrischemas", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.14"
+# Since these packages are transitional, we don't publish them on PyP
 agrischemaspy = {git = "https://github.com/Rothamsted/agri-schemas.git", rev = "master", subdirectory = "tools/agrischemaspy"}
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = [ "-v" ]
+filterwarnings = [
+  "once",
+  "ignore",
+  "default::Warning:agrischemas\\..*"
+]
+# You don't need them, it's already managed by our own logging config helper
+# log_cli = true
+# log_level = "DEBUG"
+

@@ -1,0 +1,1321 @@
+
+@prefix bkr: <http://knetminer.org/data/rdf/resources/> .
+@prefix agri: <http://agrischemas.org/> .
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <https://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+bkr:exp_E-MTAB-4484 a bioschema:Study;
+	schema:identifier "E-MTAB-4484";
+	dc:title """Whole transcriptome sequencing of wheat 3B chromosome""";
+	schema:description """To study the expression profiles of hexaploid wheat chromosome 3B genes during the life cycle of a wheat plant and establish a transcriptome atlas for this chromosome, deep transcriptome sequencing was conducted in duplicates in 15 wheat samples corresponding to five different organs (leaf, shoot, root, spike, and grain) at three developmental stages each. Strand-non-specific and strand-specific libraries were used to produce 2.52 billion paired-end reads (232 Gb) and 615.3 single-end reads (62 Gb), respectively.""";
+	schema:datePublished "2014-09-08";
+.
+
+bkr:exp_E-MTAB-4484 schema:subjectOf bkr:pmid_25853487.
+bkr:pmid_25853487 a agri:ScholarlyPublication;
+	dc:title """Deep transcriptome sequencing provides new insights into the structural and functional organization of the wheat genome""";
+	agri:authorsList """Pingault L, Choulet F, Alberti A, Glover N, Wincker P, Feuillet C, Paux E""";
+
+
+				agri:pmedId "25853487";
+			 	schema:identifier [
+					a schema:PropertyValue;
+					schema:propertyID "PubMed ID";
+					schema:value "25853487";
+				];
+			
+
+				agri:doiId "10.1186/s13059-015-0601-9";
+			 	schema:identifier [
+					a schema:PropertyValue;
+					schema:propertyID "DOI";
+					schema:value "10.1186/s13059-015-0601-9";
+				];
+			.
+
+bkr:specie_triticum_aestivum a agri:FieldTrialMaterialSource, schema:BioChemEntity;
+	schema:name "Triticum aestivum";
+	schema:subjectOf bkr:exp_E-MTAB-4484;
+	bioschema:taxonomicRange <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
+	dc:type <http://purl.bioontology.org/ontology/NCBITAXON/4565>;
+.
+
+
+bkr:gxaexp_E-MTAB-4484_ensrna050013890_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 4.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_ensrna050013890;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_ensrna050013890 bioschema:expressedIn bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_ensrna050013890_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 1.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_ensrna050013890;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_ensrna050013890 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_ensrna050013890_whole_plant_fruit_formation_stage_70_0x25_to_final_size_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 0.7;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_ensrna050013890;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_70_0x25_to_final_size_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_ensrna050013890 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_70_0x25_to_final_size_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_ensrna050013890_whole_plant_fruit_ripening_stage_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 9.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_ensrna050013890;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_ensrna050013890 bioschema:expressedIn bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_ensrna050013890_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 0.6;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_ensrna050013890;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_ensrna050013890 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_ensrna050013890_lp.03_three_leaves_visible_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 1.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_ensrna050013890;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_ensrna050013890 bioschema:expressedIn bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_ensrna050013890_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 0.6;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_ensrna050013890;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_ensrna050013890 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence.
+
+
+bkr:gene_ensrna050013890 a bioschema:Gene;
+	schema:identifier "ENSRNA050013890";
+.
+
+
+bkr:gene_ensrna050013890 rdfs:label "LSU_rRNA_eukarya".
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 429.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_cotyledon_emergence_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 86.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_cotyledon_emergence_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 812.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 19.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 2234.0;
+	agri:ordinalTpm "high";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_whole_plant_fruit_formation_stage_70_0x25_to_final_size_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 13.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_70_0x25_to_final_size_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_70_0x25_to_final_size_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 755.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_whole_plant_fruit_ripening_stage_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 28.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 1306.0;
+	agri:ordinalTpm "high";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_lp.03_three_leaves_visible_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 794.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_se.00_stem_elongation_begins_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 255.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 1144.0;
+	agri:ordinalTpm "high";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 27.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs1a02g115900_se.99_maximum_stem_length_reached_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 737.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs1a02g115900;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs1a02g115900 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root.
+
+
+bkr:gene_traescs1a02g115900 a bioschema:Gene;
+	schema:identifier "TRAESCS1A02G115900";
+.
+
+
+bkr:gene_traescs1a02g115900 rdfs:label "ALI1".
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 16.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_cotyledon_emergence_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 6.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_cotyledon_emergence_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 45.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 9.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 17.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 6.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 28.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_lp.03_three_leaves_visible_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 30.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_se.00_stem_elongation_begins_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 9.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 4.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 29.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 7.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356100_se.99_maximum_stem_length_reached_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 31.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7a02g356100;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356100 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root.
+
+
+bkr:gene_traescs7a02g356100 a bioschema:Gene;
+	schema:identifier "TRAESCS7A02G356100";
+.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356200_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 0.6;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356200;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356200 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356200_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 0.7;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356200;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356200 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356200_se.00_stem_elongation_begins_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 0.7;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356200;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356200 bioschema:expressedIn bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7a02g356200_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 0.8;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7a02g356200;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7a02g356200 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence.
+
+
+bkr:gene_traescs7a02g356200 a bioschema:Gene;
+	schema:identifier "TRAESCS7A02G356200";
+.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271500_whole_plant_fruit_ripening_stage_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 0.6;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271500 bioschema:expressedIn bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271500_se.00_stem_elongation_begins_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 1.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271500 bioschema:expressedIn bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271500_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 1.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271500 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271500_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 0.8;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271500 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence.
+
+
+bkr:gene_traescs7b02g271500 a bioschema:Gene;
+	schema:identifier "TRAESCS7B02G271500";
+.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 9.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_cotyledon_emergence_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 3.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_cotyledon_emergence_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 14.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 1.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 5.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 3.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_whole_plant_fruit_ripening_stage_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 0.7;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 17.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_lp.03_three_leaves_visible_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 14.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_se.00_stem_elongation_begins_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 6.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 2.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 17.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 6.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7b02g271600_se.99_maximum_stem_length_reached_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 13.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7b02g271600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7b02g271600 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root.
+
+
+bkr:gene_traescs7b02g271600 a bioschema:Gene;
+	schema:identifier "TRAESCS7B02G271600";
+.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366500_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 0.6;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366500 bioschema:expressedIn bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366500_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 0.9;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366500 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366500_se.00_stem_elongation_begins_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 0.9;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366500 bioschema:expressedIn bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366500_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 0.6;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366500;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366500 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem.
+
+
+bkr:gene_traescs7d02g366500 a bioschema:Gene;
+	schema:identifier "TRAESCS7D02G366500";
+.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 11.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_cotyledon_emergence_stage_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 5.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_cotyledon_emergence_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 23.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_cotyledon_emergence_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_cotyledon_emergence_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 1.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a rdf:Statement;
+	agri:tpmCount 8.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 2.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_whole_plant_fruit_ripening_stage_0x2C_fruit a rdf:Statement;
+	agri:tpmCount 1.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 24.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_lp.03_three_leaves_visible_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 17.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_se.00_stem_elongation_begins_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 8.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 3.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem a rdf:Statement;
+	agri:tpmCount 22.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence a rdf:Statement;
+	agri:tpmCount 10.0;
+	agri:ordinalTpm "low";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence.
+
+
+bkr:gxaexp_E-MTAB-4484_traescs7d02g366600_se.99_maximum_stem_length_reached_stage_0x2C_root a rdf:Statement;
+	agri:tpmCount 15.0;
+	agri:ordinalTpm "medium";
+	rdf:subject bkr:gene_traescs7d02g366600;
+	rdf:predicate bioschema:expressedIn;
+	rdf:object bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root;
+	agri:evidence bkr:exp_E-MTAB-4484
+.
+
+bkr:gene_traescs7d02g366600 bioschema:expressedIn bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root.
+
+
+bkr:gene_traescs7d02g366600 a bioschema:Gene;
+	schema:identifier "TRAESCS7D02G366600";
+.
+
+
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit a agri:StudyFactor;
+	schema:name "whole plant fruit ripening stage, fruit"
+.
+
+
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit dc:type <https://cropontology.org/rdf/CO_330:0000231>.
+<https://cropontology.org/rdf/CO_330:0000231> schema:name "FrtCol_Et_1to7".
+<https://cropontology.org/rdf/CO_330:0000231> schema:identifier "CO_330:0000231".
+
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit dc:type <http://purl.obolibrary.org/obo/PO_0009001>.
+<http://purl.obolibrary.org/obo/PO_0009001> schema:name "fruit".
+<http://purl.obolibrary.org/obo/PO_0009001> schema:identifier "PO_0009001".
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009001> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009001>.
+
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit dc:type <http://www.yso.fi/onto/yso/p4647>.
+<http://www.yso.fi/onto/yso/p4647> schema:name "fruit".
+<http://www.yso.fi/onto/yso/p4647> schema:identifier "p4647".
+
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit dc:type <http://aims.fao.org/aos/agrovoc/c_3119>.
+<http://aims.fao.org/aos/agrovoc/c_3119> schema:name "plody (botanicky)".
+<http://aims.fao.org/aos/agrovoc/c_3119> schema:identifier "c_3119".
+
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit dc:type <http://purl.obolibrary.org/obo/PO_0007010>.
+<http://purl.obolibrary.org/obo/PO_0007010> schema:name "whole plant fruit ripening stage".
+<http://purl.obolibrary.org/obo/PO_0007010> schema:identifier "PO_0007010".
+bkr:cond_whole_plant_fruit_ripening_stage_0x2C_fruit dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007010>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007010> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007010>.
+
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root a agri:StudyFactor;
+	schema:name "LP.03 three leaves visible stage, root"
+.
+
+
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/NCBITaxon_1>.
+<http://purl.obolibrary.org/obo/NCBITaxon_1> schema:name "root".
+<http://purl.obolibrary.org/obo/NCBITaxon_1> schema:identifier "NCBITaxon_1".
+
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/PO_0009005>.
+<http://purl.obolibrary.org/obo/PO_0009005> schema:name "root".
+<http://purl.obolibrary.org/obo/PO_0009005> schema:identifier "PO_0009005".
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root dc:type <http://www.yso.fi/onto/yso/p17184>.
+<http://www.yso.fi/onto/yso/p17184> schema:name "root".
+<http://www.yso.fi/onto/yso/p17184> schema:identifier "p17184".
+
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root dc:type <http://www.yso.fi/onto/afo/p5715>.
+<http://www.yso.fi/onto/afo/p5715> schema:name "root".
+<http://www.yso.fi/onto/afo/p5715> schema:identifier "p5715".
+
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/PO_0007106>.
+<http://purl.obolibrary.org/obo/PO_0007106> schema:name "LP.03 three leaves visible stage".
+<http://purl.obolibrary.org/obo/PO_0007106> schema:identifier "PO_0007106".
+bkr:cond_lp.03_three_leaves_visible_stage_0x2C_root dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007106>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007106> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007106>.
+
+bkr:cond_cotyledon_emergence_stage_0x2C_root a agri:StudyFactor;
+	schema:name "cotyledon emergence stage, root"
+.
+
+
+bkr:cond_cotyledon_emergence_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/NCBITaxon_1>.
+<http://purl.obolibrary.org/obo/NCBITaxon_1> schema:name "root".
+<http://purl.obolibrary.org/obo/NCBITaxon_1> schema:identifier "NCBITaxon_1".
+
+bkr:cond_cotyledon_emergence_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/PO_0009005>.
+<http://purl.obolibrary.org/obo/PO_0009005> schema:name "root".
+<http://purl.obolibrary.org/obo/PO_0009005> schema:identifier "PO_0009005".
+bkr:cond_cotyledon_emergence_stage_0x2C_root dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+
+bkr:cond_cotyledon_emergence_stage_0x2C_root dc:type <http://www.yso.fi/onto/yso/p17184>.
+<http://www.yso.fi/onto/yso/p17184> schema:name "root".
+<http://www.yso.fi/onto/yso/p17184> schema:identifier "p17184".
+
+bkr:cond_cotyledon_emergence_stage_0x2C_root dc:type <http://www.yso.fi/onto/afo/p5715>.
+<http://www.yso.fi/onto/afo/p5715> schema:name "root".
+<http://www.yso.fi/onto/afo/p5715> schema:identifier "p5715".
+
+bkr:cond_cotyledon_emergence_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/PO_0007049>.
+<http://purl.obolibrary.org/obo/PO_0007049> schema:name "cotyledon emergence stage".
+<http://purl.obolibrary.org/obo/PO_0007049> schema:identifier "PO_0007049".
+bkr:cond_cotyledon_emergence_stage_0x2C_root dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007049>.
+
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf a agri:StudyFactor;
+	schema:name "2.03 main shoot and axillary shoots visible at three nodes stage, leaf"
+.
+
+
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf dc:type <http://www.yso.fi/onto/yso/p20503>.
+<http://www.yso.fi/onto/yso/p20503> schema:name "leaf".
+<http://www.yso.fi/onto/yso/p20503> schema:identifier "p20503".
+
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf dc:type <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Leaf>.
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Leaf> schema:name "leaf".
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Leaf> schema:identifier "Leaf".
+
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf dc:type <http://purl.obolibrary.org/obo/PO_0025034>.
+<http://purl.obolibrary.org/obo/PO_0025034> schema:name "leaf".
+<http://purl.obolibrary.org/obo/PO_0025034> schema:identifier "PO_0025034".
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
+
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf dc:type <http://www.yso.fi/onto/afo/p5516>.
+<http://www.yso.fi/onto/afo/p5516> schema:name "leaf".
+<http://www.yso.fi/onto/afo/p5516> schema:identifier "p5516".
+
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf dc:type <http://purl.obolibrary.org/obo/PO_0007080>.
+<http://purl.obolibrary.org/obo/PO_0007080> schema:name "2.03 main shoot and axillary shoots visible at three nodes stage".
+<http://purl.obolibrary.org/obo/PO_0007080> schema:identifier "PO_0007080".
+bkr:cond_2.03_main_shoot_and_axillary_shoots_visible_at_three_nodes_stage_0x2C_leaf dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007080>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007080> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007080>.
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root a agri:StudyFactor;
+	schema:name "SE.99 maximum stem length reached stage, root"
+.
+
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/NCBITaxon_1>.
+<http://purl.obolibrary.org/obo/NCBITaxon_1> schema:name "root".
+<http://purl.obolibrary.org/obo/NCBITaxon_1> schema:identifier "NCBITaxon_1".
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/PO_0009005>.
+<http://purl.obolibrary.org/obo/PO_0009005> schema:name "root".
+<http://purl.obolibrary.org/obo/PO_0009005> schema:identifier "PO_0009005".
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009005> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009005>.
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root dc:type <http://www.yso.fi/onto/yso/p17184>.
+<http://www.yso.fi/onto/yso/p17184> schema:name "root".
+<http://www.yso.fi/onto/yso/p17184> schema:identifier "p17184".
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root dc:type <http://www.yso.fi/onto/afo/p5715>.
+<http://www.yso.fi/onto/afo/p5715> schema:name "root".
+<http://www.yso.fi/onto/afo/p5715> schema:identifier "p5715".
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root dc:type <http://purl.obolibrary.org/obo/PO_0007109>.
+<http://purl.obolibrary.org/obo/PO_0007109> schema:name "SE.99 maximum stem length reached stage".
+<http://purl.obolibrary.org/obo/PO_0007109> schema:identifier "PO_0007109".
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_root dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007109>.
+
+bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem a agri:StudyFactor;
+	schema:name "SE.00 stem elongation begins stage, stem"
+.
+
+
+bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem dc:type <http://www.yso.fi/onto/afo/p1080>.
+<http://www.yso.fi/onto/afo/p1080> schema:name "bole".
+<http://www.yso.fi/onto/afo/p1080> schema:identifier "p1080".
+
+bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem dc:type <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem>.
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> schema:name "stem".
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> schema:identifier "Stem".
+
+bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem dc:type <http://purl.obolibrary.org/obo/PO_0009047>.
+<http://purl.obolibrary.org/obo/PO_0009047> schema:name "stem".
+<http://purl.obolibrary.org/obo/PO_0009047> schema:identifier "PO_0009047".
+bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+
+bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem dc:type <http://purl.obolibrary.org/obo/PO_0007079>.
+<http://purl.obolibrary.org/obo/PO_0007079> schema:name "SE.00 stem elongation begins stage".
+<http://purl.obolibrary.org/obo/PO_0007079> schema:identifier "PO_0007079".
+bkr:cond_se.00_stem_elongation_begins_stage_0x2C_stem dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007079>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007079> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007079>.
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem a agri:StudyFactor;
+	schema:name "FL.02 1/2 of flowers open stage, stem"
+.
+
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem dc:type <http://www.yso.fi/onto/afo/p1080>.
+<http://www.yso.fi/onto/afo/p1080> schema:name "bole".
+<http://www.yso.fi/onto/afo/p1080> schema:identifier "p1080".
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem dc:type <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem>.
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> schema:name "stem".
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> schema:identifier "Stem".
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem dc:type <http://purl.obolibrary.org/obo/PO_0009047>.
+<http://purl.obolibrary.org/obo/PO_0009047> schema:name "stem".
+<http://purl.obolibrary.org/obo/PO_0009047> schema:identifier "PO_0009047".
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem dc:type <http://purl.obolibrary.org/obo/PO_0007053>.
+<http://purl.obolibrary.org/obo/PO_0007053> schema:name "FL.02 1/2 of flowers open stage".
+<http://purl.obolibrary.org/obo/PO_0007053> schema:identifier "PO_0007053".
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_stem dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007053>.
+
+bkr:cond_whole_plant_fruit_formation_stage_70_0x25_to_final_size_0x2C_fruit a agri:StudyFactor;
+	schema:name "whole plant fruit formation stage 70% to final size, fruit"
+.
+
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence a agri:StudyFactor;
+	schema:name "FL.02 1/2 of flowers open stage, inflorescence"
+.
+
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence dc:type <http://www.yso.fi/onto/afo/p1135>.
+<http://www.yso.fi/onto/afo/p1135> schema:name "inflorescence".
+<http://www.yso.fi/onto/afo/p1135> schema:identifier "p1135".
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence dc:type <http://purl.obolibrary.org/obo/PO_0009049>.
+<http://purl.obolibrary.org/obo/PO_0009049> schema:name "inflorescence".
+<http://purl.obolibrary.org/obo/PO_0009049> schema:identifier "PO_0009049".
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence dc:type <http://www.yso.fi/onto/yso/p21487>.
+<http://www.yso.fi/onto/yso/p21487> schema:name "inflorescence".
+<http://www.yso.fi/onto/yso/p21487> schema:identifier "p21487".
+
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence dc:type <http://purl.obolibrary.org/obo/PO_0007053>.
+<http://purl.obolibrary.org/obo/PO_0007053> schema:name "FL.02 1/2 of flowers open stage".
+<http://purl.obolibrary.org/obo/PO_0007053> schema:identifier "PO_0007053".
+bkr:cond_fl.02_1_0x252F2_of_flowers_open_stage_0x2C_inflorescence dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007053> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007053>.
+
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_fruit a agri:StudyFactor;
+	schema:name "whole plant fruit formation stage 30 to 50%, fruit"
+.
+
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence a agri:StudyFactor;
+	schema:name "SE.02 two nodes or internodes visible stage, inflorescence"
+.
+
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence dc:type <http://www.yso.fi/onto/afo/p1135>.
+<http://www.yso.fi/onto/afo/p1135> schema:name "inflorescence".
+<http://www.yso.fi/onto/afo/p1135> schema:identifier "p1135".
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence dc:type <http://purl.obolibrary.org/obo/PO_0009049>.
+<http://purl.obolibrary.org/obo/PO_0009049> schema:name "inflorescence".
+<http://purl.obolibrary.org/obo/PO_0009049> schema:identifier "PO_0009049".
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence dc:type <http://www.yso.fi/onto/yso/p21487>.
+<http://www.yso.fi/onto/yso/p21487> schema:name "inflorescence".
+<http://www.yso.fi/onto/yso/p21487> schema:identifier "p21487".
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence dc:type <http://purl.obolibrary.org/obo/PO_0007117>.
+<http://purl.obolibrary.org/obo/PO_0007117> schema:name "SE.02 two nodes or internodes visible stage".
+<http://purl.obolibrary.org/obo/PO_0007117> schema:identifier "PO_0007117".
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_inflorescence dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007117>.
+
+bkr:cond_whole_plant_fruit_formation_stage_30_to_50_0x25_0x2C_leaf a agri:StudyFactor;
+	schema:name "whole plant fruit formation stage 30 to 50%, leaf"
+.
+
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem a agri:StudyFactor;
+	schema:name "SE.02 two nodes or internodes visible stage, stem"
+.
+
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem dc:type <http://www.yso.fi/onto/afo/p1080>.
+<http://www.yso.fi/onto/afo/p1080> schema:name "bole".
+<http://www.yso.fi/onto/afo/p1080> schema:identifier "p1080".
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem dc:type <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem>.
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> schema:name "stem".
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Stem> schema:identifier "Stem".
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem dc:type <http://purl.obolibrary.org/obo/PO_0009047>.
+<http://purl.obolibrary.org/obo/PO_0009047> schema:name "stem".
+<http://purl.obolibrary.org/obo/PO_0009047> schema:identifier "PO_0009047".
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009047> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009047>.
+
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem dc:type <http://purl.obolibrary.org/obo/PO_0007117>.
+<http://purl.obolibrary.org/obo/PO_0007117> schema:name "SE.02 two nodes or internodes visible stage".
+<http://purl.obolibrary.org/obo/PO_0007117> schema:identifier "PO_0007117".
+bkr:cond_se.02_two_nodes_or_internodes_visible_stage_0x2C_stem dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007117> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007117>.
+
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf a agri:StudyFactor;
+	schema:name "cotyledon emergence stage, leaf"
+.
+
+
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf dc:type <http://www.yso.fi/onto/yso/p20503>.
+<http://www.yso.fi/onto/yso/p20503> schema:name "leaf".
+<http://www.yso.fi/onto/yso/p20503> schema:identifier "p20503".
+
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf dc:type <http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Leaf>.
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Leaf> schema:name "leaf".
+<http://www.mistea.supagro.inra.fr/ontologies/2015/aeo#Leaf> schema:identifier "Leaf".
+
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf dc:type <http://purl.obolibrary.org/obo/PO_0025034>.
+<http://purl.obolibrary.org/obo/PO_0025034> schema:name "leaf".
+<http://purl.obolibrary.org/obo/PO_0025034> schema:identifier "PO_0025034".
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0025034> schema:sameAs <http://purl.obolibrary.org/obo/PO_0025034>.
+
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf dc:type <http://www.yso.fi/onto/afo/p5516>.
+<http://www.yso.fi/onto/afo/p5516> schema:name "leaf".
+<http://www.yso.fi/onto/afo/p5516> schema:identifier "p5516".
+
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf dc:type <http://purl.obolibrary.org/obo/PO_0007049>.
+<http://purl.obolibrary.org/obo/PO_0007049> schema:name "cotyledon emergence stage".
+<http://purl.obolibrary.org/obo/PO_0007049> schema:identifier "PO_0007049".
+bkr:cond_cotyledon_emergence_stage_0x2C_leaf dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007049>.
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence a agri:StudyFactor;
+	schema:name "SE.99 maximum stem length reached stage, inflorescence"
+.
+
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence dc:type <http://www.yso.fi/onto/afo/p1135>.
+<http://www.yso.fi/onto/afo/p1135> schema:name "inflorescence".
+<http://www.yso.fi/onto/afo/p1135> schema:identifier "p1135".
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence dc:type <http://purl.obolibrary.org/obo/PO_0009049>.
+<http://purl.obolibrary.org/obo/PO_0009049> schema:name "inflorescence".
+<http://purl.obolibrary.org/obo/PO_0009049> schema:identifier "PO_0009049".
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0009049> schema:sameAs <http://purl.obolibrary.org/obo/PO_0009049>.
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence dc:type <http://www.yso.fi/onto/yso/p21487>.
+<http://www.yso.fi/onto/yso/p21487> schema:name "inflorescence".
+<http://www.yso.fi/onto/yso/p21487> schema:identifier "p21487".
+
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence dc:type <http://purl.obolibrary.org/obo/PO_0007109>.
+<http://purl.obolibrary.org/obo/PO_0007109> schema:name "SE.99 maximum stem length reached stage".
+<http://purl.obolibrary.org/obo/PO_0007109> schema:identifier "PO_0007109".
+bkr:cond_se.99_maximum_stem_length_reached_stage_0x2C_inflorescence dc:type <http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109>.
+<http://knetminer.org/data/rdf/resources/plantontologyterm_po_0007109> schema:sameAs <http://purl.obolibrary.org/obo/PO_0007109>.
+

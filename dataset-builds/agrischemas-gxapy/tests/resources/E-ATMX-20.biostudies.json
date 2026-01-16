@@ -1,0 +1,705 @@
+{
+  "accno": "E-ATMX-20",
+  "aeTechnologyType": "Microarray",
+  "gxaAnalysisType": "Differential",
+  "attributes": [
+      {
+          "name": "Title",
+          "value": "Transcription profiling wild type and Zat10 overexpressing Arabidopsis plants"
+      },
+      {
+          "name": "ReleaseDate",
+          "value": "2008-02-05"
+      },
+      {
+          "name": "RootPath",
+          "value": "E-ATMX-20"
+      },
+      {
+          "name": "AttachTo",
+          "value": "ArrayExpress"
+      }
+  ],
+  "section": {
+      "accno": "s-E-ATMX-20",
+      "type": "Study",
+      "attributes": [
+          {
+              "name": "Title",
+              "value": "Transcription profiling wild type and Zat10 overexpressing Arabidopsis plants"
+          },
+          {
+              "name": "Study type",
+              "value": "transcription profiling by array",
+              "valqual": [
+                  {
+                      "name": "Ontology",
+                      "value": "EFO"
+                  },
+                  {
+                      "name": "TermId",
+                      "value": "EFO_0002768"
+                  }
+              ]
+          },
+          {
+              "name": "Organism",
+              "value": "Arabidopsis thaliana"
+          },
+          {
+              "name": "Description",
+              "value": "The effect of overexpression of Zat10 in Arabidopsis leaf tissue"
+          }
+      ],
+      "links": [
+          [
+              {
+                  "url": "E-ATMX-20",
+                  "attributes": [
+                      {
+                          "name": "Type",
+                          "value": "gxa"
+                      }
+                  ]
+              }
+          ]
+      ],
+      "subsections": [
+          [
+              {
+                  "accno": "P-CAGE-25569",
+                  "type": "Protocols",
+                  "attributes": [
+                      {
+                          "name": "Name",
+                          "value": "P-CAGE-25569"
+                      },
+                      {
+                          "name": "Type",
+                          "value": "grow"
+                      },
+                      {
+                          "name": "Description",
+                          "value": "Plants were grown in 12 hour days, 90-160 uE and ~24C until 4 weeks old in soil. Plants were watered every 2-3 days and fertilized with 0.5X Hoaglands every fortnight."
+                      },
+                      {
+                          "name": "Parameters",
+                          "value": "light hours;light intensity;night temperature;night humidity;day temperature;day humidity;media;light source;"
+                      }
+                  ]
+              },
+              {
+                  "accno": "P-CAGE-25628",
+                  "type": "Protocols",
+                  "attributes": [
+                      {
+                          "name": "Name",
+                          "value": "P-CAGE-25628"
+                      },
+                      {
+                          "name": "Type",
+                          "value": "specified_biomaterial_action",
+                          "valqual": [
+                              {
+                                  "name": "Ontology",
+                                  "value": "mo"
+                              }
+                          ]
+                      },
+                      {
+                          "name": "Description",
+                          "value": "The 35S:ZAT10 construct was made by cloning the PCR amplified ZAT10 (At1g27730) coding sequence from Col-0 into HindIII digested and blunt-ended binary vector containing the double CaMV 35S promoter. The resulting binary vector was transformed into Agrobacterium tumefaciens which was used for floral dip transformation of wild type (Col-0). Kanamycin resistant transformants were selected on MS medium and transferred to soil for further characterization."
+                      }
+                  ]
+              },
+              {
+                  "accno": "P-CAGE-25574",
+                  "type": "Protocols",
+                  "attributes": [
+                      {
+                          "name": "Name",
+                          "value": "P-CAGE-25574"
+                      },
+                      {
+                          "name": "Type",
+                          "value": "nucleic_acid_extraction"
+                      },
+                      {
+                          "name": "Description",
+                          "value": "Total RNA was isolated using the RNeasy Plant Mini Protocol (QIAGEN) including an on-column DNase treatment using the RNase-free DNase set (QIAGEN) according to the manufacturer?s instructions. The quality of the RNA was verified using an Agilent Bioanalyzer and spectrophotometric analysis to determine concentration and the A260 to A280 and A260 to A230 ratios."
+                      },
+                      {
+                          "name": "Parameters",
+                          "value": "Amplification;Extracted product;"
+                      }
+                  ]
+              },
+              {
+                  "accno": "P-CAGE-25572",
+                  "type": "Protocols",
+                  "attributes": [
+                      {
+                          "name": "Name",
+                          "value": "P-CAGE-25572"
+                      },
+                      {
+                          "name": "Type",
+                          "value": "labeling",
+                          "valqual": [
+                              {
+                                  "name": "Ontology",
+                                  "value": "mo"
+                              }
+                          ]
+                      },
+                      {
+                          "name": "Description",
+                          "value": "Preparation of labelled cRNA from 1-5 ug of total RNA was carried out exactly as described in the Affymetrix GeneChip Expression Analysis Technical Manual, using the Affymetrix One-Cycle Target Labeling and Control Reagents."
+                      },
+                      {
+                          "name": "Parameters",
+                          "value": "Used Label;Amplification;"
+                      }
+                  ]
+              },
+              {
+                  "accno": "Affymetrix:Protocol:Hybridization-FS450_0004",
+                  "type": "Protocols",
+                  "attributes": [
+                      {
+                          "name": "Name",
+                          "value": "Affymetrix:Protocol:Hybridization-FS450_0004"
+                      },
+                      {
+                          "name": "Type",
+                          "value": "hybridization"
+                      }
+                  ]
+              },
+              {
+                  "accno": "P-AFFY-6",
+                  "type": "Protocols",
+                  "attributes": [
+                      {
+                          "name": "Name",
+                          "value": "P-AFFY-6"
+                      },
+                      {
+                          "name": "Type",
+                          "value": "feature_extraction"
+                      },
+                      {
+                          "name": "Description",
+                          "value": "Title: Affymetrix CEL analysis. Description:"
+                      },
+                      {
+                          "name": "Software",
+                          "value": "MicroArraySuite 5.0"
+                      }
+                  ]
+              },
+              {
+                  "accno": "Affymetrix:Protocol:ExpressionStat",
+                  "type": "Protocols",
+                  "attributes": [
+                      {
+                          "name": "Name",
+                          "value": "Affymetrix:Protocol:ExpressionStat"
+                      },
+                      {
+                          "name": "Type",
+                          "value": "bioassay_data_transformation",
+                          "valqual": [
+                              {
+                                  "name": "Ontology",
+                                  "value": "The MGED Ontology"
+                              }
+                          ]
+                      },
+                      {
+                          "name": "Description",
+                          "value": "Title: Affymetrix CHP Analysis (ExpressionStat). Description:"
+                      },
+                      {
+                          "name": "Software",
+                          "value": "MicroArraySuite 5.0"
+                      }
+                  ]
+              }
+          ],
+          {
+              "type": "Author",
+              "attributes": [
+                  {
+                      "name": "Name",
+                      "value": "Kate Howell"
+                  },
+                  {
+                      "name": "Email",
+                      "value": "kooks@cyllene.uwa.edu.au"
+                  },
+                  {
+                      "name": "Phone",
+                      "value": "+61-8-6488-2112"
+                  },
+                  {
+                      "name": "Role",
+                      "value": "submitter",
+                      "valqual": [
+                          {
+                              "name": "Ontology",
+                              "value": "The MGED Ontology"
+                          }
+                      ]
+                  },
+                  {
+                      "name": "affiliation",
+                      "value": "o1",
+                      "reference": true
+                  }
+              ]
+          },
+          {
+              "accno": "o1",
+              "type": "Organization",
+              "attributes": [
+                  {
+                      "name": "Name",
+                      "value": "ARC Centre of Excellence in Plant Energy Biology"
+                  },
+                  {
+                      "name": "Address",
+                      "value": "35 Stirling Hwy, Crawley"
+                  }
+              ]
+          },
+          {
+              "accno": "18156220",
+              "type": "Publication",
+              "attributes": [
+                  {
+                      "name": "Title",
+                      "value": "Systemic and Intracellular Responses to Photooxidative Stress in Arabidopsis"
+                  },
+                  {
+                      "name": "Authors",
+                      "value": "Rossel JB, Wilson PB, Hussain D, Woo NS, Gordon MJ, Mewett OP, Howell KA, Whelan J, Kazan K, Pogson BJ."
+                  },
+                  {
+                      "name": "DOI",
+                      "value": "10.1105/tpc.106.045898"
+                  },
+                  {
+                      "name": "Status",
+                      "value": "published",
+                      "valqual": [
+                          {
+                              "name": "Ontology",
+                              "value": "EFO"
+                          }
+                      ]
+                  }
+              ],
+              "links": [
+                  {
+                      "url": "10.1105/tpc.106.045898",
+                      "attributes": [
+                          {
+                              "name": "Type",
+                              "value": "DOI"
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "accno": "s-samples-factors-E-ATMX-20",
+              "type": "Samples",
+              "attributes": [
+                  {
+                      "name": "Sample count",
+                      "value": "6"
+                  },
+                  {
+                      "name": "Experimental Designs",
+                      "value": "genetic_modification_design",
+                      "valqual": [
+                          {
+                              "name": "TermId",
+                              "value": "mo"
+                          }
+                      ]
+                  },
+                  {
+                      "name": "Experimental Designs",
+                      "value": "transcription profiling by array",
+                      "valqual": [
+                          {
+                              "name": "TermId",
+                              "value": "EFO"
+                          }
+                      ]
+                  },
+                  {
+                      "name": "Experimental Factors",
+                      "value": "genotype",
+                      "valqual": [
+                          {
+                              "name": "TermName",
+                              "value": "genotype"
+                          }
+                      ]
+                  },
+                  {
+                      "name": "Quality Controls",
+                      "value": "biological_replicate",
+                      "valqual": [
+                          {
+                              "name": "TermId",
+                              "value": "The MGED Ontology"
+                          }
+                      ]
+                  }
+              ],
+              "subsections": [
+                  {
+                      "accno": "exp_factor-E-ATMX-20",
+                      "type": "Experimental Factors",
+                      "attributes": [
+                          {
+                              "name": "Genotype",
+                              "value": "wild type"
+                          },
+                          {
+                              "name": "Genotype",
+                              "value": "35S:ZAT10"
+                          }
+                      ],
+                      "subsections": [
+                          [
+                              {
+                                  "accno": "factors_0",
+                                  "type": "Factors Table",
+                                  "attributes": [
+                                      {
+                                          "name": "genotype",
+                                          "value": "35S:ZAT10"
+                                      },
+                                      {
+                                          "name": "No. of Samples",
+                                          "value": "3",
+                                          "valqual": [
+                                              {
+                                                  "name": "search",
+                                                  "value": "\"OE2.CEL\" OR \"OE1.CEL\" OR \"OE3.CEL\""
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              {
+                                  "accno": "factors_1",
+                                  "type": "Factors Table",
+                                  "attributes": [
+                                      {
+                                          "name": "genotype",
+                                          "value": "wild type"
+                                      },
+                                      {
+                                          "name": "No. of Samples",
+                                          "value": "3",
+                                          "valqual": [
+                                              {
+                                                  "name": "search",
+                                                  "value": "\"wildtype2.CEL\" OR \"wildtype1.CEL\" OR \"wildtype3.CEL\""
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                          ]
+                      ]
+                  },
+                  {
+                      "accno": "source_chars-E-ATMX-20",
+                      "type": "Source Characteristics",
+                      "attributes": [
+                          {
+                              "name": "Organism",
+                              "value": "Arabidopsis thaliana"
+                          },
+                          {
+                              "name": "Germplasm",
+                              "value": "Col-0"
+                          },
+                          {
+                              "name": "Developmental stage",
+                              "value": "mid rosette growth"
+                          },
+                          {
+                              "name": "Organism part",
+                              "value": "leaf"
+                          },
+                          {
+                              "name": "Genotype",
+                              "value": "wild type"
+                          },
+                          {
+                              "name": "Genotype",
+                              "value": "35S:ZAT10"
+                          }
+                      ],
+                      "subsections": [
+                          [
+                              {
+                                  "accno": "source_0",
+                                  "type": "Characteristics Table",
+                                  "attributes": [
+                                      {
+                                          "name": "genotype",
+                                          "value": "35S:ZAT10"
+                                      },
+                                      {
+                                          "name": "No. of Samples",
+                                          "value": "3",
+                                          "valqual": [
+                                              {
+                                                  "name": "search",
+                                                  "value": "\"OE2.CEL\" OR \"OE1.CEL\" OR \"OE3.CEL\""
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              {
+                                  "accno": "source_1",
+                                  "type": "Characteristics Table",
+                                  "attributes": [
+                                      {
+                                          "name": "genotype",
+                                          "value": "wild type"
+                                      },
+                                      {
+                                          "name": "No. of Samples",
+                                          "value": "3",
+                                          "valqual": [
+                                              {
+                                                  "name": "search",
+                                                  "value": "\"wildtype2.CEL\" OR \"wildtype1.CEL\" OR \"wildtype3.CEL\""
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                          ]
+                      ]
+                  }
+              ]
+          },
+          {
+              "accno": "s-assays-data-E-ATMX-20",
+              "type": "Assays and Data",
+              "attributes": [
+                  {
+                      "name": "Technology",
+                      "value": "Array assay"
+                  },
+                  {
+                      "name": "Assay by Molecule",
+                      "value": "RNA assay"
+                  }
+              ],
+              "subsections": [
+                  {
+                      "accno": "raw-data",
+                      "type": "Raw Data",
+                      "files": [
+                          [
+                              {
+                                  "path": "OE2.CEL",
+                                  "size": 5070585,
+                                  "attributes": [
+                                      {
+                                          "name": "Samples",
+                                          "value": "Zat10-OE-2"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Raw Data"
+                                      }
+                                  ],
+                                  "type": "file"
+                              },
+                              {
+                                  "path": "wildtype2.CEL",
+                                  "size": 5070535,
+                                  "attributes": [
+                                      {
+                                          "name": "Samples",
+                                          "value": "wildtype-2"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Raw Data"
+                                      }
+                                  ],
+                                  "type": "file"
+                              },
+                              {
+                                  "path": "wildtype1.CEL",
+                                  "size": 5070611,
+                                  "attributes": [
+                                      {
+                                          "name": "Samples",
+                                          "value": "wildtype-1"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Raw Data"
+                                      }
+                                  ],
+                                  "type": "file"
+                              },
+                              {
+                                  "path": "wildtype3.CEL",
+                                  "size": 5070775,
+                                  "attributes": [
+                                      {
+                                          "name": "Samples",
+                                          "value": "wildtype-3"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Raw Data"
+                                      }
+                                  ],
+                                  "type": "file"
+                              },
+                              {
+                                  "path": "OE1.CEL",
+                                  "size": 5070521,
+                                  "attributes": [
+                                      {
+                                          "name": "Samples",
+                                          "value": "Zat10-OE-1"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Raw Data"
+                                      }
+                                  ],
+                                  "type": "file"
+                              },
+                              {
+                                  "path": "OE3.CEL",
+                                  "size": 5070593,
+                                  "attributes": [
+                                      {
+                                          "name": "Samples",
+                                          "value": "Zat10-OE-3"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Raw Data"
+                                      }
+                                  ],
+                                  "type": "file"
+                              }
+                          ]
+                      ]
+                  },
+                  {
+                      "accno": "mt-E-ATMX-20",
+                      "type": "MAGE-TAB Files",
+                      "files": [
+                          [
+                              {
+                                  "path": "E-ATMX-20.idf.txt",
+                                  "size": 4539,
+                                  "attributes": [
+                                      {
+                                          "name": "Type",
+                                          "value": "IDF File"
+                                      },
+                                      {
+                                          "name": "Format",
+                                          "value": "tab-delimited text"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Investigation Design Format (IDF)"
+                                      }
+                                  ],
+                                  "type": "file"
+                              },
+                              {
+                                  "path": "E-ATMX-20.sdrf.txt",
+                                  "size": 5060,
+                                  "attributes": [
+                                      {
+                                          "name": "Type",
+                                          "value": "SDRF File"
+                                      },
+                                      {
+                                          "name": "Format",
+                                          "value": "tab-delimited text"
+                                      },
+                                      {
+                                          "name": "Description",
+                                          "value": "Sample and Data Relationship Format (SDRF)"
+                                      }
+                                  ],
+                                  "type": "file"
+                              }
+                          ]
+                      ]
+                  },
+                  {
+                      "accno": "ad-E-ATMX-20",
+                      "type": "Array Designs",
+                      "links": [
+                          [
+                              {
+                                  "url": "A-AFFY-2",
+                                  "attributes": [
+                                      {
+                                          "name": "Type",
+                                          "value": "Array Design"
+                                      }
+                                  ]
+                              }
+                          ]
+                      ]
+                  }
+              ]
+          },
+          {
+              "accno": "score-E-ATMX-20",
+              "type": "MIAME Score",
+              "attributes": [
+                  {
+                      "name": "Platforms",
+                      "value": "-"
+                  },
+                  {
+                      "name": "Protocols",
+                      "value": "-"
+                  },
+                  {
+                      "name": "Raw",
+                      "value": "*"
+                  },
+                  {
+                      "name": "Processed",
+                      "value": "*"
+                  },
+                  {
+                      "name": "Variables",
+                      "value": "*"
+                  }
+              ]
+          }
+      ]
+  },
+  "type": "submission"
+}

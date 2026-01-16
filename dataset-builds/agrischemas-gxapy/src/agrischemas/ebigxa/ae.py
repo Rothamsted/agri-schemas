@@ -2,11 +2,10 @@ import logging
 from sys import stdout
 from textwrap import dedent
 
-import urllib.parse
 import math
 
-from agrischemaspy.etltools.utils import rdf_str, rdf_text, make_id, hash_generator
-from agrischemaspy.kpyutils import web
+from agrischemas.etltools.utils import rdf_str, rdf_text, make_id, hash_generator
+from agrischemas.kpyutils import web
 
 
 log = logging.getLogger ( __name__ )

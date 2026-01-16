@@ -18,7 +18,7 @@ handlers:
     # 
     # Note that under macOS, tempfile.gettempdir() IS NOT /tmp, but something like /var/folders/...
     #
-    filename: /tmp/agrischemaspytest.log
+    filename: /tmp/agrischemas-gxapy-test.log
     mode: a
     level: DEBUG
     formatter: simpleFormatter    

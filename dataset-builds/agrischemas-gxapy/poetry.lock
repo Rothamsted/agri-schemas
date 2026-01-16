@@ -11,7 +11,7 @@ files = []
 develop = false
 
 [package.dependencies]
-brandizpyes = "^1.1.1"
+brandizpyes = "^1.1.2"
 rdflib = "^7.5.0"
 sh = "^2.2.2"
 
@@ -19,19 +19,19 @@ sh = "^2.2.2"
 type = "git"
 url = "https://github.com/Rothamsted/agri-schemas.git"
 reference = "master"
-resolved_reference = "a4e0a0ccbcaf49611da1fe0962eab544be333c3d"
+resolved_reference = "5d1e000c1d455a14208f289e121210555601d39d"
 subdirectory = "tools/agrischemaspy"
 
 [[package]]
 name = "brandizpyes"
-version = "1.1.1"
+version = "1.1.2"
 description = "Brandiz Pyes - Python Utilities"
 optional = false
 python-versions = ">=3.14"
 groups = ["main"]
 files = [
-    {file = "brandizpyes-1.1.1-py3-none-any.whl", hash = "sha256:fae0ba623351f927cf67a824c151526efa85c1e262edd043b9b18734076498c0"},
-    {file = "brandizpyes-1.1.1.tar.gz", hash = "sha256:52cd0934bce21bdb3b7ab27bbb08f5ee165978b60edfd00051f34666aff6a862"},
+    {file = "brandizpyes-1.1.2-py3-none-any.whl", hash = "sha256:6af9a1a91915d697ccd63a327cb4c97a315c5f0df0f6c71583cc66b0f93d06ba"},
+    {file = "brandizpyes-1.1.2.tar.gz", hash = "sha256:18b7b319ee5f409ecdd726530cd67e368bcf2271b14fe037c1b772691f4674dc"},
 ]
 
 [package.dependencies]

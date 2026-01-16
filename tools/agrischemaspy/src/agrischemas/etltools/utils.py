@@ -204,9 +204,9 @@ def make_id ( s, skip_non_word_chars = False, ignore_case = True ):
 	if ignore_case: s = s.lower ()
 	s = re.sub ( "\\s", "_", s )
 	s = re.sub ( "/", "%2F", s )
-	if skip_non_word_chars: s = re.sub ( "\\W", "", s, re.ASCII )
+	if skip_non_word_chars: s = re.sub ( "\\W", "", s, flags = re.ASCII )
 	s = urllib.parse.quote ( s )
-	s = re.sub ( "%", "_0x", s, re.ASCII ) # parsers don't like things like '%20'
+	s = re.sub ( "%", "_0x", s, flags = re.ASCII ) # parsers don't like things like '%20'
 	return s
 
 """
