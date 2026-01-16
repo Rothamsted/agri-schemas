@@ -6,6 +6,8 @@
 	:Date: 2020
 """
 
+from brandizpyes.ioutils import dump_output
+
 from builtins import isinstance
 import hashlib
 import json
@@ -146,7 +148,12 @@ class XNamespaceManager ( NamespaceManager ):
 		- NAMESPACES_PATH if it is set
 """
 DEFAULT_NAMESPACES = XNamespaceManager ()
-DEFAULT_NAMESPACES.load ( dirname ( abspath ( __file__ ) ) + "/default-namespaces.ttl", "turtle" )
+DEFAULT_NAMESPACES.load ( 
+	os.path.abspath ( 
+		os.path.dirname ( __file__ ) + "/../../resources/etltools/default-namespaces.ttl" 
+	),
+	"turtle"
+)
 if os.getenv ( 'NAMESPACES_PATH' ):
 	DEFAULT_NAMESPACES.load ( os.getenv ( 'NAMESPACES_PATH' ), "turtle" )
 
@@ -186,10 +193,10 @@ def sparql_ask_tdb ( tdb_path: string, ask_query, namespaces = DEFAULT_NAMESPACE
 
 	return "Yes" in proc.stdout
 
-""" 
+"""
 	Gets an ID out of a string, by doing some normalisation.
 	
-	If skip_non_word_chars is set, non-words characters (\W) are replaced with empty strings. This means
+	If skip_non_word_chars is set, non-words characters (\\W) are replaced with empty strings. This means
 	that, for instance "aren't" and "arent" become the same ID. This might be useful when you build IDs
 	out of free text, it's certainly isn't when you deal with stuff like accessions or preferred names. 
 """
@@ -206,7 +213,7 @@ def make_id ( s, skip_non_word_chars = False, ignore_case = True ):
 	Extracts the last part of a URI, relying on characters like '#' or '/'.
 """
 def uri2accession ( uri ):
-	bits = re.split ( "[\\/,\#,\?]", uri )
+	bits = re.split ( "[\\/,\\#,\\?]", uri )
 	if not bits: return ""
 	return bits [ -1 ]
 
@@ -294,23 +301,6 @@ def normalize_rows_source ( rows_source ):
 
 	yield from rows_source	
 
-"""
-	Utility to quickly deal with a writer that writes on a file handle.
-	
-	The function checks if out is an handle or a string, in case of string, interprets it as
-	a file path, opens it and invokes writer() with the corresponding handle.
-	 
-	If out is not a string, just invokes writer( out ), which, therefore, must get a file handle
-	as parameter.
-	
-	mode and open_opts are parameters for the open() function. If out isn't a string, they're 
-	ignored.	
-"""
-def dump_output ( out, writer, mode = "w", **open_opts ):
-	if isinstance ( out, str ):
-		with open ( out, mode = mode, **open_opts ) as fout:
-			return writer ( fout )
-	return writer ( out )
 
 """
 	Utility to quickly send a row generator to an output of type string or file handle, as per
@@ -331,43 +321,6 @@ def js_to_file ( js, file_path ):
 	with open ( file_path, "w" ) as jsf:
 		return json.dump ( js, jsf )
 	
-
-"""
-	Configures the Python logging module with a YAML configuration file.
-	
-	The file name is picked from ETL_LOG_CONF, or from <current directory>/logging.yaml
-	This should be called at the begin of a main program and BEFORE any use of the logging module.
-	Multiple calls of this method are idempotent, ie, the Python logging module configures itself
-	once only (and only before sending in logging messages).
-	
-	An example of logging config file is included in ETL tools.
-	
-	If logger_name is provided, the function returns logging.getLogger ( logger_name ) as a facility
-	to avoid the need to import logging too, when you already import this. Beware that you load a configuration
-	one only in your application (so, don't use this method in modules just to get a logger). 
-	
-	param disable_existing_loggers is false by default, this is the best way to not interfere with modules instantiating
-	their own module logger, usually before you call this function on top of your application (but usually after 
-	all the imports). By default, the Python logging library has this otpion set to true and that typically causes
-	all the module loggers to be disabled after the configuration loading. See https://docs.python.org/3/library/logging.config.html
-"""
-def logger_config ( logger_name = None, disable_existing_loggers = False ):
-	cfg_path = os.getenv ( "ETL_LOG_CONF", "logging.yaml" )
-	if not os.path.isfile ( cfg_path ):
-		print ( "*** Logger config file '%s' not found, use the OS variable ETL_LOG_CONF to point to a logging configuration." % cfg_path, file = stderr )
-		print ( "The logger will use the default configuration ", file = stderr )
-		return
-	with open ( cfg_path ) as flog:		
-		cfg = yaml.load ( flog, Loader = yaml.FullLoader )
-		# As per documentation, if not reset, this disables loggers in the modules, which usually are 
-		# loaded during 'import', before calling this function
-		cfg [ "disable_existing_loggers" ] = disable_existing_loggers
-		logging.config.dictConfig ( cfg )
-	log = logging.getLogger ( __name__ )
-	log.info ( "Logger configuration loaded from '%s'" % cfg_path )
-
-	if logger_name: return logging.getLogger ( logger_name )
-
 
 """
 	Returns an RDF/Turtle string if the key exists in the 'data' treated as dictionary.

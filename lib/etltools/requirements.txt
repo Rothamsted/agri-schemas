@@ -1,6 +1,0 @@
-TODO: Docker
-- JENA
-- SnakeMake
-
-- rdflib
-- sh

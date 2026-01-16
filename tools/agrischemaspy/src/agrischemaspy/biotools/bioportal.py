@@ -1,7 +1,7 @@
 """
   Simple implementation of clients to invoke Bioportal APIs
 """
-from kpyutils import web
+from agrischemaspy.kpyutils import web
 import os
 
 import logging
@@ -66,7 +66,7 @@ class BioPortalClient:
 		for term in jterms:
 			uri = term [ "annotatedClass" ] [ "@id" ]
 			if uri in visited: continue
-			new_term = { "uri": term [ "annotatedClass" ] [ "@id" ] }
+			new_term = { "uri": uri }
 			new_term [ "self" ] = term [ "annotatedClass" ] [ "links" ] [ "self" ]
 			new_terms.append ( new_term )
 			visited.add ( uri )
