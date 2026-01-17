@@ -1,12 +1,14 @@
 @prefix ex: <http://agrischemas.org/resources/examples/biohack-2021/junker15/>.
 @prefix agri: <http://agrischemas.org/>.
 @prefix bioschema: <http://bioschemas.org/> .
-@prefix schema: <http://schema.org/> .
+@prefix schema: <https://schema.org/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix ppeo: <http://purl.org/ppeo/PPEO.owl#>
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-@prefix efo: <http://www.ebi.ac.uk/efo/>
+@prefix ppeo: <http://purl.org/ppeo/PPEO.owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix efo: <http://www.ebi.ac.uk/efo/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sio: <http://semanticscience.org/resource/>.
 
 
 #### The Investigation is actually a dataset in MIAPPE.
@@ -14,9 +16,9 @@
 ex:investigation a schema:Dataset;
 	schema:identifier "1135FA";
 	schema:name "Quantitative Monitoring of Arabidopsis thaliana Growth and Development Using High-Throughput Plant Phenotyping";
-	schema:description "The dataset is derived from an automated high throughput plant phenotyping system for small plants, which combines a growth chamber for controlled environmental conditions and the imaging chambers for non-invasive trait assessment. In this validation study, Arabidopsis plants have been grown with a large number of replicates and their growth and development has been evaluated with respect to two factors: i) 'moving vs. stationary' to assess if the movement of plants on the conveyor belt influences plant growth and ii) 'covered vs. uncovered' to assess if soil covers influence plant growth. These special soil covers are used for reducing transpiration and to facilitate segmentation of plant pixels from the background during image analysis."
-	# Null values in this instance are reported to show all the possibilities
-	schema:dateCreated ""; # maps submission date
+	schema:description "The dataset is derived from an automated high throughput plant phenotyping system for small plants, which combines a growth chamber for controlled environmental conditions and the imaging chambers for non-invasive trait assessment. In this validation study, Arabidopsis plants have been grown with a large number of replicates and their growth and development has been evaluated with respect to two factors: i) 'moving vs. stationary' to assess if the movement of plants on the conveyor belt influences plant growth and ii) 'covered vs. uncovered' to assess if soil covers influence plant growth. These special soil covers are used for reducing transpiration and to facilitate segmentation of plant pixels from the background during image analysis.";
+	# Null values in this instance are reported to show all the possibilities
+	schema:dateCreated ""; # maps submission date
 	schema:datePublished "";
 	schema:creator
 	[
@@ -25,7 +27,7 @@ ex:investigation a schema:Dataset;
 		schema:url "http://www.ipk-gatersleben.de"
 	],
 	[
-		# Was Comment["Consortium URI"] in the original file. Likely, automatic conversion will 
+		# Was Comment["Consortium URI"] in the original file. Likely, automatic conversion will 
 		# produce schema:additionalProperty instead
 		a schema:Organization;
 		schema:url "http://www.dppn.de"
@@ -33,7 +35,7 @@ ex:investigation a schema:Dataset;
 
 	schema:license "https://creativecommons.org/licenses/by/4.0/legalcode";
 	# TODO: bioschemas recommends to use EDAM ontology and DefinedTerms. Moreover, 
-	# it isn't clear whether single or multiple strings is recommended.
+	# it isn't clear whether single or multiple strings is recommended.
 	schema:keywords "plant phenotyping, image analysis, arabidopsis thaliana, lemnatec";
 	schema:isBasedOn ex:study; # as per bioschema (profile) recommendation
 
@@ -77,7 +79,7 @@ ex:investigation a schema:Dataset;
     schema:roleName "Contributor Role", <http://purl.org/credit/ontology#CREDIT_00000000>;
     schema:contributor
 		[
-			a schema:Person
+			a schema:Person;
 			schema:givenName "Astrid";
 			schema:familyName "Junker";
 			schema:email "junkera@ipk-gatersleben.de";
@@ -88,7 +90,7 @@ ex:investigation a schema:Dataset;
   ],
 	[
 		# Skipping the role
-		a schema:Person
+		a schema:Person;
 		schema:givenName "Kathleen";
 		schema:familyName "Weigelt-Fischer";
 		schema:email "weigelt@ipk-gatersleben.de";
@@ -141,7 +143,7 @@ ex:study a bioschema:Study;
 
 		schema:name "study design"; # optional, useuful for applications understanding schema.org only
 		# See notes, this could be duped into schema:value
-		schema:description "The experiment comprised the analysis of 484 Arabidopsis plants of the C24 genotype, with 384 reps that were placed in the LemnaTec carriers (factor: moving) and 100 reps that were placed on tables in the same phyto-chamber (factor: stationary). The soil surface of half of the pots of each condition (factor: moving/stationary) was either left uncovered or was covered with a blue rubber mat (factor: uncovered/covered)."
+		schema:description "The experiment comprised the analysis of 484 Arabidopsis plants of the C24 genotype, with 384 reps that were placed in the LemnaTec carriers (factor: moving) and 100 reps that were placed on tables in the same phyto-chamber (factor: stationary). The soil surface of half of the pots of each condition (factor: moving/stationary) was either left uncovered or was covered with a blue rubber mat (factor: uncovered/covered).";
 		schema:propertyID ppeo:experimental_design; # optional as above, as per schema.org, this is the property type, not the value
 		# dc:type is instead to add ontology terms of which this particular design is an instance
 		dc:type <http://purl.obolibrary.org/obo/OBI_0500014>; # factorial design
@@ -504,6 +506,6 @@ ex:observed_value_dry_weight_anova a agri:StudyComputedValue, schema:PropertyVal
 		ex:observed_value_1135FA1001_dry_weight_covered_rotating,
 		ex:observed_value_1135FA1001_dry_weight_uncovered_rotating,
 		# Transitive evidence, which you might want to attach
-		ex:sample_1135FA1001;
+		ex:sample_1135FA1001,
 		ex:study;
 .
