@@ -25,8 +25,8 @@ class BioPortalClient:
 	def _my_init ( self, apikey, apikey_env_var, base_url ):
 		if not apikey: apikey = os.getenv ( apikey_env_var )
 		if not apikey: raise TypeError ( 
-			"the Bioportal client needs an APIKEY, either on the constructor, or from " + 
-			"the %s OS variable. Register to their site to get a key." % apikey_env_var
+			f"{self.__class__.__name__} needs an APIKEY, either on the constructor, or from " + 
+			f"the {apikey_env_var} OS variable. Register to their site to get a key."
 		)
 		self.apikey = apikey
 		self._base_url = base_url

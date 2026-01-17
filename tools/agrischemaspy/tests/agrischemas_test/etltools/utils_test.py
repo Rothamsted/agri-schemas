@@ -1,16 +1,12 @@
 from agrischemas.etltools.utils import DEFAULT_NAMESPACES, normalize_rows_source
 from agrischemas.etltools.utils import download_files
 
-from brandizpyes.logging import logger_config
 from brandizpyes.ioutils import dump_output
 
 import unittest, os
-from os.path import dirname, abspath, exists, getsize
+from os.path import exists, getsize
 from rdflib.namespace import RDFS
 import importlib
-import sys
-import io
-import logging
 
 _TEST_DIR = os.path.abspath (
 	os.path.dirname (  __file__ ) + "/../../resources/etltools/"
@@ -117,8 +113,3 @@ class TestDownloadFiles ( unittest.TestCase ):
 		
 		self.assertTrue ( getsize ( "/tmp/schema.ttl" ) > 1000, "overwrite flag didn't work" )
 
-
-		
-if __name__ == '__main__':
-	logger_config ()
-	unittest.main()

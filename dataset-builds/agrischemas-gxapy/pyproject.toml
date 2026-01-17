@@ -19,7 +19,10 @@ packages = [{include = "agrischemas", from = "src"}]
 [tool.poetry.dependencies]
 python = "^3.14"
 # Since these packages are transitional, we don't publish them on PyP
-agrischemaspy = {git = "https://github.com/Rothamsted/agri-schemas.git", rev = "master", subdirectory = "tools/agrischemaspy"}
+agrischemaspy = { path = "../../tools/agrischemaspy", develop = true }
+# I've just been playing with this
+# agrischemaspy = {git = "https://github.com/Rothamsted/agri-schemas.git", rev = "master", subdirectory = "tools/agrischemaspy"}
+
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

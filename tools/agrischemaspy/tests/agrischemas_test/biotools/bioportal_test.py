@@ -1,7 +1,6 @@
 import unittest
 from agrischemas.biotools.bioportal import BioPortalClient, AgroPortalClient
 from agrischemas.biotools import bioportal
-import json
 
 class BioPortalTest ( unittest.TestCase ):
 	
@@ -64,6 +63,3 @@ class AgroPortalTest ( unittest.TestCase ):
 		self.assertEqual ( "stres provocat de secetă", probe [ "label" ], "Test label not fetched!" )
 		self.assertTrue ( "stres hidric" in probe [ "synonyms" ], "Test synonym not fetched!" )
 
-
-if __name__ == '__main__':
-	unittest.main()
