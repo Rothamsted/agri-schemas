@@ -187,4 +187,13 @@ bkr:gxaexp_E-GEOD-16333_at5g02540_pif4_0x3B_pif5_vs_wild_type_in_far-red_light_1
 	agri:pvalue 0.02169;
 	agri:evidence bkr:exp_E-GEOD-16333;
 .
+
+# Time point details are available too (for hours, TODO: we'll do other units in future, 
+# if needed)
+#
+bkr:cond_1_hours a agri:StudyFactor;
+	schema:name "1 hour";
+	schema:value 1;
+	schema:unitText "hours"
+.
 ```
