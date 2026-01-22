@@ -1,6 +1,13 @@
 # Translating GXA data to agrischemas
 
+The following diagram summarises the main modelling about mapping [EBI Gene Expression Atlas][https://www.ebi.ac.uk/gxa] data into AgriSchemas.
+
+The GXA offers per-experiment summaries of the conditions under which genes are expressed, according to microarray or NGS experiments. The data is derived from ArrayExpress experiments, and the GXA curators re-analyse the raw data to provide normalised gene expression levels, differential expression analyses, etc.
+
 <img src = "gxa-use-case.png" width = "120%" />
+
+In the follow, we show a walkthrough into details. Additionally, you can find [examples](examples/) from real conversions.
+
 
 ## Experiment, general description
 
