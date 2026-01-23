@@ -6,7 +6,7 @@ The GXA offers per-experiment summaries of the conditions under which genes are 
 
 <img src = "gxa-use-case.png" width = "120%" />
 
-In the follow, we show a walkthrough into details. Additionally, you can find [examples](examples/) from real conversions.
+In the follow, we show a walkthrough into details.
 
 
 ## Experiment, general description
@@ -197,3 +197,10 @@ bkr:cond_1_hours a agri:StudyFactor;
 	schema:unitText "hours"
 .
 ```
+
+## Real Data Examples
+
+You can find [examples](examples/) from real conversions, produced by our [GXA pipeline](../../dataset-builds/agrischemas-gxa/).
+
+This is based on a [dedicated package](../../dataset-builds/agrischemas-gxapy/) and [some general utilities](../../tools/).
+
