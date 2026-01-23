@@ -303,55 +303,6 @@ def attribs2dict (
 	return result
 
 
-
-def _attribs2dict ( 
-	attribs: list[dict], key_name: str = 'name', 
-	value_name: str = 'value',
-	has_multi_values: bool = True
-) -> dict[str, list[Any]]:
-	"""
-		Converts a list of attribute dictionaries (as returned by the BioStudies API) into
-		a regular dictionary mapping attribute names to values.
-
-		In other words, converts something like this:
-
-		```javascript
-		[ { 'name': 'Type', 'value': 'Type A' },
-			{ 'name': 'Type', 'value': 'Type B' },
-			{ 'name': 'Description', 'value': 'No library prep needed' } ]
-		```
-
-		into this:
-		```javascript
-		{ 'Type': [ 'Type A', 'Type B' ],
-		  'Description': [ 'No library prep needed' ] }
-		```
-
-		As you can see, values are always lists, to account for multiple values per key.
-
-		If `has_multi_values` is False, assumes that there aren't multi-values attributes and 
-		returns singletons. Raise an error if that's not the case.
-
-		TODO: onto terms
-		TODO: tests
-	""" 
-
-	result = {}
-	for attr in attribs:
-		k, v = attr [ key_name ], attr [ value_name ]
-		if k in result:
-			if has_multi_values:
-				result [ k ].append ( v )
-				continue
-			if not v in result [ k ]:
-				raise ValueError ( f"attribs2dict(): attribute '{k}' has multiple values "
-					"but has_multi_values is False: " + ", ".join ( result [ k ] + [ v ] )
-				)
-		else:
-			result [ k ] = [ v ] if has_multi_values else v 
-	return result
-
-
 """
 	Builds a Knetminer URI for an ArrayExpress experiment.
 """
