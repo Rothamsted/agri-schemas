@@ -25,6 +25,7 @@ EXPERIMENT_ACCS = [
 	'E-MTAB-7521', 'E-MTAB-8326', 'E-MTAB-5137', 'E-MTAB-5132', 'E-MTAB-8073', 'E-MTAB-7050', 'E-MTAB-3287',
 	'E-MTAB-6965', 'E-MTAB-7374', 'E-MTAB-6866'
 ]
+# EXPERIMENT_ACCS = None
 
 GXA_ORGANISMS = [ "arabidopsis thaliana", "triticum aestivum" ]
 
