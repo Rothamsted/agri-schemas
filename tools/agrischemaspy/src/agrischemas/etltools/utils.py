@@ -317,7 +317,7 @@ def js_from_file ( file_path ):
 		return json.load ( jsf )
 
 def js_to_file ( js, file_path ):
-	os.makedirs ( os.path.dirname ( file_path ) )
+	os.makedirs ( os.path.dirname ( file_path ), exist_ok = True )
 	with open ( file_path, "w" ) as jsf:
 		return json.dump ( js, jsf )
 	
