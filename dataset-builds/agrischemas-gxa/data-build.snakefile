@@ -46,14 +46,14 @@ OUT_PATTERN = ETL_OUT + "/gxa/{exp_acc}.ttl.bz2"
 
 rule all:
 	message:
-		"Exporting everything"
+		"Exporting All"
 	input:
 		expand ( OUT_PATTERN, exp_acc = EXPERIMENT_ACCS )
 	
 
 rule single_exp:
 	message:
-		"Getting RDF for {wildcards.exp_acc}"
+		"{wildcards.exp_acc} RDF Dump"
 	output:
 		OUT_PATTERN
 	run:

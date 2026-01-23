@@ -12,8 +12,11 @@ printf "\n  Activating the Python environment\n"
 . .venv/bin/activate
 
 printf "\n  Installing/upgrading Python dependencies\n"
-# TODO: --force is only for local packages and during development, let's use another requirements
-# list
-pip install --upgrade --force -r requirements.txt
+pip install --upgrade -r requirements.txt
+# Without --force, it won't see wheel rebuilds, with --force on all deps, 
+# a lot of unnecessary deps are upgraded every time. 
+# So, this separation is a way to deal wit it.
+# Note that I'm not using --editable, cause it's too messy when there are transitive deps.
+pip install --upgrade --force -r requirements-local.txt
 
 printf "\n  Installation/upgrade done.\n"

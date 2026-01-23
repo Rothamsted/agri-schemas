@@ -1,0 +1,2 @@
+# See install.sh on why we keep local deps on a separate file
+../agrischemas-gxapy/dist/agrischemaspy_gxapy-0.1.0-py3-none-any.whl
