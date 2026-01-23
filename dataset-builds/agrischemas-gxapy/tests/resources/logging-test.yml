@@ -13,11 +13,6 @@ handlers:
 
   file:
     class: logging.FileHandler
-    # Makes the temp path OS-independent. As per documentation you can use these Python calls with
-    # the YAML unsafe loader, which we support in our logger_config function, see the tests.
-    # 
-    # Note that under macOS, tempfile.gettempdir() IS NOT /tmp, but something like /var/folders/...
-    #
     filename: /tmp/agrischemas-gxapy-test.log
     mode: a
     level: DEBUG

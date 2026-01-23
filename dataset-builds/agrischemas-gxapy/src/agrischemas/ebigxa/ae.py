@@ -3,6 +3,8 @@ from sys import stdout
 from textwrap import dedent
 
 import math
+from typing import Any
+from urllib.error import HTTPError, URLError
 
 from agrischemas.etltools.utils import rdf_str, rdf_text, make_id, hash_generator
 from agrischemas.kpyutils import web
@@ -68,19 +70,27 @@ def ae_get_experiment_accessions ( organisms, page = 1 ) -> dict:
 	details coming from the GXA API.
 """
 def ae_get_experiment_descriptor ( exp_accession: str ):
-	url = "https://www.ebi.ac.uk/biostudies/api/v1/studies/" + exp_accession
-	result = web.url_get_json ( url )
+	try:
+		url = "https://www.ebi.ac.uk/biostudies/api/v1/studies/" + exp_accession
+		result = web.url_get_json ( url )
+	except Exception as ex:
+		# Rethrow with the URL included
+		raise URLError ( f"Error while getting AE experiment descriptor from {url}: {ex}" ) from ex
 
 	# The AE Tech Type is a specific flag that must be used in GXA to build data download paths
 
 	section = result.get ( "section", {} )
 	attribs = section.get ( "attributes", [] )
 	attribs = attribs2dict ( attribs )
-	ae_tech = attribs.get ( "Study type" )
+	ae_tech = attribs.get ( "Study type", [] )
+	if not type ( ae_tech ) is list: ae_tech = [ ae_tech ]
 
-	ae_tech = "Microarray" \
-		if ae_tech == "transcription profiling by array" \
-		else ( "RNASeq" if ae_tech == "RNA-seq of coding RNA" else None )
+	ae_tech = \
+		"Microarray" if "transcription profiling by array" in ae_tech \
+		else ( 
+			"RNASeq" if "RNA-seq of coding RNA" in ae_tech
+			else None
+		)
 
 	# If it's not a technology we support here, skip by returning an empty result
 	# TODO: we don't support "RNA-seq of coding RNA from single cells" yet
@@ -130,10 +140,12 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 		# Extract it from subsections
 		section = exp_js.get ( "section", {} )
 		subsections = section.get ( "subsections", [] )
+		if not subsections: return ""
 
 		pub_js = next ( 
-			o for o in subsections 
-		  if type (o) is dict and o [ "type" ] == "Publication"
+			( js_obj for js_obj in subsections 
+		  	if type (js_obj) is dict and js_obj [ "type" ] == "Publication" ),
+			None
 		)
 		if not pub_js: return ""
 
@@ -223,7 +235,7 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 	rdf = dedent ( rdf )
 
 	top_attrs = attribs2dict ( exp_js [ "attributes" ] )
-	section_attrs = attribs2dict ( exp_js [ "section" ] [ "attributes"] )
+	section_attrs = attribs2dict ( exp_js [ "section" ] [ "attributes" ] )
 
 	rdf += rdf_text ( top_attrs, "Title", "\tdc:title" )
 	rdf += rdf_text ( section_attrs, "Description", "\tschema:description" )
@@ -231,8 +243,7 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 
 	rdf += ".\n"
 	
-	# TODO: can we have multiple species? How is it represented? Should attribs2dict()
-	# support multiple values per key?
+	# TODO: can we have multiple species? How is it represented?
 	#
 	species = section_attrs.get ( "Organism", None )
 	if species:
@@ -250,19 +261,94 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 # /end: rdf_ae_experiment
 
 
-"""
-	TODO: comment me!
-	TODO: proper typededfs
-	TODO: onto terms
-"""
-def attribs2dict ( attribs, key_name: str = 'name', value_name: str = 'value' ) -> dict: 
+def attribs2dict ( 
+	attribs: list[dict], key_name: str = 'name', value_name: str = 'value'
+) -> dict[str, list[Any]]:
+	"""
+		Converts a list of attribute dictionaries (as returned by the BioStudies API) into
+		a regular dictionary mapping attribute names to values.
+
+		In other words, converts something like this:
+
+		```javascript
+		[ { 'name': 'Type', 'value': 'Type A' },
+			{ 'name': 'Type', 'value': 'Type B' },
+			{ 'name': 'Description', 'value': 'No library prep needed' } ]
+		```
+
+		into this:
+		```javascript
+		{ 'Type': [ 'Type A', 'Type B' ],
+		  'Description': 'No library prep needed' }
+		```
+
+		As you can see, values can be either singletons or lists, depending on whether
+		there are multiple values for the same key or not.
+
+		TODO: onto terms
+		TODO: tests
+	""" 
+
 	result = {}
 	for attr in attribs:
-		k = attr [ key_name ]
-		v = attr [ value_name ]
+		k, v = attr [ key_name ], attr [ value_name ]
 		if k in result:
-			raise ValueError ( f"Error while reading attributes: {k} has duplicated values" )
-		result [ k ] = v
+			old_v = result [ k ]
+			if type ( old_v ) is list:
+				if not v in old_v: old_v.append ( v )
+			else:
+				if v != old_v: result [ k ] = [ old_v, v ]
+		else:
+			result [ k ] = v
+	return result
+
+
+
+def _attribs2dict ( 
+	attribs: list[dict], key_name: str = 'name', 
+	value_name: str = 'value',
+	has_multi_values: bool = True
+) -> dict[str, list[Any]]:
+	"""
+		Converts a list of attribute dictionaries (as returned by the BioStudies API) into
+		a regular dictionary mapping attribute names to values.
+
+		In other words, converts something like this:
+
+		```javascript
+		[ { 'name': 'Type', 'value': 'Type A' },
+			{ 'name': 'Type', 'value': 'Type B' },
+			{ 'name': 'Description', 'value': 'No library prep needed' } ]
+		```
+
+		into this:
+		```javascript
+		{ 'Type': [ 'Type A', 'Type B' ],
+		  'Description': [ 'No library prep needed' ] }
+		```
+
+		As you can see, values are always lists, to account for multiple values per key.
+
+		If `has_multi_values` is False, assumes that there aren't multi-values attributes and 
+		returns singletons. Raise an error if that's not the case.
+
+		TODO: onto terms
+		TODO: tests
+	""" 
+
+	result = {}
+	for attr in attribs:
+		k, v = attr [ key_name ], attr [ value_name ]
+		if k in result:
+			if has_multi_values:
+				result [ k ].append ( v )
+				continue
+			if not v in result [ k ]:
+				raise ValueError ( f"attribs2dict(): attribute '{k}' has multiple values "
+					"but has_multi_values is False: " + ", ".join ( result [ k ] + [ v ] )
+				)
+		else:
+			result [ k ] = [ v ] if has_multi_values else v 
 	return result
 
 

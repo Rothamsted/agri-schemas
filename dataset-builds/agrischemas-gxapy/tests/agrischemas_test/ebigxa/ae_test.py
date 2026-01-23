@@ -1,7 +1,7 @@
 import logging
 import pytest
 from agrischemas.etltools.utils import js_from_file, XTestCase
-from agrischemas.ebigxa.ae import ae_get_experiment_accessions, rdf_ae_experiment
+from agrischemas.ebigxa.ae import ae_get_experiment_accessions, rdf_ae_experiment, attribs2dict
 from agrischemas.ebigxa.utils import rdf_gxa_namespaces
 import rdflib
 import os
@@ -148,3 +148,33 @@ class AeTest ( XTestCase ):
 	# /end: test_rdf_ae_experiments ()		
 # /end: AeTest			
 
+def test_attribs2dict_single_values ():
+	attribs = [
+		{ "name": "Attr1", "value": "Value1" },
+		{ "name": "Attr2", "value": "Value2" },
+		{ "name": "Attr3", "value": "Value3" },
+	]
+	
+	dict = attribs2dict ( attribs )
+	
+	assert dict == {
+		"Attr1": "Value1",
+		"Attr2": "Value2",
+		"Attr3": "Value3",
+	}
+
+def test_attribs2dict_multi_values ():
+	attribs = [
+		{ "name": "Attr1", "value": "Value1" },
+		{ "name": "Attr2", "value": "Value2a" },
+		{ "name": "Attr2", "value": "Value2b" },
+		{ "name": "Attr3", "value": "Value3" },
+	]
+	
+	dict = attribs2dict ( attribs )
+	
+	assert dict == {
+		"Attr1": "Value1",
+		"Attr2": [ "Value2a", "Value2b" ],
+		"Attr3": "Value3",
+	}

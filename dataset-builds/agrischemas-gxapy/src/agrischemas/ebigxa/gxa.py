@@ -17,72 +17,76 @@ from agrischemas.kpyutils import web
 
 log = logging.getLogger ( __name__ )
 
-"""
-  TODO: re-comment me!
+def gxa_get_analysis_types ( organisms ) -> dict[str, str]:
+	"""
+	Returns a dict: ae_acc -> gxa_analysis_type, by getting this from the GXA API /json/experiments, which
+	lists a summary of all the GXA experiments.
 
-  Merges experiment descriptors from the AE API (via ae_get_experiment_descriptors()) and GXA API.
-  
-  It returns the JSON coming from ae_get_experiment_descriptors(), with the additional field
-  gxaAnalysisType, taken from the GXA API (experimentType).
-  
-  AE experiments that aren't in GXA results are also filtered away from the final result. We have seen
-  this happens sometimes (due delayed updates?).
-"""
-def gxa_get_experiment_summaries ( organisms ):
+	This is the ugly API I found by inspecting their HTML UI, it doesn't seem to be accepting any parameter,
+	so here we need to fetch data about all the experiments and then we do some filtering by:
+
+	- getting AE studies about the given organisms, via :func:`ae_get_experiment_accessions()`
+	- further filtering those AE experiments that don't have a corresponding accession in GXA.
+	  We have seen this happening sometimes (due delayed updates?).
+	"""
+
 	ae_accs = ae_get_experiment_accessions ( organisms )
 	result = {}
-	# This is the API I found by inspecting the HTML UI, it doesn't seem to be accepting any parameter, 
-	# the experiments are already organism-filtered by the AE API call.
 	gxa_exps_js = web.url_get_json ( "https://www.ebi.ac.uk/gxa/json/experiments" )
 	gxa_exps_js = gxa_exps_js [ "experiments" ] # Extract what we need
 	gxa_exps_js = { js [ "experimentAccession" ]: js for js in gxa_exps_js }
 	for ae_acc in ae_accs:
+		# As said above, ignore those not in GXA
 		if ae_acc not in gxa_exps_js:
-			# See above
 			continue
 		result [ ae_acc ] = gxa_exps_js [ ae_acc ] [ "experimentType" ]
 	return result  
 
 
-"""
-  Wraps gxa_get_experiment_summaries() behind a cache file, ie, 
-  
-  if gxa_js_file_path is present, just returns its conents, else
-  invokes gxa_get_experiment_summaries(), saves it into gxa_js_file_path and returns
-  the JSON result.
-  
-  This is useful in Snakemake, where you can't have global variables (every rule execution
-  is a new process), so you can save global states in files.
-  
-"""
-def gxa_get_experiment_summaries_cached ( organisms, gxa_js_file_path: str ) -> dict:
+def gxa_get_analysis_types_cached ( organisms, gxa_js_file_path: str ) -> dict:
+	"""
+	Wraps :func:`gxa_get_analysis_types` behind a cache file, ie, 
+
+	if `gxa_js_file_path` is present, just returns its contents, else
+	invokes :func:`gxa_get_analysis_types`, saves it into `gxa_js_file_path` and returns
+	the JSON result.
+
+	This is useful in Snakemake, where you can't have global variables (every rule execution
+	is a new process), so you can save global states in files.
+
+	TODO: tests.
+	"""
+
 	if pathlib.Path ( gxa_js_file_path ).exists ():
 		log.debug ( "Loading AE/GXA details from local file: '%s'", gxa_js_file_path )
 		return js_from_file ( gxa_js_file_path )
-	result = gxa_get_experiment_summaries ( organisms )
+	result = gxa_get_analysis_types ( organisms )
 	js_to_file ( result, gxa_js_file_path )
-	return gxa_js
+	return result
 
 
-"""
-  Builds all the RDF that concerns a single GXA experiment, that is: 
-  
-  - rdf_gxa_namespaces()
-  - rdf_ae_experiment()
-  - rdf_gxa_tpm_levels() or rdf_gxa_dex_levels(), depending on the experiment type
-  - rdf_gxa_conditions()
-  
-	:param 	dict exp_js: If given, this is the JSON that is used as input and exp_acc + gxa_analysis_type
-    are ignored, no ae_get_experiment_descriptor() is invoked. This is here for writing unit tests,
-	  normally you shouldn't need it.
 
-	:param out: file-like object where to write the RDF. Default is stdout. If None, the result is returned 
-	  as a string (useful for tests, likely, you don't want it in production).
-"""
 def gxa_rdf_all ( 
 	exp_acc: str, gxa_analysis_type: str, out = stdout, target_gene_ids: set = None,
 	exp_js: dict = None
 ):
+	"""
+	Builds all the RDF that concerns a single GXA experiment, that is: 
+
+	- rdf_gxa_namespaces()
+	- rdf_ae_experiment()
+	- rdf_gxa_tpm_levels() or rdf_gxa_dex_levels(), depending on the experiment type
+	- rdf_gxa_conditions()
+
+	## Parameters
+
+	:param 	dict exp_js: If given, this is the JSON that is used as input and exp_acc + gxa_analysis_type
+		are ignored, no ae_get_experiment_descriptor() is invoked. This is here for writing unit tests,
+		normally you shouldn't need it.
+
+	:param out: file-like object where to write the RDF. Default is stdout. If None, the result is returned 
+		as a string (useful for tests, likely, you don't want it in production).
+	"""	
 	if not out: out = io.StringIO ()
 
 	if not exp_js:
@@ -111,11 +115,14 @@ def gxa_rdf_all (
 """
 	Saves gxa_rdf_all() to a file.
 """
-def gxa_rdf_all_save ( exp_js, file_path: str, target_gene_ids = None, compress = False ):
+def gxa_rdf_all_save ( 
+	exp_acc: str, gxa_analysis_type: str, file_path: str,
+	target_gene_ids = None, compress = False
+):
 	out = open ( file_path, mode = "w" ) if not compress \
 				else BinaryWriter ( bz2.open ( file_path, "w" ) )
 	try:
-		gxa_rdf_all ( exp_js, out, target_gene_ids )
+		gxa_rdf_all ( exp_acc, gxa_analysis_type, out, target_gene_ids )
 	finally:
 		out.close ()
 	
@@ -175,7 +182,7 @@ def rdf_gxa_tpm_levels ( exp_acc: str, out = stdout, condition_labels: set = Non
 					if len( row ) > 0 and row [ 0 ] == "Gene ID":
 						# Condition labels are in the headers
 						condition_cols = row [ 2: ]
-						log.debug ( "Conditions: %s", condition_cols )
+						log.debug ( "Condition cols: %s", condition_cols )
 						is_on_headers = False # since now on
 					continue # start reading data after the last header
 
@@ -206,29 +213,29 @@ def rdf_gxa_tpm_levels ( exp_acc: str, out = stdout, condition_labels: set = Non
 		raise RuntimeError ( f"Error processing GXA TPM levels for experiment {exp_acc}: {ex}" ) from ex
 	
 	if is_on_headers:
-		log.warning ( "Didn't see any data in the experiment " + exp_acc )
+		log.warning ( "Didn't see any TPM levels in the experiment " + exp_acc )
 		
 	if ( type ( out ) == io.StringIO ): return out.getvalue()
 #/end: rdf_gxa_tpm_levels
 
 
 
-_dex_condre = "'([^']+)'"
-_dex_score_type_re = "\s*\.(foldChange|pValue)"
+_DEX_COND_RE = "'([^']+)'"
+_DEX_SCORE_TYPE_RE = "\s*\.(foldChange|pValue)"
+DEX_TIME_UNIT_RE = "(min|minute|hour|day|week|month|year)"
 # this includes the optional case: "'salicylic acid; 0.5 millimolar' vs 'none' in 'wild type genotype' .foldChange"
-DEX_COND_PATTERN = re.compile ( f"{_dex_condre} vs {_dex_condre}( in {_dex_condre})?{_dex_score_type_re}" )
-DEX_COND_TIME_PATTERN = re.compile ( f"(.+) at '([0-9]+) hour'{_dex_score_type_re}")
+DEX_COND_PATTERN = re.compile ( f"{_DEX_COND_RE} vs {_DEX_COND_RE}( in {_DEX_COND_RE})?{_DEX_SCORE_TYPE_RE}" )
+DEX_COND_TIME_PATTERN = re.compile ( f"(.+) at '([0-9]+) {DEX_TIME_UNIT_RE}'{_DEX_SCORE_TYPE_RE}")
 
-"""
-	TODO: re-comment me!
-	
-  Yields the RDF for the TPM levels of a baseline experiment.
+"""	
+  Yields the RDF DEX levels.
 
-	Parameters are the same as rdf_gxa_dex_levels()  
+	Parameters are as in :func:`rdf_gxa_tpm_levels()`.
 """
 def rdf_gxa_dex_levels ( 
 	exp_acc: str, technology_type: str, out = stdout, 
-	condition_labels: set = None, target_gene_ids: set = None ):
+	condition_labels: set = None, target_gene_ids: set = None
+):
 	
 	# Gets the condition mentioned by a header. See below for details. 
 	def get_conditions ( conds_header: str ):
@@ -244,26 +251,29 @@ def rdf_gxa_dex_levels (
 		# So, let's see if we have a time to extract 
 		time_match = DEX_COND_TIME_PATTERN.match ( conds_header )
 		if time_match:
-			# TODO: can it be different than hours?
-			result [ 'time' ] = int ( time_match.group ( 2 ) )
-			# Done, cut away the time part and reduce it to the timeless case
-			conds_header = time_match.group ( 1 ) + "." + time_match.group ( 3 )
+			cond_label_match, time_value_match, time_unit_match, score_type_match = time_match.group ( 1, 2, 3, 4 )
+			result [ 'time' ] = int ( time_value_match )
+			result [ 'timeUnit' ] = time_unit_match
+
+			# Cut away the time part reduce it to the timeless case, and pass it to the code below
+			# (which, in fact, deals with the no-time case only)
+			conds_header = cond_label_match + "." + score_type_match
 				
 		# Now match only cond/baseline
 		cond_match = DEX_COND_PATTERN.match ( conds_header )
 		if not cond_match: return {}
 		
-		# At the end, all the details are in a dictionary  		
-		result [ 'baseline' ] = cond_match.group ( 2 )
-		result [ 'condition' ] = cond_match.group ( 1 )
-		# This is an optional part looking like "in 'wildtype'"
-		in_clause = cond_match.group ( 4 )
-		if in_clause: result [ 'baselineExt' ] = in_clause
-		result [ 'scoreType' ] = cond_match.group ( 5 )
+		cond_label_match, baseline_match, in_clause_match, score_type_match = cond_match.group ( 1, 2, 4, 5 )
 
+		# At the end, all the details are in a dictionary  		
+		result [ 'baseline' ] = baseline_match
+		result [ 'condition' ] = cond_label_match
+		# This is an optional part looking like "in 'wildtype'"
+		if in_clause_match: result [ 'baselineExt' ] = in_clause_match
+		result [ 'scoreType' ] = score_type_match
 		return result
 
-	def rdf_level ( gene_id, condition_label, base_condition_label, ext_base_condition_label, fold_change, pvalue, time_point ):
+	def rdf_level ( gene_id, condition_label, base_condition_label, ext_base_condition_label, fold_change, pvalue, time_point, time_pt_unit ):
 		# TODO: it would be more correct to not change the case, but we want Knet compatibility
 		exp_uri = make_ae_exp_uri ( exp_acc )
 		gene_id_nrm = gene_id.lower()
@@ -285,7 +295,7 @@ def rdf_gxa_dex_levels (
 		if ext_base_cond_uri:
 			exp_stmt_uri += f"_in_{ext_base_cond_id}"
 			
-		if time_point != -1: exp_stmt_uri += f"_{time_point}h"
+		if time_point != -1: exp_stmt_uri += f"_{time_point}_{time_pt_unit}"
 	
 		rdf = f"""
 			{exp_stmt_uri} a rdf:Statement;
@@ -308,7 +318,7 @@ def rdf_gxa_dex_levels (
 
 			
 		if time_point != -1:
-			time_point_str = str ( time_point ) + " hours"
+			time_point_str = make_time_point_label ( time_point, time_pt_unit )
 			time_point_uri = make_condition_uri ( time_point_str )
 			rdf+= f"\n{exp_stmt_uri} agri:timePoint {time_point_uri}."
 			
@@ -329,7 +339,9 @@ def rdf_gxa_dex_levels (
 		with urlopen ( dex_url ) as gxa_stream:
 			for row in csv.reader ( io.TextIOWrapper ( gxa_stream, encoding = 'utf-8' ), delimiter = "\t" ):
 				# First rows are headers, up to the table's headers, which start with "Gene ID"
+				# TODO: move this to its own function
 				if is_on_headers:
+					# If it's not a comment or empty row on top:
 					if len( row ) > 0 and row [ 0 ] == "Gene ID":
 						# Condition labels are in the headers, let's collect them and let's extract their structure
 						for j in range ( cond_start_idx, len ( row ) ):
@@ -337,21 +349,28 @@ def rdf_gxa_dex_levels (
 							cond_detail = get_conditions ( cond_col )
 							if not cond_detail: continue
 							cond_details [ j ] = cond_detail
-						if not cond_details: break # We don't have valid columns 
+						if not cond_details:
+							log.debug ( "DEX levels: header row found, but no valid condition detail columns" )
+							break # We don't have valid columns 
 						is_on_headers = False # since now on
-					continue # start reading data after the last header
+					continue # start reading data after the valid header
 		
 				gene_id = row [ 0 ].upper()
 				if target_gene_ids and gene_id not in target_gene_ids:
 					# log.debug ( "Skipping non-target gene: '%s'", gene_id )
 					continue
 			
-				all_levels = {} # time point -> details, or -1 => details without time point
+				# Further group the level by time point (if any)
+				# TODO: move this too in its own function
+				#
+				all_levels = {} # time point key -> details, or -1 => details, when no time point
 				for j, cond_detail in cond_details.items ():
-					time = cond_detail.get ( "time", -1 )
+					time = cond_detail.get ( "time", None )
+					timeUnit = cond_detail.get ( "timeUnit", None )
+					time_key = str ( time ) + " " + timeUnit if time is not None and timeUnit is not None else -1
 					
 					# it's updated from multiple columns by multiple iterations in this loop 
-					levels = all_levels.get ( time, {} ) 
+					levels = all_levels.get ( time_key, {} ) 
 					
 					level_value = row [ j ]
 					if not level_value: continue
@@ -365,13 +384,16 @@ def rdf_gxa_dex_levels (
 					levels [ "condition" ] = cond_detail [ "condition" ]
 					levels [ "baseline" ] = cond_detail [ "baseline" ]
 					levels [ "baselineExt" ] = cond_detail.get ( "baselineExt", None )
+					if time_key != -1:
+						levels [ "time" ] = time
+						levels [ "timeUnit" ] = timeUnit
 
-					all_levels [ time ] = levels
+					all_levels [ time_key ] = levels
 				#/end: loop on condition columns
 
 				# OK, we have the values structured as we want, see if they're good enough
 				gene_has_levels = False
-				for time_point, levels in all_levels.items ():
+				for time_key, levels in all_levels.items ():
 					fold_change = levels.get ( "foldChange", 0 )
 					if abs ( fold_change ) < 1: 
 						#log.debug ( "Skipping low/absent fold change for gene %s", gene_id )
@@ -386,13 +408,20 @@ def rdf_gxa_dex_levels (
 					baseline = levels [ "baseline" ]
 					baseline_ext = levels [ "baselineExt" ]
 
-					rdf_level ( gene_id, condition, baseline, baseline_ext, fold_change, pvalue, time_point )
+					time_pt = levels.get ( "time", -1 )
+					time_pt_unit = levels.get ( "timeUnit", None )
+
+					rdf_level ( 
+						gene_id, condition, baseline, baseline_ext, fold_change, pvalue, 
+						time_pt, time_pt_unit
+					)
 
 					condition_labels.add ( condition )
 					condition_labels.add ( baseline )
 					if baseline_ext: condition_labels.add ( baseline_ext )
 					
-					if time != -1: condition_labels.add ( str ( time ) + " hours" )
+					if time_pt != -1:
+						condition_labels.add ( make_time_point_label ( time_pt, time_pt_unit ) )
 					gene_has_levels = True
 				#/end: loop all_levels
 				
@@ -406,7 +435,7 @@ def rdf_gxa_dex_levels (
 		log.error ( f"Error processing GXA DEX levels for experiment {exp_acc}: {ex}, GXA URL: {dex_url}" )
 		raise RuntimeError ( f"Error processing GXA DEX levels for experiment {exp_acc}: {ex}" ) from ex
 	if is_on_headers:
-		log.warning ( "Didn't see any data in the experiment " + exp_acc )
+		log.warning ( "Didn't see any DEX levels in the experiment " + exp_acc )
 		
 	if ( type ( out ) == io.StringIO ): return out.getvalue()
 #/end: rdf_gxa_dex_levels
@@ -449,7 +478,7 @@ def rdf_gene ( gene_id: str, gene_name: str, out = stdout ):
 	out is passed to print ()'s file parameter, ie, it's the destination stream. If set to None explicitly,
 	a string is generated and returned (WARNING: might be very big).		
 """
-COND_TIME_POINT_RE = re.compile ( "([0-9]+) hours" )
+COND_TIME_POINT_PATTERN = re.compile ( f"([0-9]+) {DEX_TIME_UNIT_RE}" )
 def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 		
 	if not out: out = io.StringIO ()
@@ -473,10 +502,11 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 		"""
 		rdf = dedent ( rdf )
 		
-		tp_match = COND_TIME_POINT_RE.match ( cond_label )
+		tp_match = COND_TIME_POINT_PATTERN.match ( cond_label )
 		if tp_match:
-			tp_hours = int ( tp_match.group ( 1 ) )
-			rdf += f"\n{cond_uri} schema:value {tp_hours}; schema:unitText \"hours\".\n"
+			tp_value, tp_unit = int ( tp_match.group ( 1 ) ), tp_match.group ( 2 )
+			# TODO: map to UN/CEFACT
+			rdf += f"\n{cond_uri} schema:value {tp_value}; schema:unitText \"{tp_unit}\".\n"
 		
 		print ( rdf, file = out )
 		
@@ -608,6 +638,13 @@ def make_condition_uri ( condition_label: str ) -> str:
   
   The gene_id is used for logging invalid or too low TPMs. 
 """
+
+
+def make_time_point_label ( time_value: int, time_unit: str ) -> str:
+	plural_str = "s" if time_value > 1 or time_value == 0 else ""
+	return f"{time_value} {time_unit}{plural_str}"
+
+
 def get_ordinal_tpm ( tpm: float, gene_id: str = None ) -> str:
 	if not tpm:
 		# if gene_id: log.debug ( "Skipping empty TPM count for gene: %s", gene_id )

@@ -1,0 +1,37 @@
+@prefix bkr: <http://knetminer.org/data/rdf/resources/> .
+@prefix agri: <http://agrischemas.org/> .
+@prefix bioschema: <https://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix efo: <http://www.ebi.ac.uk/efo/> .
+
+bkr:gxa_analysis_type_differential a schema:PropertyValue;
+	schema:propertyID "gxaAnalysisType";
+	schema:name "EBI Gene Expression Atlas Analysis Type";
+	schema:value "EBI/GXA Differential Gene Expression Analysis";
+	dc:type obo:OBI_0000650; # differential expression analysis data transformation
+.
+
+bkr:gxa_analysis_type_baseline a schema:PropertyValue;
+	schema:propertyID "gxaAnalysisType";
+	schema:name "EBI Gene Expression Atlas Analysis Type";
+	schema:value "EBI/GXA Baseline Gene Expression Analysis";
+	dc:type obo:OBI_0002568; # sequence data feature count tabulation
+.
+
+bkr:ae_technology_type_microarray a schema:PropertyValue;
+	schema:propertyID "aeTechnologyType";
+	schema:name "EBI ArrayExpress Technology Type";
+	schema:value "Transcription Profiling by Array";
+	dc:type efo:EFO_0002768; # transcription profiling by array
+.
+
+bkr:ae_technology_type_rna_sequencing a schema:PropertyValue;
+	schema:propertyID "aeTechnologyType";
+	schema:name "EBI ArrayExpress Technology Type";
+	schema:value "RNA-seq of coding RNA";
+	dc:type efo:EFO_0003738; # RNA-seq of coding RNA
+.

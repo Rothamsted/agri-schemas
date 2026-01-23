@@ -1,7 +1,7 @@
 import logging
 import unittest
 from agrischemas.ebigxa.gxa import ( 
-	gxa_get_experiment_summaries, rdf_gxa_conditions, rdf_gxa_tpm_levels,
+	gxa_get_analysis_types, rdf_gxa_conditions, rdf_gxa_tpm_levels,
 	load_filtered_genes, rdf_gxa_dex_levels, gxa_rdf_all
 )
 from agrischemas.ebigxa.utils import rdf_gxa_namespaces
@@ -56,16 +56,16 @@ class GxaTestRaw ( XTestCase ):
 
 class GxaTest ( XTestCase ):
 	
-	gxa_exp_summaries = None
+	gxa_analysis_types = None
 	
 	@classmethod
 	def setUpClass(cls):
-		GxaTest.gxa_exp_summaries = gxa_get_experiment_summaries ( [ "arabidopsis thaliana", "triticum aestivum" ] ) 
+		GxaTest.gxa_analysis_types = gxa_get_analysis_types ( [ "arabidopsis thaliana", "triticum aestivum" ] ) 
 		#log.info ( gxa_exps )
 	
 	# TODO: Agroportal isn't so stable
 	def test_gxa_conditions ( self ):
-		cond_labels = [ 'pericarp', 'Seed growth', '10 days after anthesis', '24 hours' ]
+		cond_labels = [ 'pericarp', 'Seed growth', '10 days after anthesis', '24 hours', '3 weeks' ]
 		rdf = rdf_gxa_namespaces()
 		rdf += rdf_gxa_conditions ( cond_labels, None )
 		log.info ( "rdf_gxa_conditions() test output:\n%s", rdf )
@@ -96,13 +96,34 @@ class GxaTest ( XTestCase ):
 			( "bkr:cond_10_days_after_anthesis dc:type <https://cropontology.org/rdf/CO_330:0000155>",
 				"Cannot find 'days' annotation for anthesis entry!"),
 			( """
-					bkr:cond_24_hours a agri:StudyFactor;
-						schema:name "24 hours";
-						schema:value 24;
-						schema:unitText "hours"
-					.
+				bkr:cond_24_hours a agri:StudyFactor;
+					schema:name "24 hours";
+					schema:value 24;
+					schema:unitText "hour"
+				.
 				""",
 				"Cannot find right annotations about the 24 hours time point!"
+			),
+			( """
+				bkr:cond_3_weeks a agri:StudyFactor;
+					schema:name "3 weeks";
+					schema:value 3;
+					schema:unitText "week"
+				.
+				""",
+				"Cannot find right annotations about the 3 weeks time point!"
+			),
+			( 
+				# time specs are still matched, despite not being built by us and not at the
+				# end of the label. But of course, the label is the original one.
+				"""
+				bkr:cond_10_days_after_anthesis a agri:StudyFactor;
+					schema:name "10 days after anthesis";
+					schema:value 10;
+					schema:unitText "day"
+				.
+				""",
+				"Cannot find right annotations about the 10 days after anthesis time point!"
 			)
 		]
 		
@@ -111,15 +132,15 @@ class GxaTest ( XTestCase ):
 	
 	
 	def test_gxa_get_experiment_descriptors ( self ):
-		self.assertTrue ( "E-MTAB-8326" in GxaTest.gxa_exp_summaries, "Arabidopsis experiment not found!" )
+		self.assertTrue ( "E-MTAB-8326" in GxaTest.gxa_analysis_types, "Arabidopsis experiment not found!" )
 		self.assertEqual ( 
 			"Differential", 
-			GxaTest.gxa_exp_summaries [ "E-MTAB-8326" ],
+			GxaTest.gxa_analysis_types [ "E-MTAB-8326" ],
 			"Wrong gxaAnalysisType for ara. experiment!"
 		) 
 		self.assertEqual ( 
 			"Baseline", 
-			GxaTest.gxa_exp_summaries [ "E-MTAB-4260" ],
+			GxaTest.gxa_analysis_types [ "E-MTAB-4260" ],
 			"Wrong gxaAnalysisType for wheat experiment!"
 		) 
 		
@@ -340,7 +361,7 @@ class GxaTest ( XTestCase ):
 		
 	def test_gxa_rdf_all ( self ):
 		acc = "E-MTAB-4260"
-		gxa_analysis_type = GxaTest.gxa_exp_summaries [ acc ]
+		gxa_analysis_type = GxaTest.gxa_analysis_types [ acc ]
 		
 		rdf = gxa_rdf_all ( acc, gxa_analysis_type, out = None, target_gene_ids = test_genes )
 		log.info ( "gxa_rdf_all() test output (truncated):\n%s\n\n", rdf )		
