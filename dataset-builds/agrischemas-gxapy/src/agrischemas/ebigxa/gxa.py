@@ -514,35 +514,39 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 		try:
 			onto_terms = annotate_condition ( cond_label )
 		except Exception as ex:
-			log.debug ( "Error while fetching ontology annotations for '%s': %s", cond_label, str (ex) )
+			log.debug ( "Error while fetching ontology annotations for '%s': %s", cond_label, str (ex), stack_info = True )
 			has_errors = True
 				
 		for term in onto_terms:
-			
-			term_uri = term [ "uri" ]
-			print ( "\n%s dc:type <%s>." % ( cond_uri, term_uri ), file = out )
-			
-			# Add the label, if any
-			label = term [ "label" ]
-			if label:
-				print ( "<%s> schema:name \"%s\"." % ( term_uri, label ), file = out )
+			try:
+				term_uri = term [ "uri" ]
+				print ( "\n%s dc:type <%s>." % ( cond_uri, term_uri ), file = out )
 				
-			
-			# Add the accession
-			acc = uri2accession ( term_uri )
-			if not acc: continue
-	
-			print ( "<%s> schema:identifier \"%s\"." % ( term_uri, acc ), file = out )
-	
-			# Add links to Knetminer
-			if not acc [ 2 ] == '_': continue
-			acc_id = acc [ 3: ]
-			if not ( acc_id and acc_id.isdigit() ): continue
-			onto_id = acc [ 0: 2 ]
-			if not onto_id in knet_prefixes: continue
-			knet_uri = knet_prefixes [ onto_id ] + acc.lower()
-			print ( "%s dc:type <%s>." % ( cond_uri, knet_uri ), file = out )
-			print ( "<%s> schema:sameAs <%s>." % ( knet_uri, term_uri ), file = out )
+				# Add the label, if any
+				label = term [ "label" ]
+				if label:
+					print ( "<%s> schema:name \"%s\"." % ( term_uri, label ), file = out )
+					
+				
+				# Add the accession
+				acc = uri2accession ( term_uri )
+				if not acc: continue
+		
+				print ( "<%s> schema:identifier \"%s\"." % ( term_uri, acc ), file = out )
+		
+				# Add links to Knetminer, for terms like TO_xxx or PO_xxx
+				if len ( acc ) < 4: continue
+				if acc [ 2 ] != '_': continue
+				acc_id = acc [ 3: ]
+				if not ( acc_id and acc_id.isdigit() ): continue
+				onto_id = acc [ 0: 2 ]
+				if not onto_id in knet_prefixes: continue
+				knet_uri = knet_prefixes [ onto_id ] + acc.lower()
+				print ( "%s dc:type <%s>." % ( cond_uri, knet_uri ), file = out )
+				print ( "<%s> schema:sameAs <%s>." % ( knet_uri, term_uri ), file = out )
+			except Exception as ex:
+				log.debug ( "Error while processing ontology term '%s' for condition '%s': %s", term, cond_label, str (ex), stack_info = True )
+				has_errors = True
 		#/end: for onto_terms
 	#/end: for cond_label
 	if has_errors:
@@ -562,7 +566,7 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
   the global/static annotate_condition.default_annotator, which you can use to set a global default
   at the begin of your application/process.
 """
-def annotate_condition ( cond_label: str, annotator = None ) -> str:
+def annotate_condition ( cond_label: str, annotator = None ) -> list[dict]:
 	ap = None
 	opts = {
 		"longest_only": "true",

@@ -1,0 +1,2 @@
+snakemake (>=9.14.5,<10.0.0)
+../agrischemas-gxapy/dist/agrischemaspy_gxapy-0.1.0-py3-none-any.whl

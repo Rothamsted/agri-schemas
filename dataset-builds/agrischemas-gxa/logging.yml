@@ -1,0 +1,39 @@
+# Used to run tests via pytest. This is loaded by conftest.py, which pytest auto-loads.
+#
+
+version: 1
+
+handlers:
+
+  console:
+    class: logging.StreamHandler
+    stream: ext://sys.stderr
+    formatter: simpleFormatter
+    level: INFO
+
+  file:
+    class: logging.FileHandler
+    # TODO: $ETL_TMP/data-build.log
+    filename: !!python/object/apply:os.path.join
+      - !!python/object/apply:os.getenv [ "ETL_TMP", "" ]
+      - data-build.log
+    mode: a
+    level: DEBUG
+    formatter: simpleFormatter    
+
+formatters:
+  simpleFormatter:
+    # The formatter class, this is the default
+    #class: logging.Formatter
+    
+    # A way to give the FQN.
+    #class: !!python/name:logging.Formatter
+    format: '%(asctime)s [%(levelname)-7s] [%(name)-10s] [%(threadName)-8s] %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+
+root:
+  level: DEBUG
+  handlers: 
+  - console
+  - file

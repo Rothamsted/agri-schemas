@@ -7,14 +7,19 @@ fi
 
 # Defaults
 #
-cd "`dirname ${BASH_SOURCE[0]}`"
+cd "$(dirname "${BASH_SOURCE[0]}")"
+mydir="$(pwd)"
 cd ..
 
 export ETL_HOME="$(realpath .)"
 export ETL_OUT="$ETL_HOME/output"
 export ETL_TMP="$ETL_OUT/tmp"
 
-printf "\n\n  Sourcing environment '%s'...\n\n" "$KETL_ENV_ID"
-. ./"$KETL_ENV_ID"-env.sh
+cd "$mydir"
+printf "\n\n  Sourcing environment '%s'...\n" "$KETL_ENV_ID"
+. ./"environments/${KETL_ENV_ID}-env.sh"
 
-printf "\n\n  ETL_HOME=%s\n\n" "$ETL_HOME"
+# In case they cd-ed somewhere else
+cd "$mydir"
+
+printf '  ...Done, ETL_HOME="%s"\n\n' "$ETL_HOME"

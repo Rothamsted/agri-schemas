@@ -209,10 +209,10 @@ def make_id ( s, skip_non_word_chars = False, ignore_case = True ):
 	s = re.sub ( "%", "_0x", s, flags = re.ASCII ) # parsers don't like things like '%20'
 	return s
 
-"""
-	Extracts the last part of a URI, relying on characters like '#' or '/'.
-"""
 def uri2accession ( uri ):
+	"""
+	Extracts the last part of a URI, relying on characters like '#' or '/'.
+	"""
 	bits = re.split ( "[\\/,\\#,\\?]", uri )
 	if not bits: return ""
 	return bits [ -1 ]

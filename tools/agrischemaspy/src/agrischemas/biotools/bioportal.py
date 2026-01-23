@@ -59,7 +59,7 @@ class BioPortalClient:
 		:param cutoff: cuts the list of returned terms, filtering the top-ranked only
 		:param only_uris: if set, returns only the term URIs (instead of complete dictionaries with label, synonym, definition).
 	"""
-	def annotator_terms ( self, text, cutoff = None, only_uris = False, **other_params ):
+	def annotator_terms ( self, text, cutoff = None, only_uris = False, **other_params ) -> list[dict]:
 		jterms = self.annotator ( text, **other_params )
 		# Strangely, there are dupes, let's filter
 		visited = set (); new_terms = []

@@ -1,12 +1,13 @@
 import os, logging
-from etltools.utils import logger_config, get_commented_traceback
-from ebigxa.gxa import gxa_rdf_all_save, gxa_get_experiment_descriptors_cached, annotate_condition
+from agrischemas.etltools.utils import get_commented_traceback
+from agrischemas.ebigxa.gxa import gxa_rdf_all_save, gxa_get_analysis_types_cached, annotate_condition
+from brandizpyes.logging import logger_config
 import pathlib
 import json
 import bz2
 import time
 
-log = logger_config ( __name__ )
+log = logger_config ( __name__, use_unsafe_loader = True )
 
 ## Get stuff from the environment
 
@@ -35,8 +36,8 @@ annotate_condition.default_annotator = "AgroPortal"
 #### Further globals. Hopefully, you won't need to change things below here
 #
 
-EXPERIMENTS_JS = gxa_get_experiment_descriptors_cached ( GXA_ORGANISMS, ETL_TMP + "/exp-descriptors.json" )
-if not EXPERIMENT_ACCS: EXPERIMENT_ACCS = EXPERIMENTS_JS.keys ()
+GXA_ANALYSIS_TYPES = gxa_get_analysis_types_cached ( GXA_ORGANISMS, ETL_TMP + "/gxa-analysis-types.json" )
+if not EXPERIMENT_ACCS: EXPERIMENT_ACCS = GXA_ANALYSIS_TYPES.keys ()
 OUT_PATTERN = ETL_OUT + "/gxa/{exp_acc}.ttl.bz2" 
 
 
@@ -59,10 +60,14 @@ rule single_exp:
 		log = logging.getLogger ( __name__ )
 		fout = output [ 0 ]
 		try:
-			gxa_rdf_all_save ( EXPERIMENTS_JS [ wildcards.exp_acc ], fout, compress = True )
+			gxa_rdf_all_save ( wildcards.exp_acc, GXA_ANALYSIS_TYPES [ wildcards.exp_acc ], fout, compress = True )
 		except Exception as ex:
-			log.error ( "Error while exporting %s, ignoring this accession %s", wildcards.exp_acc, str ( ex ) )
-			log.debug ( "Details: %s", ex )
+			log.error ( 
+				"Error while exporting %s: %s. Ignoring this accession, details in the log file", 
+				wildcards.exp_acc,
+				str ( ex )
+			)
+			log.debug ( "Details: %s", ex, exc_info = True )
 			with bz2.open ( fout, "w" ) as bout:
 				bout.write ( ( "# Export error: %s\n\n" % str ( ex ) ).encode () )
 				bout.write ( get_commented_traceback ( "# " ).encode () )
