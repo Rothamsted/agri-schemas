@@ -1,5 +1,5 @@
 from agrischemas.etltools.utils import DEFAULT_NAMESPACES, normalize_rows_source
-from agrischemas.etltools.utils import download_files
+from agrischemas.etltools.utils import download_file, download_files
 
 from brandizpyes.ioutils import dump_output
 
@@ -69,33 +69,23 @@ class TestDownloadFiles ( unittest.TestCase ):
 	def test_basics ( self ):
 		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
 		
-		download_files ( "https://schema.org/version/latest/schemaorg-current-https.ttl", "/tmp/schema.ttl", "schema.org" )
+		download_file ( "https://schema.org/version/latest/schemaorg-current-https.ttl", "/tmp/schema.ttl", "schema.org" )
 		self.assertTrue ( exists ( "/tmp/schema.ttl" ), "test file not downloaded!" )
 
 	def test_multi ( self ):
 		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
 		if exists ( "/tmp/dcterms.ttl" ): os.remove ( "/tmp/dcterms.ttl" )
 
-		download_files ( 
-			[{ "url": "https://schema.org/version/latest/schemaorg-current-https.ttl", 
-			  "out": "schema.ttl" },
-			{ "url": "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl", 
-			  "out": "dcterms.ttl" }],
-			out_dir = "/tmp"
-		)
-
-		self.assertTrue ( exists ( "/tmp/schema.ttl" ), "test file not downloaded (schema)!" )
-		self.assertTrue ( exists ( "/tmp/dcterms.ttl" ), "test file not downloaded (dcterms)!" )
-
-	def test_multi_positional_params ( self ):
-		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
-		if exists ( "/tmp/dcterms.ttl" ): os.remove ( "/tmp/dcterms.ttl" )
-
-		download_files ( 
-			[[ "https://schema.org/version/latest/schemaorg-current-https.ttl", 
-			  "schema.ttl" ],
-			[ "http://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl", 
-			  "dcterms.ttl" ]],
+		download_files (
+			[{ 
+				"url": "https://schema.org/version/latest/schemaorg-current-https.ttl", 
+				"out": "schema.ttl" 
+			},
+			{ 
+				"url": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl", 
+			  "out": "dcterms.ttl",
+				"user_agent": ""
+			}],
 			out_dir = "/tmp"
 		)
 
@@ -106,7 +96,7 @@ class TestDownloadFiles ( unittest.TestCase ):
 		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
 		dump_output ( lambda out: print ( "1", file = out ), "/tmp/schema.ttl" )
 		
-		download_files (
+		download_file (
 			"https://schema.org/version/latest/schemaorg-current-https.ttl", "/tmp/schema.ttl", "new schema.org", 
 			overwrite = True
 		)

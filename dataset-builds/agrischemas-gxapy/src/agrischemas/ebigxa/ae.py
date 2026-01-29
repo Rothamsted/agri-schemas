@@ -137,6 +137,22 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 	# /end: rdf_specie ()
 
 	def rdf_publication ( exp_uri, exp_js ):
+		def make_pub_id_uri ( pub_uri: str, acc_postfix: str ) -> str:
+			"""
+				Makes the URI to be used for the identifer resource of publication.
+
+				For properties like PMID or DOI, we export both our own agri: plain 
+				text properties and a schema:PropertyValue, for sake of interoperability.
+
+				each accession type needs such an URI, so we use acc_postfix (set to things
+				like PMID, DOI, etc) to build an ID URI by composing with the publication URI.
+			"""
+			acc_postfix = acc_postfix.lower ()
+			# if the URI is already under <> delimiters, add the posfix before the >
+			if pub_uri.startswith ( "<" ) and pub_uri.endswith ( ">" ):
+				return pub_uri [ 0: -1 ] + f"_{acc_postfix}>"
+			return pub_uri + f"_{acc_postfix}"
+		
 		# Extract it from subsections
 		section = exp_js.get ( "section", {} )
 		subsections = section.get ( "subsections", [] )
@@ -152,7 +168,12 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 		pub_attribs = attribs2dict ( pub_js.get ( "attributes", [] ) )
 
 		pmed_id = pub_js.get ( "accno" )
+		
 		doi = pub_attribs.get ( "DOI" )
+		# DOI are normally like 10.xxxx/xxxxx, not URIs
+		doi_uri = doi
+		if doi_uri and doi.startswith ( "10." ): doi_uri = "https://doi.org/" + doi
+
 		title = pub_attribs.get ( "Title" )
 		authors = pub_attribs.get ( "Authors" )
 
@@ -161,9 +182,12 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 
 		rdf = ""
 
-		if pmed_id: pub_uri = "bkr:pmid_" + pmed_id
-		elif doi: pub_uri = doi
-		else: pub_uri = "bkr:pub_" + hash_generator ( ( title, authors ) )
+		if pmed_id:
+			pub_uri = "bkr:pmid_" + pmed_id
+		elif doi:
+			pub_uri = f"<{doi_uri}>"
+		else:
+			pub_uri = "bkr:pub_" + hash_generator ( ( title, authors ) )
 	
 	  # We don't know if it's an article, 
 		rdf += f"""
@@ -180,20 +204,30 @@ def rdf_ae_experiment ( exp_js: dict, out = stdout ) -> str:
 			(doi, "DOI", "doiId" )
 		):
 			if not acc: continue
-			rdf += f"""
 
+			rdf += f"""
 				agri:{agri_acc_prop} "{acc}";
-			 	schema:identifier [
-					a schema:PropertyValue;
-					schema:propertyID "{acc_type}";
-					schema:value "{acc}";
-				];
+				schema:identifier {make_pub_id_uri ( pub_uri, agri_acc_prop )};
 			"""
 
 		# TODO: year seems to be missing from Biostudies
 		rdf += rdf_str ( pub_attribs, "Year", "\tschema:datePublished" )
 		
 		rdf += ".\n"
+
+		# Accessions as PropertyValues
+		for (acc, acc_type, agri_acc_prop) in ( 
+			(pmed_id, "PubMed ID", "pmedId"), 
+			(doi, "DOI", "doiId" )
+		):
+			if not acc: continue
+			rdf += dedent ( f"""
+
+			{make_pub_id_uri ( pub_uri, agri_acc_prop )} a schema:PropertyValue;
+				schema:propertyID "{acc_type}";
+				schema:value "{acc}";
+			.
+			""" )
 
 		return rdf
 	# /end: rdf_publication()

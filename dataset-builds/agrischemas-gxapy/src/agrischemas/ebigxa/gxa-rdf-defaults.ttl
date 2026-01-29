@@ -1,3 +1,9 @@
+# Common definitions used across all the RDF that the GXA exporter builds.
+#
+# WARNING! This is also loaded to read namespace definitions, so keep the headers here
+# even if not used in this file.
+#
+
 @prefix bkr: <http://knetminer.org/data/rdf/resources/> .
 @prefix agri: <http://agrischemas.org/> .
 @prefix bioschema: <https://bioschemas.org/> .
@@ -7,6 +13,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix efo: <http://www.ebi.ac.uk/efo/> .
+@prefix ppeo: <http://purl.org/ppeo/PPEO.owl#>.
+
 
 bkr:gxa_analysis_type_differential a schema:PropertyValue;
 	schema:propertyID "gxaAnalysisType";

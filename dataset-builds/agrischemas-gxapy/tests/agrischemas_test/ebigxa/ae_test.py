@@ -50,6 +50,32 @@ class AeTestRaw ( XTestCase ):
 			""",
 			"Study design annotations not found for E-ATMX-20!"
 		)
+
+		self.assert_rdf ( graph,
+			"""ASK {
+				bkr:pmid_18156220 a agri:ScholarlyPublication;
+					dc:title "Systemic and Intracellular Responses to Photooxidative Stress in Arabidopsis";
+					agri:authorsList "Rossel JB, Wilson PB, Hussain D, Woo NS, Gordon MJ, Mewett OP, Howell KA, Whelan J, Kazan K, Pogson BJ.";
+					agri:pmedId "18156220";
+					schema:identifier bkr:pmid_18156220_pmedid;
+
+					agri:doiId "10.1105/tpc.106.045898";
+					schema:identifier bkr:pmid_18156220_doiid;
+				.
+
+				bkr:pmid_18156220_pmedid a schema:PropertyValue;
+					schema:propertyID "PubMed ID";
+					schema:value "18156220";
+				.
+						
+				bkr:pmid_18156220_doiid a schema:PropertyValue;
+					schema:propertyID "DOI";
+					schema:value "10.1105/tpc.106.045898";
+				.			
+			}
+			""",
+			"Publications annotations not found for E-ATMX-20!"
+		)		
 	# /end: test_rdf_ae_experiment_microarray ()
 
 	def test_rdf_ae_experiment_sequencing ( self ):

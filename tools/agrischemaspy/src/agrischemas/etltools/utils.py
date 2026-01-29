@@ -6,6 +6,7 @@
 	:Date: 2020
 """
 
+from wsgiref import headers
 from brandizpyes.ioutils import dump_output
 
 from builtins import isinstance
@@ -20,6 +21,8 @@ from sys import stdout, stderr
 import traceback
 import urllib
 import unittest
+from typing import Generator, Any, Union
+
 
 
 from pyparsing import ParseException
@@ -42,7 +45,7 @@ def check_env ():
 		raise KeyError ( "ETL_OUT undefined, initialise the environment with some ***-env.sh" )
 
 """
-	Check for the existance of the JENA_HOME environment variable. Raise an error if not found.
+	Check for the existence of the JENA_HOME environment variable. Raise an error if not found.
 """
 def get_jena_home ():
 	jena_home = os.getenv ( "JENA_HOME" )
@@ -50,10 +53,10 @@ def get_jena_home ():
 		raise KeyError ( "JENA_HOME not defined! Set it in your OS environment" )
 	return jena_home
 
-"""
-	An extended version of rdflib.NamespaceManager, with a few little utilities added.
-"""
 class XNamespaceManager ( NamespaceManager ):
+	"""
+		An extended version of rdflib.NamespaceManager, with a few little utilities added.
+	"""
 	
 	def __init__ ( self, base_ns_mgr = None ):
 		if not base_ns_mgr:
@@ -61,93 +64,104 @@ class XNamespaceManager ( NamespaceManager ):
 		self.__base = base_ns_mgr
 
 	def __getattr__ ( self, attr ):
+		"""
+			Same as :meth:`__setattr__`.
+		"""
 		return getattr ( self.__base, attr )
 
 	def __setattr__ ( self, attr, val ):
+		"""
+			Retains the ability to set namespaces as attributes.
+
+			It just checks if the client is already accessing a base setter or ourselves and 
+			dispatches accordingly.
+		"""
 		if attr == '_XNamespaceManager__base':
 			NamespaceManager.__setattr__ ( self, attr, val )
 		return setattr ( self.__base, attr, val )
 	
-	"""
-		Resolves a URI. 
-		
-		This might be either a CURIE using a known namespace prefix (eg, rdfs:label), 
-		a namespace prefix followed by a tail (eg, "rdfs", "label"), or a namespace prefix 
-		only (eg, "rdfs:").
-		
-		from_n3() is used, so the parameter could have other formats too (eg, <http://foo.com/ex>), 
-		but the method isn't designed for that.
-		
-		This returns a rdflib's URIRef, use uri() to get a string.	
-	"""
 	def uri_ref ( self, curie_or_prefix, tail = None ):
+		"""
+			Resolves a URI. 
+			
+			This might be either a CURIE using a known namespace prefix (eg, rdfs:label), 
+			a namespace prefix followed by a tail (eg, "rdfs", "label"), or a namespace prefix 
+			only (eg, "rdfs:").
+			
+			from_n3() is used, so the parameter could have other formats too (eg, <http://foo.com/ex>), 
+			but the method isn't designed for that.
+			
+			This returns a rdflib's URIRef, use uri() to get a string.	
+		"""
 		curie = curie_or_prefix
 		if tail: curie += ':' + tail
 		return from_n3 ( curie, nsm = self )
 	
-	"""
-		Invokes uri_ref() and translates the result into a string.
-	"""
 	def uri ( self, curie_or_prefix, tail = None ) -> str:
+		"""
+			Invokes uri_ref() and translates the result into a string.
+		"""
 		return str ( self.uri_ref ( curie_or_prefix, tail ) )
 	
-	"""
-		Returns the URI corresponding to a namespace prefix (as URIRef).
-	"""
 	def ns_ref ( self, ns_prefix ):
+		"""
+			Returns the URI corresponding to a namespace prefix (as URIRef).
+		"""
 		if ns_prefix [-1] != ':': ns_prefix += ':'
 		return self.uri_ref ( ns_prefix )
 
-	"""
-		Invokes str(ns_ref())
-	"""
 	def ns ( self, ns_prefix ) -> str:
+		"""
+			Invokes str(ns_ref())
+		"""
 		return str ( self.ns_ref ( ns_prefix ) )
 
-	"""
-		Translates all the managed prefixes into a format suitable for an RDF language (eg, Turtle, SPARQL).
-		
-		Does this simply using a template like the default.
-	"""
 	def to_lang ( self, line_template = 'PREFIX {prefix}: <{uri}>' ) -> str:
+		"""
+			Translates all the managed prefixes into a format suitable for an RDF language (eg, Turtle, SPARQL).
+			
+			Does this simply using a template like the default.
+		"""
 		nss = self.namespaces ()
 		if not nss: return ""
 		return '\n'.join ( [	line_template.format ( prefix = prefix, uri = uri ) for prefix, uri in nss ] )
 
-	"""
-		See to_lang()
-	"""
 	def to_sparql ( self ):
+		"""
+			See to_lang()
+		"""
 		return self.to_lang ()
 
-	"""
-		See to_lang()
-	"""
 	def to_turtle ( self ):
+		"""
+			See to_lang()
+		"""
 		return self.to_lang ( 'prefix {prefix}: <{uri}>' )
 
-	"""
-		Loads namespace definitions from a file in formats like .ttl or .rdf. 
-		Uses rdflib.Graph.parse().
-	"""
 	def load ( self, doc_uri, rdf_format = None ):
+		"""
+			Loads namespace definitions from a file in formats like .ttl or .rdf. 
+			Uses rdflib.Graph.parse().
+		"""
 		g = Graph ()
 		g.parse ( doc_uri, format = rdf_format )
 		self.merge_ns_manager ( g.namespace_manager )
 	
-	"""
-		Merges another Namespace manager into this.
-	"""
 	def merge_ns_manager ( self, nsm ):
+		"""
+			Merges another Namespace manager into this.
+		"""
 		for prefx, ns in nsm.namespaces ():
 			self.bind ( prefx, ns, True, True )
 	
+
+DEFAULT_NAMESPACES = XNamespaceManager ()
 """
 	These are loaded from various places:
 		- /default-namespaces.ttl in this package
 		- NAMESPACES_PATH if it is set
 """
-DEFAULT_NAMESPACES = XNamespaceManager ()
+
 DEFAULT_NAMESPACES.load ( 
 	os.path.abspath ( 
 		os.path.dirname ( __file__ ) + "/default-namespaces.ttl" 
@@ -198,12 +212,15 @@ def sparql_ask_tdb ( tdb_path: string, ask_query, namespaces = DEFAULT_NAMESPACE
 	
 	If skip_non_word_chars is set, non-words characters (\\W) are replaced with empty strings. This means
 	that, for instance "aren't" and "arent" become the same ID. This might be useful when you build IDs
-	out of free text, it's certainly isn't when you deal with stuff like accessions or preferred names. 
+	out of free text, it's certainly isn't when you deal with stuff like accessions or preferred names.
+
+	Note that characters like '/' and '.' are percent-encoded, to avoid syntax problems with RDF.
 """
 def make_id ( s, skip_non_word_chars = False, ignore_case = True ):
 	if ignore_case: s = s.lower ()
 	s = re.sub ( "\\s", "_", s )
 	s = re.sub ( "/", "%2F", s )
+	s = re.sub ( "\\.", "%2E", s )
 	if skip_non_word_chars: s = re.sub ( "\\W", "", s, flags = re.ASCII )
 	s = urllib.parse.quote ( s )
 	s = re.sub ( "%", "_0x", s, flags = re.ASCII ) # parsers don't like things like '%20'
@@ -370,26 +387,27 @@ def get_commented_traceback ( comment_prefix: str = "# ", comment_postfix: str =
 	st = [ comment_prefix + line + comment_postfix + "\n" for line in st ]
 	return "".join ( st )
 
-"""
-	Simple utility to download files from URLs
-	
-	Parameters:
-	
-	There are different forms for the parameters
-	* url: str, out: str, label: str = None, out_dir = None, overwrite = False
-		single download, the URL to download from, the output path, a label for messages, 
-		a base output path, if an existing file is to be replaced (else, the download is skipped)
-	* generator of dictionaries, out_dir, overwrite
-		each dictionary must have the same name as the single case parameters
-	* generator of lists, out_dir, overwrite
-		every list represents the positional parameters passed as the first form	
-"""
-@singledispatch
-def download_files ( param ):
-	raise NotImplementedError ( "Something went wrong with Python single dispatch" )
 
-@download_files.register ( str )
-def _download_files_single ( url: str, out: str, label: str = None, out_dir = None, overwrite = False ):
+def download_file (
+	url: str, out: str, label: str = None,
+	accept_header: str = None, user_agent: str = None,
+	out_dir: str = None, overwrite: bool = False
+):
+	"""
+	Little helper to download a file from a URL to a local path.
+	
+	* :param url: source URL
+	* :param out: output file path
+	* :param label: Used to logging and alike
+	* :param accept_header: if set, adds an HTTP Accept header to the request
+	  This might be necessary for certain web servers
+	* :param user_agent: if set, adds an HTTP User-Agent header to the request
+		if it's None, it uses the default in urllib. We have experienced that DCMI doesn't like
+		the latter
+	* :param out_dir: base output directory, prefixed to 'out' if set
+	* :param overwrite: if False, skips re-downloading for existing target files, else overwrites them
+
+	"""
 	log = logging.getLogger ( __name__ )
 	if not label: label = out
 	target_path = out
@@ -398,21 +416,38 @@ def _download_files_single ( url: str, out: str, label: str = None, out_dir = No
 		if not isfile ( target_path ):
 			raise ValueError ( f"Download target_path '{target_path}' exists but isn't a file" )
 		if not overwrite: return
-	log.info ( f"Downloading '{label}'" )
-	with urllib.request.urlopen ( url ) as response:
-		with open ( target_path, "wb" ) as out:
-			shutil.copyfileobj ( response, out )
 
-@download_files.register ( object )
-def _download_files_list ( generator, out_dir = None, overwrite = False ):
+	log.info ( f"Downloading '{label}'" )
+
+	# TODO: maybe we need to clarify why DCMI has decided that a machine-readable file cannot be downloaded
+	# by a machine presenting itself as 'Python-urllib/X.YZ', letting apart what this annoyance is supposed 
+	# to solve, when it can be so easily bypassed.
+	headers = {}
+	if user_agent is not None: headers [ "User-Agent" ] = user_agent
+	if accept_header: headers [ 'Accept' ] = accept_header
+	req = urllib.request.Request ( url, headers = headers )
+	with urllib.request.urlopen ( req ) as response:
+		with open ( target_path, "wb" ) as out:
+			shutil.copyfileobj(response, out)
+
+
+def download_files (
+	generator: Generator[dict[str, Any]|list[Any], None, None], 
+	out_dir: str = None, 
+	overwrite: bool = False
+):
+	"""
+	Downloads multiple files using download_file().
+
+	The generator parameter allows for sending dictionaries of named parameters to
+	:func:`download_file`, except for the common params being set here (which of course, are added to
+	all the invocations).
+	"""
+
 	for item in generator:
-		if isinstance ( item, dict ):
-			if out_dir: item [ "out_dir" ] = out_dir
-			if overwrite: item [ "overwrite" ] = overwrite
-			_download_files_single ( **item )
-			continue
-		label = item [ 3 ] if len ( item ) > 2 else None
-		_download_files_single ( item [ 0 ], item [ 1 ], label, out_dir, overwrite )
+		if out_dir: item [ "out_dir" ] = out_dir
+		if overwrite: item [ "overwrite" ] = overwrite
+		download_file ( **item )
 
 """
 	TODO: comment me
