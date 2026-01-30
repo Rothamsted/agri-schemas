@@ -1,4 +1,4 @@
-# GXA Gene expression levels
+# GXA Gene expression levels
 
 Shows genes and conditions in which they're expressed, plus links to the studies on which this is based. Significance figures are reported too, considering what they are for differential expression or absolute expression analysis (i.e., p-values, fold changes vs TPMs).
 
