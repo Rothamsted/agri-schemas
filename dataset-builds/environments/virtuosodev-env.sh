@@ -1,5 +1,7 @@
-# This environement is to be used on virtuoso-dev only to update the Virtuoso instance from
-# already existing data dumps, via virtuoso-upload.sh 
+# Environment settings for virtuoso-dev
+# WARNING: so far, I've used this only to upload already-generated data dumps (on my laptop), using
+# virtuoso-upload.sh. 
 #
 export RDFUTILS_HOME="/opt/software/rdfutils"
-export ETL_OUTPUT="/opt/data/dumps/agrischemas"
+export ETL_OUT="/opt/data/dumps/agrischemas"
+export VIRTUOSO_ISQL=isql-vt # Ubuntu renamed it like this

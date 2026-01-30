@@ -147,7 +147,7 @@ class XNamespaceManager ( NamespaceManager ):
 		g.parse ( doc_uri, format = rdf_format )
 		self.merge_ns_manager ( g.namespace_manager )
 	
-	def merge_ns_manager ( self, nsm ):
+	def merge_ns_manager ( self, nsm: NamespaceManager ):
 		"""
 			Merges another Namespace manager into this.
 		"""
