@@ -163,8 +163,8 @@ data, using the modelling approach shown above. You can find the data and sample
 
 [10]: http://knetminer.com
 [20]: https://www.ebi.ac.uk/gxa
-[30]: https://github.com/Rothamsted/agri-schemas/tree/master/dfw-dataset/gxa
-[40]: https://github.com/Rothamsted/agri-schemas/tree/master/dfw-dataset
+[30]: ../dataset-builds/agrischemas-gxa
+[40]: ../dataset-builds/README.md
 
 
 ## Base conditions and time points

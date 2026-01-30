@@ -16,13 +16,18 @@ have been two DFW hackathons where we have done most of the work so far.
 ## Use cases
 The work is mainly based on modelling from concrete [use cases](doc/README.md).
 
-## Prototype
-Based on the models above, We're building a [prototype dataset](dfw-dataset), which includes
-[Knetminer](https://knetminer.com/) 
+## Datasets
+
+**DEPRECATED**:
+~~Based on the models above, We're building a [prototype dataset](dfw-dataset), which includes
+[Knetminer](https://knetminer.com/)
 (biomolecular knowledge graph, which, in turn, includes a number of other data sources and data 
 types), and the [Gene Expression Atlas](https://www.ebi.ac.uk/gxa/home) (experimental data about 
 gene expression). The data are published on the 
-[Knetminer's SPARQL endpoint](https://knetminer.org/data).
+[Knetminer's SPARQL endpoint](https://knetminer.org/data).~~
+
+We're reviewing everything and the new place for concrete data modelled after Agri-Schemas is the [Agri-Schemas Dataset Builds](../agri-schemas/dataset-builds/README.md).
+
 
 ## Consumers
 Projects and applications that use our prototype data:
@@ -33,15 +38,17 @@ A [student project led by Menna Shehata][CN10], which uses our SPARQL endpoint t
 [CN10]: https://github.com/Rothamsted/knetgraphs-gene-traits
 
 ## Software Tools
-The software we are writing to produce the prototype above are being arranged into re-usable 
+The software we are writing to produce the datasets above are being arranged into re-usable 
 extraction/transformation/loading tools (ETL). A few pointers are:
 
-* ETL [transformations included in the prototype](dfw-dataset)
-* [Biotools](biotools), utilities for dealing with biological data
-* [Knetminer Python Utils](kpyutils), generic utilities for the Python environment
+* [ETL utilities](tools/agrischemaspy/src/agrischemas/etltools)
+* [Biotools](tools/agrischemaspy/src/agrischemas/biotools), utilities for dealing with biological data
+* [Knetminer Python Utils](tools/agrischemaspy/src/agrischemas/kpyutils), generic utilities for the Python environment
+* [GXA Conversion library](dataset-builds/agrischemas-gxapy), including [scripts and Snake file](dataset-builds/agrischemas-gxa)
+*[Build-all scripts and files](dataset-builds/README.md)
+
 
 ## Publications
 
 ## References
-[A collection of references](doc/references.md) and links to various similar projects, hackathons, 
-schemas, etc.
+[A collection of references](doc/references.md) and links to various similar projects, hackathons, schemas, etc.
