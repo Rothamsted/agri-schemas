@@ -21,31 +21,35 @@ PREFIX agri: <http://agrischemas.org/>
 PREFIX bioschema: <https://bioschemas.org/>
 PREFIX schema: <https://schema.org/>
 
-SELECT ?condition ?condLabel ?condTerm ?condTermAcc ?condTermLabel
+SELECT ?condition ?condLabel ?condTerm ?condTermAcc ?condTermLabel ?txtScore
 WHERE {
-  ?condition a agri:StudyFactor ;
+  ?condition a agri:ExperimentalFactorValue ;
              schema:name ?condLabel .
-  ?condLabel bif:contains "'disease' OR 'resistance'" .
+  ?condLabel bif:contains "NIL4 OR disease OR resistance" OPTION (SCORE ?txtScore) .
   OPTIONAL {
     ?condition dc:type ?condTerm .
     ?condTerm schema:identifier ?condTermAcc ;
               schema:name ?condTermLabel .
   }
 }
+ORDER BY DESC ( ?txtScore )
 ```
 
 Next, merge what you can find through the annotating ontology term label:
 
 ```sparql
-SELECT ?condition ?condLabel ?condTerm ?condTermAcc ?condTermLabel
+SELECT ?condition ?condLabel ?condTerm ?condTermAcc ?condTermLabel ?txtScore
 WHERE {
-  ?condition a agri:StudyFactor ;
+  ?condition a agri:ExperimentalFactorValue ;
              schema:name ?condLabel ;
              dc:type ?condTerm .
   ?condTerm schema:identifier ?condTermAcc ;
             schema:name ?condTermLabel .
-  ?condTermLabel bif:contains "'disease' OR 'resistance'" .
+  ?condLabel bif:contains "NIL4 OR disease OR resistance" OPTION (SCORE ?txtScore) .
 }
+ORDER BY DESC ( ?txtScore )
 ```
 
 Obviously, sending two queries is not a problem if you're doing it programmatically.
+
+You'll see that the ?txtScore is very basic and often it returns the same score for many different strings.
