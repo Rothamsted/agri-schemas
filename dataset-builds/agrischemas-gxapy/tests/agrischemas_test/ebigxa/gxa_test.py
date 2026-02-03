@@ -74,11 +74,11 @@ class GxaTest ( XTestCase ):
 		graph.parse ( data = rdf, format = "turtle" )
 		
 		probes = [
-			( "bkr:cond_pericarp a agri:StudyFactor; schema:name 'pericarp'", 
+			( "bkr:cond_pericarp a agri:ExperimentalFactorValue; schema:name 'pericarp'", 
 			  "Cannot find RDF for pericarp!" ),
-			( "bkr:cond_seed_growth a agri:StudyFactor; schema:name 'Seed growth'", 
+			( "bkr:cond_seed_growth a agri:ExperimentalFactorValue; schema:name 'Seed growth'", 
 			  "Cannot find RDF for seed growth!" ),
-			( "bkr:cond_10_days_after_anthesis a agri:StudyFactor; schema:name '10 days after anthesis'", 
+			( "bkr:cond_10_days_after_anthesis a agri:ExperimentalFactorValue; schema:name '10 days after anthesis'", 
 			  "Cannot find RDF for 10 days after anthesis!" ),
 			( "bkr:cond_pericarp dc:type <http://aims.fao.org/aos/agrovoc/c_25199>", 
 			  "Cannot find agrovoc:c_25199 for pericarp!" ),
@@ -96,7 +96,7 @@ class GxaTest ( XTestCase ):
 			( "bkr:cond_10_days_after_anthesis dc:type <https://cropontology.org/rdf/CO_330:0000155>",
 				"Cannot find 'days' annotation for anthesis entry!"),
 			( """
-				bkr:cond_24_hours a agri:StudyFactor;
+				bkr:cond_24_hours a agri:ExperimentalFactorValue;
 					schema:name "24 hours";
 					schema:value 24;
 					schema:unitText "hour"
@@ -105,7 +105,7 @@ class GxaTest ( XTestCase ):
 				"Cannot find right annotations about the 24 hours time point!"
 			),
 			( """
-				bkr:cond_3_weeks a agri:StudyFactor;
+				bkr:cond_3_weeks a agri:ExperimentalFactorValue;
 					schema:name "3 weeks";
 					schema:value 3;
 					schema:unitText "week"
@@ -117,7 +117,7 @@ class GxaTest ( XTestCase ):
 				# time specs are still matched, despite not being built by us and not at the
 				# end of the label. But of course, the label is the original one.
 				"""
-				bkr:cond_10_days_after_anthesis a agri:StudyFactor;
+				bkr:cond_10_days_after_anthesis a agri:ExperimentalFactorValue;
 					schema:name "10 days after anthesis";
 					schema:value 10;
 					schema:unitText "day"
@@ -380,7 +380,7 @@ class GxaTest ( XTestCase ):
 		)
 
 		self.assert_rdf ( graph, 
-			"""ASK { bkr:cond_pericarp_0x2C_12_days_after_pollination a agri:StudyFactor;
+			"""ASK { bkr:cond_pericarp_0x2C_12_days_after_pollination a agri:ExperimentalFactorValue;
 							   schema:name "pericarp, 12 days after pollination" }""",
 			"Condition's RDF not found!"
 		)

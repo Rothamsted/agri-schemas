@@ -115,7 +115,7 @@ bkr:degex_tob1_sample1 a rdf:Statement;
 .
   
 
-res:expFact1 a agri:StudyFactor;
+res:expFact1 a agri:ExperimentalFactorValue;
 	schema:name "Glyphosate Treatment";
 	dc:type obo:CHEBI_27744
 .
@@ -124,7 +124,7 @@ res:expFact1 a agri:StudyFactor;
 res:sample1 a bioschema:Sample ;
 	schema:name			"Land Plot 001";
 	schema:isPartOf			res:study1;
-	agri:hasStudyFactor res:expFact1
+	agri:hasExperimentalFactorValue res:expFact1
 .
 
 ## Another one, about Genes, real data from 

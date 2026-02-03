@@ -6,7 +6,9 @@
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix milax: <http://agrischemas.org/milax/>.
-
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 res:glten_r_bk a bioschema:Study;
   
@@ -35,7 +37,7 @@ res:glten_r_bk a bioschema:Study;
 		schema:name "Data Access Policy is available off line"
 	];
 
-	schema:startDate 1843^^xsd:gYear; # or xsd:date;
+	schema:startDate "1843"^^xsd:gYear; # or xsd:date
   schema:additionalProperty [
 		a schema:PropertyValue;
 		# This is the way to encode particular uncommon properties that are not explicitly defined
@@ -108,17 +110,17 @@ res:glten_r_bk_1843_1925 a schema:Study;
 		milax:DesignPeriod,
 		<http://www.cropontology.org/terms/CO_715:0000250>; # Fertilizer trial
 
-	schema:startDate 1843^^xsd:gYear; # or xsd:date;
-	schema:endDate 1925^^xsd:gYear;
+	schema:startDate "1843"^^xsd:gYear; # or xsd:date;
+	schema:endDate "1925"^^xsd:gYear;
 
 	# TODO: You might want to add hasPart or isPartOf, as in MIAPPE use case.
   bioschema:studyProcess [
 		a agri:StudyDesign;
-		dc:type <http://purl.obolibrary.org/obo/AGRO_00000335>,"demonstration strip design";
+		dc:type <http://purl.obolibrary.org/obo/AGRO_00000335>, "demonstration strip design";
 	];
 
 	schema:additionalProperty [
-	  a agri:StudyFactor;
+	  a agri:ExperimentalFactorValue;
 		schema:propertyID "P";
 		schema:name "Phosphorous";
 		schema:value 35;
@@ -130,7 +132,7 @@ res:glten_r_bk_1843_1925 a schema:Study;
 		[ schema:propertyID "milax:Inorganic fertilizer factors" ]
 	],
 	[
-	  a agri:StudyFactor;
+	  a agri:ExperimentalFactorValue;
 		schema:propertyID "P";
 		schema:name "Phosphorous";
 		schema:value 0;
@@ -193,10 +195,10 @@ res:glten_r_bk_1843_1925 a schema:Study;
 	  # This is how we model those structured comments quickly, we don't see it worth to reproduce that detailed
 		# structure.
 	  "Note 1, Harvesting\nFrom 1844 to 1901 the wheat crop was cut by hand by scythes, from 1902 to 1956 a self-binder was used, originally horse drawn, and then powered by a tractor. Hand cutting with scythes was often necessary if the ground was very wet or the crop was badly lodged (flattened). After cutting the crop was bound into sheaves which were ‘stooked’ and left on the plot for about two weeks then ‘carted’ into barns where they were threshed over the winter. Cutting and carting may have been spread over several days. Thus the earlier datasets BBKYIELD and BBKYIELD_F include the dates of both cutting and carting the crop. From 1957 the plots have been harvested by a small plot combine harvester; only the central strip of each plot is taken for yield and samples. Before 1957 the plots were usually cut in early August, since 1957 combining has been in August or early September. Sowing and harvest dates are available from the e-RA Curators.",
-		"Note 2, Plot areas\nWhen the experiment was established in 1843 most of the plots were very large. Most comprised an ‘a’ and ‘b’ half (each 3.77m wide) and were 320m long (the length of the field). Plots 21 and 22 are a little narrower. In 1894 the two halves were combined, giving a total plot area of 0.24ha. As the experiment progressed these large plots have been subdivided into different Sections (see ‘Background’ for more details), with corresponding changes in the area harvested. The current plot lengths vary depending on the Section and are between 15.24m (Section 0) and 28.04m (Section 1). The plots are now 6m wide (except plots 21 and 22 which are 4m wide) with 48 rows at 12.5 cm spacing. The harvested area is 2.1m wide. The harvested area is shown in most of the datasets."
+		"Note 2, Plot areas\nWhen the experiment was established in 1843 most of the plots were very large. Most comprised an ‘a’ and ‘b’ half (each 3.77m wide) and were 320m long (the length of the field). Plots 21 and 22 are a little narrower. In 1894 the two halves were combined, giving a total plot area of 0.24ha. As the experiment progressed these large plots have been subdivided into different Sections (see ‘Background’ for more details), with corresponding changes in the area harvested. The current plot lengths vary depending on the Section and are between 15.24m (Section 0) and 28.04m (Section 1). The plots are now 6m wide (except plots 21 and 22 which are 4m wide) with 48 rows at 12.5 cm spacing. The harvested area is 2.1m wide. The harvested area is shown in most of the datasets.";
 
 	# redundantly marks the fact there's a sample with location. isPartOf should be used anyway.
-	schema:contentLocation glten_r_bk_site 
+	schema:contentLocation res:glten_r_bk_site 
 .
 
 
@@ -219,7 +221,7 @@ res:glten_r_bk_crop a bioschema:Sample;
 # Using dc:source is a quicker way to do it.
 #
 res:whatfus01_treatment01 a bioschema:LabProtocol;
-	schema:isPartOf glten_r_bk_1843_1925;
+	schema:isPartOf res:glten_r_bk_1843_1925;
 	
 	# Or use ontology term URIs
 	bioschema:purpose "growing";
@@ -250,7 +252,7 @@ res:glten_r_bk_site a bioschema:Sample, schema:Place;
 			# Same goes for other properties (eg, elevation, slope)
 			a schema:PropertyValue;
 			schema:propertyID "Site Area";
-			schema:value 80600^xsd:double;
+			schema:value "80600"^^xsd:double;
 			schema:unitCode "m^2", "MTK" # this is UN/CEFAT
 		];
 	
@@ -283,7 +285,7 @@ res:glten_r_bk_site a bioschema:Sample, schema:Place;
 
 # It's worth to model it as both Soil and a sample with the Soil role, since the latter 
 # is more standard.
-res:glten_r_bk_soil a bioschema:Sample, agri:Soil
+res:glten_r_bk_soil a bioschema:Sample, agri:Soil;
 	schema:additionalProperty [	
 		a schema:PropertyValue;
 		schema:propertyID "role";
@@ -291,8 +293,8 @@ res:glten_r_bk_soil a bioschema:Sample, agri:Soil
 	];
 	# This is a simple way to link soil to field. A more detailed approach could be to use a 
 	# "derivation" process or a derivedFrom property.
-	schema:isPartOf glten_r_bk_site;
-	schema:isPartOf glten_r_bk_1843_1925; # This is for practical reasons
+	schema:isPartOf res:glten_r_bk_site;
+	schema:isPartOf res:glten_r_bk_1843_1925; # This is for practical reasons
   
 	schema:additionalProperty [
 		a schema:PropertyValue;

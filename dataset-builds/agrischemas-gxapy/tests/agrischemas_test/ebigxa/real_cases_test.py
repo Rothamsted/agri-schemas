@@ -16,6 +16,10 @@ def fetch_gxa_analysis_types () -> dict [str, str]:
 
 @pytest.mark.skip ( reason = "Not a real unit test, used to verify an experiment" )
 def test_gxa_rdf_all_save_E_MTAB_3287 ( gxa_analysis_types ):
+	"""
+	Sometimes it isn't in the result of :func:`gxa_get_analysis_types`. This appears to be
+	randomly, maybe due with some issue with the GXA or BioStudies API.
+	"""
 	acc = "E-MTAB-3287"
 	gxa_rdf_all_save ( acc, gxa_analysis_types [ acc ], f"/tmp/{acc}.ttl" ) 
 
@@ -64,7 +68,7 @@ def test_dex_conditions_parsing_E_MTAB_8326 ():
 				agri:timePoint ?timePoint
 			.
 
-			?timePoint a agri:StudyFactor;
+			?timePoint a agri:ExperimentalFactorValue;
 				schema:name "0 hours";
 				schema:value 0;
 				schema:unitText "hour"

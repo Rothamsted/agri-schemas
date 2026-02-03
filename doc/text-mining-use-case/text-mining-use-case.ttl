@@ -125,7 +125,7 @@ res:text_mining_run_1 a schema:CreateAction, oa:Annotation;
 ## Another example, similar to the ones above, showing how to annotate a property
 #  with types and the text mining software that inferred them.
 #
-res:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:StudyFactor; 
+res:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:ExperimentalFactorValue; 
   schema:name "14 day post anthesis, aleurone layer";
   # Computed by the AgroPortal Annotator (a clone of BioPortal)
   dc:type
@@ -140,7 +140,7 @@ res:cond_14_day_post_anthesis_0x2C_aleurone_layer a agri:StudyFactor;
 			a schema:SoftwareApplication;
 			schema:name "AgroPortal Annotator";
 			schema:url "https://agroportal.lirmm.fr/annotator"
-		]
+		];
 		agri:score 0.97;
 		schema:startTime "2023-03-06";
 		# Really not needed, the annotator is always given schema:name, so that's the object too

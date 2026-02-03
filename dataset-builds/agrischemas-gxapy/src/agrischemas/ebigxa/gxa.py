@@ -496,7 +496,7 @@ def rdf_gxa_conditions ( condition_labels_rows_src, out = stdout ):
 		cond_uri = make_condition_uri ( cond_label )
 		
 		rdf = f"""
-			{cond_uri} a agri:StudyFactor;
+			{cond_uri} a agri:ExperimentalFactorValue;
 				schema:name "{cond_label}"
 			.
 		"""
