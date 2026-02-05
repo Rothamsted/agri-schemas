@@ -184,6 +184,16 @@ class GeneExpressionLevel:
 	
 	"""
 
+@dataclass
+class GeneExpressionCounts:
+	"""
+	TODO: comment me!
+	"""
+	gene_study_up_counts: dict[tuple[str, str], int]
+	gene_study_down_counts: dict[tuple[str, str], int]
+	gene_up_counts: dict[str, int]
+	gene_down_counts: dict[str, int]
+
 
 def search_studies ( keywords: str, tax_id: str ) -> SearchStudiesResult:
 	"""
@@ -199,12 +209,22 @@ def fetch_gene_expression (
 	gene_accs: list[str], study_accs: list[str], pvalue_cutoff: float = 0.05, log2fc_cutoff: float = 1.0 
 ) -> list[GeneExpressionLevel]:
 	"""
-	Searches gene expression levels for the given genes and studies, filtered by p-value and log2 fold change cutoffs.
+	Gets gene expression levels for the given genes and studies, filtered by p-value and log2 fold change cutoffs.
 
 	Usually, you get the study accessions from :func:`search_studies`.
 	"""
 	pass
 
+
+def fetch_gene_expression_counts (
+	gene_accs: list[str], study_accs: list[str], pvalue_cutoff: float = 0.05, log2fc_cutoff: float = 1.0
+) -> GeneExpressionCounts:
+	"""
+	Returns a per-gene, per-study count of the number of conditions in which they're
+	up/down/total regulated, plus per-gene overall counts.
+	"""
+	pass
+	
 
 def fetch_gene_expression_by_condition ( 
 	gene_accs: list[str], cond_uris: list[str], 
@@ -212,5 +232,15 @@ def fetch_gene_expression_by_condition (
 ) -> list[GeneExpressionLevel]:
 	"""
 	TODO: I'm not sure we need this. Surely, we'll develop it later.
+	"""
+	pass
+
+
+def fetch_gene_expression_counts_by_condition (
+	gene_accs: list[str], cond_uris: list[str], 
+	pvalue_cutoff: float = 0.05, log2fc_cutoff: float = 1.0
+) -> GeneExpressionCounts:
+	"""
+	TODO: as for :func:`fetch_gene_expression_by_condition`, not sure we need this.
 	"""
 	pass
