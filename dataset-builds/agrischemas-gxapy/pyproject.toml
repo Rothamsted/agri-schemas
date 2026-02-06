@@ -30,6 +30,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 addopts = [ "-v" ]
+
+# Skips warning from 3rd party libs, such as rdflib
 filterwarnings = [
   "once",
   "ignore",

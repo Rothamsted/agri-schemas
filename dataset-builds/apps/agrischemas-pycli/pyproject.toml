@@ -8,7 +8,8 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "rdflib (>=7.5.0,<8.0.0)"
+    "rdflib (>=7.5.0,<8.0.0)",
+    "brandizpyes (>=1.1.2,<2.0.0)"
 ]
 
 [dependency-groups]
@@ -23,3 +24,15 @@ packages = [{include = "agrischemas", from = "src"}]
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = [ "-v" ]
+# Skips warning from 3rd party libs, such as rdflib
+filterwarnings = [
+  "once",
+  "ignore",
+  "default::Warning:agrischemas\\..*"
+]
+# You don't need them, it's already managed by our own logging config helper
+# log_cli = true
+# log_level = "DEBUG"

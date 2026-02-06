@@ -1,0 +1,49 @@
+{
+	// This doesn't have local dependencies and it's included in git, since it might
+	// be useful to other VSC users as-is
+	//
+	// WARNING: We'll need to remove it from versioning when that location independence 
+	// doesn't hold anymore.
+	//
+
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		// These cannot go to the .code-workspace file, since VSC doesn't accept 
+		// to resolve ${workspaceFolder} as the current root
+		{
+			"name": "Python Debugger: Remote",
+			"type": "debugpy",
+			"request": "attach",
+			"connect": {
+				"host": "localhost",
+				"port": 5678
+			},
+			// The bastard needs to know all the source dirs
+			"pathMappings": [
+				{
+					"localRoot": "${workspaceFolder}/src",
+					"remoteRoot": "src" // ./src doesn't work
+				},
+				{
+					"localRoot": "${workspaceFolder}/tests",
+					"remoteRoot": "tests"
+				}
+			],
+			"justMyCode": false // Consider 'remote' code too
+		},
+		{
+			"name": "Python Debugger: Current File",
+			"type": "debugpy",
+			"request": "launch",
+			"program": "${file}",
+			"console": "integratedTerminal",
+			"env": {
+				"PYTHONPATH": "${workspaceFolder}/src:${workspaceFolder}/tests"
+			},
+			"justMyCode": false
+		}		
+	]
+}

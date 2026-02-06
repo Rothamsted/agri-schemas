@@ -1,0 +1,41 @@
+# Used to run tests via pytest. This is loaded by conftest.py, which pytest auto-loads.
+#
+
+version: 1
+
+handlers:
+
+  console:
+    class: logging.StreamHandler
+    stream: ext://sys.stderr
+    formatter: simpleFormatter
+    level: DEBUG
+
+  file:
+    class: logging.FileHandler
+    # Makes the temp path OS-independent. As per documentation you can use these Python calls with
+    # the YAML unsafe loader, which we support in our logger_config function, see the tests.
+    # 
+    # Note that under macOS, tempfile.gettempdir() IS NOT /tmp, but something like /var/folders/...
+    #
+    filename: /tmp/agrischemas-pycli.log
+    mode: a
+    level: DEBUG
+    formatter: simpleFormatter    
+
+formatters:
+  simpleFormatter:
+    # The formatter class, this is the default
+    #class: logging.Formatter
+    
+    # A way to give the FQN.
+    #class: !!python/name:logging.Formatter
+    format: '%(asctime)s [%(levelname)-7s] [%(name)-10s] [%(threadName)-8s] %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+
+root:
+  level: DEBUG
+  handlers: 
+  - console
+  - file

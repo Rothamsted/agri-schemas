@@ -221,7 +221,7 @@ def rdf_gxa_tpm_levels ( exp_acc: str, out = stdout, condition_labels: set = Non
 
 
 _DEX_COND_RE = "'([^']+)'"
-_DEX_SCORE_TYPE_RE = "\s*\.(foldChange|pValue)"
+_DEX_SCORE_TYPE_RE = "\\s*\\.(foldChange|pValue)"
 DEX_TIME_UNIT_RE = "(min|minute|hour|day|week|month|year)"
 # this includes the optional case: "'salicylic acid; 0.5 millimolar' vs 'none' in 'wild type genotype' .foldChange"
 DEX_COND_PATTERN = re.compile ( f"{_DEX_COND_RE} vs {_DEX_COND_RE}( in {_DEX_COND_RE})?{_DEX_SCORE_TYPE_RE}" )
