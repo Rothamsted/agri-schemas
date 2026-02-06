@@ -1,11 +1,17 @@
-# TODO: this goes in a proper package, with tests etc
+"""
+TODO: comment me!
+"""
 
 import enum
 from attr import dataclass
 
+from agrischemas.clients.config import AGRISCHEMAS_SPARQL_ENDPOINT
+
+
 class TechnologyType ( enum.Enum ):
 	RNA_SEQ = "RNA-seq of coding RNA"
 	MICROARRAY = "Transcription Profiling by Array"
+
 
 class AnalysisType ( enum.Enum ):
 	"""
@@ -15,6 +21,7 @@ class AnalysisType ( enum.Enum ):
 	"""
 	DIFFERENTIAL = "EBI/GXA Differential Gene Expression Analysis"
 	BASELINE = "EBI/GXA Baseline Gene Expression Analysis"
+
 
 @dataclass
 class Study:

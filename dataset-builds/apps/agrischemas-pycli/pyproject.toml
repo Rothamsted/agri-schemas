@@ -1,0 +1,25 @@
+[project]
+name = "agrischemas-pycli"
+version = "0.1.0"
+description = "Python clients to access AgriSchemas datasets, such as the KnetMiner SPARQL endpoint."
+authors = [
+    {name = "marco@knetminer.com"}
+]
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "rdflib (>=7.5.0,<8.0.0)"
+]
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)",
+    "assertpy (>=1.1,<2.0)"
+]
+
+[tool.poetry]
+packages = [{include = "agrischemas", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
