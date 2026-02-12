@@ -9,7 +9,8 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "rdflib (>=7.5.0,<8.0.0)",
-    "brandizpyes (>=1.1.2,<2.0.0)"
+    "brandizpyes (>=1.1.2,<2.0.0)",
+    "requests (>=2.32.5,<3.0.0)",
 ]
 
 [dependency-groups]
@@ -20,6 +21,11 @@ dev = [
 
 [tool.poetry]
 packages = [{include = "agrischemas", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.14"
+# TODO: Use only this or dependecies
+
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

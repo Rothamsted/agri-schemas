@@ -1,5 +1,6 @@
+from typing import Generator
 import pytest
-from agrischemas.clients.utils import sparql_run_construct
+from agrischemas.clients.utils import sparql_run_construct, sparql_run
 from rdflib import Graph, Literal, URIRef
 
 from assertpy import assert_that
@@ -104,3 +105,37 @@ def test_sparql_run_construct_knetminer_endpoint ():
 			{ "https://foo.com/accession": [ { "@value": "E-GEOD-20227" } ] },
 			{ "https://foo.com/specie": [ { "@value": "Arabidopsis thaliana" } ] }
 		)
+	
+@pytest.mark.integration
+def test_sparql_run_knetminer_endpoint ():
+	sparql_query = """
+		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+		PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+		PREFIX owl: <http://www.w3.org/2002/07/owl#>
+		PREFIX dc: <http://purl.org/dc/elements/1.1/>
+		PREFIX dcterms: <http://purl.org/dc/terms/>
+		PREFIX agri: <http://agrischemas.org/>
+		PREFIX bioschema: <https://bioschemas.org/>
+		PREFIX schema: <https://schema.org/>
+
+		SELECT ?studyAcc ?foo
+		WHERE {
+			?study a bioschema:Study;
+				schema:identifier ?studyAcc
+			.
+
+			BIND ( CONCAT ( "'?fooParam' attached to ", STR ( ?studyAcc ) ) AS ?foo )
+		}
+		ORDER BY ?studyAcc
+		LIMIT 3
+		"""
+	
+	sparql_params = { "fooParam": 'foo value' }
+	result = sparql_run ( sparql_query, sparql_params = sparql_params )
+
+	assert_that ( result, "Result type is correct" ).is_instance_of ( Generator )
+	result = list ( result )
+	assert_that ( result, "Result has the expected length" ).is_length ( 3 )
+	for test_acc in [ "E-ATMX-20", "E-ATMX-25", "E-ATMX-26" ]:
+		assert_that ( result, "Result has the expected data" )\
+		.contains ( { "studyAcc": test_acc, "foo": f"'foo value' attached to {test_acc}" } )
