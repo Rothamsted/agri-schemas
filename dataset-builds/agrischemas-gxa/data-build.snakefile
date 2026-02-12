@@ -13,6 +13,7 @@ log = logger_config ( __name__, use_unsafe_loader = True )
 
 ETL_OUT = os.getenv ( "ETL_OUT" )
 ETL_TMP = os.getenv ( "ETL_TMP" )
+ETL_HOME = os.getenv ( "ETL_HOME" )
 
 
 #### Config
@@ -41,6 +42,8 @@ GXA_ANALYSIS_TYPES = gxa_get_analysis_types_cached ( GXA_ORGANISMS, ETL_TMP + "/
 if not EXPERIMENT_ACCS: EXPERIMENT_ACCS = GXA_ANALYSIS_TYPES.keys ()
 OUT_PATTERN = ETL_OUT + "/gxa/{exp_acc}.ttl.bz2" 
 
+OUT_STATICS = [ ETL_OUT + "/gxa/gxa-rdf-defaults.ttl" ]
+
 
 #### The meat
 #
@@ -49,7 +52,8 @@ rule all:
 	message:
 		"Exporting All"
 	input:
-		expand ( OUT_PATTERN, exp_acc = EXPERIMENT_ACCS )
+		expand ( OUT_PATTERN, exp_acc = EXPERIMENT_ACCS ),
+		OUT_STATICS
 	
 
 rule single_exp:
@@ -73,3 +77,14 @@ rule single_exp:
 				bout.write ( ( "# Export error: %s\n\n" % str ( ex ) ).encode () )
 				bout.write ( get_commented_traceback ( "# " ).encode () )
 
+
+rule gxa_constants:
+	message: "Exporting GXA constants RDF: {output}"
+	output:
+		OUT_STATICS
+	input:
+		[ ETL_HOME + "/agrischemas-gxapy/src/agrischemas/ebigxa/gxa-rdf-defaults.ttl" ]
+	shell:
+		f"""
+		cp {{input}} "{ETL_OUT}/gxa"
+		"""

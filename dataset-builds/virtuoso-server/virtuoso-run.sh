@@ -1,4 +1,4 @@
-# This IS NOT used on virtuoso-dev, since we decided to keep the Ubuntu installation, including
+# This IS NOT used on virtuoso-dev.knetminer.com, since we decided to keep the Ubuntu installation, including
 # systemd wrapping
 #
 set -e
