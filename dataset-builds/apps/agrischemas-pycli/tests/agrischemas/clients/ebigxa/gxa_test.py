@@ -12,7 +12,7 @@ log = getLogger ( __name__ )
 @pytest.mark.integration
 def test_search_study_accessions ():
 	tax_id = "3702"
-	keywords = "'protein*' AND meristem"
+	keywords = '"protein*" AND meristem'
 
 	expected_accs = [ "E-GEOD-34476", "E-GEOD-75507", "E-GEOD-59167" ]
 	result = list ( search_study_accessions ( keywords = keywords, tax_id = tax_id, result_limit = 10 ) )
@@ -24,7 +24,10 @@ def test_search_study_accessions ():
 @pytest.mark.integration
 def test_search_studies ():
 	tax_id = "3702"
-	keywords = "'protein*' AND meristem"
+	# Lucene Syntax is translated into the format accpeted by bif:contains in Virtuoso.
+	# HOWEVER, Lucene isn't fully supported, see the implementation of lucene_to_bif_contains() 
+	# and its tests for details. 
+	keywords = "protein* meristem" 
 
 	expected_accs = [ "E-GEOD-34476", "E-GEOD-75507", "E-GEOD-59167" ]
 	result: SearchStudiesResult = search_studies ( keywords = keywords, tax_id = tax_id, result_limit = 10 )
@@ -86,4 +89,3 @@ def test_fetch_gene_expression ():
 		result.conditions [ level.base_condition_uri ].is_base_condition, 
 		"Test level has a valid base condition URI"
 	).is_true ()
-

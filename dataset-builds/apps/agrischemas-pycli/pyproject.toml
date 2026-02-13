@@ -7,11 +7,6 @@ authors = [
 ]
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = [
-    "rdflib (>=7.5.0,<8.0.0)",
-    "brandizpyes (>=1.1.2,<2.0.0)",
-    "requests (>=2.32.5,<3.0.0)",
-]
 
 [dependency-groups]
 dev = [
@@ -24,7 +19,11 @@ packages = [{include = "agrischemas", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.14"
-# TODO: Use only this or dependecies
+# Since these packages are transitional, we don't publish them on PyP
+agrischemaspy = { path = "../../../tools/agrischemaspy", develop = true }
+rdflib = "^7.5.0"
+brandizpyes = "^1.1.2"
+requests = "^2.32.5"
 
 
 [build-system]

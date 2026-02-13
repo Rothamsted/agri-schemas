@@ -5,7 +5,7 @@
 	"python.analysis.extraPaths": [
     "${workspaceFolder}/src",
     "${workspaceFolder}/tests",
-		"${workspaceFolder}/../../tools/agrischemaspy/src"
+		"${workspaceFolder}/../../../tools/agrischemaspy/src"
 	],
 	"python.testing.pytestEnabled": true,
 	"python.testing.unittestEnabled": false

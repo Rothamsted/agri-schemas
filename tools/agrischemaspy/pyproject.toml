@@ -19,6 +19,7 @@ python = "^3.14"
 rdflib = "^7.5.0"
 brandizpyes = "^1.1.2"
 sh = "^2.2.2"
+luqum = "^1.0.0"
 
 
 [build-system]

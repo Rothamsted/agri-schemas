@@ -11,6 +11,8 @@ from agrischemas.clients.utils import (
 	strings_2_sparql_list
 )
 
+from agrischemas.etltools.virtuoso import lucene_to_bif_contains
+
 from logging import getLogger
 log = getLogger ( __name__ )
 
@@ -285,7 +287,7 @@ def search_study_accessions ( keywords: str, tax_id: str, result_limit: int = 10
 			sparql_run ( 
 				query, 
 				sparql_params = { 
-					"paramKeywords": keywords,
+					"paramKeywords": lucene_to_bif_contains ( keywords ),
 					"paramTaxId": tax_id,
 					"paramResultLimit": str ( result_limit ) 
 				}
