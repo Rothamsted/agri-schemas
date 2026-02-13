@@ -2,7 +2,8 @@ from assertpy import assert_that
 import pytest
 
 from agrischemas.clients.ebigxa.gxa import (
-	FetchGeneExpressionResult, fetch_gene_expression, search_studies, search_study_accessions, SearchStudiesResult, AnalysisType, TechnologyType
+	FetchGeneExpressionResult, fetch_gene_expression, fetch_gene_expression_counts, GeneExpressionCounts, 
+	search_studies, search_study_accessions, SearchStudiesResult, AnalysisType, TechnologyType
 )
 
 from logging import getLogger
@@ -89,3 +90,45 @@ def test_fetch_gene_expression ():
 		result.conditions [ level.base_condition_uri ].is_base_condition, 
 		"Test level has a valid base condition URI"
 	).is_true ()
+
+
+@pytest.mark.integration
+def test_fetch_gene_expression_counts ():
+	expected_result: GeneExpressionCounts = GeneExpressionCounts (
+    gene_study_up_counts = {
+			("AT1G07135", "E-MTAB-7612"): 5,
+			("AT1G78460", "E-GEOD-37553"): 2,
+			("AT1G06120", "E-MTAB-5132"): 1,
+			("AT1G78460", "E-MTAB-7612"): 3
+    },
+    gene_study_down_counts = {
+			("AT1G78460", "E-GEOD-57145"): 2,
+			("AT1G06120", "E-MTAB-7612"): 5,
+    },	
+	)
+	expected_result.gene_up_counts = { 
+		gacc: sum (
+				count
+				for (g, _), count in expected_result.gene_study_up_counts.items()
+				if g == gacc
+		)
+		for (gacc, _) in expected_result.gene_study_up_counts.keys()
+	}
+	expected_result.gene_down_counts = { 
+    gacc: sum (
+        count
+        for (g, _), count in expected_result.gene_study_down_counts.items()
+        if g == gacc
+    )
+    for (gacc, _) in expected_result.gene_study_down_counts.keys()
+	}
+
+	study_accs = [ acc for _, acc in expected_result.gene_study_up_counts.keys () ] \
+		+ [ acc for _, acc in expected_result.gene_study_down_counts.keys () ]
+	gene_accs = [ gacc for gacc, _ in expected_result.gene_study_up_counts.keys () ] \
+		+ [ gacc for gacc, _ in expected_result.gene_study_down_counts.keys () ]
+	
+	# And here we go!
+	result = fetch_gene_expression_counts ( gene_accs = gene_accs, study_accs = study_accs )
+	assert_that ( result, "Result is correct" ).is_equal_to ( expected_result )
+	

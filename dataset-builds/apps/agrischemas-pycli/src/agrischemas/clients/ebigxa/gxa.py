@@ -227,12 +227,31 @@ class FetchGeneExpressionResult:
 @dataclass
 class GeneExpressionCounts:
 	"""
-	TODO: comment me!
+	Represents per-gene counts of conditions in which the genes result expressed according to GXA data.
+	This is what functions like :func:`fetch_gene_expression_counts` return.
 	"""
-	gene_study_up_counts: dict[tuple[str, str], int]
-	gene_study_down_counts: dict[tuple[str, str], int]
-	gene_up_counts: dict[str, int]
-	gene_down_counts: dict[str, int]
+
+	gene_up_counts: dict[str, int] = field ( default_factory = dict )
+	"""
+	gene accession -> number of conditions in which the gene is up-regulated.
+	"""
+
+	gene_down_counts: dict[str, int] = field ( default_factory = dict )
+	"""
+	gene accession -> number of conditions in which the gene is down-regulated.
+	"""
+
+	gene_study_up_counts: dict[tuple[str, str], int] = field ( default_factory = dict )
+	"""
+	gene accession, study accession -> number of conditions in which the gene is up-regulated.
+	The gene x study counts are not very significant, since mostly they're around 1.
+	"""
+
+	gene_study_down_counts: dict[tuple[str, str], int] = field ( default_factory = dict )
+	"""
+	gene accession, study accession -> number of conditions in which the gene is down-regulated.
+	The gene x study counts are not very significant, since mostly they're around 1.
+	"""
 
 
 def search_study_accessions ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> Generator[tuple[str, float]]:
@@ -383,6 +402,8 @@ def fetch_gene_expression (
 	Gets gene expression levels for the given genes and studies, filtered by p-value and log2 fold change cutoffs.
 
 	Usually, you get the study accessions from :func:`search_studies`.
+
+	TODO: optional study_accs?
 	"""
 
 	query = AGRISCHEMAS_SPARQL_NAMESPACE_HEADER + \
@@ -543,13 +564,76 @@ def fetch_gene_expression (
 
 
 def fetch_gene_expression_counts (
-	gene_accs: list[str], study_accs: list[str], pvalue_cutoff: float = 0.05, log2fc_cutoff: float = 1.0
+	gene_accs: list[str], study_accs: list[str] = [], pvalue_cutoff: float = 0.05, log2fc_cutoff: float = 1.0
 ) -> GeneExpressionCounts:
 	"""
-	Returns a per-gene, per-study count of the number of conditions in which they're
+	Returns per-gene x study counts of the number of conditions in which they're
 	up/down/total regulated, plus per-gene overall counts.
+
+	`study_accs` is optional, if not provided, it counts against the provided genes over all studies.
 	"""
-	pass
+
+	query = AGRISCHEMAS_SPARQL_NAMESPACE_HEADER + \
+		"""
+		SELECT ?geneAcc ?studyAcc ?regDirection (COUNT (?condition) AS ?conditions)
+			WHERE {
+				?gene a bioschema:Gene;
+						schema:identifier ?geneAcc.
+
+				# Let''s focus on a few genes
+				FILTER ( UCASE (STR ( ?geneAcc ) ) IN ( ?paramGeneAccs ) )  
+
+
+				?gene bioschema:expressedIn ?condition.
+
+				?expStatement a rdf:Statement;
+					rdf:subject ?gene;
+					rdf:predicate bioschema:expressedIn;
+					rdf:object ?condition;
+					agri:evidence ?study
+				.
+
+				?study schema:identifier ?studyAcc.
+
+				?paramStudyAccFilter
+
+				# Getting the significance scores
+							# Differential expression analysis
+
+				?expStatement agri:pvalue ?pvalue; agri:log2FoldChange ?log2fc.
+				FILTER ( ?pvalue < ?paramPvalueCutoff && ABS ( ?log2fc ) > ?paramLog2fcCutoff )
+
+		BIND ( IF ( ?log2fc < 0, "DOWN", "UP" ) AS ?regDirection )
+
+		}
+		GROUP BY ?geneAcc ?studyAcc ?regDirection
+		"""
+	
+	result: GeneExpressionCounts = GeneExpressionCounts ()
+
+	params = {
+		"paramGeneAccs": strings_2_sparql_list ( gene_accs ),
+		"paramPvalueCutoff": str ( pvalue_cutoff ),
+		"paramLog2fcCutoff": str ( log2fc_cutoff ),
+		"paramStudyAccFilter": 
+			( "FILTER (?studyAcc IN ( %s ))" % strings_2_sparql_list ( study_accs ) ) if study_accs else ""
+	}
+	for row in sparql_run ( query, sparql_params = params ):
+		gene_acc, study_acc, reg_direction, conditions_count = \
+			row [ 'geneAcc' ], row [ 'studyAcc' ], row [ 'regDirection' ], int ( row [ 'conditions' ] )
+		if reg_direction == "UP":
+			result.gene_up_counts [ gene_acc ] = result.gene_up_counts.get ( gene_acc, 0 ) + conditions_count
+			result.gene_study_up_counts [ ( gene_acc, study_acc ) ] = conditions_count
+		else:
+			result.gene_down_counts [ gene_acc ] = result.gene_down_counts.get ( gene_acc, 0 ) + conditions_count
+			result.gene_study_down_counts [ ( gene_acc, study_acc ) ] = conditions_count
+	
+	return result
+		
+
+
+
+	
 	
 
 def fetch_gene_expression_by_condition ( 
