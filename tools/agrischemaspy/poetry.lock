@@ -2,14 +2,14 @@
 
 [[package]]
 name = "brandizpyes"
-version = "1.1.2"
+version = "1.1.3"
 description = "Brandiz Pyes - Python Utilities"
 optional = false
-python-versions = ">=3.14"
+python-versions = ">=3.13"
 groups = ["main"]
 files = [
-    {file = "brandizpyes-1.1.2-py3-none-any.whl", hash = "sha256:6af9a1a91915d697ccd63a327cb4c97a315c5f0df0f6c71583cc66b0f93d06ba"},
-    {file = "brandizpyes-1.1.2.tar.gz", hash = "sha256:18b7b319ee5f409ecdd726530cd67e368bcf2271b14fe037c1b772691f4674dc"},
+    {file = "brandizpyes-1.1.3-py3-none-any.whl", hash = "sha256:23253352f0aaa64d712596d79d3656bf257b4cf886ba4cbcf06c0ad63770df4a"},
+    {file = "brandizpyes-1.1.3.tar.gz", hash = "sha256:0a1ebc81385c1cde670eb2f71dbe98aa7eb5d55045b3297618cd12b9ac1338d5"},
 ]
 
 [package.dependencies]
@@ -232,14 +232,14 @@ files = [
 
 [[package]]
 name = "rdflib"
-version = "7.5.0"
+version = "7.6.0"
 description = "RDFLib is a Python library for working with RDF, a simple yet powerful language for representing information."
 optional = false
 python-versions = ">=3.8.1"
 groups = ["main"]
 files = [
-    {file = "rdflib-7.5.0-py3-none-any.whl", hash = "sha256:b011dfc40d0fc8a44252e906dcd8fc806a7859bc231be190c37e9568a31ac572"},
-    {file = "rdflib-7.5.0.tar.gz", hash = "sha256:663083443908b1830e567350d72e74d9948b310f827966358d76eebdc92bf592"},
+    {file = "rdflib-7.6.0-py3-none-any.whl", hash = "sha256:30c0a3ebf4c0e09215f066be7246794b6492e054e782d7ac2a34c9f70a15e0dd"},
+    {file = "rdflib-7.6.0.tar.gz", hash = "sha256:6c831288d5e4a5a7ece85d0ccde9877d512a3d0f02d7c06455d00d6d0ea379df"},
 ]
 
 [package.dependencies]
@@ -247,6 +247,7 @@ pyparsing = ">=2.1.0,<4"
 
 [package.extras]
 berkeleydb = ["berkeleydb (>=18.1.0,<19.0.0)"]
+graphdb = ["httpx (>=0.28.1,<0.29.0)"]
 html = ["html5rdf (>=1.2,<2)"]
 lxml = ["lxml (>=4.3,<6.0)"]
 networkx = ["networkx (>=2,<4)"]
@@ -267,5 +268,5 @@ files = [
 
 [metadata]
 lock-version = "2.1"
-python-versions = "^3.14"
-content-hash = "5c3f56cd22cf09e9c367d203a6883d2235945061e588482538456407c84f6677"
+python-versions = "^3.13"
+content-hash = "2950527b90307e1d9ed5c768373e81dc2c276b5b6a91bbd108bfc4d2774547b4"

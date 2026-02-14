@@ -17,6 +17,8 @@ dev = [
 packages = [{include = "agrischemas", from = "src"}]
 
 [tool.poetry.dependencies]
+# WARNING: Needs downgrading to 3.13, as already done for other dependency of ours.
+# Needs to check it still works with agrischemaspy (AgroPortal failing).
 python = "^3.14"
 # Since these packages are transitional, we don't publish them on PyP
 agrischemaspy = { path = "../../tools/agrischemaspy", develop = true }
