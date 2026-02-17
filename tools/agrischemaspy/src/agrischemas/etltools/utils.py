@@ -1,9 +1,9 @@
 
 """
-	Utilites about ETL pipelines, see the main package.
+Utilites about ETL pipelines, see the main package.
 	
-	:Authors: Marco Brandizi
-	:Date: 2020
+:Authors: Marco Brandizi
+:Date: 2020
 """
 
 from wsgiref import headers
@@ -255,18 +255,21 @@ def hash_generator ( g, ignore_case = True, sort = True ):
 	if sort: l.sort()
 	return hash_string ( "".join ( l ), ignore_case )
 
-"""
+
+class BinaryWriter:
+	"""
 	An adapter to send a string writer to a function that accepts a binary writer. 
-	
-	For instance, you can use this to write plain strings into a compressed file, 
-	see details at https://stackoverflow.com/questions/66375185
-	
+
+	For instance, you can use this to write plain strings into a compressed file.
+
+	See [details here](https://stackoverflow.com/questions/66375185).
+
 	Usage example:
-	
+
 	with bz2.open ( file_path, "w" ) as bout
 		out = BinaryWriter ( bout )
 		print ( "Hello, world", file = out )
-		my_output ( out ) # Uses print( ..., file = out )
+		my_output ( out ) # Uses print( ..., file = out )
 
 				
 	For cases where compression is optional:
@@ -277,9 +280,10 @@ def hash_generator ( g, ignore_case = True, sort = True ):
 		my_output ( out )
 	finally:
 		out.close ()
-	
-"""
-class BinaryWriter:
+
+	TODO: wrap it into a Python Protocol.
+	"""	
+
 	def __init__ ( self, bin_out, encoding = "utf-8", errors = 'strict' ):
 		self.bin_out = bin_out
 		self.encoding = encoding
@@ -293,19 +297,20 @@ class BinaryWriter:
 
 
 
-"""
+def normalize_rows_source ( rows_source ):
+	"""
 	Allows for some flexibility with CSV document reading.
-	The rows_generator parameter can be either of:
+	The `rows_source` parameter can be either of:
 	
-	- an io.TextIOBase: passes it to csv.reader() and returns the resulting generator
-	- a string: opens it as a file, calls itself recursively (to get a csv.reader()) and returns a generator
+	- a :class:`io.TextIOBase`: passes it to :func:`csv.reader()` and returns the resulting generator
+	- a string: opens it as a file, calls itself recursively (to get a :func:`csv.reader()`) and returns a generator
 		that iterates over the csv rows like the previous case (done via yield, so the file is auto-closed)
 	- anything else that supports 'yield': returns the corresponding generator
-	- none of the above: raises an error
+	- none of the above: raises a :class:`TypeError`
 	
 	As you see, it always returns a generator over which you can iterate independently on the initial source.	 
-"""	
-def normalize_rows_source ( rows_source ):
+	"""	
+
 	if isinstance ( rows_source, str ):
 		# Open the file with the csv reader
 		with open ( rows_source ) as csvf:
@@ -315,15 +320,21 @@ def normalize_rows_source ( rows_source ):
 	elif isinstance ( rows_source, io.TextIOBase ):
 		# This includes stdin
 		rows_source = csv.reader ( rows_source, delimiter = "\t" )
+	
+	elif isinstance ( rows_source, Generator ):
+		pass
+	else:
+		raise TypeError ( "Unsupported type for rows_source: %s" % type ( rows_source ) )
 
 	yield from rows_source	
 
 
-"""
-	Utility to quickly send a row generator to an output of type string or file handle, as per
-	dump_output()
-"""
 def dump_rows ( rows, out = stdout, mode = "w", **open_opts ):
+	"""
+	Utility to quickly send a row generator to an output of type string or file handle, as per
+	:func:`dump_output()`.
+	"""
+
 	def writer ( out ):
 		for row in rows:
 			print ( row, file = out )
@@ -339,12 +350,13 @@ def js_to_file ( js, file_path ):
 		return json.dump ( js, jsf )
 	
 
-"""
+def rdf_stmt ( data, key, rdf_tpl, rdf_val_provider = lambda v: v ):
+	"""
 	Returns an RDF/Turtle string if the key exists in the 'data' treated as dictionary.
 	rdf_tpl must be a template like: dc:title "{title}", where 'title' is a data key 
 	(usually the same as key) 
-"""
-def rdf_stmt ( data, key, rdf_tpl, rdf_val_provider = lambda v: v ):
+	"""
+	
 	data = data.copy ()
 	val = data.get ( key )
 	if not val: return ""
@@ -449,8 +461,12 @@ def download_files (
 		if overwrite: item [ "overwrite" ] = overwrite
 		download_file ( **item )
 
+
 """
 	TODO: comment me
+	TODO: meh! with pytest and assertpy, this is not needed, it can be replaced by something like:
+	`assertThat ( sparql_ask ( graph, ask_query ), "It works!" ).isTrue ()`, 
+	or `assert sparql_ask ( graph, ask_query ), "It didn't work!"`.
 """
 class XTestCase ( unittest.TestCase ):
 	def assert_rdf ( self, graph, ask_query, fail_msg ):
