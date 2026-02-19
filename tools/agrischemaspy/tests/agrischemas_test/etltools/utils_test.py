@@ -27,17 +27,19 @@ class XNamespaceManagerTest ( unittest.TestCase ):
 	def test_ns_two_colon ( self ):
 		self.assertEqual( DEFAULT_NAMESPACES.ns ( 'ex:' ), "http://www.example.com/ns/", "ns(ex:) didn't work!" )
 
-	@unittest.skip ( "TODO: needs code to deal with this case" )
 	def test_ns_empty_ns ( self ):		
 		"""
 		Tests the ':' prefix, which should work with the two colon only, or with the empty string. 
 		"""
 		ns_uri = "http://www.example.com/foo/default/"
 		ns_mgr = XNamespaceManager ()
-		ns_mgr.bind ( ":", ns_uri )
+		ns_mgr.bind ( "", ns_uri )
 
 		self.assertEqual ( ns_mgr.ns ( ':' ), ns_uri, "ns(:) didn't work!" )
-		self.assertEqual ( ns_mgr.uri_ref ( ":Blah" ), ns_uri + "Blah", "uri_ref(:Blah) didn't work!" )
+		self.assertEqual ( ns_mgr.uri ( ":Blah" ), ns_uri + "Blah", "uri(:Blah) didn't work!" )
+		self.assertEqual ( ns_mgr.ns ( '' ), ns_uri, "ns('') didn't work!" )
+		# This should not be equal to :Blah, cause it's not how namespaces are normally used
+		self.assertEqual ( ns_mgr.uri ( 'Blah' ), "Blah", "uri('Blah') didn't work!" )
 
 	def test_to_sparql ( self ):
 		self.assertTrue (

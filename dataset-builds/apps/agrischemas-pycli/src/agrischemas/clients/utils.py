@@ -29,7 +29,7 @@ AGRISCHEMAS_NS_MGR.graph.parse (
 	@prefix bioschema: <https://bioschemas.org/>.
 	@prefix schema: <https://schema.org/>.
 	@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-	@prefix me: <http://knetminer.org/data/rdf/terms/local/>.
+	@prefix : <http://knetminer.org/data/rdf/terms/local/>.
 	""",
 	format = "turtle"
 )
@@ -38,7 +38,7 @@ Common namespace definitions used in the AgriSchemas clients.
 TODO: used by data builders too, move to a core library.
 """
 
-ME_NS = AGRISCHEMAS_NS_MGR.ns ( "me" )
+ME_NS = AGRISCHEMAS_NS_MGR.ns ( ":" )
 """
 TODO: comment me!
 """

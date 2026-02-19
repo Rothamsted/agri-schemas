@@ -36,6 +36,7 @@ from functools import singledispatch
 import shutil
 
 from collections.abc import Iterable
+import wrapt
 
 
 """
@@ -56,7 +57,7 @@ def get_jena_home ():
 	return jena_home
 
 
-class XNamespaceManager ( NamespaceManager ):
+class XNamespaceManager ( wrapt.ObjectProxy ):
 	"""
 		An extended version of rdflib.NamespaceManager, with a few little utilities added.
 	"""
@@ -64,29 +65,7 @@ class XNamespaceManager ( NamespaceManager ):
 	def __init__ ( self, base_ns_mgr: NamespaceManager = None ):
 		if not base_ns_mgr:
 			base_ns_mgr = NamespaceManager( Graph () )
-		self.__base = base_ns_mgr
-
-	def __getattr__ ( self, attr ):
-		"""
-			See :meth:`__setattr__`.
-		"""
-		return getattr ( self.__base, attr )
-
-	def __setattr__ ( self, attr, val ):
-		"""
-			Retains the ability to set namespaces as attributes.
-
-			It just checks if the client is already accessing a base setter or ourselves and 
-			dispatches accordingly.
-
-		"""
-		if attr == '_XNamespaceManager__base':
-			# Triggered when our own methods access self.__base, we need to intercept it and dispatch to the base setter, 
-			# else we'll be sucked into an oo recursion.
-			NamespaceManager.__setattr__ ( self, attr, val )
-			return
-		# Else, call the regular setter against the base manager.
-		setattr ( self.__base, attr, val )
+		super().__init__ ( base_ns_mgr )
 	
 	def uri_ref ( self, curie_or_prefix, tail = None ) -> URIRef|None:
 		"""
@@ -115,7 +94,9 @@ class XNamespaceManager ( NamespaceManager ):
 		"""
 			Returns the URI corresponding to a namespace prefix (as URIRef).
 		"""
-		if ns_prefix [-1] != ':': ns_prefix += ':'
+		
+		# "" is for the ":" prefix
+		if ns_prefix == "" or ns_prefix [-1] != ':': ns_prefix += ':'
 		return self.uri_ref ( ns_prefix )
 
 	def ns ( self, ns_prefix: str ) -> str:
