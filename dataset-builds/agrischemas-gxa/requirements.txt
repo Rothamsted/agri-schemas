@@ -1,2 +1,4 @@
 # See install.sh on why we keep local deps on a separate file
 snakemake (>=9.14.5,<10.0.0)
+# It's a local package and update.sh updates changes as they're made
+-e ../agrischemas-gxapy

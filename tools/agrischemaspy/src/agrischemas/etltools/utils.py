@@ -25,8 +25,8 @@ from typing import Generator, Any, Union
 
 
 
-from pyparsing import ParseException
-from rdflib import Graph
+from pyparsing import ParseException, TextIO
+from rdflib import Graph, URIRef
 from rdflib.namespace import NamespaceManager
 from rdflib.term import Literal
 from rdflib.util import from_n3
@@ -34,6 +34,8 @@ import yaml
 
 from functools import singledispatch
 import shutil
+
+from collections.abc import Iterable
 
 
 """
@@ -53,19 +55,20 @@ def get_jena_home ():
 		raise KeyError ( "JENA_HOME not defined! Set it in your OS environment" )
 	return jena_home
 
+
 class XNamespaceManager ( NamespaceManager ):
 	"""
 		An extended version of rdflib.NamespaceManager, with a few little utilities added.
 	"""
 	
-	def __init__ ( self, base_ns_mgr = None ):
+	def __init__ ( self, base_ns_mgr: NamespaceManager = None ):
 		if not base_ns_mgr:
 			base_ns_mgr = NamespaceManager( Graph () )
 		self.__base = base_ns_mgr
 
 	def __getattr__ ( self, attr ):
 		"""
-			Same as :meth:`__setattr__`.
+			See :meth:`__setattr__`.
 		"""
 		return getattr ( self.__base, attr )
 
@@ -75,12 +78,17 @@ class XNamespaceManager ( NamespaceManager ):
 
 			It just checks if the client is already accessing a base setter or ourselves and 
 			dispatches accordingly.
+
 		"""
 		if attr == '_XNamespaceManager__base':
+			# Triggered when our own methods access self.__base, we need to intercept it and dispatch to the base setter, 
+			# else we'll be sucked into an oo recursion.
 			NamespaceManager.__setattr__ ( self, attr, val )
-		return setattr ( self.__base, attr, val )
+			return
+		# Else, call the regular setter against the base manager.
+		setattr ( self.__base, attr, val )
 	
-	def uri_ref ( self, curie_or_prefix, tail = None ):
+	def uri_ref ( self, curie_or_prefix, tail = None ) -> URIRef|None:
 		"""
 			Resolves a URI. 
 			
@@ -103,14 +111,14 @@ class XNamespaceManager ( NamespaceManager ):
 		"""
 		return str ( self.uri_ref ( curie_or_prefix, tail ) )
 	
-	def ns_ref ( self, ns_prefix ):
+	def ns_ref ( self, ns_prefix: str ) -> URIRef|None:
 		"""
 			Returns the URI corresponding to a namespace prefix (as URIRef).
 		"""
 		if ns_prefix [-1] != ':': ns_prefix += ':'
 		return self.uri_ref ( ns_prefix )
 
-	def ns ( self, ns_prefix ) -> str:
+	def ns ( self, ns_prefix: str ) -> str:
 		"""
 			Invokes str(ns_ref())
 		"""
@@ -297,7 +305,7 @@ class BinaryWriter:
 
 
 
-def normalize_rows_source ( rows_source ):
+def normalize_rows_source ( rows_source: io.TextIOBase | str | Iterable ) -> Generator[Any, None, None]:
 	"""
 	Allows for some flexibility with CSV document reading.
 	The `rows_source` parameter can be either of:
@@ -321,7 +329,7 @@ def normalize_rows_source ( rows_source ):
 		# This includes stdin
 		rows_source = csv.reader ( rows_source, delimiter = "\t" )
 	
-	elif isinstance ( rows_source, Generator ):
+	elif isinstance ( rows_source, Iterable ):
 		pass
 	else:
 		raise TypeError ( "Unsupported type for rows_source: %s" % type ( rows_source ) )
@@ -329,25 +337,25 @@ def normalize_rows_source ( rows_source ):
 	yield from rows_source	
 
 
-def dump_rows ( rows, out = stdout, mode = "w", **open_opts ):
+def dump_rows ( rows: Iterable, out: str|TextIO = stdout, mode: str = "w", **open_opts ) -> None | str:
 	"""
 	Utility to quickly send a row generator to an output of type string or file handle, as per
 	:func:`dump_output()`.
 	"""
 
-	def writer ( out ):
+	def writer ( out: TextIO ):
 		for row in rows:
 			print ( row, file = out )
-	dump_output ( out, writer, mode = mode, **open_opts )
+	dump_output ( writer, out, mode = mode, **open_opts )
 		
-def js_from_file ( file_path ):
+def js_from_file ( file_path: str ) -> Any:
 	with open ( file_path ) as jsf:
 		return json.load ( jsf )
 
-def js_to_file ( js, file_path ):
+def js_to_file ( js, file_path: str ) -> None:
 	os.makedirs ( os.path.dirname ( file_path ), exist_ok = True )
 	with open ( file_path, "w" ) as jsf:
-		return json.dump ( js, jsf )
+		json.dump ( js, jsf )
 	
 
 def rdf_stmt ( data, key, rdf_tpl, rdf_val_provider = lambda v: v ):

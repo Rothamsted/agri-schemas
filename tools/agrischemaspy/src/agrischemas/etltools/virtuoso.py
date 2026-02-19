@@ -1,7 +1,6 @@
 """
-Provides :func:`lucene_to_bif_contains` to translate a Lucene query into a Virtuoso `bif:contains` expression.
+Utilities for Virtuoso-based SPARQL endpoints.
 
-WARNING: copy-pasted from ChatGPT.
 """
 
 from luqum.parser import parser
@@ -22,31 +21,39 @@ from luqum.tree import (
 from luqum.utils import UnknownOperationResolver, LuceneTreeTransformer, LuceneTreeVisitor, LuceneTreeVisitorV2
 
 
-class UnsupportedLuceneFeature(Exception):
-	pass
+def lucene_to_bif_contains ( query: str ) -> str:
+	"""
+	Translates the basics of a Lucene query into a Virtuoso `bif:contains` expression.
+
+	We have written this to interface generic text search components with Virtuoso endpoints. 
+  **WARNING**: it only supports the most common Lucene syntax constructs, since the Virtuoso 
+	counterpart is much more limited. See the tests to get an idea.
+
+	WARNING: though partially tested, the code was mostly copy-pasted from ChatGPT.
+	"""	
+	def quote_term ( term: str ) -> str:
+		"""
+		Normalises a Lucene term or phrase into a Virtuoso-safe quoted token.
+		"""
+
+		# Strip surrounding double quotes (Lucene phrases)
+		if len(term) >= 2 and term[0] == '"' and term[-1] == '"':
+			term = term[1:-1]
+
+		# Strip surrounding single quotes if user typed them
+		if len(term) >= 2 and term[0] == "'" and term[-1] == "'":
+			term = term[1:-1]
+
+		# Escape single quotes for Virtuoso
+		term = term.replace("'", "''")
+
+		return f"'{term}'"
 
 
-def lucene_to_bif_contains(query: str) -> str:
-	def quote_term(term: str) -> str:
-			"""
-			Normalize a Lucene term or phrase into a Virtuoso-safe quoted token.
-			"""
-
-			# Strip surrounding double quotes (Lucene phrases)
-			if len(term) >= 2 and term[0] == '"' and term[-1] == '"':
-				term = term[1:-1]
-
-			# Strip surrounding single quotes if user typed them
-			if len(term) >= 2 and term[0] == "'" and term[-1] == "'":
-				term = term[1:-1]
-
-			# Escape single quotes for Virtuoso
-			term = term.replace("'", "''")
-
-			return f"'{term}'"
-
-
-	def translate(node):
+	def translate ( node ):
+		"""
+		AST-based translation. 
+		"""
 		# BoolOperation (AND/OR/NOT with multiple children)
 		if isinstance(node, BoolOperation):
 			op = node.op.upper()
@@ -93,11 +100,11 @@ def lucene_to_bif_contains(query: str) -> str:
 
 		# Reject unsupported features
 		if isinstance(node, (SearchField, Range, Fuzzy, Boost)):
-			raise UnsupportedLuceneFeature(
+			raise ValueError (
 				f"Unsupported Lucene feature: {type(node).__name__}"
 			)
 
-		raise UnsupportedLuceneFeature(f"Unsupported node: {type(node)}")
+		raise ValueError ( f"Unsupported node: {type(node)}" )
 	
 	ast = parser.parse(query)
 	# Does some simplifications, eg, a b c -> a AND b AND c, without binary compositions.

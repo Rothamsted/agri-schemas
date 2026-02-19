@@ -13,10 +13,13 @@ printf "\n  Activating the Python environment\n"
 
 printf "\n  Installing/upgrading Python dependencies\n"
 pip install --upgrade -r requirements.txt
+
+# TODO: remove, superseded by the -e in requirements.txt
 # Without --force, it won't see wheel rebuilds, with --force on all deps, 
 # a lot of unnecessary deps are upgraded every time. 
 # So, this separation is a way to deal wit it.
 # Note that I'm not using --editable, cause it's too messy when there are transitive deps.
-pip install --upgrade --force -r requirements-local.txt
+# Update: I'm trying -e in the requirement file.
+# pip install --upgrade --force -r requirements-local.txt
 
 printf "\n  Installation/upgrade done.\n"

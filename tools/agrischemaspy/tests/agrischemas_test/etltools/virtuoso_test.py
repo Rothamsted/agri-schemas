@@ -1,12 +1,18 @@
 import pytest
-from agrischemas.etltools.virtuoso import lucene_to_bif_contains, UnsupportedLuceneFeature
+from agrischemas.etltools.virtuoso import lucene_to_bif_contains
 
 from logging import getLogger
 log = getLogger ( __name__ )
 
 @pytest.mark.parametrize (
-	"lucene, expected",
-	[
+	argnames = "lucene, expected",
+	ids = [ 
+		"'*' wildcard", "OR/AND operators",
+		"Phrase + implicit AND",
+		"'?' + '*' wildcards", 
+		"Implicit AND precedence" 
+	],
+	argvalues = [
 		(
 			"disease resist*",
 			"('disease') AND ('resist*')",
@@ -46,8 +52,9 @@ def test_lucene_to_bif_contains_multiple_implicit_and():
 
 
 @pytest.mark.parametrize(
-	"lucene",
-	[
+	argnames = "lucene",
+	ids = [ "Field search", "Proximity search", "Fuzzy search", "Boosting", "Range" ],
+	argvalues = [
 		"title:disease",
 		'"foo bar"~3',
 		"foo~",
@@ -56,5 +63,5 @@ def test_lucene_to_bif_contains_multiple_implicit_and():
 	],
 )
 def test_lucene_to_bif_contains_unsupported_features(lucene):
-	with pytest.raises(UnsupportedLuceneFeature):
+	with pytest.raises(ValueError):
 		lucene_to_bif_contains(lucene)

@@ -15,6 +15,7 @@ See [the tests](tests/agrischemas_test/) for examples and details.
 	* Various I/O utilities
 	* RDF test utilities, such as `sparql_ask`
 * `biotools`: utilities to process biological data. At the moment, it mainly contains `BioPortal`/`AgroPortal` simple clients.
+* `kpyutils`: generic utilities, such as URL processing functions.
 
 
 ## Usage

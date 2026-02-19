@@ -16,6 +16,7 @@ def test_search_study_accessions ():
 	keywords = '"protein*" AND meristem'
 
 	expected_accs = [ "E-GEOD-34476", "E-GEOD-75507", "E-GEOD-59167" ]
+	
 	result = list ( search_study_accessions ( keywords = keywords, tax_id = tax_id, result_limit = 10 ) )
 
 	assert_that ( [ acc for acc, _ in result ], "Result contains the expected accessions" )\
@@ -29,8 +30,8 @@ def test_search_studies ():
 	# HOWEVER, Lucene isn't fully supported, see the implementation of lucene_to_bif_contains() 
 	# and its tests for details. 
 	keywords = "protein* meristem" 
-
 	expected_accs = [ "E-GEOD-34476", "E-GEOD-75507", "E-GEOD-59167" ]
+
 	result: SearchStudiesResult = search_studies ( keywords = keywords, tax_id = tax_id, result_limit = 10 )
 
 	assert_that ( result.studies.keys (), "Result contains the expected accessions" )\

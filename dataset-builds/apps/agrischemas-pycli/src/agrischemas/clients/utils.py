@@ -2,6 +2,7 @@
 import logging
 from typing import Any, Generator
 from rdflib import Graph
+import rdflib
 from rdflib.plugins.stores.sparqlstore import SPARQLStore
 
 from agrischemas.clients.config import AGRISCHEMAS_SPARQL_ENDPOINT
@@ -9,26 +10,38 @@ import json as json_module
 
 import requests
 
+from agrischemas.etltools.utils import XNamespaceManager
+
 log = logging.getLogger( __name__ )
 
-# TODO: Use XNamespaceManager.
-AGRISCHEMAS_SPARQL_NAMESPACE_HEADER = \
-	"""
-	PREFIX bk: <http://knetminer.org/data/rdf/terms/biokno/>
-	PREFIX bkr: <http://knetminer.org/data/rdf/resources/>
-	PREFIX bkg: <http://knetminer.org/data/rdf/resources/graphs/>
-	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-	PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	PREFIX owl: <http://www.w3.org/2002/07/owl#>
-	PREFIX dc: <http://purl.org/dc/elements/1.1/>
-	PREFIX dcterms: <http://purl.org/dc/terms/>
-	PREFIX agri: <http://agrischemas.org/>
-	PREFIX bioschema: <https://bioschemas.org/>
-	PREFIX schema: <https://schema.org/>
-	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-	"""
+AGRISCHEMAS_NS_MGR = XNamespaceManager()
+AGRISCHEMAS_NS_MGR.graph.parse (
+	data = """
+	@prefix bk: <http://knetminer.org/data/rdf/terms/biokno/>.
+	@prefix bkr: <http://knetminer.org/data/rdf/resources/>.
+	@prefix bkg: <http://knetminer.org/data/rdf/resources/graphs/>.
+	@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+	@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+	@prefix owl: <http://www.w3.org/2002/07/owl#>.
+	@prefix dc: <http://purl.org/dc/elements/1.1/>.
+	@prefix dcterms: <http://purl.org/dc/terms/>.
+	@prefix agri: <http://agrischemas.org/>.
+	@prefix bioschema: <https://bioschemas.org/>.
+	@prefix schema: <https://schema.org/>.
+	@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+	@prefix me: <http://knetminer.org/data/rdf/terms/local/>.
+	""",
+	format = "turtle"
+)
+"""
+Common namespace definitions used in the AgriSchemas clients.
+TODO: used by data builders too, move to a core library.
+"""
 
-ME_NS = "http://knetminer.org/data/rdf/terms/local/"
+ME_NS = AGRISCHEMAS_NS_MGR.ns ( "me" )
+"""
+TODO: comment me!
+"""
 
 def sparql_run_construct ( 
 	sparql_query: str,

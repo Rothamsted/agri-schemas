@@ -7,8 +7,7 @@ import enum
 from typing import Generator
 from agrischemas.clients.config import AGRISCHEMAS_SPARQL_ENDPOINT
 from agrischemas.clients.utils import (
-	ME_NS, sparql_run_construct, sparql_run, AGRISCHEMAS_SPARQL_NAMESPACE_HEADER,
-	strings_2_sparql_list
+	sparql_run_construct, sparql_run, strings_2_sparql_list, AGRISCHEMAS_NS_MGR, ME_NS
 )
 
 from agrischemas.etltools.virtuoso import lucene_to_bif_contains
@@ -262,7 +261,7 @@ def search_study_accessions ( keywords: str, tax_id: str, result_limit: int = 10
 	TODO: add publication fields
 	"""
 
-	query = AGRISCHEMAS_SPARQL_NAMESPACE_HEADER + \
+	query = AGRISCHEMAS_NS_MGR.to_sparql () + \
 	"""
 
 	SELECT ?acc ?score
@@ -335,7 +334,7 @@ def search_studies ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> S
 	accs = accs_n_scores.keys ()
 
 	# Then the details, by filtering with accessions
-	query = AGRISCHEMAS_SPARQL_NAMESPACE_HEADER + \
+	query = AGRISCHEMAS_NS_MGR.to_sparql () + \
 	"""
 
 	SELECT ?study ?acc ?title ?description ?gxaAnalysis ?aeTech
@@ -406,7 +405,7 @@ def fetch_gene_expression (
 	TODO: optional study_accs?
 	"""
 
-	query = AGRISCHEMAS_SPARQL_NAMESPACE_HEADER + \
+	query = AGRISCHEMAS_NS_MGR.to_sparql () + \
 	f"\nPREFIX : <{ME_NS}>\n" + \
 	"""
 	CONSTRUCT 
@@ -451,8 +450,8 @@ def fetch_gene_expression (
 		# Let''s focus on a few genes
 		FILTER ( UCASE (STR ( ?geneAcc ) ) IN ( ?paramGeneAccs ) )  
 
-
-		?gene bioschema:expressedIn ?condition.
+		# Not needed here, we need the details anyway
+		# ?gene bioschema:expressedIn ?condition.
 
 		?expStatement a rdf:Statement;
 			rdf:subject ?gene;
@@ -515,7 +514,7 @@ def fetch_gene_expression (
 
 	result = FetchGeneExpressionResult ()
 	construct_result = sparql_run_construct ( query, sparql_params = params )
-
+	
 	for item in construct_result:
 		if item.get ( "@type", [ 'None' ] ) [ 0 ] == f"{ME_NS}ExpStatement":
 			# TODO: this is bad, move these JSON-LD common patterns to utils.
@@ -573,7 +572,7 @@ def fetch_gene_expression_counts (
 	`study_accs` is optional, if not provided, it counts against the provided genes over all studies.
 	"""
 
-	query = AGRISCHEMAS_SPARQL_NAMESPACE_HEADER + \
+	query = AGRISCHEMAS_NS_MGR.to_sparql () + \
 		"""
 		SELECT ?geneAcc ?studyAcc ?regDirection (COUNT (?condition) AS ?conditions)
 			WHERE {
