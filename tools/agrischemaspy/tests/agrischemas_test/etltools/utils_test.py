@@ -8,28 +8,33 @@ from os.path import exists, getsize
 from rdflib.namespace import RDFS
 import importlib
 
+from assertpy import assert_that
+
 _TEST_DIR = os.path.abspath (
 	os.path.dirname (  __file__ ) + "/../../resources/etltools/"
 )
 
 
-class XNamespaceManagerTest ( unittest.TestCase ):
+class TestXNamespaceManager:
 
 	"""
 	The tests implicitly test `load()` from a file, since that's used to populate the `DEFAULT_NAMESPACES`.
 	"""
 
 	def test_uri ( self ):
-		self.assertEqual( DEFAULT_NAMESPACES.uri ( "ex:test" ), "http://www.example.com/ns/test", "uri() didn't work!" )
+		assert_that( DEFAULT_NAMESPACES.uri ( "ex:test" ), "uri() works in base case" )\
+			.is_equal_to( "http://www.example.com/ns/test" )
 	
 	def test_uri_chunks ( self ):
-		self.assertEqual( DEFAULT_NAMESPACES.uri ( "rdfs", "label" ), str ( RDFS ) + "label", "rdfs:label didn't work!" )
-
+		assert_that( DEFAULT_NAMESPACES.uri ( "rdfs", "label" ), "uri() works for rdfs:label" )\
+			.is_equal_to( str ( RDFS ) + "label" )
 	def test_ns ( self ):
-		self.assertEqual( DEFAULT_NAMESPACES.ns ( 'schema' ), "https://schema.org/", "ns(schema) didn't work!" )
+		assert_that( DEFAULT_NAMESPACES.ns ( 'schema' ), "ns(schema) works" )\
+			.is_equal_to( "https://schema.org/" )
 
 	def test_ns_two_colon ( self ):
-		self.assertEqual( DEFAULT_NAMESPACES.ns ( 'ex:' ), "http://www.example.com/ns/", "ns(ex:) didn't work!" )
+		assert_that( DEFAULT_NAMESPACES.ns ( 'ex:' ), "ns(ex:) works" )\
+			.is_equal_to( "http://www.example.com/ns/" )
 
 	def test_ns_empty_ns ( self ):		
 		"""
@@ -39,30 +44,31 @@ class XNamespaceManagerTest ( unittest.TestCase ):
 		ns_mgr = XNamespaceManager ()
 		ns_mgr.bind ( "", ns_uri )
 
-		self.assertEqual ( ns_mgr.ns ( ':' ), ns_uri, "ns(:) didn't work!" )
-		self.assertEqual ( ns_mgr.uri ( ":Blah" ), ns_uri + "Blah", "uri(:Blah) didn't work!" )
-		self.assertEqual ( ns_mgr.ns ( '' ), ns_uri, "ns('') didn't work!" )
+		assert_that( ns_mgr.ns ( ':' ), "ns(:) works" ).is_equal_to( ns_uri )
+		assert_that( ns_mgr.uri ( ":Blah" ), "uri(:Blah) works" ).is_equal_to( ns_uri + "Blah" )
+		assert_that( ns_mgr.ns ( '' ), "ns('') works" ).is_equal_to( ns_uri )
 		# This should not be equal to :Blah, cause it's not how namespaces are normally used
-		self.assertEqual ( ns_mgr.uri ( 'Blah' ), "Blah", "uri('Blah') didn't work!" )
+		assert_that( ns_mgr.uri ( 'Blah' ), "uri('Blah') is returned untouched" ).is_equal_to( "Blah" )
 
 	def test_to_sparql ( self ):
-		self.assertTrue (
+		assert_that (
 			"PREFIX schema: <https://schema.org/>\n" in DEFAULT_NAMESPACES.to_sparql (),
-			"to_sparql() didn't work!"
-		)
+			"to_sparql() works"
+		).is_true ()
 
 	def test_to_turtle ( self ):
-		self.assertTrue (
+		assert_that (
 			"prefix schema: <https://schema.org/>\n" in DEFAULT_NAMESPACES.to_turtle (),
-			"to_turtle() didn't work!"
-		)
+			"to_turtle() works"
+		).is_true ()
 
 	def test_ns_path ( self ):
 		# To make the module pick the new NS file, we need to reload it
 		from agrischemas.etltools import utils as utl
 		os.environ[ 'NAMESPACES_PATH' ] = _TEST_DIR + "/test-namespaces.ttl"
 		importlib.reload ( utl )
-		self.assertEqual( utl.DEFAULT_NAMESPACES.ns ( 'foo:' ), "http://www.foo.com/ns/", "NAMESPACES_PATH didn't work!" )
+		assert_that( utl.DEFAULT_NAMESPACES.ns ( 'foo:' ), "NAMESPACES_PATH works" )\
+			.is_equal_to( "http://www.foo.com/ns/" )
 
 	def test_load_from_string ( self ):
 		ex_ns, ex2_ns = "http://www.example.com/ns/", "http://www.example.com/ns2/"
@@ -71,25 +77,28 @@ class XNamespaceManagerTest ( unittest.TestCase ):
 			@prefix ex: <{ex_ns}> .
 			@prefix ex2: <{ex2_ns}> .
 		""", rdf_format = "turtle" )
-		self.assertEqual( ns_mgr.ns ( 'ex:' ), ex_ns, "load from string didn't work!" )
-		self.assertEqual( ns_mgr.ns ( 'ex2:' ), ex2_ns, "load from string didn't work!" )
+		assert_that( ns_mgr.ns ( 'ex:' ), "load from string works for ex" ).is_equal_to( ex_ns )
+		assert_that( ns_mgr.ns ( 'ex2:' ), "load from string works for ex2" ).is_equal_to( ex2_ns )
 
 
-def process_rows ( rows_src ):
-	l = 0; res = "";
-	for row in normalize_rows_source ( rows_src ):
-		res += "L:%d, Name:%s, Surname:%s\n" % ( l, row [ 0 ], row [ 1 ] )
-		l += 1
-	return res
 
-class NormalizeRowsSourceTest ( unittest.TestCase ):
-	
+class TestNormalizeRowsSource:
+
+	@staticmethod
+	def process_rows ( rows_src ):
+		l = 0; res = "";
+		for row in normalize_rows_source ( rows_src ):
+			res += "L:%d, Name:%s, Surname:%s\n" % ( l, row [ 0 ], row [ 1 ] )
+			l += 1
+		return res
+
+
 	def test_list ( self ):
-		r = process_rows ( [ ["John", "Smith"], ["Karl", "Marx"], ["Emmanuel", "Kant"] ] )
+		r = self.process_rows ( [ ["John", "Smith"], ["Karl", "Marx"], ["Emmanuel", "Kant"] ] )
 		self.assertTrue ( "Expected string not found in the result!", "L:1, Name: Karl, Surname: Marx" in r )
 	
 	def test_file ( self ):
-		r = process_rows (  _TEST_DIR + "/test.tsv" )
+		r = self.process_rows (  _TEST_DIR + "/test.tsv" )
 		self.assertTrue ( "Expected string not found in the result!", "L:2, Name: Charles, Surname: Babbage" in r )
 	
 
