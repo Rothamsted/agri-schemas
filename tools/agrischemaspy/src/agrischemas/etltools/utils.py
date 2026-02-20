@@ -127,13 +127,25 @@ class XNamespaceManager ( wrapt.ObjectProxy ):
 		"""
 		return self.to_lang ( 'prefix {prefix}: <{uri}>' )
 
-	def load ( self, doc_uri, rdf_format = None ):
+	def load ( self, doc_uri: str|None = None, rdf_format: str|None = None, data: str|None = None ) -> None:
 		"""
 			Loads namespace definitions from a file in formats like .ttl or .rdf. 
 			Uses rdflib.Graph.parse().
+
+			If `doc_uri` is set, it loads the namespaces from the given file.
+			If `data` is set, it loads the namespaces from the given RDF string.
+			One, and only one of the two must be given.
+
+			`rdf_format` is "turtle“ by default.
 		"""
+
+		if not ( doc_uri or data ):
+			raise ValueError ( f"{self.__class__.__name__}: data must be loaded from either doc_uri or data parameter" )
+		if doc_uri and data:
+			raise ValueError ( f"{self.__class__.__name__}: data must be loaded from either doc_uri or data parameter, not both" )
+
 		g = Graph ()
-		g.parse ( doc_uri, format = rdf_format )
+		g.parse ( doc_uri, data = data, format = rdf_format )
 		self.merge_ns_manager ( g.namespace_manager )
 	
 	def merge_ns_manager ( self, nsm: NamespaceManager ):

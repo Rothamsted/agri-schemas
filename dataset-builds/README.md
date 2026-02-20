@@ -15,6 +15,5 @@ Simple applications (eg, query libraries) that consume the AgriSchemas datasets 
 
 ## TODO
 ### agrischemas-pycli
-* namespaces, improve init, see if ':' works
 * Move SPARQL query functions to generic utils
 * Comments (search TODO)

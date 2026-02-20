@@ -15,6 +15,10 @@ _TEST_DIR = os.path.abspath (
 
 class XNamespaceManagerTest ( unittest.TestCase ):
 
+	"""
+	The tests implicitly test `load()` from a file, since that's used to populate the `DEFAULT_NAMESPACES`.
+	"""
+
 	def test_uri ( self ):
 		self.assertEqual( DEFAULT_NAMESPACES.uri ( "ex:test" ), "http://www.example.com/ns/test", "uri() didn't work!" )
 	
@@ -60,6 +64,16 @@ class XNamespaceManagerTest ( unittest.TestCase ):
 		importlib.reload ( utl )
 		self.assertEqual( utl.DEFAULT_NAMESPACES.ns ( 'foo:' ), "http://www.foo.com/ns/", "NAMESPACES_PATH didn't work!" )
 
+	def test_load_from_string ( self ):
+		ex_ns, ex2_ns = "http://www.example.com/ns/", "http://www.example.com/ns2/"
+		ns_mgr = XNamespaceManager ()
+		ns_mgr.load ( data = f"""
+			@prefix ex: <{ex_ns}> .
+			@prefix ex2: <{ex2_ns}> .
+		""", rdf_format = "turtle" )
+		self.assertEqual( ns_mgr.ns ( 'ex:' ), ex_ns, "load from string didn't work!" )
+		self.assertEqual( ns_mgr.ns ( 'ex2:' ), ex2_ns, "load from string didn't work!" )
+
 
 def process_rows ( rows_src ):
 	l = 0; res = "";
@@ -68,7 +82,7 @@ def process_rows ( rows_src ):
 		l += 1
 	return res
 
-class ProcessDocRowsTest ( unittest.TestCase ):
+class NormalizeRowsSourceTest ( unittest.TestCase ):
 	
 	def test_list ( self ):
 		r = process_rows ( [ ["John", "Smith"], ["Karl", "Marx"], ["Emmanuel", "Kant"] ] )

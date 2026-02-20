@@ -15,7 +15,7 @@ from agrischemas.etltools.utils import XNamespaceManager
 log = logging.getLogger( __name__ )
 
 AGRISCHEMAS_NS_MGR = XNamespaceManager()
-AGRISCHEMAS_NS_MGR.graph.parse (
+AGRISCHEMAS_NS_MGR.load (
 	data = """
 	@prefix bk: <http://knetminer.org/data/rdf/terms/biokno/>.
 	@prefix bkr: <http://knetminer.org/data/rdf/resources/>.
@@ -30,8 +30,7 @@ AGRISCHEMAS_NS_MGR.graph.parse (
 	@prefix schema: <https://schema.org/>.
 	@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 	@prefix : <http://knetminer.org/data/rdf/terms/local/>.
-	""",
-	format = "turtle"
+	"""
 )
 """
 Common namespace definitions used in the AgriSchemas clients.
