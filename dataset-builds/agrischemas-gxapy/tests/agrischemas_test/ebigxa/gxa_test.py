@@ -65,6 +65,11 @@ class GxaTest ( XTestCase ):
 	
 	# TODO: Agroportal isn't so stable
 	def test_gxa_conditions ( self ):
+
+		# DEBUG, use it when AgroPortal is down
+		# from agrischemas.ebigxa.gxa import annotate_condition
+		# annotate_condition.default_annotator = "BioPortal"
+
 		cond_labels = [ 'pericarp', 'Seed growth', '10 days after anthesis', '24 hours', '3 weeks' ]
 		rdf = rdf_gxa_namespaces()
 		rdf += rdf_gxa_conditions ( cond_labels, None )

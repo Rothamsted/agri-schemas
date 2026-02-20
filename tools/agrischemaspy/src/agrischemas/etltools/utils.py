@@ -22,7 +22,7 @@ import traceback
 import urllib
 import unittest
 from typing import Generator, Any, Union
-
+from warnings import deprecated
 
 
 from pyparsing import ParseException, TextIO
@@ -463,13 +463,16 @@ def download_files (
 		download_file ( **item )
 
 
-"""
-	TODO: comment me
-	TODO: meh! with pytest and assertpy, this is not needed, it can be replaced by something like:
-	`assertThat ( sparql_ask ( graph, ask_query ), "It works!" ).isTrue ()`, 
-	or `assert sparql_ask ( graph, ask_query ), "It didn't work!"`.
-"""
+@deprecated ( "Not needed with pytest and assertpy, see class comments" )
 class XTestCase ( unittest.TestCase ):
+	"""
+	TODO: comment me
+	
+	With pytest and assertpy, this is not needed, it can be replaced by something like:
+	`assert_that ( sparql_ask ( graph, ask_query ), "It works!" ).isTrue ()`, 
+	or `assert sparql_ask ( graph, ask_query ), "It didn't work!"`.
+	"""
+
 	def assert_rdf ( self, graph, ask_query, fail_msg ):
 		self.assertTrue ( sparql_ask ( graph, ask_query ), fail_msg )		
 

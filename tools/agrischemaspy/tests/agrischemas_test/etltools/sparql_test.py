@@ -1,9 +1,10 @@
 from typing import Generator
 import pytest
-from agrischemas.clients.utils import sparql_run_construct, sparql_run
-from rdflib import Graph, Literal, URIRef
-
+from rdflib import Graph
 from assertpy import assert_that
+
+from agrischemas.etltools.sparql import sparql_run_construct, sparql_run
+from agrischemas.config import AGRISCHEMAS_NS_MGR, ME_NS
 
 def test_sparql_run_construct_basic ():
 	"""
@@ -29,8 +30,9 @@ def test_sparql_run_construct_basic ():
 		format = "turtle" 
 	)
 
+	EX_NS = "http://example.org/"
 	sparql_query = """
-	PREFIX ex: <http://example.org/>
+	PREFIX ex: <%s>
 	PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 	CONSTRUCT {
@@ -44,9 +46,9 @@ def test_sparql_run_construct_basic ():
 		?person ex:knows ?friend.
 		?friend rdfs:label ?friendLabel.
 	}
-	"""
+	""" % EX_NS
 
-	sparql_params = { "person": "<http://example.org/a>" }
+	sparql_params = { "person": f"<{EX_NS}a>" }
 	result = sparql_run_construct ( sparql_query, sparql_params, sparql_endpoint = g )
 
 	assert_that ( result, "Result type is correct" ).is_instance_of ( list )
@@ -56,9 +58,9 @@ def test_sparql_run_construct_basic ():
 	assert_that ( result, "Result has the expected data" )\
 		.is_equal_to ( 
 			{ 
-				"@id": "http://example.org/a",
-				"http://example.org/label": [ { "@value": "Example A" } ],
-				"http://example.org/friendLabel": [ { "@value": "Example B" } ]
+				"@id": f"{EX_NS}a",
+				f"{EX_NS}label": [ { "@value": "Example A" } ],
+				f"{EX_NS}friendLabel": [ { "@value": "Example B" } ]
 			}
 		)	
 
@@ -66,16 +68,7 @@ def test_sparql_run_construct_basic ():
 @pytest.mark.integration
 def test_sparql_run_construct_knetminer_endpoint ():
 	# TODO: as above, factorise namespaces
-	sparql_query = """
-		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-		PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-		PREFIX owl: <http://www.w3.org/2002/07/owl#>
-		PREFIX dc: <http://purl.org/dc/elements/1.1/>
-		PREFIX dcterms: <http://purl.org/dc/terms/>
-		PREFIX agri: <http://agrischemas.org/>
-		PREFIX bioschema: <https://bioschemas.org/>
-		PREFIX schema: <https://schema.org/>
-		PREFIX : <https://foo.com/>
+	sparql_query = AGRISCHEMAS_NS_MGR.to_sparql () + """
 
 		CONSTRUCT {
 			?study :title ?studyTitle;
@@ -101,23 +94,14 @@ def test_sparql_run_construct_knetminer_endpoint ():
 	assert_that ( result, "Result has the expected object" ).is_instance_of ( dict )
 	assert_that ( result, "Result has the expected data" )\
 		.contains_entry ( 
-			{ "https://foo.com/title": [ { "@value": "Novel Target Genes Regulated By LEUNIG" } ] },
-			{ "https://foo.com/accession": [ { "@value": "E-GEOD-20227" } ] },
-			{ "https://foo.com/specie": [ { "@value": "Arabidopsis thaliana" } ] }
+			{ f"{ME_NS}title": [ { "@value": "Novel Target Genes Regulated By LEUNIG" } ] },
+			{ f"{ME_NS}accession": [ { "@value": "E-GEOD-20227" } ] },
+			{ f"{ME_NS}specie": [ { "@value": "Arabidopsis thaliana" } ] }
 		)
 	
 @pytest.mark.integration
 def test_sparql_run_knetminer_endpoint ():
-	sparql_query = """
-		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-		PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-		PREFIX owl: <http://www.w3.org/2002/07/owl#>
-		PREFIX dc: <http://purl.org/dc/elements/1.1/>
-		PREFIX dcterms: <http://purl.org/dc/terms/>
-		PREFIX agri: <http://agrischemas.org/>
-		PREFIX bioschema: <https://bioschemas.org/>
-		PREFIX schema: <https://schema.org/>
-
+	sparql_query = AGRISCHEMAS_NS_MGR.to_sparql () + """
 		SELECT ?studyAcc ?foo
 		WHERE {
 			?study a bioschema:Study;

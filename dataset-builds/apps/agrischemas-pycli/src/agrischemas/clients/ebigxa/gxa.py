@@ -5,10 +5,10 @@ TODO: comment me!
 from dataclasses import dataclass, field
 import enum
 from typing import Generator
-from agrischemas.clients.config import AGRISCHEMAS_SPARQL_ENDPOINT
-from agrischemas.clients.utils import (
-	sparql_run_construct, sparql_run, strings_2_sparql_list, AGRISCHEMAS_NS_MGR, ME_NS
+from agrischemas.etltools.sparql import (
+	sparql_run_construct, sparql_run, strings_2_sparql_list
 )
+from agrischemas.config import AGRISCHEMAS_NS_MGR, ME_NS
 
 from agrischemas.etltools.virtuoso import lucene_to_bif_contains
 

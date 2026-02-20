@@ -11,9 +11,11 @@ files = []
 develop = true
 
 [package.dependencies]
+assertpy = "^1.1"
 brandizpyes = "^1.1.3"
 luqum = "^1.0.0"
 rdflib = "^7.5.0"
+requests = "^2.32.5"
 sh = "^2.2.2"
 wrapt = "^2.1.1"
 
@@ -27,7 +29,7 @@ version = "1.1"
 description = "Simple assertion library for unit testing in python with a fluent API"
 optional = false
 python-versions = "*"
-groups = ["dev"]
+groups = ["main", "dev"]
 files = [
     {file = "assertpy-1.1.tar.gz", hash = "sha256:acc64329934ad71a3221de185517a43af33e373bb44dc05b5a9b174394ef4833"},
 ]
@@ -578,4 +580,4 @@ dev = ["pytest", "setuptools"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "7141ceb9097fd29e18f2571e0fa10a7e26b83faa7f1f7853956397cf77963fbd"
+content-hash = "ddbbd9bddc6ed11e78311df2609adf36eb328e1080119b9202ae85a626dc47ed"

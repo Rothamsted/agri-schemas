@@ -1,51 +1,19 @@
-
 import logging
 from typing import Any, Generator
 from rdflib import Graph
-import rdflib
 from rdflib.plugins.stores.sparqlstore import SPARQLStore
-
-from agrischemas.clients.config import AGRISCHEMAS_SPARQL_ENDPOINT
 import json as json_module
-
 import requests
 
-from agrischemas.etltools.utils import XNamespaceManager
+from agrischemas.config import AGRISCHEMAS_SPARQL_ENDPOINT
 
 log = logging.getLogger( __name__ )
 
-AGRISCHEMAS_NS_MGR = XNamespaceManager()
-AGRISCHEMAS_NS_MGR.load (
-	data = """
-	@prefix bk: <http://knetminer.org/data/rdf/terms/biokno/>.
-	@prefix bkr: <http://knetminer.org/data/rdf/resources/>.
-	@prefix bkg: <http://knetminer.org/data/rdf/resources/graphs/>.
-	@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-	@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-	@prefix owl: <http://www.w3.org/2002/07/owl#>.
-	@prefix dc: <http://purl.org/dc/elements/1.1/>.
-	@prefix dcterms: <http://purl.org/dc/terms/>.
-	@prefix agri: <http://agrischemas.org/>.
-	@prefix bioschema: <https://bioschemas.org/>.
-	@prefix schema: <https://schema.org/>.
-	@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-	@prefix : <http://knetminer.org/data/rdf/terms/local/>.
-	"""
-)
-"""
-Common namespace definitions used in the AgriSchemas clients.
-TODO: used by data builders too, move to a core library.
-"""
 
-ME_NS = AGRISCHEMAS_NS_MGR.ns ( ":" )
-"""
-TODO: comment me!
-"""
-
-def sparql_run_construct ( 
+def sparql_run_construct (
 	sparql_query: str,
 	sparql_params: dict[str, Any] | None = None,
-	sparql_endpoint: str | Graph = AGRISCHEMAS_SPARQL_ENDPOINT 
+	sparql_endpoint: str | Graph = AGRISCHEMAS_SPARQL_ENDPOINT
 ) -> dict[Any, Any]:
 	"""
 	Run a SPARQL CONSTRUCT query against the given endpoint, and return the result as a JSON dictionary.
@@ -82,7 +50,7 @@ def sparql_run_construct (
 def sparql_run ( 
 	sparql_query: str,
 	sparql_params: dict[str, Any] | None = None,
-	sparql_endpoint: str | Graph = AGRISCHEMAS_SPARQL_ENDPOINT 
+	sparql_endpoint: str | Graph = AGRISCHEMAS_SPARQL_ENDPOINT
 ) -> Generator[ dict[str, Any], None, None ]:
 	"""
 	Run a SPARQL SELECT query against the given endpoint, and return the result as a generator of dictionaries.

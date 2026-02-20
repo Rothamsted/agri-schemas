@@ -22,6 +22,7 @@ sh = "^2.2.2"
 luqum = "^1.0.0"
 wrapt = "^2.1.1"
 assertpy = "^1.1"
+requests = "^2.32.5"
 
 
 [build-system]
@@ -35,6 +36,9 @@ dev = [
 
 [tool.pytest.ini_options]
 addopts = [ "-v" ]
+markers = [
+  "integration: Marker for integration tests"
+]
 # You don't need them, it's already managed by our own logging config helper
 # log_cli = true
 # log_level = "DEBUG"
