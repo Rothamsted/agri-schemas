@@ -93,23 +93,34 @@ class TestNormalizeRowsSource:
 		return res
 
 
-	def test_list ( self ):
-		r = self.process_rows ( [ ["John", "Smith"], ["Karl", "Marx"], ["Emmanuel", "Kant"] ] )
-		self.assertTrue ( "Expected string not found in the result!", "L:1, Name: Karl, Surname: Marx" in r )
-	
-	def test_file ( self ):
-		r = self.process_rows (  _TEST_DIR + "/test.tsv" )
-		self.assertTrue ( "Expected string not found in the result!", "L:2, Name: Charles, Surname: Babbage" in r )
+	@staticmethod
+	def test_list ():
+		r = TestNormalizeRowsSource.process_rows ( [ ["John", "Smith"], ["Karl", "Marx"], ["Emmanuel", "Kant"] ] )
+		assert_that (
+			r,
+			"Expected string found in the result"
+		).contains ( "L:1, Name:Karl, Surname:Marx" )
+
+	@staticmethod
+	def test_file ():
+		r = TestNormalizeRowsSource.process_rows (  _TEST_DIR + "/test.tsv" )
+		assert_that (
+			r,
+			"Expected string found in the result"
+		).contains ( "L:2, Name:Charles, Surname:Babbage" )
 	
 
-class TestDownloadFiles ( unittest.TestCase ):
-	def test_basics ( self ):
+class TestDownloadFiles:
+	
+	@staticmethod
+	def test_basics ():
 		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
 		
 		download_file ( "https://schema.org/version/latest/schemaorg-current-https.ttl", "/tmp/schema.ttl", "schema.org" )
-		self.assertTrue ( exists ( "/tmp/schema.ttl" ), "test file not downloaded!" )
+		assert_that ( exists ( "/tmp/schema.ttl" ), "Test file downloaded" ).is_true ()
 
-	def test_multi ( self ):
+	@staticmethod
+	def test_multi ():
 		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
 		if exists ( "/tmp/dcterms.ttl" ): os.remove ( "/tmp/dcterms.ttl" )
 
@@ -126,10 +137,11 @@ class TestDownloadFiles ( unittest.TestCase ):
 			out_dir = "/tmp"
 		)
 
-		self.assertTrue ( exists ( "/tmp/schema.ttl" ), "test file not downloaded (schema)!" )
-		self.assertTrue ( exists ( "/tmp/dcterms.ttl" ), "test file not downloaded (dcterms)!" )
+		assert_that ( exists ( "/tmp/schema.ttl" ), "Test file downloaded (schema)" ).is_true ()
+		assert_that ( exists ( "/tmp/dcterms.ttl" ), "Test file downloaded (dcterms)" ).is_true ()
 
-	def test_overwrite ( self ):
+	@staticmethod
+	def test_overwrite ():
 		if exists ( "/tmp/schema.ttl" ): os.remove ( "/tmp/schema.ttl" )
 		dump_output ( lambda out: print ( "1", file = out ), "/tmp/schema.ttl" )
 		
@@ -138,5 +150,5 @@ class TestDownloadFiles ( unittest.TestCase ):
 			overwrite = True
 		)
 		
-		self.assertTrue ( getsize ( "/tmp/schema.ttl" ) > 1000, "overwrite flag didn't work" )
+		assert_that ( getsize ( "/tmp/schema.ttl" ) > 1000, "overwrite flag works" ).is_true ()
 
