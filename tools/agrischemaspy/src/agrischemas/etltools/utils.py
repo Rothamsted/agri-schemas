@@ -257,7 +257,9 @@ def hash_generator ( g, ignore_case = True, sort = True ):
 	return hash_string ( "".join ( l ), ignore_case )
 
 
-class BinaryWriter:
+# TODO: remove, as explained below, we have replaced it with bz2.open() in "wt" mode.
+# Leaving it here for a while, just in case.
+class _BinaryWriter:
 	"""
 	An adapter to send a string writer to a function that accepts a binary writer. 
 
@@ -282,7 +284,10 @@ class BinaryWriter:
 	finally:
 		out.close ()
 
-	TODO: wrap it into a Python Protocol.
+	TODO: review, probably bz2.open() with mode = "wt" makes this unnecessary.
+	TODO: IF needed, wrap it into a Python Protocol, DON'T inherit base classes io.IOBase for close()
+	or io.TextIOBase for write(), since these drag many other methods into the place. If you want, 
+	write separated Writeable and Closeable Protocols.
 	"""	
 
 	def __init__ ( self, bin_out, encoding = "utf-8", errors = 'strict' ):

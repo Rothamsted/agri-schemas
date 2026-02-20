@@ -21,7 +21,10 @@ def test_gxa_rdf_all_save_E_MTAB_3287 ( gxa_analysis_types ):
 	randomly, maybe due with some issue with the GXA or BioStudies API.
 	"""
 	acc = "E-MTAB-3287"
-	gxa_rdf_all_save ( acc, gxa_analysis_types [ acc ], f"/tmp/{acc}.ttl" ) 
+	is_compress = True # To test the compression mode
+	fout = f"/tmp/{acc}.ttl"
+	if is_compress: fout += ".bz2"
+	gxa_rdf_all_save ( acc, gxa_analysis_types [ acc ], fout, compress = is_compress ) 
 
 @pytest.mark.skip ( reason = "Too time consuming and already covered elsewhere" )
 def test_dex_conditions_parsing_E_MTAB_8326 ():

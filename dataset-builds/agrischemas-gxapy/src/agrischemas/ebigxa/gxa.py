@@ -11,7 +11,7 @@ from urllib.request import urlopen
 from agrischemas.biotools.bioportal import AgroPortalClient, BioPortalClient
 from agrischemas.ebigxa.ae import ae_get_experiment_accessions, make_ae_exp_uri, ae_get_experiment_descriptor, rdf_ae_experiment
 from agrischemas.ebigxa.utils import rdf_gxa_namespaces
-from agrischemas.etltools.utils import make_id, normalize_rows_source, uri2accession, js_from_file, js_to_file, BinaryWriter
+from agrischemas.etltools.utils import make_id, normalize_rows_source, uri2accession, js_from_file, js_to_file
 from agrischemas.kpyutils import web
 
 
@@ -120,7 +120,7 @@ def gxa_rdf_all_save (
 	target_gene_ids = None, compress = False
 ):
 	out = open ( file_path, mode = "w" ) if not compress \
-				else BinaryWriter ( bz2.open ( file_path, "w" ) )
+				else bz2.open ( file_path, "wt" )
 	try:
 		gxa_rdf_all ( exp_acc, gxa_analysis_type, out, target_gene_ids )
 	finally:
