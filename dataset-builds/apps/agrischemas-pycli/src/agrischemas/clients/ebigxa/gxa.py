@@ -252,10 +252,28 @@ class GeneExpressionCounts:
 	The gene x study counts are not very significant, since mostly they're around 1.
 	"""
 
+def _get_search_study_tax_id_filter ( tax_id: str ) -> str:
+	if not tax_id: return ""
+	return """
+		?specie schema:subjectOf ?study;
+			bioschema:taxonomicRange ?taxon
+		.
 
-def search_study_accessions ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> Generator[tuple[str, float]]:
+		BIND ( REPLACE ( STR ( ?taxon ), "http://purl.bioontology.org/ontology/NCBITAXON/", "" ) AS ?taxId )
+  	FILTER ( ?taxId = "%s" )		
+	""" % tax_id
+
+
+def search_study_accessions ( keywords: str, tax_id: str = None, result_limit: int = 1000 ) -> Generator[tuple[str, float]]:
 	"""
-	TODO: comment me!
+	Search study accessions, based search criteria. 
+
+	This is used by :func:`search_studies`, which add study details to the basic result containing accessions and search scores.
+
+	Returns a generator of (study accession, search score) tuples, ordered by significance (i.e., top scores).
+
+	If tax_id is omitted, all species are included.
+	keywords is mandatory here, use :func:`fetch_all_study_accessions` to get all studies or all about a given TAX ID.
 	
 	TODO: use Elastic and move away from the rubbish bif:contains()
 	TODO: add publication fields
@@ -272,12 +290,7 @@ def search_study_accessions ( keywords: str, tax_id: str, result_limit: int = 10
 				dc:title ?title ;
 				schema:description ?desc .
 
-		?specie schema:subjectOf ?study;
-			bioschema:taxonomicRange ?taxon
-		.
-
-		BIND ( REPLACE ( STR ( ?taxon ), "http://purl.bioontology.org/ontology/NCBITAXON/", "" ) AS ?taxId )
-  	FILTER ( ?taxId = "?paramTaxId" )
+		?paramTaxIdFilter
 
 		# TODO: for now, we are interested in differential analyses only, remove if 
 		# you want to extend it to baseline.
@@ -300,13 +313,64 @@ def search_study_accessions ( keywords: str, tax_id: str, result_limit: int = 10
 	LIMIT ?paramResultLimit
   """
 
+	param_tax_id_filter = _get_search_study_tax_id_filter ( tax_id )
+
 	return ( (row [ 'acc' ], float ( row [ 'score' ] ) )
 		for row in
 			sparql_run ( 
 				query, 
 				sparql_params = { 
 					"paramKeywords": lucene_to_bif_contains ( keywords ),
-					"paramTaxId": tax_id,
+					"paramTaxIdFilter": param_tax_id_filter,
+					"paramResultLimit": str ( result_limit ) 
+				}
+			) 
+	)
+
+
+def fetch_all_study_accessions ( tax_id: str, result_limit: int = 1000 ) -> Generator[tuple[str, float]]:
+	"""
+	This is a simplified version of :func:`search_study_accessions` that returns all studies without keywords filtering and filtering by tax_id only if this is 
+	provided. To keep the same return type, it returns a dummy score of 0 for all studies.
+
+	See :func:`search_studies` for details.
+	
+	TODO: add publication fields
+	"""
+
+	query = AGRISCHEMAS_NS_MGR.to_sparql () + \
+	"""
+
+	SELECT ?acc
+	WHERE
+	{
+		?study a bioschema:Study ;
+				schema:identifier ?acc;
+				dc:title ?title ;
+				schema:description ?desc .
+
+		?specie schema:subjectOf ?study;
+			bioschema:taxonomicRange ?taxon
+		.
+
+		?paramTaxIdFilter
+
+		# TODO: for now, we are interested in differential analyses only, remove if 
+		# you want to extend it to baseline.
+		#
+		?study bioschema:studyProcess/schema:additionalProperty bkr:gxa_analysis_type_differential.
+	}
+	LIMIT ?paramResultLimit
+  """
+
+	param_tax_id_filter = _get_search_study_tax_id_filter ( tax_id )
+
+	return ( ( row [ 'acc' ], 0 )
+		for row in
+			sparql_run ( 
+				query, 
+				sparql_params = { 
+					"paramTaxIdFilter": param_tax_id_filter,
 					"paramResultLimit": str ( result_limit ) 
 				}
 			) 
@@ -314,8 +378,7 @@ def search_study_accessions ( keywords: str, tax_id: str, result_limit: int = 10
 
 
 
-
-def search_studies ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> SearchStudiesResult:
+def search_studies ( keywords: str = None, tax_id: str = None, result_limit: int = 1000 ) -> SearchStudiesResult:
 	"""
 	Searches studies by keywords. The keywords are searched in relevant study and condition fields
 	(title, description, etc).
@@ -324,10 +387,18 @@ def search_studies ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> S
 	and based on the study data as evidence. (TODO: still missing)
 
 	The search score is computed by weighting scores in the various searched fields.
+
+	If the keywords parameter is omitted, it returns all studies for the given tax_id.
+	Similarly, tax_id can be omitted, to search across all species, and all studies are 
+	returned if neither parameter is given.
+
+	TODO: add publication fields to both the keyword search and results.
 	"""
 
 	# First, the accessions
-	accs_n_scores = search_study_accessions ( keywords, tax_id, result_limit )
+	accs_n_scores = \
+		search_study_accessions ( keywords, tax_id, result_limit ) if keywords \
+		else fetch_all_study_accessions ( tax_id, result_limit )
 	if not accs_n_scores: return SearchStudiesResult ()
 
 	accs_n_scores = { acc: score for acc, score in accs_n_scores }
@@ -337,7 +408,7 @@ def search_studies ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> S
 	query = AGRISCHEMAS_NS_MGR.to_sparql () + \
 	"""
 
-	SELECT ?study ?acc ?title ?description ?gxaAnalysis ?aeTech
+	SELECT ?study ?acc ?title ?description ?taxId ?gxaAnalysis ?aeTech
 	WHERE {
 		?study schema:identifier ?acc.
 
@@ -348,8 +419,17 @@ def search_studies ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> S
 			schema:description ?description;
 			bioschema:studyProcess ?design.
 
-		?design schema:additionalProperty ?gxaAnalysis, ?aeTech.
+		# TAX ID	
+		#
+		?specie schema:subjectOf ?study;
+			bioschema:taxonomicRange ?taxon
+		.
+		BIND ( REPLACE ( STR ( ?taxon ), "http://purl.bioontology.org/ontology/NCBITAXON/", "" ) AS ?taxId )
 
+		
+		# Tech and Analysis type
+		#
+		?design schema:additionalProperty ?gxaAnalysis, ?aeTech.
 		?gxaAnalysis schema:propertyID "gxaAnalysisType".
 		?aeTech schema:propertyID "aeTechnologyType".
 	}
@@ -376,8 +456,8 @@ def search_studies ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> S
 
 	sparql_params = { "paramAccs": strings_2_sparql_list ( accs ) }
 	for row in sparql_run ( query, sparql_params = sparql_params ):
-		study_uri, study_acc, title, description, analysis_type, technology_type = \
-			row [ 'study' ], row [ 'acc' ], row [ 'title' ], row [ 'description' ], \
+		study_uri, study_acc, title, description, row_tax_id, analysis_type, technology_type = \
+			row [ 'study' ], row [ 'acc' ], row [ 'title' ], row [ 'description' ], row [ 'taxId' ], \
 			gxa_analysis_uri_2_enum ( row [ 'gxaAnalysis' ] ), \
 			ae_tech_uri_2_enum ( row [ 'aeTech' ] )
 
@@ -388,7 +468,7 @@ def search_studies ( keywords: str, tax_id: str, result_limit: int = 1000 ) -> S
 			description = description,
 			analysis_type = analysis_type,
 			technology_type = technology_type,
-			tax_id = tax_id
+			tax_id = row_tax_id
 		)
 
 	return result

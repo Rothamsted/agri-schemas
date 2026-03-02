@@ -1,3 +1,4 @@
+from unittest import result
 from assertpy import assert_that
 import pytest
 
@@ -51,7 +52,34 @@ def test_search_studies ():
 		.contains ( "Arabidopsis shoot meristem transcriptome during floral" )
 	assert_that ( test_study.description, "Test study has the right description" )\
 		.contains ( "mRNA levels in shoot apical meristems at 3 time points" )
-	
+
+
+@pytest.mark.integration
+def test_search_studies_no_keywords ():
+	tax_id = "3702"
+	result: SearchStudiesResult = search_studies ( keywords = None, tax_id = tax_id, result_limit = 10 )
+	assert_that ( result.studies, "Result contains some studies" ).is_not_empty ()
+	assert_that ( all ( score == 0 for score in result.study2text_score.values () ), "Scores are 0" )\
+		.is_true ()
+
+
+@pytest.mark.integration
+def test_search_studies_no_tax_id ():
+	keywords = 'effect'
+	result: SearchStudiesResult = search_studies ( keywords = keywords, tax_id = None, result_limit = 10 )
+	assert_that ( result.studies, "Result contains some studies" ).is_not_empty ()
+	assert_that ( all ( score > 0 for score in result.study2text_score.values () ), "Scores are valid" )\
+		.is_true ()
+	check_two_species_in_studies ( result )
+
+
+def test_search_studies_all ():
+	result: SearchStudiesResult = search_studies ( result_limit = 100 )
+	assert_that ( result.studies, "Result contains some studies" ).is_not_empty ()
+	assert_that ( all ( score == 0 for score in result.study2text_score.values () ), "Scores are 0" )\
+		.is_true ()
+	check_two_species_in_studies ( result )
+
 
 @pytest.mark.integration
 def test_fetch_gene_expression ():
@@ -133,3 +161,14 @@ def test_fetch_gene_expression_counts ():
 	result = fetch_gene_expression_counts ( gene_accs = gene_accs, study_accs = study_accs )
 	assert_that ( result, "Result is correct" ).is_equal_to ( expected_result )
 	
+
+def check_two_species_in_studies ( result: SearchStudiesResult ):
+	"""
+	Verifies a study search without TAX ID filter returns at least 2 species.
+	"""
+	for tax_params in [ ( "3702", "Arabidopsis" ), ( "4565", "T. aestivum" ) ]:
+		tax_id, tax_name = tax_params
+		assert_that ( 
+			any ( tax_id in study.tax_id for study in result.studies.values () ), 
+			f"Result contains {tax_name} studies" 
+		).is_true ()
