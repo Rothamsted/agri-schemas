@@ -1,13 +1,17 @@
-from unittest import result
-from assertpy import assert_that
-import pytest
-
-from agrischemas.clients.ebigxa.gxa import (
-	FetchGeneExpressionResult, fetch_gene_expression, fetch_gene_expression_counts, GeneExpressionCounts, 
-	search_studies, search_study_accessions, SearchStudiesResult, AnalysisType, TechnologyType
-)
-
 from logging import getLogger
+
+import pytest
+from assertpy import assert_that
+
+from agrischemas.clients.ebigxa.gxa import (AnalysisType,
+                                            FetchGeneExpressionResult,
+                                            GeneExpressionCounts,
+                                            SearchStudiesResult,
+                                            TechnologyType,
+                                            fetch_gene_expression,
+                                            fetch_gene_expression_counts,
+                                            search_studies,
+                                            search_study_accessions)
 
 log = getLogger ( __name__ )
 

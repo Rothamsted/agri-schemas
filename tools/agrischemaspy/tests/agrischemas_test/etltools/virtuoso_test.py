@@ -1,7 +1,9 @@
+from logging import getLogger
+
 import pytest
+
 from agrischemas.etltools.virtuoso import lucene_to_bif_contains
 
-from logging import getLogger
 log = getLogger ( __name__ )
 
 @pytest.mark.parametrize (

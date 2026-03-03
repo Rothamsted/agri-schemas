@@ -1,5 +1,5 @@
 from posixpath import dirname
-from textwrap import dedent
+
 from agrischemas.etltools.utils import XNamespaceManager
 
 

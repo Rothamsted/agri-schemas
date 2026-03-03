@@ -12,6 +12,21 @@ files = [
 ]
 
 [[package]]
+name = "autoflake"
+version = "2.3.3"
+description = "Removes unused imports and unused variables"
+optional = false
+python-versions = ">=3.10"
+groups = ["dev"]
+files = [
+    {file = "autoflake-2.3.3-py3-none-any.whl", hash = "sha256:a51a3412aff16135ee5b3ec25922459fef10c1f23ce6d6c4977188df859e8b53"},
+    {file = "autoflake-2.3.3.tar.gz", hash = "sha256:c24809541e23999f7a7b0d2faadf15deb0bc04cdde49728a2fd943a0c8055504"},
+]
+
+[package.dependencies]
+pyflakes = ">=3.0.0"
+
+[[package]]
 name = "brandizpyes"
 version = "1.1.3"
 description = "Brandiz Pyes - Python Utilities"
@@ -202,6 +217,21 @@ files = [
 ]
 
 [[package]]
+name = "isort"
+version = "8.0.1"
+description = "A Python utility / library to sort Python imports."
+optional = false
+python-versions = ">=3.10.0"
+groups = ["dev"]
+files = [
+    {file = "isort-8.0.1-py3-none-any.whl", hash = "sha256:28b89bc70f751b559aeca209e6120393d43fbe2490de0559662be7a9787e3d75"},
+    {file = "isort-8.0.1.tar.gz", hash = "sha256:171ac4ff559cdc060bcfff550bc8404a486fee0caab245679c2abe7cb253c78d"},
+]
+
+[package.extras]
+colors = ["colorama"]
+
+[[package]]
 name = "luqum"
 version = "1.0.0"
 description = "A Lucene query parser generating ElasticSearch queries and more !"
@@ -254,6 +284,18 @@ groups = ["main"]
 files = [
     {file = "ply-3.11-py2.py3-none-any.whl", hash = "sha256:096f9b8350b65ebd2fd1346b12452efe5b9607f7482813ffca50c22722a807ce"},
     {file = "ply-3.11.tar.gz", hash = "sha256:00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3"},
+]
+
+[[package]]
+name = "pyflakes"
+version = "3.4.0"
+description = "passive checker of Python programs"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "pyflakes-3.4.0-py2.py3-none-any.whl", hash = "sha256:f742a7dbd0d9cb9ea41e9a24a918996e8170c799fa528688d40dd582c8265f4f"},
+    {file = "pyflakes-3.4.0.tar.gz", hash = "sha256:b24f96fafb7d2ab0ec5075b7350b3d2d2218eab42003821c06344973d3ea2f58"},
 ]
 
 [[package]]
@@ -557,4 +599,4 @@ dev = ["pytest", "setuptools"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "03f2315a2ce23e832b84e5c692eafc64163fc14862b56d906f1d7dc256e8951c"
+content-hash = "22bd2f2532bf49b610cfbbfc9f0a314438355b1fa5309806de6656e5b56bc48d"

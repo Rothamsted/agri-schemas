@@ -6,11 +6,11 @@
 	:author: Marco Brandizi
 '''
 
+import json
+import logging
 from urllib.parse import quote
 from urllib.request import urlopen
-import json
 
-import logging
 log = logging.getLogger ( __name__ )
 
 

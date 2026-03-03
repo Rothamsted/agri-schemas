@@ -1,10 +1,13 @@
 import logging
-import pytest
-from agrischemas.etltools.utils import js_from_file, XTestCase
-from agrischemas.ebigxa.ae import ae_get_experiment_accessions, rdf_ae_experiment, attribs2dict
-from agrischemas.ebigxa.utils import rdf_gxa_namespaces
-import rdflib
 import os
+
+import pytest
+import rdflib
+from agrischemas.etltools.utils import XTestCase, js_from_file
+
+from agrischemas.ebigxa.ae import (ae_get_experiment_accessions, attribs2dict,
+                                   rdf_ae_experiment)
+from agrischemas.ebigxa.utils import rdf_gxa_namespaces
 
 log = logging.getLogger ( __name__ )
 TEST_DATA_PATH = os.path.abspath ( os.path.dirname ( __file__ ) + "/../../resources" )

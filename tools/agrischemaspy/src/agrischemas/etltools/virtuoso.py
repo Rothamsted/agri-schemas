@@ -4,21 +4,10 @@ Utilities for Virtuoso-based SPARQL endpoints.
 """
 
 from luqum.parser import parser
-from luqum.tree import (
-	AndOperation,
-	OrOperation,
-	Not,
-	UnknownOperation,
-	Word,
-	Phrase,
-	Group,
-	SearchField,
-	Range,
-	Fuzzy,
-	Boost,
-	BoolOperation
-)
-from luqum.utils import UnknownOperationResolver, LuceneTreeTransformer, LuceneTreeVisitor, LuceneTreeVisitorV2
+from luqum.tree import (AndOperation, BoolOperation, Boost, Fuzzy, Group, Not,
+                        OrOperation, Phrase, Range, SearchField,
+                        UnknownOperation, Word)
+from luqum.utils import UnknownOperationResolver
 
 
 def lucene_to_bif_contains ( query: str ) -> str:

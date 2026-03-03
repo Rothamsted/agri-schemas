@@ -10,7 +10,9 @@ requires-python = ">=3.14"
 
 [dependency-groups]
 dev = [
-    "pytest (>=9.0.2,<10.0.0)"
+    "pytest (>=9.0.2,<10.0.0)",
+    "isort (>=8.0.1,<9.0.0)",
+    "autoflake (>=2.3.3,<3.0.0)"
 ]
 
 [tool.poetry]

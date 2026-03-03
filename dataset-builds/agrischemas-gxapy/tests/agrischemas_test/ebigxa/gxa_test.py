@@ -1,15 +1,14 @@
 import logging
-import unittest
-from agrischemas.ebigxa.gxa import ( 
-	gxa_get_analysis_types, rdf_gxa_conditions, rdf_gxa_tpm_levels,
-	load_filtered_genes, rdf_gxa_dex_levels, gxa_rdf_all
-)
-from agrischemas.ebigxa.utils import rdf_gxa_namespaces
-from agrischemas.etltools.utils import js_from_file, XTestCase
-import rdflib
 import os
+import unittest
 
-from brandizpyes.logging import logger_config
+import rdflib
+from agrischemas.etltools.utils import XTestCase, js_from_file
+
+from agrischemas.ebigxa.gxa import (gxa_get_analysis_types, gxa_rdf_all,
+                                    load_filtered_genes, rdf_gxa_conditions,
+                                    rdf_gxa_dex_levels, rdf_gxa_tpm_levels)
+from agrischemas.ebigxa.utils import rdf_gxa_namespaces
 
 log = logging.getLogger ( __name__ )
 TEST_DATA_PATH = os.path.abspath ( os.path.dirname ( __file__ ) + "/../../resources" )

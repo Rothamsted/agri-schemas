@@ -1,11 +1,13 @@
 # gxa_rdf_all_save ( EXPERIMENTS_JS [ wildcards.exp_acc ], fout, compress = True )
 
-import pytest
-from rdflib import Graph
-from agrischemas.ebigxa.gxa import gxa_get_analysis_types, gxa_rdf_all, gxa_rdf_all_save
-from agrischemas.etltools.utils import sparql_ask
-
 import logging
+
+import pytest
+from agrischemas.etltools.utils import sparql_ask
+from rdflib import Graph
+
+from agrischemas.ebigxa.gxa import (gxa_get_analysis_types, gxa_rdf_all,
+                                    gxa_rdf_all_save)
 
 log = logging.getLogger ( __name__ )
 

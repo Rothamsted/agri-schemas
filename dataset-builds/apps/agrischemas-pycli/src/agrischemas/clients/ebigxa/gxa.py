@@ -1,18 +1,17 @@
 """
-TODO: comment me!
+Utilities to query the GXA data through the AgrisSchemas SPARQL endpoint.
+See the tests for more usage examples.
 """
-
-from dataclasses import dataclass, field
 import enum
+from dataclasses import dataclass, field
+from logging import getLogger
 from typing import Generator
-from agrischemas.etltools.sparql import (
-	sparql_run_construct, sparql_run, strings_2_sparql_list
-)
-from agrischemas.config import AGRISCHEMAS_NS_MGR, ME_NS
 
+from agrischemas.config import AGRISCHEMAS_NS_MGR, ME_NS
+from agrischemas.etltools.sparql import (sparql_run, sparql_run_construct,
+                                         strings_2_sparql_list)
 from agrischemas.etltools.virtuoso import lucene_to_bif_contains
 
-from logging import getLogger
 log = getLogger ( __name__ )
 
 class TechnologyType ( enum.Enum ):
@@ -722,7 +721,6 @@ def fetch_gene_expression_by_condition (
 	"""
 	TODO: I'm not sure we need this. Surely, we'll develop it later.
 	"""
-	pass
 
 
 def fetch_gene_expression_counts_by_condition (
@@ -732,4 +730,3 @@ def fetch_gene_expression_counts_by_condition (
 	"""
 	TODO: as for :func:`fetch_gene_expression_by_condition`, not sure we need this.
 	"""
-	pass

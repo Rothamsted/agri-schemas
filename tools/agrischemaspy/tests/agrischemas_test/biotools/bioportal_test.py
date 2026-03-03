@@ -1,6 +1,8 @@
 import unittest
-from agrischemas.biotools.bioportal import BioPortalClient, AgroPortalClient
+
 from agrischemas.biotools import bioportal
+from agrischemas.biotools.bioportal import AgroPortalClient, BioPortalClient
+
 
 class BioPortalTest ( unittest.TestCase ):
 	

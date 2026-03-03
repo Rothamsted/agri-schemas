@@ -1,14 +1,14 @@
-from agrischemas.etltools.utils import DEFAULT_NAMESPACES, normalize_rows_source, XNamespaceManager
-from agrischemas.etltools.utils import download_file, download_files
-
-from brandizpyes.ioutils import dump_output
-
-import unittest, os
-from os.path import exists, getsize
-from rdflib.namespace import RDFS
 import importlib
+import os
+from os.path import exists, getsize
 
 from assertpy import assert_that
+from brandizpyes.ioutils import dump_output
+from rdflib.namespace import RDFS
+
+from agrischemas.etltools.utils import (DEFAULT_NAMESPACES, XNamespaceManager,
+                                        download_file, download_files,
+                                        normalize_rows_source)
 
 _TEST_DIR = os.path.abspath (
 	os.path.dirname (  __file__ ) + "/../../resources/etltools/"

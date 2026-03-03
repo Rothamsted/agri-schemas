@@ -6,38 +6,33 @@ Utilites about ETL pipelines, see the main package.
 :Date: 2020
 """
 
-from wsgiref import headers
-from brandizpyes.ioutils import dump_output
-
-from builtins import isinstance
+import csv
 import hashlib
+import io
 import json
 import logging.config
-import os, io, csv
-from os.path import dirname, abspath, isfile, exists
-import string, re
-from subprocess import run
-from sys import stdout, stderr
+import os
+import re
+import shutil
+import string
 import traceback
-import urllib
 import unittest
-from typing import Generator, Any, Union
+import urllib
+from builtins import isinstance
+from collections.abc import Iterable
+from os.path import exists, isfile
+from subprocess import run
+from sys import stdout
+from typing import Any, Generator
 from warnings import deprecated
 
-
+import wrapt
+from brandizpyes.ioutils import dump_output
 from pyparsing import ParseException, TextIO
 from rdflib import Graph, URIRef
 from rdflib.namespace import NamespaceManager
 from rdflib.term import Literal
 from rdflib.util import from_n3
-import yaml
-
-from functools import singledispatch
-import shutil
-
-from collections.abc import Iterable
-import wrapt
-
 
 """
 	Check that the environment variables expected by the ETL Tools is set. Raise an error

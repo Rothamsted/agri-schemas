@@ -1,12 +1,14 @@
+import os
+import shutil
 import unittest
-from agrischemas.etltools import sparqlmap
-from agrischemas.etltools.utils import get_jena_home, sparql_ask, DEFAULT_NAMESPACES
-import os, shutil
-from os.path import dirname, abspath
-
-import sh
+from os.path import abspath, dirname
 
 import rdflib
+import sh
+
+from agrischemas.etltools import sparqlmap
+from agrischemas.etltools.utils import (DEFAULT_NAMESPACES, get_jena_home,
+                                        sparql_ask)
 
 # Don't do it this way in production, use NAMESPACES_PATH
 DEFAULT_NAMESPACES.bind ( 'ex1', 'http://www.example.com/ns1/', True, True )

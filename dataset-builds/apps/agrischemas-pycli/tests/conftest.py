@@ -1,5 +1,7 @@
 import os
+
 from brandizpyes.logging import logger_config
+
 
 def pytest_configure ( config ):
 	"""

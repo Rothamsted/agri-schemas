@@ -9,11 +9,14 @@ from textwrap import dedent
 from urllib.request import urlopen
 
 from agrischemas.biotools.bioportal import AgroPortalClient, BioPortalClient
-from agrischemas.ebigxa.ae import ae_get_experiment_accessions, make_ae_exp_uri, ae_get_experiment_descriptor, rdf_ae_experiment
-from agrischemas.ebigxa.utils import rdf_gxa_namespaces
-from agrischemas.etltools.utils import make_id, normalize_rows_source, uri2accession, js_from_file, js_to_file
+from agrischemas.etltools.utils import (js_from_file, js_to_file, make_id,
+                                        normalize_rows_source, uri2accession)
 from agrischemas.kpyutils import web
 
+from agrischemas.ebigxa.ae import (ae_get_experiment_accessions,
+                                   ae_get_experiment_descriptor,
+                                   make_ae_exp_uri, rdf_ae_experiment)
+from agrischemas.ebigxa.utils import rdf_gxa_namespaces
 
 log = logging.getLogger ( __name__ )
 

@@ -1,10 +1,12 @@
 from typing import Generator
-import pytest
-from rdflib import Graph
-from assertpy import assert_that
 
-from agrischemas.etltools.sparql import sparql_run_construct, sparql_run
+import pytest
+from assertpy import assert_that
+from rdflib import Graph
+
 from agrischemas.config import AGRISCHEMAS_NS_MGR, ME_NS
+from agrischemas.etltools.sparql import sparql_run, sparql_run_construct
+
 
 def test_sparql_run_construct_basic ():
 	"""

@@ -1,9 +1,10 @@
+import json as json_module
 import logging
 from typing import Any, Generator
+
+import requests
 from rdflib import Graph
 from rdflib.plugins.stores.sparqlstore import SPARQLStore
-import json as json_module
-import requests
 
 from agrischemas.config import AGRISCHEMAS_SPARQL_ENDPOINT
 

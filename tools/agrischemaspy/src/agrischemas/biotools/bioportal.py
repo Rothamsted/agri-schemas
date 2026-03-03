@@ -1,10 +1,11 @@
 """
   Simple implementation of clients to invoke Bioportal APIs
 """
-from agrischemas.kpyutils import web
+import logging
 import os
 
-import logging
+from agrischemas.kpyutils import web
+
 log = logging.getLogger ( __name__ )
 
 """

@@ -7,12 +7,15 @@
 """
 
 
-from os import path, remove
-from sys import stderr
-from agrischemas.etltools.utils import DEFAULT_NAMESPACES, get_jena_home, XNamespaceManager
 import glob
 import re
+from os import path, remove
+from sys import stderr
+
 import sh
+
+from agrischemas.etltools.utils import (DEFAULT_NAMESPACES, XNamespaceManager,
+                                        get_jena_home)
 
 """
 	Maps the RDF in a Jena TDB database into some other RDF using a CONSTRUCT statement defined

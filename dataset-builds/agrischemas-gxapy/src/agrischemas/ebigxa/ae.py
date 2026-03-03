@@ -1,14 +1,13 @@
 import logging
+import math
 from sys import stdout
 from textwrap import dedent
-
-import math
 from typing import Any
-from urllib.error import HTTPError, URLError
+from urllib.error import URLError
 
-from agrischemas.etltools.utils import rdf_str, rdf_text, make_id, hash_generator
+from agrischemas.etltools.utils import (hash_generator, make_id, rdf_str,
+                                        rdf_text)
 from agrischemas.kpyutils import web
-
 
 log = logging.getLogger ( __name__ )
 
