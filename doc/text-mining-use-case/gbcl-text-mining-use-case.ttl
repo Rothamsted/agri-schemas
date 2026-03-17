@@ -23,7 +23,8 @@
 # oa:Annotation is to qualify it further
 
 res:text_mining_annotation_0 a schema:CreateAction, oa:Annotation;
-	# The annotation extracted info about event_0
+	# The annotation is here to tell event_0 is what the text mining has found from 
+	# the annotated text.
 	schema:result res:event_0;
 	# and info about study_0. This is redundant (event is linked to study), 
 	# you might want it here too for convenience
