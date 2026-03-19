@@ -1,0 +1,101 @@
+@prefix res: <http://agrischemas.org/resources/>.
+@prefix bkr: <http://knetminer.org/data/rdf/resources/>.
+@prefix agri: <http://agrischemas.org/>.
+@prefix bioschema: <http://bioschemas.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+
+# This is taken from orthoxml-ex-4.xml, which in turn, comes from the OrthoXML documentation
+# at https://orthoxml.org/0.4/orthoxml_doc_v0.4.html
+#
+
+# The Tree about the nodes below.
+# 
+# This can be used to provide a more synthetic view about a tree, which reports the genes/proteins
+# that belong to some tree nodes, omitting the topological details. As explained in the README, 
+# this can be used to simplify things in knowledge graphs and avoid performance issues with 
+# querying them.
+res:hom_tree_0 a agri:HomologyTree;
+	schema:name "Example homology tree";
+	agri:hasTreeRoot res:hog_0;
+	# As said above, the genes/proteins can be directly attached to the tree and skipping the 
+	# topology. HOWEVER, we need the reified statements below to attach FastOMA properties.
+	schema:hasPart 
+		res:gene_hsa1, # see below for examples of gene descriptions
+		res:gene_ptr1, 
+		res:gene_rno1, 
+		res:gene_mmu1,
+		res:gene_rno2, 
+		res:gene_mmu2;
+.
+
+res:hom_tree_0_hasPart_gene_hsa1 a rdf:Statement;
+	rdf:subject res:hom_tree_0;
+	rdf:predicate schema:hasPart;
+	rdf:object res:gene_hsa1;
+
+	# The OMA properties are very specific, so, as in other cases, we reccomend to use
+	# property values rather than adding new predicates.
+	# 
+	# In a knowledge graph these could be straight properties anyway.
+	#
+
+	schema:additionalProperty [
+		a schema:PropertyValue;
+		schema:name "hoglevel";
+		schema:propertyID "OMA:hoglevel";
+		schema:value "Arabidopsis";
+	],
+	[
+		a schema:PropertyValue;
+		schema:name "family_p";
+		schema:propertyID "OMA:family_p";
+		schema:value "505.34177514375125"^^xsd:decimal;
+		# As usually, they can be further characterised as instances of an external type.
+		dc:type agri:pvalue;
+	]
+	# And so on for the other OMA/FastOMA properties
+	# ...
+.
+
+# And then, similar statements for the other genes in the tree
+# ...
+#
+
+# The homology groups, hasPart or isPartOf are used to represent the hierarchy
+res:hog_0 a agri:HierarchicalOrthologyGroup;
+  schema:hasPart res:hog_0.0, res:pag_0.1;
+.
+
+res:hog_0.0 a agri:HierarchicalOrthologyGroup;
+	schema:hasPart res:gene_hsa1, res:gene_ptr1
+.
+
+res:pag_0.1 a agri:HierarchicalParalogGroup;
+	schema:hasPart res:hog_0.1.0, res:hog_0.1.1
+.
+
+res:hog_0.1.0 a agri:HierarchicalOrthologyGroup;
+	schema:hasPart res:gene_rno1, res:gene_mmu1
+.
+
+res:hog_0.1.1 a agri:HierarchicalOrthologyGroup;
+	schema:hasPart res:gene_rno2, res:gene_mmu2
+.
+
+res:gene_hsa1 a bioschema:Gene;
+	schema:name "HSA1";
+	schema:identifier "ATG1G01010";
+	# This can have various values, here it's a simple TAX ID, in other AgriSchemas use cases it points
+	# to a URI, which is then characterised as a bioschema:Taxon. 
+	# What exactly to do depends on trade-offs like:
+	# - simplicity vs set of specie descriptors that are listed once per specie only
+	# - will to point to external URIs
+	# - harmonisation with other data
+	# You can report multiple values too, eg, TAX ID + URI
+	schema:taxonomicRange "NCBITaxId:3702";
+.

@@ -1,0 +1,56 @@
+# Taken from https://sparql.omabrowser.org/lode/sparql
+
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX orth: <http://purl.org/net/orth#>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX lscr: <http://purl.org/lscr#>
+CONSTRUCT
+{
+	?root_hog obo:CDAO_0000148 ?hog_cluster. #has_Root
+
+  ?hog_cluster orth:hasHomologousMemberTransitive ?node1.	
+	?node1 a orth:OrthologsCluster.
+	?node1 orth:hasTaxonomicRange ?level.
+	?level orth:taxRange ?taxLevel.
+	?node1 orth:hasHomologousMember ?protein1.
+	
+	?hog_cluster orth:hasHomologousMemberTransitive ?protein2.
+	?protein1 a orth:Protein.
+	?protein1 orth:organism ?organism.
+
+	?organism obo:RO_0002162 ?taxon.
+	?taxon up:scientificName ?species_name.	
+	?protein1 lscr:xrefUniprot ?protein1_uniprot.
+	?protein2 a orth:Protein.
+	?protein2 lscr:xrefUniprot ?protein2_uniprot.
+}
+# This was the initial SELECT query:
+# SELECT DISTINCT ?root_hog ?species_name ?protein1_uniprot (?protein1 as ?protein1_OMA) ?taxLevel 
+WHERE
+{
+	VALUES ?protein2_uniprot {
+		<http://purl.uniprot.org/uniprot/P68871>
+	}
+	?protein2 a orth:Protein.
+	?protein2 lscr:xrefUniprot ?protein2_uniprot.
+
+	?hog_cluster orth:hasHomologousMember* ?protein2.
+  ?root_hog obo:CDAO_0000148 ?hog_cluster. #has_Root, this is a root node
+
+  # Which has this node
+	?hog_cluster orth:hasHomologousMember* ?node1.
+	?node1 a orth:OrthologsCluster.
+	?node1 orth:hasTaxonomicRange ?level.
+	?level orth:taxRange ?taxLevel.
+
+  # And the node has this other protein
+	?node1 orth:hasHomologousMember ?protein1.
+	?protein1 a orth:Protein.
+	?protein1 orth:organism ?organism.
+	?organism obo:RO_0002162 ?taxon.
+	?taxon up:scientificName ?species_name.
+	OPTIONAL {
+		?protein1 lscr:xrefUniprot ?protein1_uniprot
+	}
+}
