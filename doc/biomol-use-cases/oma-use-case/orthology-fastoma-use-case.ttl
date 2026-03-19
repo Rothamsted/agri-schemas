@@ -38,7 +38,7 @@ res:hom_tree_0_hasPart_gene_hsa1 a rdf:Statement;
 	rdf:predicate schema:hasPart;
 	rdf:object res:gene_hsa1;
 
-	# The OMA properties are very specific, so, as in other cases, we reccomend to use
+	# The OMA properties are very specific, so, as in other cases, we recommend to use
 	# property values rather than adding new predicates.
 	# 
 	# In a knowledge graph these could be straight properties anyway.
@@ -93,7 +93,7 @@ res:gene_hsa1 a bioschema:Gene;
 	# This can have various values, here it's a simple TAX ID, in other AgriSchemas use cases it points
 	# to a URI, which is then characterised as a bioschema:Taxon. 
 	# What exactly to do depends on trade-offs like:
-	# - simplicity vs set of specie descriptors that are listed once per specie only
+	# - simplicity vs set of species descriptors that are listed once per species only
 	# - will to point to external URIs
 	# - harmonisation with other data
 	# You can report multiple values too, eg, TAX ID + URI

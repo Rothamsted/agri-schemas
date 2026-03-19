@@ -6,7 +6,7 @@ but we mention how to generalise it when that's the case.
 
 ## Homology Trees
 
-as discussed, an homology tree is a synthetic view of a subtree of HOGs (or alike), which omits the topological details and instead assigns genes or proteins directly to it.
+As discussed in the [main README](README.md), a homology tree is a synthetic view of a subtree of HOGs (or alike) which omits the topological details and instead assigns genes or proteins directly to it.
 
 ```cypher
 /* 
@@ -24,7 +24,7 @@ as discussed, an homology tree is a synthetic view of a subtree of HOGs (or alik
 })
 
 // Gene/Proteins can be linked either with hasPart or, in the opposite direction, with partOf.
-- [ :hasPart{
+- [ :hasPart{
 	// You can report all the OMA properties if you want, we recommend to identify them by prefix
   `OMA:hoglevel`: "Arabidopsis",
 	`OMA:family_p`: 505.34177514375125,
@@ -47,7 +47,7 @@ as discussed, an homology tree is a synthetic view of a subtree of HOGs (or alik
 // 1-n hasPart relationships (or n-1 partOf) can be added to map multiple genes/proteins to a tree
 // Shared container
 (hom_tree_0)
-- [ :hasPart{ 
+- [ :hasPart{ 
 	`OMA:hoglevel`: "Arabidopsis",
 	`OMA:family_p`: 871.8216225627258,
 	...

@@ -1,8 +1,8 @@
 # Homology/FastOMA Use Case
 
-We have developed this use case starting from the need to map FastOMA results, [reference paper][INTRO-10]. The main thing import in KnetMiner from this software is HOG Trees, that is, subtrees of HOGs, and not necessarily whole trees.
+We have developed this use case starting from the need to map FastOMA results, [reference paper][INTRO-10]. The main thing imported in KnetMiner from this software is HOG Trees, that is, subtrees of HOGs, and not necessarily whole trees.
 
-For us, a HOG Tree is a subtree of HOGs (or similarly, of paralogous groups), which in turn, is a group of orthology-related proteins. Proteins linked to HOGs are linked to the HOG tree, the tree node where they're linked is omitted (though you can report info such as depth).
+For KnetMiner, a HOG Tree is a subtree of HOGs (or similarly, of paralogous groups), which in turn, is a group of orthology-related proteins. Proteins linked to HOGs are linked to the HOG tree, the tree node where they're linked is omitted (though you can report info such as depth).
 
 The idea is providing a synthetic view of the tree, to avoid too large final KGs, too detailed user views and performance issues with graph traversals.
 
@@ -14,7 +14,7 @@ The idea is providing a synthetic view of the tree, to avoid too large final KGs
 **OrhoXML**
 
 [OrthoXML][SART-05] is a format for orthology data, used by FastOMA.
-The [OMA SPARQL][SART-07] endpoint is is useful to understand ORTH and related ontologies. See this [query example](omabrowser-ex.sparql).
+The [OMA SPARQL][SART-07] endpoint is useful to understand ORTH and related ontologies. See this [query example](omabrowser-ex.sparql).
 
 [SART-05]: https://orthoxml.org
 [SART-07]: https://sparql.omabrowser.org/lode/sparql
@@ -23,7 +23,7 @@ The [OMA SPARQL][SART-07] endpoint is is useful to understand ORTH and related o
 
 [ORTH][SART-10] is the main ontology for orthology, which uses [CDAO][SART-20]. ORTH has "Hierarchical Gene Tree" (HGT), which represent a tree of genes as a whole.
 
-a HGT `cdao:has` "Gene Tree Node" (GTN)
+an HGT `cdao:has` "Gene Tree Node" (GTN)
 
 GTN has subclasses like "Cluster of Homologous Sequences", which has "Cluster of Orthologous" and Paralogous"
 
@@ -31,7 +31,7 @@ GTN has subclasses like "Cluster of Homologous Sequences", which has "Cluster of
 The closest class in BioLink is [GeneFamily][SART-30], which is only superficially related, since it doesn't seem to support hierarchical relations.
 
 **BioSchemas**
-Nothing very relevant found. `schema:CreativeWork` seems to be the best one to subclass. To be noted that they have [SequenceAnnotation][SART-40] in draft, which looks like a mix of sequence and seq annotations, in fact, it subclasses `BioChemEntity`. Whatever, HOGTrees and HOGs are information entities (like iao:InformationContentEntity), they're not sequences, nor biochem entities. 
+Nothing very relevant found. `schema:CreativeWork` seems to be the best one to subclass. Note that they have [SequenceAnnotation][SART-40] in draft, which looks like a mix of sequence and sequence annotations; in fact, it subclasses `BioChemEntity`. In any case, HOGTrees and HOGs are information entities (like iao:InformationContentEntity); they are not sequences or biochemical entities.
 
 
 ### Scoring properties
