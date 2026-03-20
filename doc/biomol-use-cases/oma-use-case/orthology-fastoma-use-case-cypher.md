@@ -2,11 +2,11 @@
 
 This is a translation from the [RDF model](orthology-fastoma-use-case.ttl) to systems
 using simpler LPGs, like Neo4j. The example has some internal KnetMiner terminology, 
-but we mention how to generalise it when that's the case.
+but we mention how to generalise it where applicable.
 
 ## Homology Trees
 
-As discussed in the [main README](README.md), a homology tree is a synthetic view of a subtree of HOGs (or alike) which omits the topological details and instead assigns genes or proteins directly to it.
+As discussed in the [main README](README.md), a homology tree is a synthetic view of a subtree of HOGs (or alike) which omits the topological details and instead assigns genes or proteins directly to the tree.
 
 ```cypher
 /* 
@@ -40,7 +40,7 @@ As discussed in the [main README](README.md), a homology tree is a synthetic vie
 	ondexId: "5678",
 	identifier: "ATG1G01010",
 	prefName: "HSA1",
-	// In future, it should be taxonomicRange, as per Bioschemas
+	// In the future, it should be taxonomicRange, as per Bioschemas
 	taxId: "3702"
 })
 

@@ -55,7 +55,7 @@ res:hom_tree_0_hasPart_gene_hsa1 a rdf:Statement;
 		schema:name "family_p";
 		schema:propertyID "OMA:family_p";
 		schema:value "505.34177514375125"^^xsd:decimal;
-		# As usually, they can be further characterised as instances of an external type.
+		# As usual, they can be further characterised as instances of an external type.
 		dc:type agri:pvalue;
 	]
 	# And so on for the other OMA/FastOMA properties
