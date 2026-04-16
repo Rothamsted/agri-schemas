@@ -26,7 +26,7 @@ types), and the [Gene Expression Atlas](https://www.ebi.ac.uk/gxa/home) (experim
 gene expression). The data are published on the 
 [Knetminer's SPARQL endpoint](https://knetminer.org/data).~~
 
-We're reviewing everything and the new place for concrete data modelled after Agri-Schemas is the [Agri-Schemas Dataset Builds](../agri-schemas/dataset-builds/README.md).
+We're reviewing everything and the new place for concrete data modelled after Agri-Schemas is the [Agri-Schemas Dataset Builds](dataset-builds/README.md).
 
 
 ## Consumers
