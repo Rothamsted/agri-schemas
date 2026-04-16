@@ -45,7 +45,7 @@ extraction/transformation/loading tools (ETL). A few pointers are:
 * [Biotools](tools/agrischemaspy/src/agrischemas/biotools), utilities for dealing with biological data
 * [Knetminer Python Utils](tools/agrischemaspy/src/agrischemas/kpyutils), generic utilities for the Python environment
 * [GXA Conversion library](dataset-builds/agrischemas-gxapy), including [scripts and Snake file](dataset-builds/agrischemas-gxa)
-*[Build-all scripts and files](dataset-builds/README.md)
+* [Build-all scripts and files](dataset-builds/README.md)
 
 
 ## Publications
